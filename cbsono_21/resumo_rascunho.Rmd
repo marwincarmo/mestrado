@@ -12,8 +12,32 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Main idea: multiple linear regression with cognitive factors as predictors of insomnia severity with depression and axiety as control variables.
+## North ideas
 
-Acceptance and commitment therapy (ACT) is a form of intervention based on helping  the patient achieve a new form of experiencing thoughts and feelings [@salari2020]. ACT compreheends mindfulness, acceptance and cognitive diffusion
+Main idea: multiple linear regression with cognitive factors as predictors of insomnia severity with depression and anxiety as control variables.
+
+Possible question: Do levels of sleep-related cognition and acceptance predict insomnia severity, when controlling for levels of anxiety and depression?
+
+Pathway:
+
+- Why investigate sleep related cognitions and acceptance?
+  + DBAS and SPAQ are associated with insomnia symptoms (references).
+
+- Why control for symptoms of anxiety and depression?
+  + They are relevant predictors of insomnia (reference)
+  + Related to the two cognitive measures?
+
+
+## Draft
+
+Acceptance and commitment therapy (ACT) is a form of intervention based on helping the patient achieve a new form of experiencing thoughts and feelings. ACT comprehends mindfulness, acceptance and cognitive diffusion [@salari2020].
+
+ACT is known as one of the third wave treatments and originates from the cognitive behavioral therapy (CBT), which increases psychological flexibility.
+
+On the whole, ACT is performed with the aim of mental training, increasing motivation, psychological flexibility and self-efficacy in an individual.
+
+As a person with insomnia tries to control his or her thoughts and feelings, his or her insomnia is exacerbated.
+
+Dysfunctional beliefs was a significant mediator of change in insomnia severity post CBT-I intervention [@lancee2019]
 
 ## References
