@@ -2,10 +2,18 @@
 title: "Resumo Congresso Brasileiro de Sono 2021"
 author: "Marwin Carmo"
 date: "30/07/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Main idea: multiple linear regression with cognitive factors as predictors of insomnia severity with depression and axiety as control variables.
+
+Acceptance and commitment therapy (ACT) is a form of intervention based on helping  the patient achieve a new form of experiencing thoughts and feelings [@salari2020]. ACT compreheends mindfulness, acceptance and cognitive diffusion
+
+## References
