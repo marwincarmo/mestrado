@@ -18,15 +18,18 @@ Main idea: multiple linear regression with cognitive factors as predictors of in
 
 Possible question: Do levels of sleep-related cognition and acceptance predict insomnia severity, when controlling for levels of anxiety and depression?
 
+Association between subjective insomnia severity and self report measures of insomnia acceptance and sleep related beliefs.
+
 Pathway:
 
-- Why investigate sleep related cognitions and acceptance?
-  + DBAS and SPAQ are associated with insomnia symptoms (references).
+-   Why investigate sleep related cognitions and acceptance?
 
-- Why control for symptoms of anxiety and depression?
+  + DBAS and SPAQ are associated with insomnia symptoms [@bothelius2015]
+
+-   Why control for symptoms of anxiety and depression?
+
   + They are relevant predictors of insomnia (reference)
   + Related to the two cognitive measures?
-
 
 ## Draft
 

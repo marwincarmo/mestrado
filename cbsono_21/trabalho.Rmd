@@ -1,0 +1,27 @@
+---
+title: "Association between sleep-related cognitions and insomnia symptomns. Evidence from a multi-centric brazilian sample."
+author: "Marwin Carmo"
+date: "30/07/2021"
+output:
+  pdf_document: default
+  html_document: default
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+
+### Objectives
+
+
+## Method
+
+
+## Results
+
+
+## Conclusion
