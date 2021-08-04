@@ -24,12 +24,18 @@ Pathway:
 
 -   Why investigate sleep related cognitions and acceptance?
 
-  + DBAS and SPAQ are associated with insomnia symptoms [@bothelius2015]
+Discuss about cognitive model of insomnia. Introduce the role of dysfunctional beliefs and acceptance.
+
+-   DBAS and SPAQ are associated with insomnia symptoms [@bothelius2015]
 
 -   Why control for symptoms of anxiety and depression?
 
-  + They are relevant predictors of insomnia (reference)
-  + Related to the two cognitive measures?
+Role of acceptance and beliefs in the association with depression, anxiety and insomnia symptoms.
+
+Depression and insomnia are known to be related either causally or otherwise. Depressive symptoms is one of the most common risk factors for insomnia. Other studies suggest that insomnia is a risk factor for depressive symptoms [@kato2016].
+
+-   They are relevant predictors of insomnia (reference)
+-   Related to the two cognitive measures?
 
 ## Draft
 
