@@ -1,27 +1,31 @@
 ---
-title: "Association between sleep-related cognitions and insomnia symptomns. Evidence from a multi-centric brazilian sample."
-author: "Marwin Carmo"
-date: "30/07/2021"
+title: "Association between sleep-related cognitions and insomnia symptomns. Evidence from a multi-centric Brazilian sample."
+author: "Marwin M. I. B. Carmo"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   pdf_document: default
   html_document: default
-bibliography: references.bib
+bibliography: psicologia_sono.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Introduction
+## Introduction (2 paragraphs)
 
+Insomnia sufferers are a group characterized for frequent complaints about quality and quantity of their sleep, difficulties in initiating and maintaining sleep as well as early-morning awakenings with inability to return to sleep [@diagnost2013].
 
-### Objectives
+Depression and insomnia are comorbid and have a bidirectional relationship. Anxiety increases ruminative thoughts. Both contribute to reinforcement of dysfunctional beliefs and low acceptance. Or may have also a bidirectional relationship, with negative thoughts enhancing depression and anxiety symptoms. Dysfunctional beliefs affect insomnia in this and this way, according to some models. Recently acceptance has been investigated.
 
+Link para ansiedade e depressão e depois mecanismos psicológicos
 
-## Method
+### Objectives (1 paragraph)
 
+## Method (1 paragraph)
 
-## Results
+## Results (2 paragraphs)
 
+## Conclusion (1 paragraph)
 
-## Conclusion
+## References
