@@ -1,5 +1,5 @@
 ---
-title: "Resumo Congresso Brasileiro de Sono 2021"
+title: "Dysfunctional beliefs and psychological flexibility interplay in insomnia severity reports from a multi-centric Brazilian sample"
 author: "Marwin Carmo"
 date: "30/07/2021"
 output:
@@ -51,17 +51,17 @@ Dysfunctional beliefs was a significant mediator of change in insomnia severity 
 
 ## Ong et al 2012 model
 
-people with insomnia hold maladaptive beliefs and attitudes about sleep. maladaptive behaviors and arousal producing cognitivons are dysfunctional responses to poor sleep and daytime fatigue and these resposnses maintain the disorder by creating a vicious cycle of insomnia
+people with insomnia hold maladaptive beliefs and attitudes about sleep. maladaptive behaviors and arousal producing cognitions are dysfunctional responses to poor sleep and daytime fatigue and these resposnses maintain the disorder by creating a vicious cycle of insomnia
 
 Without the flexibility to allow competing thoughts to be considered (e.g., “I can find other ways to cope if I get less than 8h”), secondary arousal becomes a mechanism by which insomnia is perpetuated. Together, both primary and secondary arousals are seen as factors that promote and maintain the insomnia disorder.
 
 Lundh (2005) also presented the idea that mindfulness and acceptance skills might facilitate “cognitive deactivation” which is similar to the concept of reducing secondary arousal.
 
-Metacognitive models promote a shift in mental processes (second order) rather than a direct change of the mental contents or behaviors (first order).
+Metacognitive models promote a shift in mental processes (second order) rather than a direct change of the mental contents or behaviors (first order). Metacognitive process are implicit in other modes of insomnia, including the loss of automaticity, selective attention given to sleep and the interpretative value of negative beliefs and attitudes about sleep.
 
-Instead ofchanging a thought or behavior, greater awareness promotes a metacognitive shift toward a more objective, non-judging stance.
+Instead of changing a thought or behavior, greater awareness promotes a metacognitive shift toward a more objective, non-judging stance.
 
-Measures of acceptance, mindfulness, and experiential avoidance were evaluated collectively as a proxy for psychological flexibility.
+Measures of acceptance, mindfulness, and experiential avoidance were evaluated collectively as a proxy for psychological flexibility. Findings showed that psychological inflexibility was a significant predictor of insomnia severity, problems with sleep and rest, low sleep efficiency, and fatigue.
 
 People with insomnia also tend to be very rigid in their thinking and behaviors. In assessing sleep-related cognitions, people with insomnia tend to hold onto fairly rigid beliefs about sleep
 
@@ -69,5 +69,7 @@ The unwillingness to accept sleeplessness results in the very suffering that the
 
 With equanimity, one is adopting a stance of nonattachment to sleep outcomes, which facilitates improved emotion regulation in the face of insufficient sleep and fatigue. It also refers to letting go of the strong belief in contingencies between sleep and daytime functioning. The shift toward equanimity is a shift from outcome-oriented
 thinking to process-oriented thinking.
+
+Nonattachment from this perspective does not imply a lack of feelings or emotions, but rather it suggests creating a space between a stimulus and the reaction to the stimulus. For example, letting go ofthe need to sleep 8 h per night does not mean that one should no longer have thoughts about sleep needs. Rather, these thoughts shift toward how one feels at the present moment, and the recognition that thoughts about sleep are just that; thoughts about sleep, and nothing more, allowing the secondary arousal to dissipate.
 
 ## References
