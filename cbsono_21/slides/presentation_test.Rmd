@@ -3,7 +3,7 @@ title: "Dysfunctional beliefs and psychological flexibility interplay in insomni
 subtitle: "XVIII Congresso Brasileiro de Sono 2021"
 author: 
   - "Marwin M I B Carmo"
-  - "Renatha El-Rafihi Ferreira, PhD"
+  - "Dr. Renatha El-Rafihi Ferreira"
 date: "<img src ='img/fapesp-ipq.png' width = '30%'>"
 output:
   xaringan::moon_reader:

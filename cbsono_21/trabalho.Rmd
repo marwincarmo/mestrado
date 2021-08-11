@@ -16,11 +16,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Insomnia sufferers are a group characterized for frequent complaints about quality and quantity of sleep, difficulties in initiating and maintaining sleep and early-morning awakenings with inability to return to sleep [@diagnost2013]. Psychological disorders like anxiety and depression are known to co-occur with symptoms of insomnia and are possible aggravating factors for sleep problems [@belanger2016]. Evidence suggests that the relationship between anxiety and depression with insomnia are bidirectional, meaning that both poses as risk factors for insomnia and sleep alterations increases risk for emotional disturbances [@riemann2020].
 
+Excess of negatively toned cognitive activity about sleep may maximize worries and ruminative thoughts increasing arousal and an anxiety state shifts attention to sleep-related threats [@harvey2002].The cognitive-behavioral model of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms [@morin1993]. People with insomnia tend to hold dysfunctional beliefs and maladaptative behaviors in response to sleep problems which are proxies for the cognitive arousal that feeds the cycle of insomnia.
 
-
-Depression and insomnia are comorbid and have a bidirectional relationship. Anxiety increases ruminative thoughts. Both contribute to reinforcement of dysfunctional beliefs and low acceptance. Or may have also a bidirectional relationship, with negative thoughts enhancing depression and anxiety symptoms. Dysfunctional beliefs affect insomnia in this and this way, according to some models. Recently acceptance has been investigated.
-
-Link para ansiedade e depressão e depois mecanismos psicológicos
+The metacognitive model of insomnia expands the previous model by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Primary and secondary processes mutually influence each other in respect that the content of maladaptative sleep-related thoughts can have a greater negative impact in the maintenance of insomnia disorder if one is rigidly attached to them [@ong2012].
 
 ### Objectives (1 paragraph)
 
