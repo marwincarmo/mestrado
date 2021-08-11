@@ -1,14 +1,15 @@
 ---
 title: "Dysfunctional beliefs and psychological flexibility interplay in insomnia severity reports from a multi-centric Brazilian sample"
-subtitle: "Congresso Brasileiro de Sono"
+subtitle: "XVIII Congresso Brasileiro de Sono 2021"
 author: 
   - "Marwin M I B Carmo"
-  - "Dra. Renatha El-Rafihi Ferreira"
+  - "Renatha El-Rafihi Ferreira, PhD"
 date: "<img src ='img/fapesp-ipq.png' width = '30%'>"
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
+    css: ["css/xaringan-themer.css", "css/custom.css"]
     nature:
+      #titleSlideClass: ["right", "top", "custom.css"]
       slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
@@ -47,7 +48,7 @@ xaringanExtra::use_logo(
   width = "365px",
   height = "79px",
   position = css_position(top = "1em", right = "1em"),
-  exclude_class = c("inverse", "hide_logo")
+  exclude_class = c("my-title", "inverse", "hide_logo")
 )
 ```
 
