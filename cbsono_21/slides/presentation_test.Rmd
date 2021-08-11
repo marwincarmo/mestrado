@@ -3,11 +3,11 @@ title: "Dysfunctional beliefs and psychological flexibility interplay in insomni
 subtitle: "XVIII Congresso Brasileiro de Sono 2021"
 author: 
   - "Marwin M I B Carmo"
-  - "Dr. Renatha El-Rafihi Ferreira"
+  - "Dr. Renatha El Rafihi Ferreira"
 date: "<img src ='img/fapesp-ipq.png' width = '30%'>"
 output:
   xaringan::moon_reader:
-    css: ["css/xaringan-themer.css", "css/custom.css"]
+    css: ["xaringan-themer.css", "css/custom.css"]
     nature:
       #titleSlideClass: ["right", "top", "custom.css"]
       slideNumberFormat: "%current%"
@@ -38,7 +38,9 @@ style_duo_accent(
   title_slide_text_color = "#024F84",
   primary_color = "#024F84",
   secondary_color = "#FF961C",
-  inverse_header_color = "#FFFFFF"
+  inverse_header_color = "#FFFFFF",
+  text_color = "#515151",
+  text_font_size = "1.2rem"
 )
 ```
 
@@ -54,15 +56,33 @@ xaringanExtra::use_logo(
 
 ## Introduction
 
-Dolor imperdiet nostra sapien scelerisque praesent curae metus facilisis dignissim tortor. 
-Lacinia neque mollis nascetur neque urna velit bibendum. 
-Himenaeos suspendisse leo varius mus risus sagittis aliquet venenatis duis nec.
+Insomnia sufferers are a group characterized for frequent complaints about quality and quantity of sleep, difficulties in initiating and maintaining sleep and early-morning awakenings with inability to return to sleep.
 
-- Dolor cubilia nostra nunc sodales
+- Psychological disorders like anxiety and depression are known to co-occur with symptoms of insomnia and are possible aggravating factors for sleep problems
 
-- Consectetur aliquet mauris blandit
+- Evidence suggests that the relationship between anxiety and depression with insomnia are bidirectional
 
-- Ipsum dis nec porttitor urna sed
+- Excess of negatively toned cognitive activity about sleep may maximize worries and ruminative thoughts increasing arousal
+
+- An anxiety state shifts attention to sleep-related threats
+
+---
+
+## Introduction
+### Cognitive-behavioral model of insomnia
+
+- Arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms
+
+- People with insomnia tend to hold dysfunctional beliefs and maladaptative behaviors in response to sleep problems
+
+- These beliefs and attitudes about sleep are proxies for the cognitive arousal that feeds the cycle of insomnia
+
+---
+class: center middle
+
+```{r echo=FALSE, out.width = "60%", fig.cap = "Two-level model of sleep-related arousal (Ong et al. 2012)", fig.align='left'}
+knitr::include_graphics("img/ong-model.jpg")
+```
 
 ---
 name: methods

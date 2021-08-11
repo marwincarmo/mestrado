@@ -5,7 +5,7 @@
   color: #515151;
   padding-top: 0px;
   font-weight: normal;
-  font-size: 40px;
+  font-size: 50px;
 
   text-align: left;
   text-shadow: none;
@@ -24,10 +24,11 @@
 }
 
 .title-slide h3 {
-  color: #2A6F9A;
+  color: #666666;
   font-size: 35px;
   text-align: right;
   text-shadow: none;
   padding-top: 0px;
   margin-top: 0px;
+  line-height: 0.2
 }
