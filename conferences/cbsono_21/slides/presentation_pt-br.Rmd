@@ -58,9 +58,9 @@ xaringanExtra::use_logo(
 
 Pessoas com insônia formam um grupo caracterizado por queixas frequentes sobre a qualidade e quantidade do sono, bem como por dificuldades na iniciação e manutenção do sono e incapacidade de voltar a dormir ao despertar em horário anterior ao habitual .
 
-- Transtornos psicológicos como ansiedade e depressão são conhecidos por co-ocorrerem com sintomas de insônia e são possíveis agravantes de problemas de sono.
+- Transtornos psicológicos como ansiedade e depressão são conhecidos por co-ocorrerem com sintomas de insônia e por serem possíveis agravantes de problemas de sono.
 
-- As evidências sugerem que o relacionamento entre ansiedade e depressão com a insônia é bidirecional.
+- Há evidências de que o relacionamento entre ansiedade e depressão com a insônia é bidirecional.
 
 - O excesso de atividade cognitiva negativa sobre o sono pode maximizar preocupações e pensamentos ruminativos, aumentando a excitação.
 
@@ -73,9 +73,9 @@ Pessoas com insônia formam um grupo caracterizado por queixas frequentes sobre 
 
 - Excitação, cognições, comportamentos e consequências percebidas desempenham um papel importante na manutenção dos sintomas de insônia.
 
-- Pessoas com insônia tendem a terem crenças disfuncionais e comportamentos desadaptativos em resposta aos problemas de sono.
+- Pessoas com insônia tendem a ter crenças disfuncionais e comportamentos desadaptativos em resposta aos problemas de sono.
 
-- Estas crenças e atitudes sobre o sono são gatilhos da excitação cognitiva que alimenta o ciclo da insônia.
+- Estas crenças e atitudes sobre o sono são gatilhos para excitação cognitiva que alimenta o ciclo da insônia.
 
 ---
 class: center, middle
@@ -89,7 +89,7 @@ class: middle, left
 
 ## Hipótese
 
-Pessoas com insônia tendem a serem mais rígidas em seus pensamentos e comportamentos. Maiores níveis de flexibilidade psicológica em pensamentos e comportamentos contribui para diminuir a excitação secundária.
+Pessoas com insônia tendem a ser mais rígidas em seus pensamentos e comportamentos. Mais flexibilidade psicológica em relação a pensamentos e comportamentos contribui para diminuir a excitação secundária.
 
 - <b>Hipótese</b>: A flexibilidade psicológica modera o relacionamento entre crenças disfuncionais sobre o sono e a severidade da insônia.
 
