@@ -1,0 +1,108 @@
+---
+title: "Dysfunctional beliefs and psychological flexibility interplay in insomnia severity reports from a multi-centric Brazilian sample"
+subtitle: "XVIII Congresso Brasileiro de Sono 2021"
+author: 
+  - "Marwin M I B Carmo"
+  - "Dr. Renatha El Rafihi Ferreira"
+date: "<img src ='img/fapesp-ipq.png' width = '30%'>"
+output:
+  xaringan::moon_reader:
+    css: ["xaringan-themer.css", "css/custom.css"]
+    nature:
+      #titleSlideClass: ["right", "top", "custom.css"]
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(xaringanExtra)
+style_duo_accent(
+  title_slide_background_color ="#FFFFFF",
+  title_slide_text_color = "#024F84",
+  primary_color = "#024F84",
+  secondary_color = "#FF961C",
+  inverse_header_color = "#FFFFFF",
+  text_color = "#515151",
+  text_font_size = "1.2rem"
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = c("img/fapesp-ipq.png"),
+  width = "365px",
+  height = "79px",
+  position = css_position(top = "1em", right = "1em"),
+  exclude_class = c("my-title", "inverse", "hide_logo")
+)
+```
+
+## Introdução
+
+Pessoas com insônia formam um grupo caracterizado por queixas frequentes sobre a qualidade e quantidade do sono, bem como por dificuldades na iniciação e manutenção do sono e incapacidade de voltar a dormir ao despertar em horário anterior ao habitual .
+
+- Transtornos psicológicos como ansiedade e depressão são conhecidos por co-ocorrerem com sintomas de insônia e são possíveis agravantes de problemas de sono.
+
+- As evidências sugerem que o relacionamento entre ansiedade e depressão com a insônia é bidirecional.
+
+- O excesso de atividade cognitiva negativa sobre o sono pode maximizar preocupações e pensamentos ruminativos, aumentando a excitação.
+
+- Um estado de ansiedade desloca a atenção para as ameaças ao sono.
+
+---
+
+## Introdução
+### O modelo cognitivo-comportamental da insônia
+
+- Excitação, cognições, comportamentos e consequências percebidas desempenham um papel importante na manutenção dos sintomas de insônia.
+
+- Pessoas com insônia tendem a terem crenças disfuncionais e comportamentos desadaptativos em resposta aos problemas de sono.
+
+- Estas crenças e atitudes sobre o sono são gatilhos da excitação cognitiva que alimenta o ciclo da insônia.
+
+---
+class: center, middle
+
+```{r echo=FALSE, out.width = "60%", fig.cap = "Two-level model of sleep-related arousal (Ong et al. 2012)", fig.align='left'}
+knitr::include_graphics("img/ong-model.jpg")
+```
+
+---
+class: middle, left
+
+## Hipótese
+
+Pessoas com insônia tendem a serem mais rígidas em seus pensamentos e comportamentos. Maiores níveis de flexibilidade psicológica em pensamentos e comportamentos contribui para diminuir a excitação secundária.
+
+- <b>Hipótese</b>: A flexibilidade psicológica modera o relacionamento entre crenças disfuncionais sobre o sono e a severidade da insônia.
+
+---
+
+## Método
+
+- **Participantes**: 457 participantes inscritos para um tratamento comportamental para insônia.
+
+- **Instrumentos**: ISI, DBAS-16, AAQ-II, HADS-A, HADS-D.
+
+- **Análise estatística**: Regressão linear múltipla na seguinte forma:
+
+$$ 
+ISI = Idade + Sexo + HADSA + HADSD + DBAS\times AAQII 
+$$

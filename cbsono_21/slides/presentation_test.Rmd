@@ -104,9 +104,9 @@ People with insomnia tend to be rigid in their thinking and behaviors. Greater l
 - **Statistical Analysis**: Multiple linear regression with the form:
 
 $$ 
-ISI = Age + Sex + HADSA + HADS-D + DBAS + AAQ-II + DBAS*AAQ-II 
+ISI = Age + Sex + HADSA + HADSD + DBAS + AAQ-II + DBAS\times AAQII 
 $$
-
+$a\-b$
 ---
 class: center, middle
 
