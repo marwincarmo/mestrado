@@ -97,24 +97,12 @@ People with insomnia tend to be rigid in their thinking and behaviors. Greater l
 
 ## Methods
 
-- **Participants**: 457 participants enrolled for a behavioral treatment for insomnia.
+- **Participants**: 575 participants enrolled for a behavioral treatment for insomnia.
 
 - **Measures**: ISI, DBAS-16, AAQ-II, HADS-A, HADS-D
 
 - **Statistical Analysis**: Multiple linear regression with the form:
 
 $$ 
-ISI = Age + Sex + HADSA + HADSD + DBAS + AAQ-II + DBAS\times AAQII 
+ISI = Age + Sex + HADSA + HADSD + DBAS\times AAQII 
 $$
-$a\-b$
----
-class: center, middle
-
-# Thanks!
-
-Slides created via the R packages:
-
-[**xaringan**](https://github.com/yihui/xaringan)<br>
-[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
-
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
