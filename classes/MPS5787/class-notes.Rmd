@@ -1,13 +1,95 @@
 ---
 title: "PSC6054 & MPS5787 [Metodologia de Pesquisa em Psicoterapia]"
-author: "Marwin Carmo"
-date: "16/08/2021"
-output: html_document
+author: 
+  - "Marwin M I B Carmo"
+  - "Professores: Marcia Scazufca (FMUSP), Felipe Corchs e Francisco Lotufo Neto (IPUSP e FMUSP)."
+date: "16/08/2021 - 14/09/2021"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+**Trabalho final**:
+
+- Grupos de 3 a 4 pessoas
+
+- 10 minutos de apresentação, 5 minutos de pergunta de outro grupo, 5 minutos de perguntas de todos
+
+- Trabalho na área de pesquisa em psicoterapia
+
+- Foco na metodologia
+
 ## 16/08 - Delineamentos experimentais: sujeito único
 
+A lógica do delineamento experimental é ter uma ideia de que um evento está causando outro e não outra coisa específica
+
+Variável independente: controlado pelo pesquisador. Em contextos clínicos, geralmente é a intervenção
+
+Variável dependente: o que vamos medir para ver o efeito da VI. Costuma ser algum comportamento, ou algum resultado do comportamento.
+
+Quanto mais se elimina explicações alternativas para o resultado, mais se tem validade interna.
+
+**Ameaças à validade interna**:
+
+Observar as ameaças à validade interna ajuda a saber se o que se está fazendo tem resultado ou não.
+
+- História: se espera que as mudanças sejam rápidas e logo ao começar a intervenção para diminuir a possibilidade de intervenção de outras coisas externas.
+
+- Maturação: melhora sem nenhum tipo de tratamento, principalmente em trabalho com crianças e adolescentes.
+
+- Teste (avaliação repetida): se o teste é repetido muitas vezes é possível que a pessoa tomando o teste acabe aprendendo.
+
+- Instrumentos: o procedimento tem que ser o mesmo ao longo do estudo
+
+- Regressão estatística: se um grupo está muito distante da média, a tendência é que com o tempo vá se aproximando à média
+
+- Viés na seleção: critério claro e neutro na seleção
+
+- Atrito (perda de sujeitos): pode acabar com grupos que não são semelhantes
+
+- Difusão do tratamento: grupo controle também recebendo algo do tratamento?
+
+**Validade externa**
+
+O quanto a mudança se aplica a outras pessoas, outros ambientes, outros instrumentos ou outros problemas. Por exemplo, a intervenção funcionando indiretamente para outro desfecho.
+
+### Delineamento de caso único
+
+A observação é clínica e a avaliação vai ser feita dentro do histórico do paciente. O tratamento é personalizado, diferente do grupo que tem um método padronizado.
+
+Não necessariamente é feito com uma pessoa só. Caso único significa que o participante é controle dele mesmo.
+
+Geralmente a VI é algum comportamento observável e mensurável como, por exemplo, através da frequência do comportamento.
+
+O grau de qualidade do estudo depende do cuidado com a remoção de ameaças à validade interna. A comparação é feita com a linha de base, a avaliação da VI antes de começar a intervençaõ.
+
+A observação não precisa ser observação direta, pode ser um registro.
+
+O essencial é que se faça medidas repetidas (3 a 12) para termos melhor certeza que a mudança aconteceu em função da intervenção. A linha de base tem que ser estável. Vendo que o comportamento da linha de base está estável, começa a intervenção.
+
+A quantificação de medidas repetidas é feita para montar gráficos e conseguir observar a mudança no comportamento da pessoa. No delineamento de caso único a mudança ainda é feita muito visualmente, embora existam alguns métodos estatísticos.
+
+**Delineamento de reversão (A-B A-B)**: remove a intervenção esperando que se a intervenção é eficaz (o que provoca a mudança no comportamento), o comportamento diminui e depois que ela é inserida novamente, o comportamento aumenta. Não é todo comportamento que é passível desse tipo de delineamento.
+
+**Delineamento de linha de base múltipla**: A VD é medida ao mesmo tempo para todo mundo. Para cada pessoa a intervenção é inserida em um momento diferente. As pessoas ainda são comparadas com elas mesmas, mas podemos ver se o comportamento da pessoa só muda com a inserção da intervenção.
+
+**Vantagens**
+
+- Observar o que acontece em uma história de vida.
+- Compreensão mais ampla.
+- É aplicável clinicamente
+
+**Limitações**
+
+- Dificuldade de generalização dos resultados. 
+-Demora para ter um numero significativo de pessoas para dizer se a intervenção é boa
+- Mais difícil de controlar a validade interna
+- Mais difícil de publicação pois se diz que é pouco generalizável. No entanto, os delineamentos de caso único e de grupo são complementares. Pode ajudar como estudo piloto ou para ver como uma intervenção que já se sabe que funciona em grupo funcionaria 
+
+**AEM (Avaliação Ecológica Momentânea)**: É feito pelo participante e o registro acontece no momento e contexto a ser medido.
