@@ -1,0 +1,13 @@
+---
+title: "PSC6054 & MPS5787 [Metodologia de Pesquisa em Psicoterapia]"
+author: "Marwin Carmo"
+date: "16/08/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 16/08 - Delineamentos experimentais: sujeito único
+
