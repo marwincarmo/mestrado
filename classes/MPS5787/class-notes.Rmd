@@ -1,5 +1,5 @@
 ---
-title: "PSC6054 & MPS5787 [Metodologia de Pesquisa em Psicoterapia]"
+title: "MPS5787 [Metodologia de Pesquisa em Psicoterapia]"
 author: 
   - "Marwin M I B Carmo"
   - "Professores: Marcia Scazufca (FMUSP), Felipe Corchs e Francisco Lotufo Neto (IPUSP e FMUSP)."
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Foco na metodologia
 
-## 16/08 - Delineamentos experimentais: sujeito único
+## 16/08 - Delineamentos experimentais: sujeito único - Rodrigo Pereira
 
 A lógica do delineamento experimental é ter uma ideia de que um evento está causando outro e não outra coisa específica
 
@@ -67,7 +67,7 @@ Não necessariamente é feito com uma pessoa só. Caso único significa que o pa
 
 Geralmente a VI é algum comportamento observável e mensurável como, por exemplo, através da frequência do comportamento.
 
-O grau de qualidade do estudo depende do cuidado com a remoção de ameaças à validade interna. A comparação é feita com a linha de base, a avaliação da VI antes de começar a intervençaõ.
+O grau de qualidade do estudo depende do cuidado com a remoção de ameaças à validade interna. A comparação é feita com a linha de base, a avaliação da VI antes de começar a intervenção.
 
 A observação não precisa ser observação direta, pode ser um registro.
 
@@ -93,3 +93,34 @@ A quantificação de medidas repetidas é feita para montar gráficos e consegui
 - Mais difícil de publicação pois se diz que é pouco generalizável. No entanto, os delineamentos de caso único e de grupo são complementares. Pode ajudar como estudo piloto ou para ver como uma intervenção que já se sabe que funciona em grupo funcionaria 
 
 **AEM (Avaliação Ecológica Momentânea)**: É feito pelo participante e o registro acontece no momento e contexto a ser medido.
+
+## 17/08 - Metodologia de Ensaios Clínicos em Psicoterapia I - Marcia Scazufca
+
+A escolha da variável como desfecho (VD) ou exposição (VI) depende do objetivo do trabalho.
+
+### Estudos epidemiológicos
+
+- Experimentais: Controlo o experimento sabendo que está sendo feito com a pessoa e se quer saber se aquilo tem um efeito.
+- Observacionais: Não se faz nada com objetivo claro de mudança.
+
+A variável de confusão cria uma associação entre duas variáveis que não possuem relação. A associação para de existir se a variável de confusão é colocada na equação.
+
+- Em **estudos transversais** coletamos as informações de desfecho ao mesmo tempo da exposição. É muito difícil avaliar a temporalidade entre intervenção e desfecho.
+
+- Estudo **caso-controle** é um tipo de estudo bom para doenças pouco frequentes. Inicia com casos (pessoas com a doença) e controles (pessoas sem a doença) e avalia se os casos tem a mesma frequencia de desfechos. Avaliado com odds ratio.
+
+- Delineamento **Estudo Coorte**: Começa com uma população sem a "doença" e compara a exposição ao longo do tempo do grupo de expostos em relação ao grupo naõ exposto. Ex: risco de um adolescente desenvolver depressão se exposto à violência. Dão algumas evidências de causalidade pois temos pessoas sem o desfecho no começo e ele se desenvovle durante o tempo.
+
+**Estudos experimentais**: Compara um grupo experimental e um grupo controle.
+
+A *validade interna* é quanto o desfecho é devido à intervenção. O estudo só é valido se tenho uma maneira de avaliar o quanto o desfecho é devido à intervenção.
+
+A *validade externa* é o quanto podemos generalizar este resultado.
+
+#### Ensaios clínicos
+
+**Eficácia**: São um começo para se avaliar tratamentos, mas geralmente os resultados são muito superiores aos estudos de efetividade, onde tem que se chegar muito próximos ao mundo real.
+
+**Efetividade**: condições de rotina ou "mundo real". O estudo é feito dentro de condições mais próximas da realidade. É uma medida menos enviesada de quanto ele é efetivo. Por exemplo, profissionais treinados mas que não são os melhores. Ou um estudo que não é divulgado oferecendo o estudo, pois a população que vai, as condições e quem faz a intervenção podem ser condições que não são muito generalizáveis.
+
+**Analise de intenção de tratamento (ITT)**: é a análise primária, a análise principal do desfecho clínico.
