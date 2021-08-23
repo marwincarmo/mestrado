@@ -124,3 +124,7 @@ A *validade externa* é o quanto podemos generalizar este resultado.
 **Efetividade**: condições de rotina ou "mundo real". O estudo é feito dentro de condições mais próximas da realidade. É uma medida menos enviesada de quanto ele é efetivo. Por exemplo, profissionais treinados mas que não são os melhores. Ou um estudo que não é divulgado oferecendo o estudo, pois a população que vai, as condições e quem faz a intervenção podem ser condições que não são muito generalizáveis.
 
 **Analise de intenção de tratamento (ITT)**: é a análise primária, a análise principal do desfecho clínico.
+
+## 23/08 - Metodologia de Ensaios Clínicos em Psicoterapia II - Marcia Scazufca
+
+*sem anotações*
