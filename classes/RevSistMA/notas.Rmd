@@ -1,0 +1,22 @@
+---
+title: "REVISÃO SISTEMÁTICA E META ANÁLISE: UMA ABORDAGEM PRÁTICA"
+author: 
+  - "Marwin M I B Carmo"
+  - "Professor: André Brunoni"
+date: "25/08/2021 - 08/11/2021"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Aula 01 - Prática E Teórica
+
+## A01. Vídeo 02 – Por que fazer uma RS e uma MA?
+
+Critérios FINER: Feasible, Interesting, Novel, Ethics, Relevant
