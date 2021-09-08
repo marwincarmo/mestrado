@@ -1,5 +1,5 @@
 ---
-title: "REVISÃO SISTEMÁTICA E META ANÁLISE: UMA ABORDAGEM PRÁTICA"
+title: "Revisão Sistemática e Meta Análise: Uma Abordagem Prática"
 author: 
   - "Marwin M I B Carmo"
   - "Professor: André Brunoni"
@@ -15,8 +15,57 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Aula 01 - Prática E Teórica
+# Aula 01 - Prática e Teórica
 
 ## A01. Vídeo 02 – Por que fazer uma RS e uma MA?
 
-Critérios FINER: Feasible, Interesting, Novel, Ethics, Relevant
+Critérios **FINER**: Feasible, Interesting, Novel, Ethics, Relevant
+
+- Feasible 
+
+Já exite um número de ensaios clínicos suficiente que justificam fazer uma RV ou MA?
+
+Pelo menos 5 ensaios clínicos de MA de desfecho principal e 3 ou mais de desfecho secundário.
+
+Também se deve pensar no numero adequado de sujeitos para conduzir a RS. Há várias etapas que vão precisar de mais de uma pessoa para rever os artigos. Por vezes uma terceira pessoa para chegar a um consenso. 
+
+Tem que ser facctível em termos de tempo (principalmente), dinheiro e escopo (as vezes vale a pena restringir o escopo).
+
+- Interesting
+
+Relevante para pesquisadores e para policymakers.
+
+## A01. Vídeo 03 – Diferenças entre RSs e MAs
+
+Overview = Umbrella review
+
+Scoping review: estágio preliminar da evidência. 
+
+
+#### Não-sistemática:
+
+- A pergunta é não-específica;
+- A estratégias de busca não é definida previamente;
+- Critérios de seleção ausentes;
+- A qualiade dos artigos incluídos **não** é verificada;
+- A síntese dos resultados é **qualitativa**
+
+#### Sistemática
+
+- A pergunta é focada;
+- A estratégias de busca é definida previamente e deve ser reprodutível para outro autor;
+- Critérios de seleção claramente definidos;
+- A qualiade dos artigos incluídos é verificada;
+- A síntese dos resultados é **quantitativa** (meta-análise)
+
+## A01. Vídeo 04 – Bibliografia e artigos recomendados.
+
+Sites recomendados:
+
+*Cochrane Handbook for Systematic Reviews of Interventions*
+
+*GRADE Handbook*
+
+*CONSORT*: padronização para reportar RCT
+
+
