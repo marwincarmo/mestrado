@@ -12,7 +12,7 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## North ideas
+## Ideas
 
 Main idea: multiple linear regression with cognitive factors as predictors of insomnia severity with depression and anxiety as control variables.
 
