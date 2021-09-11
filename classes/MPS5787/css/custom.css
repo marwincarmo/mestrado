@@ -32,3 +32,16 @@
   margin-top: 0px;
   line-height: 0.2
 }
+
+/* Columns */
+
+.left-column {
+  width: 45%;
+  float: left;
+}
+
+.right-column {
+  width: 45%;
+  float: right;
+
+}

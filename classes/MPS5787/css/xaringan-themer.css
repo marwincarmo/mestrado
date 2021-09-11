@@ -147,9 +147,10 @@ a, a > code {
 }
 /* Two-column layout */
 .left-column {
-  width: 20%;
+  width: 45%;
   height: 92%;
   float: left;
+  font-size: 0.9rem
 }
 .left-column h2, .left-column h3 {
   color: #024F8499;
@@ -158,9 +159,10 @@ a, a > code {
   color: #024F84;
 }
 .right-column {
-  width: 75%;
+  width: 45%;
   float: right;
   padding-top: 1em;
+  font-size: 0.9rem
 }
 .pull-left {
   float: left;

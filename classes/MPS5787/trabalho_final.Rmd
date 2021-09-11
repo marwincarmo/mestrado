@@ -69,22 +69,38 @@ name: objetivos
 
 ---
 
-# Big Topic or Inverse Slides `#`
+# Método
 
-## Slide Headings `##`
+## 1. Desenho do estudo 
 
-### Sub-slide Headings `###`
+- O estudo será realizado como um **ensaio clínico randomizado-controlado paralelo**. Os participantes que atenderem aos critérios de inclusão serão randomizados entre grupos TTC para depressão (TCC-D), TCC para insônia e depressão (TCC-D-I)
 
-#### Bold Call-Out `####`
-
-This is a normal paragraph text. Only use header levels 1-4.
-
-##### Possible, but not recommended `#####`
-
-###### Definitely don't use h6 `######`
+- Os participantes serão informados quanto aos objetivos e resultados da pesquisa. Para serem incluídos no estudo, deverão assinar o Termo de Consentimento Livre e Esclarecido, que informará sobre os procedimentos, riscos, benefícios, garantias e liberdades e informação de contato dos pesquisadores responsáveis.
 
 ---
+## 2. Local e participantes
 
+O estudo será realizado no Instituto de Psiquiatria do Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo. O recrutamento dos participantes será feito por meio de mídias eletrônicas, como nas redes sociais do HC-FMUSP.
+
+.left-column[
+### Critérios de inclusão
+a) Adultos maiores de 18 anos;
+b) Diagnóstico de insônia de acordo com os critérios da Classificação Internacional de Transtornos do Sono (ICSD) e do Manual Diagnóstico e Estatístico de Transtornos Mentais (DSM-5);
+c) Diagnóstico de Transtorno depressivo maior, segundo critérios do DSM-5;
+d) Conseguir ler e escrever em português sem dificuldades
+]
+
+.right-column[
+### Critérios de exclusão
+a) Comorbidades clínicas ou psiquiátricas;
+b) Uso constante de drogas ilícitas e álcool;
+c) Estar sob tratamento para depressão;
+d) Estar sob tratamento para insônia;
+e) Trabalhadores noturnos;
+f) Indisponibilidade de comparecer às sessões de grupo
+]
+
+---
 # Left-Column Headings
 
 .left-column[
