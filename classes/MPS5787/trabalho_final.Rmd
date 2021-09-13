@@ -1,5 +1,5 @@
 ---
-title: "Terapia cognitivo-comportamental para insônia e depressão para pacientes com ambos diagnósticos: Um ensaio clínico randomizado"
+title: "Terapia cognitivo-comportamental para insônia e depressão em pacientes com ambos diagnósticos: Um ensaio clínico randomizado"
 subtitle: "Metodologia de Pesquisa em Psicoterapia"
 author: 
   - "Diego Ribeiro"
@@ -49,11 +49,13 @@ style_duo_accent(
 
 Insônia e depressão são transtornos que co-ocorrem com frequência.
 
-A Terapia Cognitivo Comportamental (TCC) tem se mostrado um tratamento efetivo tanto para insônia quanto para depressão.
+A **Terapia Cognitivo Comportamental (TCC)** tem se mostrado um tratamento efetivo tanto para insônia quanto para depressão.
 
 Para pacientes com comorbidade dos dois transtornos o tratamento da insônia leva a melhora nos níveis de depressão, mas intervenções com foco apenas na depressão podem não resultar em remissão da insônia.
 
-Pouco se sabe sobre o efeito da adição de um componente para insônia na TCC convencional para depressão no tratamento de pacientes com comorbidade de ambos os transtornos.
+Evidências recentes sugerem que para pacientes com transtorno de insônia e transtorno depressivo maior, é essencial que o plano de tratamento foque nos problemas de sono, além da depressão.
+
+No entanto, ainda é necessário comparar e quantificar os resultados clínicos de pacientes tratados com uma ou outra forma de terapia.
 ---
 name: objetivos
 
@@ -61,9 +63,8 @@ name: objetivos
 .bigger-text[
 - **Objetivo Primário**: Comparar a resposta de pacientes diagnosticados com insônia e depressão ao tratamento com TCC combinada para os dois transtornos à TCC apenas para depressão.
 
-- **Hipótese**: Espera-se que a terapia para insônia e depressão seja mais efetiva que a terapia com protocolo único para depressão e que gere resultados mais duradouros.
+- **Hipótese**: Espera-se que participantes tratados com a terapia para insônia e depressão tenham melhora mais expressiva e duradoura nos sintomas de insônia e depressão do que o grupo atendido com protocolo único para depressão.
 
-- **Objetivo Secundário**: Comparar a efetividade dos dois protocolos na redução dos sintomas de insônia.
 ]
 ---
 
@@ -71,9 +72,11 @@ name: objetivos
 
 ## 1. Desenho do estudo 
 
-- O estudo será realizado como um **ensaio clínico randomizado-controlado paralelo**. Os participantes que atenderem aos critérios de inclusão serão randomizados entre grupos TTC para depressão (TCC-D), TCC para depressão e insônia (TCC-D-I).
+O estudo será realizado como um **ensaio clínico randomizado-controlado paralelo**. Os participantes que atenderem aos critérios de inclusão serão randomizados entre grupos TTC para depressão (TCC-D), TCC para depressão e insônia (TCC-DI).
 
-- Os participantes serão informados quanto aos objetivos e resultados da pesquisa. Deverão assinar o Termo de Consentimento Livre e Esclarecido, que informará sobre os procedimentos, riscos, benefícios, garantias e liberdades.
+Os resultados serão acessados no pós-tratamento e no seguimento de seis meses.
+
+Os participantes serão informados quanto aos objetivos e resultados da pesquisa. Deverão assinar o Termo de Consentimento Livre e Esclarecido, que informará sobre os procedimentos, riscos, benefícios, garantias e liberdades.
 
 ---
 ## 2. Local e participantes
@@ -117,9 +120,9 @@ O cálculo amostral será realizado considerando encontrar um tamanho de efeito 
 
 **Variáveis de exposição**
 
-- TCC com protocolo para insônia e depressão
+1. TCC com protocolo para insônia e depressão
 
-- TCC para depressão
+2. TCC para depressão
 
 **Variáveis de desfecho**
 
@@ -143,7 +146,7 @@ Os participantes serão avaliados segundo a severidade dos sintomas de insônia 
 .bigger-text[
 - Questionário de coleta de informações sociodemográficas no ato de inscrição para a pesquisa
 
-- Os desfechos primários e secundários serão avaliados por meio de escalas padronizadas de auto-relato:
+- Os desfechos primários serão avaliados por meio de escalas padronizadas de auto-relato:
   - **Insônia**: Índice de Gravidade da Insônia (IGI) e diário de sono
   - **Depressão**: Escala Hospitalar para Ansiedade e Depressão (HADS)
 ]
@@ -171,9 +174,12 @@ Os terapeutas se alternarão no manejo dos tratamentos.
 ---
 ## 7. Proposta de análise dos dados
 .bigger-text[
-Os desfechos primário e secundário serão analisados comparando os escores dos grupos em relação às medidas de avaliação.
 
-O modelo inclui as variáveis **Grupo** (TCC-I e TCC-DI) e **Tempo** (pré-tratamento, pós-tratamento e seguimento).
+Os grupos serão comparados em relação às variáveis relativas às avaliações de insônia, padrão de sono e depressão.
+
+Modelos mistos generalizados serão empregados para os testes de significância estatística, considerando intenção de tratamento.
+
+O modelo inclui os fatores **Grupo** (TCC-I e TCC-DI) e **Tempo** (pré-tratamento, pós-tratamento e seguimento).
 ]
 
 
