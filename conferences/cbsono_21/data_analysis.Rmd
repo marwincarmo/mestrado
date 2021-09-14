@@ -1,0 +1,176 @@
+---
+title: "Análise dos dados para o congresso"
+author: "Marwin Carmo"
+date: "13/09/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages, include=FALSE}
+library(tidyverse)
+library(car)
+```
+
+
+```{r database, include=FALSE}
+dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_21-7.csv") %>% 
+  dplyr::group_by(record_id) %>% 
+  tidyr::fill(idade, .direction = "down") %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(sexo = ifelse(sexo == 1, "F", "M")) %>% 
+  dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) %>% 
+  dplyr::select(record_id, redcap_event_name, sexo, idade, igi_escore, ehad_depressao_escore,
+                ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_")) %>% 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") %>% 
+  # reverse score spaq
+  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x)) %>% 
+  dplyr::mutate(spaq_score = select(., spaq_1:spaq_8) %>% rowSums()) %>% 
+  dplyr::select(-c(spaq_1:spaq_8))
+```
+
+
+## Proposta de modelo inicial
+
+$$
+IGI = \beta_0 + \beta_1Idade + \beta_2Sexo + \beta_3Ans + \beta_4Dep + \beta_5DBAS + \beta_6AAQ + \beta_7(DBAS \times AAQ) 
+$$
+
+# 1. Initial Exploratory Analyses
+
+
+```{r eda1}
+tibble::glimpse(dados)
+```
+
+## 1.2 Univariate Summaries
+
+A curva parece aproximadamente normal, com uma leve assimetria para a esquerda.
+
+```{r}
+hist(dados$igi_escore)
+psych::describe(dados)
+```
+
+A idade pode ser centralizada em 18 anos, pois é o valor mínimo
+
+```{r center idade}
+dados <- dados %>% 
+  dplyr::mutate(idade = idade - 18)
+
+```
+
+Centralizando todas as variáveis em relação à média
+
+```{r mean centering}
+
+dados_c <- dados %>% 
+  dplyr::mutate(across(idade:spaq_score, ~(.x - mean(.x, na.rm=TRUE)))) %>% 
+  dplyr::mutate(sexo = ifelse(sexo == "F", .5,-.5),
+                sexo = factor(sexo))
+dados_c
+```
+
+
+## 1.3 Bivariate Summaries
+
+Exame das relação das variáveis contínuas. É preciso ficar atento a variáveis explanatórias muito correlacionadas pois pode haver uma grande sobreposição de sua contribuição.
+
+```{r message=FALSE, warning=FALSE}
+GGally::ggpairs(select(dados, -c(redcap_event_name, record_id, spaq_score)))
+```
+
+Correlação alta entre Ansiedade e Depressão (embora sejam variáveis de controle). Também entre AAQ e Depressão e Ansiedade.
+
+```{r pairwise correlation}
+
+dados_c %>% 
+  select(-c(record_id, redcap_event_name,sexo)) %>% 
+  corrr::correlate() %>% 
+  corrr::shave() %>% 
+  corrr::fashion()
+
+#cor(dados_c[,!names(dados_c) %in% c("record_id", "redcap_event_name", "sexo")], #use="complete.obs")
+
+```
+
+
+```{r mod1}
+mod1 <- lm(igi_escore ~ idade + sexo +ehad_ansiedade_escore + ehad_depressao_escore + dbas_score*aaq_score, data = dados_c)
+par(mfrow=c(2,2))
+plot(mod1)
+par(mfrow=c(1,1))
+```
+
+### Assumptions check
+
+1. The outcome/DV is a interval/ratio level data
+
+2. The predictor variable is interval/ratio or categorical (with two levels)
+
+3. All values of the outcome variable are independent (i.e., each score should come from a different participant)
+
+4. The predictors have non-zero variance
+
+5. The relationship between outcome and predictor is linear
+
+6. The residuals should be normally distributed
+
+7. There should be homoscedasticity (homogeneity of variance, but for the residuals)
+
+8. Multicollinearity: predictor variables should not be too highly correlated
+
+
+```{r assumptions, message=FALSE, warning=FALSE}
+assumptions <- performance::check_model(mod1, check = c("vif", "qq", "normality", "linearity", "homogeneity"))
+
+assumptions
+```
+```{r assumptions2}
+performance::check_normality(mod1)
+performance::check_heteroscedasticity(mod1)
+performance::check_collinearity(mod1)
+```
+
+
+## 1.4 Bootstrapping
+
+Bootstrap estimates
+
+```{r bootstrap estimates}
+bootreg <- dados_c %>% 
+  rsample::bootstraps(1000) %>% 
+  dplyr::pull(splits) %>% 
+  purrr::map_dfr(~lm(igi_escore ~ idade + sexo +ehad_ansiedade_escore + ehad_depressao_escore + dbas_score*aaq_score, data = .) %>% 
+  broom::tidy())
+
+# Percentile 95% CI
+bootreg %>% 
+  dplyr::group_by(term) %>% 
+  dplyr::summarise(low=quantile(estimate, .025),
+            high=quantile(estimate, .975))
+```
+
+
+```{r plot boot term}
+ggplot(bootreg, aes(estimate)) + 
+  geom_histogram(bins = 10, color = "black", fill = "white") + 
+  facet_wrap(~ term, scales="free")
+```
+
+```{r mod0 anova}
+mod0 <- lm(igi_escore ~ idade + sexo + ehad_ansiedade_escore + ehad_depressao_escore + dbas_score +aaq_score, data = dados_c)
+anova(mod0, mod1)
+```
+
+```{r}
+performance::r2(mod1)
+performance::r2(mod0)
+```
+
+```{r}
+report::report(mod1)
+```
+
