@@ -1,5 +1,5 @@
 ---
-title: "Association between sleep-related cognitions and insomnia symptomns. Evidence from a multi-centric Brazilian sample."
+title: "The association between sleep-related cognitions, psychological flexibility and insomnia symptoms"
 author: "Marwin M. I. B. Carmo"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:

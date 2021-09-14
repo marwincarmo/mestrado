@@ -21,7 +21,8 @@ dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_
   tidyr::fill(idade, .direction = "down") %>% 
   dplyr::ungroup() %>% 
   dplyr::mutate(sexo = ifelse(sexo == 1, "F", "M")) %>% 
-  dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) %>% 
+  #dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) %>%
+  dplyr::filter(dbas_16_versao_brasileira_complete == 2) %>% 
   dplyr::select(record_id, redcap_event_name, sexo, idade, igi_escore, ehad_depressao_escore,
                 ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_")) %>% 
   dplyr::filter(redcap_event_name == "elegibilidade_arm_1") %>% 
@@ -70,6 +71,10 @@ dados_c <- dados %>%
   dplyr::mutate(across(idade:spaq_score, ~(.x - mean(.x, na.rm=TRUE)))) %>% 
   dplyr::mutate(sexo = ifelse(sexo == "F", .5,-.5),
                 sexo = factor(sexo))
+
+dados_scaled <- dados %>% 
+  dplyr::mutate(across(idade:spaq_score, ~scale(.)))
+
 dados_c
 ```
 
@@ -91,7 +96,6 @@ dados_c %>%
   corrr::correlate() %>% 
   corrr::shave() %>% 
   corrr::fashion()
-
 #cor(dados_c[,!names(dados_c) %in% c("record_id", "redcap_event_name", "sexo")], #use="complete.obs")
 
 ```
