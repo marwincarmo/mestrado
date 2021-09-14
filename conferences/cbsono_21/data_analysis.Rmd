@@ -16,7 +16,7 @@ library(car)
 
 
 ```{r database, include=FALSE}
-dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_21-7.csv") %>% 
+dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_14-09.csv") %>% 
   dplyr::group_by(record_id) %>% 
   tidyr::fill(idade, .direction = "down") %>% 
   dplyr::ungroup() %>% 
@@ -132,6 +132,13 @@ assumptions
 performance::check_normality(mod1)
 performance::check_heteroscedasticity(mod1)
 performance::check_collinearity(mod1)
+```
+### Model summary
+
+```{r mod summary}
+s <- summary(mod1)
+s
+confint(mod1)
 ```
 
 
