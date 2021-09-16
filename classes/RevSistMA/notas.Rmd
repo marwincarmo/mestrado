@@ -68,4 +68,71 @@ Sites recomendados:
 
 *CONSORT*: padronização para reportar RCT
 
+# Aula 02 - Teórica (30/08/2021)
 
+## A02. Vídeo 1- Critérios PICO
+
+Criterios PICO descrevem ou detalham o próprio objetivo do estudo
+
+Qual é o objetivo de sua RS e MA?
+
+> Avaliar se o remédio/tratamento/terapêutica/intervenção "A" "funciona" para a doença/condição/transtorno "X"?
+
+**P**acientes  
+**I**ntervenções  
+**C**omparações  
+**O**utcomes/Desfechos (tempo)
+
+### Participantes
+
+Ex: 
+
+- Geral: Pacientes com depressão
+
+Com um critério aberto, a busca será muito maior, temos muito mais estudos para incluir. O resultado do desfecho terá mais heterogeneidade . Por outro lado, ganha uma grande generalização dos resultados.
+
+- Específico: depressão primária, unipolar, em adultos, da atenção primária...
+
+A restrição é maior. Pode dar uma resposta mais clara para aquela subpopulação. Pode acabar não conseguindo chegar ao final do estudo pela grande especificidade. Pode ter uma baixa generalização.
+
+Validade interna (específica) e Validade extena (geral/ ampla).
+
+Não há certo nem errado, depende dos objetivos da revisão.
+
+**Critérios que foram desenvolvidos a posteiori** (por ex: incluir apenas estudos que usaram o DSM-5). Acaba excluindo outros estudos mais antigos que não usaram essa classificação.
+
+**Análises de subgrupos**: Dados "misturados" (ex: apenas para idosos, apenas para pacientes graves). Caso se espere modificação do efeito
+
+## A02. Vídeo 2- PICO (Intervenções)
+
+Uma resposta maior, mais abrangente, pode ser mais interessante, mas é mais complexa e mais difícil de ser executada. Também pode ser mais difícil de ser interpretada. Em um primeiro momento, pode ser mais interessante focar em perguntas mais específicas.
+
+Certas intervenções farmacológicas (por ex. anticoagulantes)
+
+Tratamento é ativo (por ex. cirurgia, fisioterapia)
+
+Maioria das intervenções não-farmacológicas vai exigir certo cuidado. Vai ser preciso elaborar um pouco mais na hora de pensar nas intervenções. É necessário detalhar mais as intervenções
+
+Combinação de intervenções:
+
+- A combinação em si pode ser o mais interessante (ex: fisioterapia associada com estimulação elétrica);
+- A de interesse mais "alguma coisa". Admitindo todas as intervenções de interesse, estando associadas ou não;
+- Pode ser o caso de só querer incluir a monoterapia
+
+Tratamento depende da adesão
+
+## A02. Vídeo 3- PICO (Comparações)
+
+A MA envolve a **comparação entre dois grupos no mínimo** ou entre mais de dois grupos. Envolve uma dicotomia, seguir uma MA "pairwise" (ou várias meta-analises de 1x1) ou uma Network Meta Analysis (ex: 4 grupos ao mesmo tempo, todos contra todos).
+
+Experimental vs Controle (TAU, waiting list, no treatment, experimental vs. placebo). Placebo pode ser ativo (produz efeitos colaterais) ou inerte ("pílula de farinha").
+
+A vs B
+
+Modalidades diferentes de intervenção: Dose alta vs. Dose baixa, ou IV vs. outras formas de adm
+
+Comparação entre dois grupos ou mais (MA "pairwise"; NMA)
+
+A x B x C
+
+A x B x P
