@@ -136,3 +136,115 @@ Comparação entre dois grupos ou mais (MA "pairwise"; NMA)
 A x B x C
 
 A x B x P
+
+## A02. Vídeo 4- PICO (Outcomes)
+
+Deve ser definido já no desenho do estudo quais serão os desfechos investigados (primário e secundário).
+
+- Desfechos **contínuos**: *ordinais* (ex: mudança em uma escala de dor ou depressão) ou *discretos* (mudança em um parâmetro físico ou laboratorial; conservam uma relação numérica muito clara entre eles. ex: pressão arterial, peso).
+
+- Desfechos **binários**: Morte; Evento clínico (gravidez, infarto...); Dado originário de uma escala (resposta > 50% melhora, obesidade imc > 30); Eventos de contagem.
+
+A definição dos critérios construto tem que ser definida nos desfechos, mesmo que seja algo mais abrangente.
+
+- Importância dos desfechos (desfechos intermediários)
+
+- Quando foi coletado (endpoint)
+  - "Clinically meaningful": de acordo com o que eu defino
+  - Primeiro assessment
+  - Last assessment: interessante se quero avaliar um efeito mais duradouro da intervenção
+  - De acordo com a definição do estudo: considero tempos diferentes de acordo com o estudo
+
+- Como foi coletado
+  - Expertise do coletador
+  - Instrumento: o entrevistador aplica ou é autoaplicável?
+  - Forma de coleta
+  - Tecnologia utilizada: considerando muitas possíveis, gera heterogeneidade que tem que ser tratada na análise estatística
+
+- Número de desfechos: normalmente mais de um
+  - Primário: acceptability (quantas pessoas sairam do estudo no grupo ativo e no grupo placebo; ve a aceitabilidade), efeitos adversos, desfecho clínico
+  - Secundário: resposta, remissão, melhora no curto e longo prazo, melhora em outras escalas...
+
+- 2 PICOS
+  - PICO inicial
+  - PICO final
+  - Não é recomendado que a mudança seja feita após a meta-analálise pois pode parecer que mudou a pergunta em função dos resultados estatísticos.
+
+## A02. Vídeo 5- Onde Procurar (Parte 1)
+
+Os critérios PICO serão a base tanto da procura quanto da definição dos critérios de inclusão e exclusão.
+
+### Onde procurar
+
+Bases de busca
+
+1. PubMed/Medline: base de dados (onde os artigos ficam disponíveis para serem procurados) pública e gratuita.
+
+2. ISI Web of Knowledge (Web of Science): é uma base que também pega artigos que ainda não foram publicados (como anais de congressos, capítulos de livro etc).
+
+3. Embase (Elsevier)
+
+4. CENTRAL (Cocrhane)
+
+## A02. Vídeo 6- Onde Procurar (Parte 2)
+
+Literatura cinzenta (dados não-publicados)
+
+Estágio:
+
+- Anais de congressos;  
+- "Engavetados";  
+- Em andamento;  
+- Revisão/publicação
+
+Onde procurar:
+
+- Contato com especialistas;  
+- clinicaltrials.gov;  
+- Dados da indústria;  
+- Dados de agências públicas;  
+- Anais de congresso;  
+- Repositório de teses;  
+- Citações
+
+Situações especiais:
+
+- Online vs. impresso;  
+- Pre-print: é interessante incorporá-los e fazer análises de sensibilidade.
+
+## A02. Vídeo 7- Estratégia de Busca (Parte 1)
+
+Sensibilidade vs. especificidade: o recomendado é ser o mais sensível possível no começo. Começar abrangente e depois ir sendo filtrado
+
+O que precisa ser a priori é a estratégia de busca, os termos podem ir sendo refinados. Estamos testando diferentes estratégias de busca... depois rever isso
+
+## A02. Vídeo 8- Estratégia de Busca (Parte 2)
+
+Sempre anotar a data em que a revisão foi feita.
+
+### Sintaxe
+
+- PubMed
+  - Operadores boleanos: AND (interseção entre os termos), OR (funciona como uma "soma" dos termos), NOT (tirar a interseção com algum termo)
+  - ""
+  - \*
+  - $
+  - ( )
+  - termos MeSH: classificação que o MedLine faz para delimitar os keywords relacionados e não precisar pesquisar tudo
+  - [ti], [tiab]
+
+## A02. Vídeo 9- Estratégia de Busca (Parte 3)
+
+### Organização da revisão
+
+Etapa de filtragem dos resultados da busca.
+
+Melhor salvar os resultados e fazer a busca por outro software do que buscar direto no PubMed, pois os resultados podem mudar de um dia para o outro.
+
+1. Método arcaico
+
+Os resultados da busca podem ser salvos como arquivo `.csv` para serem abertos em outro software (como Excel) para refinar a busca. O primeiro screening se faz pelo título. É recomendado primeiro filtrar o título e depois o abstract.
+
+2. Endnote
+
+3. Rayyan
