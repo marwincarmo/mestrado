@@ -248,3 +248,45 @@ Os resultados da busca podem ser salvos como arquivo `.csv` para serem abertos e
 2. Endnote
 
 3. Rayyan
+
+## A02. Vídeo 10- Estratégia de busca para situações específicas
+
+### Situações específicas
+
+Duplicatas: aparecem quando se começa a juntar banco de dados.
+
+Publicação contendo mais de um ensaio: Por algum motivo, uma publicação colocou resultados de dois ensaios clínicos. A unidade é o ensaio, e não a publicação.
+
+Informações complementadas/ retificadas em correspondências.
+
+Estudos fraudulentos e retratados.
+
+Anciliarry studies: Uma série de estudos adicionais contendo informações que não couberam no estudo principal. Tem que ser utilizada as informações do estudo original e não dos estudos auxiliares.
+
+## A02. Vídeo 11- Critérios de exclusão e inclusão
+
+As causas de exclusão devem ser anotadas. Normalmente são relacionadas ao **PICO**: outros tipos de participantes, outros tipos de intervenção, outros tipos de comparação e outros tipos de desfecho.
+
+Dados em duplicata.
+
+Outros tipos de artigo: cartas ao editor, editoriais, outras RS/MAs
+
+Estudos pré-clínicos (estudos em animais)
+
+Motivos **errados** para exclusão
+
+Não ser em língua inglesa não é um bom motivo para exclusão. O ideal é tentar traduzir o artigo.
+
+Potencialmente dados de interesse não-publicados. É preciso tentar contatar os autores e esgotar todas as outras fontes
+
+Estudos cross-over: a pessoa começa recebendo um tratamento e na metade do tratamento passa para o outro. É possível utilizar dados pelo menos da primeira parte do estudo.
+
+Critérios/ procedimentos que variam entre os países ou recursos
+
+Desenhos que podem ser incluidos:
+
+- ECRs: paralelos, cross-over, fatoriais e não-inferioridade  
+- ECs abertos  
+- Estudos pré/pós
+
+Se o campo já estiver relativamente maduro, vale a pena incluir apenas ECRs. Se for a primeira ou a segunda MA, vale a pena incluir os estudos mais fracos (ECs abertos e pré-pós)
