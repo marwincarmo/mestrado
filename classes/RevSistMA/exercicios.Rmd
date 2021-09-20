@@ -1,0 +1,64 @@
+---
+title: "Revisão Sistemática e Meta Análise: Uma Abordagem Prática - Exercícios"
+author: 
+  - "Marwin M I B Carmo"
+  - "Professor: André Brunoni"
+date: "25/08/2021 - 08/11/2021"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+# Aula 1
+
+#### 1. Examine a pirâmide de evidência de estudos (medicina baseada de evidências). Você tem familiaridade com estes estudos? Quais são as limitações desta pirâmide? Quais as vantagens? As RSs e MAs são superiores aos demais estudos?
+
+Todas as modalidades de estudos estão sob risco de vieses. Este risco tende a diminuir ao longo do crescimento da pirâmide, pois o rigor científico do delineamento das pesquisas passa a ser maior.
+
+RAs e MAs são formas de evidência mais confiáveis, pois sumarisam o resultado de diversos estudos e fazem um filtro de qualidade, sendo incluidos apenas aqueles que atendem a determinados critérios de clareza sobre os métodos utilizados. Também é possível quantificar o tamanho do efeito considerando todas as pesquisas incluídas. Estes estudos de síntese de evidência também permitem quantificar o grau de incerteza dos resultados, seja referente a vieses ou informações incompletas.
+
+*As vantagens da revisão sistemática são, portanto: imparcialidade na seleção dos estudos, a identificação e revisão de todos os estudos disponíveis de acordo com os critérios pré-definidos, o uso de uma metodologia explícita e reprodutível, (podendo ser, portanto, atualizada conforme novos conhecimentos são adquiridos) e, finalmente, uma apresentação sintética e sistemática de todos os dados colhidos*
+
+#### 2. Quais os recursos necessários para realizar uma RS e MA?
+
+Poucos recursos são necessários. É preciso uma grande quantidade de tempo disponível, dois a três pesquisadores, preferencialmente softwares de gerenciamento de referências e, no caso das MAs, softwares para realizar análises estatísticas.
+
+- Acesso a base de dados  
+- Apps/ softwares para organizar a RS  
+- Tempo  
+- Pessoas
+
+#### 3. Qual a diferença entre uma RS e uma MA? É possível fazer apenas uma delas?
+
+A RS sintetiza a evidência de forma qualitativa, enquanto que a MA aplica técnicas estatísticas aos resultados dos estudos para sintetizar uma medida de efeito única.
+
+A RS é o processo sistemático de busca e a MA é a técnica analítica/ estatística.
+
+É possível RS sem MA, ou com várias MAs.
+
+MA sem RS existe, mas são uma evidência muito fraca. O que acontece na prática é uma MA com pseudo RS.
+
+#### 4. Quais são os principais tipos de RS?
+
+- Revisão não-sistemática (compreheensive)
+
+- Revisão sistemática
+  - Scoping review: estágio muito inicial da literatura. Faz uma revisão ampla
+  - Umbrella review: também te uma visão ampla. Mas é focada em fazer uma síntese da síntese
+  - Rapid review: revisão limitada para alguns anos.
+
+#### 5. Quais são os principais tipos de MA?
+
+- Network vs. pairwise
+  - Pairwise: AvB, BvC, AvC, AvD, BvD
+  - Network: AvBvCvD
+  
+- Dados agregados vs. dados individuais: Dados agregados pega a medida final. A individual vai dar o desempenho de cada assumption.
+
+- Estudos observacionais: caso-controle, coorte
+
+- RCT: ter intervenção, ser randomizado e controlado
+
+- Quasi-experimental: Ensaios clínicos que não são randomizados
