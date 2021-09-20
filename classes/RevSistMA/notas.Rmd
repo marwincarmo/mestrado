@@ -290,3 +290,97 @@ Desenhos que podem ser incluidos:
 - Estudos pré/pós
 
 Se o campo já estiver relativamente maduro, vale a pena incluir apenas ECRs. Se for a primeira ou a segunda MA, vale a pena incluir os estudos mais fracos (ECs abertos e pré-pós)
+
+## A04. Vídeo 01 - Ensaios Clínicos (Parte 1)
+
+### Avaliação da qualidade de um ensaio clínico
+
+Três pilares dos ensaios clínicos:
+
+- Aleatorização: grupos divididos ao acaso  
+- Mascaramento  
+- Experimentação (intenção de tratamento)
+
+**Validade interna**: resultados observados são verdadeiros, livres de vieses e refutando-se explicações alternativas. Alta validade interna fornece chance alta de provavelmente refletir a realidade. 
+
+Vieses da validade interna:
+
+- Aleatorização:
+  - Previne interferências dos investigadores na alocação dos tratamentos;
+  - Produz grupos de tratamento comparáveis para fatores de risco conhecidos e desconhecidos;
+  - Garante a inferência estatística dos testes. Não precisa das correções como nos testes de coorte.
+
+Proporção da alocação
+
+- A proporção normalmente é 1:1  
+- A alocação não balanceada é justificável caso uma intervenção seja mais cara, mais acessível ou placebo  
+- Proporção 3:2 ou 2:1 é relativamente eficiente  
+
+## A04. Vídeo 02 - Ensaios Clínicos (Parte 2)
+
+Mascaramento é diferente de aleatorização.
+
+A **aleatorização** oculta do investigador/ participante o grupo do próximo participante.
+
+O **mascaramento** oculta do investigador/ participante o gurpo que o participante atual está alocado.
+
+Aleatorização facilita o mascaramento, e vice-versa.
+
+Estudos quase-experimentais são não-aleatorizados mas podem ser mascarados.
+
+A ausência do mascaramento pode comprometer a adesão dos participantes, avaliação do desfecho pelos pesquisadores e análise estatística.
+
+Análise de intenção de tratamento: considera as pessoas mesmo com dados faltantes. É como foi planejado o estudo e o que importa é o que aconteceu na vida real.
+
+Em estudos de não-inferioridade a análise por protocolo é preferível.
+
+**Validade Externa**: avaliação sobre a representatividade da amostra estudada em relação à população.
+
+## A04. Vídeo 03 - Validade Interna - Aleatorização e Alocação
+
+Um estudo terá validade interna se tiver baixo risco de viés.
+
+Estudos com alto viés não são eliminados. Prefere-se rodar uma MA só com os estudos de baixo viés e verifica se o resultado é diferente quando é feito com todos.
+
+- Vieses de seleção
+  - Alocação não-aleatoizada: lista de randomização feita de uma maneira inadequada (ex: verificação do registro do paciente (par/ ímpar));
+  - Alocação não oculta: seria como escrever para os participantes qual foi a sequencia de alocação. Um processo clássico é o SNOSE e Alocação central para contornar.
+  - Grupos desbalanceados no baseline
+
+## A04. Vídeo 04 - Validade Interna - Mascaramento
+
+Viés de "assignment"
+
+- Participantes;  
+- Pessoal (staff);  
+- "Interventores"
+
+## A04. Vídeo 05 - Validade Interna - Protocolo do estudo
+
+Desvio de protocolo: checar os protocolos de todos os estudos incluidos para posteriormente verificar se existe algum tipo de viés.
+
+Viés de relato seletivo
+
+#### Viés geral
+
+- Baixo: maioria das informações vêm de baixo risco
+
+- Indeterminado: maioria das informações vêm de baixo/ indeterminado risco
+
+- Alto: um número importante vem de alto risco
+
+## A04. Vídeo 06- Validade Interna – Intervenção
+
+Não tem uma resposta única para o máximo de dropout tolerado. Pode depender do objeto ou desenho de estudo, pois alguns são mais propensos a ter perdas.
+
+## A04. Vídeo 07 - Instrumentos de Avaliação de Viés
+
+Instrumentos estruturados **não são mais recomendados** atualmente: JDAD (quanto mais pontos tiver, melhor a qualidade) e PEDRO
+
+Risk-of-Bias tool: 5 domínios
+
+- Randomização  
+- Intervenção  
+- Falta de dados de desfecho  
+- Mensuração do desfecho  
+- Resultados reportados
