@@ -384,3 +384,37 @@ Risk-of-Bias tool: 5 domínios
 - Falta de dados de desfecho  
 - Mensuração do desfecho  
 - Resultados reportados
+
+## A05. Vídeo 01 – Como extrair os dados (Parte 1)
+
+- Instrumento de coleta de dados
+
+Podem ser desenvolvidos formulários para sistematizar como os dados são extraídos (ex: Google Forms, Redcap).
+
+Planilhas de Excel/ Word
+
+Softwares comerciais: SRDR (systematic review data repository)
+
+- Extração de dados em duplicata (mais de uma pessoa)
+
+Para os desfechos principais é obrigatório extrair os dois de maneira independente. Para outras características do estudo que não sejam as principais, é recomendado.
+
+- Procurar material suplementar: Não esquecer de baixar junto com o artigo, pois em muitas vezes vai ter a informação de interesse.
+
+- Mais de um timepoint: mais de um tempo do desfecho principal pode ser de interesse. A definição do fim pode variar.
+
+- Ver se vai extrair dados de *intention to treat* ou *por protocolo*. O recomendado é o ITT, mas, eventualmente, podem ser extraidos os dois dados. Se tiver número suficiente, pode ser extraído tanto dados do ITT quanto do PP.
+
+## A05. Vídeo 02 – Como extrair os dados (Parte 2)
+
+- Extração de dados
+
+Desfechos: são as variáveis mais importantes, por isso o ideal é ter dois revisores extraindo de forma independente.
+
+Tipos de desfecho: contínuo (em cada grupo: M, DP, n; pré e pós), categórico/ binário (em cada grupo: N total (n com e n sem desfecho); apenas pós (não começa com ninguem com o evento)), extração direta dos efeitos (por ex, OR, HR, contrast, marginal means) (podem estar em tabelas, figuras)
+
+Primários e secundários: subgrupos, escalas usadas, efeitos adversos, outros secundários de eficácia.
+
+Demais variáveis: altamente recomendável mas não obrigatório
+
+Informações para análise qualitativa: Randomização, allocation, mascaramento, ITT vs. PP (tecnica para missing data), inconsistência, indirecteness, imprecisão, vieses (limitações, como viés de instumento, recall bias), dados não reportados (selective outcome reporting), ver e comparar protocolo original no clinicaltrials, critérios de inclusão/ exclusão (PICO)
