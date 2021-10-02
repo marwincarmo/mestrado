@@ -418,3 +418,14 @@ Primários e secundários: subgrupos, escalas usadas, efeitos adversos, outros s
 Demais variáveis: altamente recomendável mas não obrigatório
 
 Informações para análise qualitativa: Randomização, allocation, mascaramento, ITT vs. PP (tecnica para missing data), inconsistência, indirecteness, imprecisão, vieses (limitações, como viés de instumento, recall bias), dados não reportados (selective outcome reporting), ver e comparar protocolo original no clinicaltrials, critérios de inclusão/ exclusão (PICO)
+
+## A05. Vídeo 03 – Como extrair os dados (Parte 3)
+
+- Dados incompletos
+
+Ausência de média: se for reportado a mediana, é aceitável que se utilize essa medida como substituta. Em muitos casos, o que será apresentado é a mudança e não a média do segundo ponto (como diferença ou porcentagem).
+
+Ausência do desvio padrão: Pode ser calculado pelo IC 95%, EP, p-valor, IQR. Se não for reportado nada que permita estimar, pode ser imputado usando SD de outros ECs e/ou MAs
+
+## A05. Vídeo 04 - Escores finais vs. mudança de escores
+

@@ -62,3 +62,93 @@ MA sem RS existe, mas são uma evidência muito fraca. O que acontece na prátic
 - RCT: ter intervenção, ser randomizado e controlado
 
 - Quasi-experimental: Ensaios clínicos que não são randomizados
+
+# Aula 2
+
+#### 1. Quais são os motivos para fazer uma RS e MA?
+
+Coletar e sumarizar evidências para responder uma pergunta de pesquisa específica. A MA complementa a revisão sistemática sintetizando o resultado de múltiplos estudos em uma medida de efeito única. O uso de protocolos para sistematizar as buscas tem como finalidade minimizar viéses ao documentar sistematicamente os métodos utilizados.
+
+#### 2. Quais são os critérios PICO?
+
+São critérios utilizados para descrever e detalhar os objetivos do estudo.
+
+P = Pacientes  
+I = Intervenções  
+C = Comparações  
+O = Outcomes/ desfechos
+
+#### 3. Vantagens e desvantagens de fazer uma revisão ampla vs. Focada.
+
+Uma revisão mais ampla fornecerá uma resposta mais abrangente e talvez mais interessante, mas é muito mais complexa e mais difícil de ser executada e interpretada. Muito mais estudos serão incluídos, maior heterogeneidade, mais variação (populações diferentes), maior uso de tempo. Mas garante maior generalização dos resultados. Maior validade externa e menor validade interna.
+
+Revisões focadas podem dar uma resposta mais clara para a subpopulação. A possível insuficiência de estudo pode inviabilizar que se chegue ao final do estudo. Mesmo que se chegue à uma resposta, ela é de baixa generalização. Maior validade interna e menor validade externa.
+
+
+Um estudo amplo, com maior sensibilidade, fornecerá uma base muito maior, porém com muitos falso positivos. Uma revisão focada, com maior especificidade, serão retornados menos estudos para filtrar, no entanto aumenta-se a chance de falsos negativos, perdendo estudos que poderiam ser incluidos.
+
+#### 4. Quais são os principais tipos de intervenção que devem ser considerados?
+
+Intervenções farmacológicas; tratamento ativo; intervenções não-farmacológicas; combinação de intervenções; casos onde o tratamento depende da adesão.
+
+#### 5. Quais são os principais tipos de desfechos ?
+
+Sobrevivência (mortalidade), eventos clínicos, desfechos comportaentais, desfechos reportados por pacientes, eventos adversos, sobrecargas e desfechos econômicos.
+
+#### 6. Quais as bases de dados utilizadas para procurar estudos?
+
+Scopus, Embase, PubMed/ Medline, Web of Science, CENTRAL
+
+#### 7. Faça com um colega uma revisão sistemática em uma área do interesse de vocês. Depois compare os resultados de vocês. Vejam e discutam os pontos de concordância e discordância.
+
+
+
+#### 8. Com base no item acima, selecione os estudos usando critérios de inclusão/exclusão já pré-determinados por vocês. Discutam os pontos de concordância e discordância.
+
+# Aula 3
+
+#### 1.O que é viés de seleção?
+
+Podem acontecer por alocação não-aleatorizada, alocação não-oculta e grupos desbalanceados. Se fatores prognósticos influenciam o grupo de intervenção para o qual participantes fora designados, então a estimativa do efeito da intervenção será enviesada por 'confounding', que ocorre quando há causas comuns para o grupo de intervenção designado e o desfecho. Uma aleatorização bem feita reduz a influência deste tipo de viés.
+
+#### 2.O que é viés de assignment?
+
+Quando os participantes estão cientes da intervenção para a qual foram designados . Quando os interventores ou membros da equipe estão cientes dos participantes designados para intervenção.
+
+#### 3.Quais as diferenças entre ITT e PP? Por que ITT é mais adequado?
+
+A análise ITT mantém os benefícios que foram conseguidos com a randomização, pois usa todos os pacientes no momento em que foram randomizados. Os efeitos por protocolo (PP) são estimados por análises 'as-treated' nas quais os participantes são analisados de acordo com a intervenção que realmente receberam, mesmo se a alocação pela randomização tenha sido a um grupo diferente. Estão restritas aos indivíduos que aderiram às suas intervenções designadas.
+
+#### 4.Quais os vieses em relação a mensuração de desfechos?
+
+O método de mensuração dos desfechos pode ter sido inapropriado. A mensuração dos desfechos pode ter sido diferente entre os grupos de intervenção. Os avaliadores podem ter estado cientes da intervenção recebida pelos participantes. A avaliação dos desfechos pode ter sido influenciada por conhecimento da intervenção recebida.
+
+#### 5.Para avaliar a qualidade dos estudos, é preferível utilizar escalas estruturadas ou mais abertas? Discuta.
+
+Escalas estruturadas não são recomendadas. Escalas mais abertas partem de um princípio mais probabilístico de grau de risco. Embora tenham uma subjetividade maior, permite que os critérios sejam adequados ao tipo de estudo avaliado. Escalas estruturadas podem se apoiar em critérios arbitrários ou que não são adequados a todas as formas de intervenção.
+
+#### 6. Baseado na revisão que você fez com o colega na aula passada, avalie a qualidade de no mínimo 5 artigos identificados usando a Cochrane Risk of Bias Tool v2. Compare os resultados que vocês obtiveram. Houve algum domínio que teve mais dificuldade? Esta dificuldade foi conceitual ou pela má qualidade do estudo?  
+
+# Aula 4
+
+#### 1. Em uma meta-análise, quais são os dados principais usualmente mensurados?
+
+Para dados **dicotômicos** as medidas de efeito são: Risco Relativo (RR), Odds Ratio (OR), Diferença de risco (RD), número necessário para tratar para um desfecho adicional benéfico ou maléfico (NNT).
+
+Para dados **contínuos** geralmente se busca a diferença entre médias e a diferença entre médias padronizada. Uma medida menos utilizadas é a razão de médias (RoM).
+
+Em desfechos **ordinais** o efeito é descrito em termos da razão de chaces proporcional (proportional odds ratio).
+
+Dados de **contagem** são representados pela razão de taxa (rate ratio) e diferença de taxas (rate difference)
+
+#### 2. Quais as principais diferenças entre dados contínuos e categóricos?
+#### 3. É preferível extrair os dados brutos (raw data) ou aqueles que já foram processados? Em quais situações os dados “menos preferíveis” devem ser usados?
+#### 4. Quais dados devem ser extraídos em estudos cross-over? E fatoriais?
+#### 5. Um estudo apresenta diferentes medidas ao longo do tempo. Quais os critérios que você pode utilizar para decidir qual dado coletar?
+#### 6. Em um estudo você observou a existência de 2 grupos controle – um utilizou placebo e outro utilizou um tratamento padrão controle. Como você procederia para realizar a comparação com o grupo ativo? Quais são suas opções?
+#### 7. Um grupo apresentou média = 15, erro padrão= 3, n=36. Qual o desvio-padrão?
+#### 8. Um grupo apresentou média = 15, IC 95% 12-18, n=36. Qual o desvio-padrão?
+#### 9. Para dados contínuos, é melhor realizar comparações entre-grupos utilizando escores “post-treatment” ou “change scores”? Discuta.
+#### 10. Um grupo apresentou a medida baseline M=10 DP=5 n=20 e a medida endpoint M=6 DP=6 e n=18. Calcule a Média e DP da diferença, utilizando correlações de 0.25, 0.5 e 0.75.
+#### 11. Baseado na revisão que você fez nas aulas passadas, procure extrair o dado de no mínimo 5 artigos identificados de maneira independente ao seu colega. Discutam as dificuldades e pontos de dissenso.
+
