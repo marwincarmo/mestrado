@@ -133,6 +133,10 @@ Escalas estruturadas não são recomendadas. Escalas mais abertas partem de um p
 
 #### 1. Em uma meta-análise, quais são os dados principais usualmente mensurados?
 
+Contínuos (em cada grupo): Média, Desvio padrão e N. Medidas pré e pós (1+).
+
+Categóricos (binários): N total com desfecho e N total sem desfecho.
+
 Para dados **dicotômicos** as medidas de efeito são: Risco Relativo (RR), Odds Ratio (OR), Diferença de risco (RD), número necessário para tratar para um desfecho adicional benéfico ou maléfico (NNT).
 
 Para dados **contínuos** geralmente se busca a diferença entre médias e a diferença entre médias padronizada. Uma medida menos utilizadas é a razão de médias (RoM).
@@ -141,14 +145,77 @@ Em desfechos **ordinais** o efeito é descrito em termos da razão de chaces pro
 
 Dados de **contagem** são representados pela razão de taxa (rate ratio) e diferença de taxas (rate difference)
 
+Para dados de **tempo-ao-evento** ou dados de sobrevivência, é medida a razão de perigo (hazard ratio).
+
 #### 2. Quais as principais diferenças entre dados contínuos e categóricos?
+
+Dados contínuos se referem a variáveis que podem assumir qualquer valor em uma faixa de valores especificada. Dados categóricos só podem assumir valores discretos pré-determinados, e na maioria das vezes são binários.
+
 #### 3. É preferível extrair os dados brutos (raw data) ou aqueles que já foram processados? Em quais situações os dados “menos preferíveis” devem ser usados?
+
+Na maioria das vezes serão extraídos os dados brutos (média, dp, frequência). Em desenhos mais sofisticados como cluster randomized trials, tempo-ate-o-evento, ou em artigos onde os dados de efeito são os únicos disponíveis, os dados calculados são utilizados. 
+
 #### 4. Quais dados devem ser extraídos em estudos cross-over? E fatoriais?
+
+Em estudos crossover todos os participantes recebem todas as intervenções em sequência: eles são randomizados em uma ordem de intervenções e os participantes funcionam como seu próprio controle.
+
 #### 5. Um estudo apresenta diferentes medidas ao longo do tempo. Quais os critérios que você pode utilizar para decidir qual dado coletar?
+
+É possível fazer uma análise que usa todo o follow-up de cada participante. Também é possível computar uma medida de efeito para cada participante individual que incorpora todos os time points.
+
+Diversos desfechos podem ser definidos com base em diferentes períodos de follow-up e analisados separadamente.
+
+Um único time point pode ser selecionado e os dados analisados somente neste ponto para estudos onde ele existiu. Algum timepoint de relevância clínica, preferencialmente.
+
+Também pode ser escolhido o maior tempo de follow-up de cada estudo. Pode acarretar em uma certa inconsistência entre estudos.
+
 #### 6. Em um estudo você observou a existência de 2 grupos controle – um utilizou placebo e outro utilizou um tratamento padrão controle. Como você procederia para realizar a comparação com o grupo ativo? Quais são suas opções?
+
+É possível combinar os grupos controle (ou intervenção), separar comparações em diferentes forest plots e usar meta-análise de múltiplos tratamentos.
+
 #### 7. Um grupo apresentou média = 15, erro padrão= 3, n=36. Qual o desvio-padrão?
+
+```{r}
+# dp = SE * sqrt(n)
+
+dp <- 3*sqrt(36)
+dp
+```
+
 #### 8. Um grupo apresentou média = 15, IC 95% 12-18, n=36. Qual o desvio-padrão?
+
+```{r}
+# dp = sqrt(n) * (upper limit - lower limit) / 3.92
+dp <- sqrt(36) * (18 - 12)/3.92
+dp
+```
+
 #### 9. Para dados contínuos, é melhor realizar comparações entre-grupos utilizando escores “post-treatment” ou “change scores”? Discuta.
+
+A comparação dos resultados finais verifica a redução em relação no desfecho em relação ao grupo comparação (placebo). A análise feita em termos de mudança, compara a melhora do grupo experimental contra a melhora do grupo placebo.
+
+Os escores de mudança consideram a mudança intra-sujeitos, diferente da comparação de resultados finais, que considera informação apenas entre-sujeitos.
+
+São duas perguntas diferentes e, por isto, não há melhor ou pior. Tudo depende do que se está querendo entender.
+
 #### 10. Um grupo apresentou a medida baseline M=10 DP=5 n=20 e a medida endpoint M=6 DP=6 e n=18. Calcule a Média e DP da diferença, utilizando correlações de 0.25, 0.5 e 0.75.
+
+```{r}
+mean_diff <- 10 - 6
+
+cor_vals <- c(.25, .5, .75)
+
+dp_diff <- function(sd_b, sd_f, corr) {
+  sqrt((sd_b^2) + (sd_f^2) - (2*corr*sd_b*sd_f))
+}
+
+dp_vals <- purrr::map_dbl(cor_vals, ~df_diff(5, 6, .x))
+
+mean_diff
+dp_vals
+```
+
+
+
 #### 11. Baseado na revisão que você fez nas aulas passadas, procure extrair o dado de no mínimo 5 artigos identificados de maneira independente ao seu colega. Discutam as dificuldades e pontos de dissenso.
 
