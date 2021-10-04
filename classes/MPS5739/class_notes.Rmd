@@ -1,0 +1,79 @@
+---
+title: "MPS5787 [Métodos Epidemiológicos em Psiquiatria]"
+author: 
+  - "Marwin M I B Carmo"
+  - "Professores: Wang Yuan Pang e Laura Helena S. G. Andrade - Burdmann"
+date: "04/10/2021 - 25/10/2021"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+Seminário: um artigo técnico e um artigo aplicado
+
+Complementar a leitura do artigo de moderadores com o capítulo do jaiati
+
+## Aula 1
+
+Endemia: a situação é baixa e comum em uma área
+
+Epidemia: acontece um surto em que a doença ultrapassa os níveis endêmicos. O surto pode se tornar uma epidemia quando vários pontos tem esse excesso de casos.
+
+- Causação
+
+Indutivismo: observações repetitivas
+
+Refutacionismo: testar hipóteses
+
+O **indutivismo** não permite que se veja uma relação de causa e efeito. A causalidade não pode ser observada diretamente. É uma das primeiras etapas do pensamento científico.
+
+O **refutacionismo** propõe que hipóteses não podem ser provadas, mas podemos demonstrar a consistência da observação. A observação inconsistente com uma hipótese permite refutação.
+
+Ciclo da refutação: Começa com uma hipótese e faz uma predição. Uma experiência é feita e se houver respaldo é testada novamente. Se não houver respaldo, é preciso refinar a hipótese e testar novamente.
+
+As pesquisas baseadas em hipótese tem uma premissa, tem que ser claramente anunciadas e devem ser testáveis e refutáveis.
+
+Epidemiologia descritiva: relatos de caso, series de caso, estudos transversais ("tira uma fotografia" da situação).
+
+Epidemiologia analítica: Estudos de coorte (estudos ao longo do tempo para que se possa comparar ao longo tempo casos novos ou remissão dos casos infectados) e casos controles (principalmente em eventos raros, usado para comparar as características dos casos e as pessoas que não foram infectadas pela doença).
+
+Estudos experimentais (intervenção)
+
+Numerador e Denominador - taxas e razões: sempre é numérico; relação entre os "casos" e a "população em risco".
+
+Se fala de incidência quando consegue ver o surgimento de novos casos ao longo do tempo.
+
+Taxa de prevalencia: Uma avaliação transversal só mostra a proporção das pessoas que estavam doentes. É possível ver fatores determinantes. Visão transversal no tempo e no espaço.
+
+A razão é uma proporção onde se divide duas populações que carregam as mesmas características (??)
+
+Nos estudos transversais não é possível aferir a causalidade. No máximo podemos falar que pessoas que tem determinadas características tem mais ou menos a "doença".
+
+Nos estudos de incidência, é possível ver os fatores de risco na variável tempo.Se calcula o fator de risco ao longo do tempo para essa população (idade, sexo, escolaridade etc). Com isso vamos nos aproximando da causa da pessoa ter esse transtorno ao longo do tempo e os novos casos.
+
+**Amostragem**
+
+Quanto mais representativa, mais robustos os resultados e maior o poder de generalização.
+
+Potenciais fontes de erro: Fator de confusão e efeito de modificação, viés de informação (erro de classificação), viés de seleção (representatividade), viés na inferência, viés de publicação (dados negativos ou de centros pouco famosos).
+
+Inferência causal: Deve partir de uma observação relevante (um efeito de associação encontrado). Perguntas: é verdadeiro na amostra? é verdadeiro na população fonte?
+
+Existem várias causas: chance, viés, causalidade reversa ou fator de confusão
+
+Confounding (fator de confusão): É uma causa intermediária
+
+Etapas de estudo
+
+Delimitar o objeto do estudo  
+Descrever a questão científica  
+Qual a sua hipótese?  
+Qual o desenho do estudo?  
+Qual a validade do estudo?  
+Quais são as fontes de erro?
+
+A indução propõe uma hipótese. Para refutação, uma mesma hipótese ou várias hipóteses são examinadas (maior validade). Múltiploss fatores cauasm e influenciam (erros e vieses) um transtorno mental.
+
+Sindemia: quando acontecem paralelamente duas condições (endêmica e pandêmcia ou duas pandêmicas). Existe uma relação de exponenciação.
