@@ -15,6 +15,24 @@ Seminário: um artigo técnico e um artigo aplicado
 
 Complementar a leitura do artigo de moderadores com o capítulo do jaiati
 
+Relatório do projeto: Perguntas básicas
+
+- Tema: Pergunta científica que deseja responder
+
+- Justificativa: O que já sabemos sobre isso? Lacuna científica? Hipótese?
+
+- Método:
+  - Desenho do estudo: observacional vs intervenção
+  - Casos vs Não-casos (definição)
+  - Amostragem
+  - Esposição vs desfecho (primário, secundário)
+  
+- Estratégia analítica
+  - Como analisar e relatar os resultados corretamente
+
+- Limitações do estudo
+  - Erros e vieses
+
 ## Aula 1
 
 Endemia: a situação é baixa e comum em uma área
