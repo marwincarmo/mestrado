@@ -427,5 +427,9 @@ Ausência de média: se for reportado a mediana, é aceitável que se utilize es
 
 Ausência do desvio padrão: Pode ser calculado pelo IC 95%, EP, p-valor, IQR. Se não for reportado nada que permita estimar, pode ser imputado usando SD de outros ECs e/ou MAs
 
-## A05. Vídeo 04 - Escores finais vs. mudança de escores
+## A06
+
+
+
+
 

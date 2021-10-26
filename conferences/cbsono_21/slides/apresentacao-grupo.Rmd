@@ -1,0 +1,266 @@
+---
+title: "The association between sleep-related cognitions, psychological flexibility, and insomnia symptoms"
+subtitle: "XVIII Congresso Brasileiro de Sono 2021"
+author: 
+  - "Marwin M I B Carmo"
+  - "Dr. Renatha El Rafihi Ferreira"
+date: "<img src ='img/fapesp-ipq.png' width = '30%'>"
+output:
+  xaringan::moon_reader:
+    css: ["xaringan-themer.css", "css/custom.css"]
+    nature:
+      #titleSlideClass: ["right", "top", "custom.css"]
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(xaringanExtra)
+library(dplyr)
+library(ggplot2)
+
+style_duo_accent(
+  title_slide_background_color ="#FFFFFF",
+  title_slide_text_color = "#024F84",
+  primary_color = "#024F84",
+  secondary_color = "#FF961C",
+  inverse_header_color = "#FFFFFF",
+  text_color = "#515151",
+  text_font_size = "1.2rem",
+  table_row_even_background_color = "#a1c7cf",
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = c("img/fapesp-ipq.png"),
+  width = "365px",
+  height = "79px",
+  position = css_position(top = "1em", right = "1em"),
+  exclude_class = c("my-title", "inverse", "hide_logo")
+)
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+```{r database recrutamento, include=FALSE}
+dados_recrutamento <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_14-09.csv") |> 
+  dplyr::filter(redcap_event_name == "recrutamento_arm_1") |> 
+  dplyr::select(record_id, nome, latitude, longitude, telefone_1)
+renda_corrigida <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/renda_corrigida_2610.csv")
+```
+
+```{r database, include=FALSE}
+dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_14-09.csv") %>% 
+  dplyr::group_by(record_id) %>% 
+  tidyr::fill(idade, .direction = "down") %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(sexo = ifelse(sexo == 1, "F", "M")) %>% 
+  dplyr::filter(idade <= 59) %>%
+  #dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) %>%
+  dplyr::filter(dbas_16_versao_brasileira_complete == 2) %>% 
+  dplyr::select(record_id, redcap_event_name, sexo, idade, etnia, escolaridade, renda, medicacao_semana, igi_escore, ehad_depressao_escore,
+                ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_")) %>% 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") %>% 
+  # reverse score spaq
+  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x)) %>% 
+  dplyr::mutate(spaq_score = select(., spaq_1:spaq_8) %>% rowSums()) %>% 
+  dplyr::select(-c(spaq_1:spaq_8)) |> 
+  dplyr::left_join(dados_recrutamento, by = "record_id") |> 
+  dplyr::filter(!stringr::str_detect(nome, stringr::regex("teste", ignore_case = TRUE)))
+
+```
+
+
+## Introdução
+
+A insônia é definida como um transtorno caracterizado predominantemente por insatisfação na qualidade e quantidade do sono, bem como por dificuldades na iniciação e manutenção do sono e incapacidade de voltar a dormir ao despertar em horário anterior ao habitual.
+
+Transtornos como ansiedade e depressão frequentemente co-ocorrem com sintomas de insônia e se apresentam como possíveis agravantes de problemas de sono.
+
+Há evidências de que o relacionamento entre ansiedade e depressão com a insônia é bidirecional.
+
+O excesso de atividade cognitiva negativa sobre o sono pode maximizar preocupações. Pensamentos ruminativos podem aumentar a excitação e um estado de ansiedade desloca a atenção para as ameaças ao sono.
+
+---
+
+## Introdução
+### O modelo cognitivo-comportamental da insônia
+
+Excitação, cognições, comportamentos e consequências percebidas desempenham um papel importante na manutenção dos sintomas de insônia.
+
+Pessoas com insônia tendem a ter crenças disfuncionais e comportamentos desadaptativos em resposta aos problemas de sono.
+
+Estas crenças e atitudes sobre o sono são gatilhos para excitação cognitiva que alimenta o ciclo da insônia.
+
+---
+## Introdução
+### O modelo meta-cognitivo da insônia
+
+O modelo metacognitivo da insônia define a atividade cognitiva como excitação primária. A forma como o sujeito interpreta estes pensamentos se configura como a excitação secundária.
+
+Como os processos primários e secundários se influenciam mutualmente, o conteúdo dos pensamentos desadaptativos sobre o sono pode impactar mais fortemente a manutenção da insônia se houver um apego rígido a eles.
+
+---
+class: center, middle
+
+```{r echo=FALSE, out.width = "60%", fig.cap = "Two-level model of sleep-related arousal (Ong et al. 2012)", fig.align='left'}
+knitr::include_graphics("img/ong-model.jpg")
+```
+
+---
+## Objetivo
+
+Investigar se a inflexibilidade psicológica modera o relacionamento entre crenças disfuncionais sobre o sono e a severidade da insônia.
+
+```{r moderacao, echo=FALSE, out.width="80%", fig.align='center'}
+
+knitr::include_graphics("img/moderacao.jpg")
+
+```
+
+---
+
+## Método
+
+**Participantes**: `r nrow(dados)` participantes com queixas de insônia, entre `r floor(min(pull(dados, idade)))` e `r ceiling(max(pull(dados, idade)))` anos, inscritos para um tratamento comportamental para insônia.
+
+**Instrumentos**: Questionários de auto relato completados de forma online, incluindo
+
+  - Formulário de identificação e informações pessoais;  
+  - Escala Hospitalar de Ansiedade e Depressão (HADS);
+  - Índice de Gravidade da Insônia (IGI);
+  - Crenças e Atitudes Disfuncionais sobre o Sono (DBAS-16);
+  - Acceptance and Action Questionnaire-II (AAQ-II)
+
+**Análise estatística**: Um modelo de regressão linear múltipla foi ajustado para predizer os escores do IGI com idade, sexo, HADS-A, HADS-D, DBAS-16 e AAQII.
+
+$$ 
+IGI \sim Idade + Sexo + HADSA + HADSD + DBAS\times AAQII 
+$$
+
+---
+
+## Resultados
+
+```{r renda, include=FALSE}
+dados_renda <- dados |> 
+  mutate(renda = case_when(
+    stringr::str_detect(renda, "\\.00$") ~ stringr::str_remove(renda, "\\.00"),
+    stringr::str_detect(renda, "\\.") ~ stringr::str_remove(renda, "\\."),
+    TRUE ~ renda
+  )) |> 
+  mutate(renda = as.double(renda)) |> 
+  left_join(renda_corrigida, by = "record_id") |> 
+  mutate(renda.x = case_when(
+    !is.na(renda.y) ~ renda.y,
+    renda.x >= 1000000 ~ NA_real_,
+    renda.x == 0 ~ NA_real_,
+    TRUE ~ renda.x
+    )
+         ) |> 
+  rename(renda = renda.x) |> 
+  select(-renda.y) |> #View("renda")
+  pull(renda)
+
+dados_etnia <- dados |> 
+  filter(!is.na(etnia)) |> 
+  count(etnia) |> 
+  mutate(p = n/sum(n))
+
+dados_escolaridade <- dados |> 
+  count(escolaridade) |> 
+  mutate(p = n/sum(n))
+
+dados_med <- dados |> 
+  count(medicacao_semana) |> 
+  mutate(p = n/sum(n))
+
+```
+
+
+A média de idade dos participantes foi de `r round(mean(pull(dados, idade)), 1)` $\pm$ `r round(sd(pull(dados, idade)), 1)` anos. Participaram `r sum(pull(dados, sexo) == "F")` pessoas do sexo feminino e `r sum(pull(dados, sexo) == "M")` pessoas do sexo masculino. O valor mediano da renda familiar mensal foi de R$ `r median(dados_renda, na.rm = TRUE)`. 
+
+A amostra foi composta por `r round(pull(select(filter(dados_etnia, etnia == 1), p)),3)*100`% de brancos, `r round(sum(pull(select(filter(dados_etnia, etnia == 2 | etnia == 3), p))),3)*100`% de pretos e pardos, `r round(pull(select(filter(dados_etnia, etnia == 4), p)),3)*100`% de amarelos e `r round(pull(select(filter(dados_etnia, etnia == 5), p)),3)*100`% indígenas.
+
+Participantes com ensino superior completo compuseram `r round(pull(select(filter(dados_escolaridade, escolaridade == 9), p)),3)*100`% da amostra.
+
+`r round(sum(pull(select(filter(dados_med, medicacao_semana > 0 &  medicacao_semana < 7), p))),3)*100`% dos participantes afirmou fazer uso de medicação para dormir ao menos uma vez na semana, enquanto `r round(pull(select(filter(dados_med, medicacao_semana == 7), p)),3)*100`% afirmaram usar remédios para dormir todos os dias.
+
+---
+
+## Resultados
+
+```{r mapa1, fig.align='center', message=FALSE, include=FALSE, out.width="80%"}
+
+brasil <- geobr::read_country()
+estados <- geobr::read_state()
+regiao <- geobr::read_region()
+
+mapa <- dados |> 
+  filter(!is.na(latitude)) |> 
+  ggplot() +
+  geom_sf(data = brasil) +
+  geom_sf(data = regiao) +
+  #geom_sf(data = estados) +
+  geom_point((aes(x = longitude, y = latitude)),
+             position = "dodge",
+             size = 2) +
+  #geom_point((aes(x = latitude, y = longitude)))+
+  theme_minimal()
+
+```
+
+```{r echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
+mapa
+```
+
+```{r}
+brasil <- read_sf(brasil)
+
+```
+
+---
+# Resultados
+
+```{r data, include=FALSE}
+library(broom)
+dados_c <- readr::read_csv("../dadosc.csv")
+mod1 <- lm(igi_escore ~ idade + sexo +ehad_ansiedade_escore + ehad_depressao_escore + dbas_score*aaq_score, data = dados_c)
+s <- summary(mod1)
+```
+
+A análise de regressão indicou que o modelo foi capaz de predizer de forma significativa a severidade da insônia (F(`r round(s$fstatistic[[3]])`, `r round(s$fstatistic[[2]])`) = `r round(s$fstatistic[[1]],2)`), *p* < 0.001, $R^2_{adj}$ = `r round(glance(mod1)$adj.r.squared,2)`), explicando cerca de `r round(glance(mod1)$adj.r.squared,2)*100`% da variância.
+
+```{r resultados, echo=FALSE}
+broom::tidy(mod1)[-1,] |> 
+  knitr::kable(format = 'html', digits = 3,
+               col.names = c("Variável", "Coeficiente", "Erro Padrão", "t value", "p value"))
+```
+
+---
+# Conclusão
+
+Foi observado um efeito positivo da ansiedade, crenças disfuncionais e inflexibilidade psicológica nos escores de severidade da insônia.
+
+O efeito de interação estatisticamente significativo indica que o efeito das crenças disfuncionais sobre o sono sobre a insônia pode se tornar mais positivo com o aumento nos níveis de inflexibilidade psicológica.
+
