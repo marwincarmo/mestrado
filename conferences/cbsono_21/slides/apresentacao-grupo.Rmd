@@ -44,7 +44,7 @@ style_duo_accent(
   inverse_header_color = "#FFFFFF",
   text_color = "#515151",
   text_font_size = "1.2rem",
-  table_row_even_background_color = "#a1c7cf",
+  table_row_even_background_color = "#D6EAF8"# "#a1c7cf",
 )
 ```
 
@@ -62,32 +62,8 @@ xaringanExtra::use_logo(
 xaringanExtra::use_scribble()
 ```
 
-```{r database recrutamento, include=FALSE}
-dados_recrutamento <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_14-09.csv") |> 
-  dplyr::filter(redcap_event_name == "recrutamento_arm_1") |> 
-  dplyr::select(record_id, nome, latitude, longitude, telefone_1)
-renda_corrigida <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/renda_corrigida_2610.csv")
-```
-
-```{r database, include=FALSE}
-dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/dados_preliminares_14-09.csv") %>% 
-  dplyr::group_by(record_id) %>% 
-  tidyr::fill(idade, .direction = "down") %>% 
-  dplyr::ungroup() %>% 
-  dplyr::mutate(sexo = ifelse(sexo == 1, "F", "M")) %>% 
-  dplyr::filter(idade <= 59) %>%
-  #dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) %>%
-  dplyr::filter(dbas_16_versao_brasileira_complete == 2) %>% 
-  dplyr::select(record_id, redcap_event_name, sexo, idade, etnia, escolaridade, renda, medicacao_semana, igi_escore, ehad_depressao_escore,
-                ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_")) %>% 
-  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") %>% 
-  # reverse score spaq
-  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x)) %>% 
-  dplyr::mutate(spaq_score = select(., spaq_1:spaq_8) %>% rowSums()) %>% 
-  dplyr::select(-c(spaq_1:spaq_8)) |> 
-  dplyr::left_join(dados_recrutamento, by = "record_id") |> 
-  dplyr::filter(!stringr::str_detect(nome, stringr::regex("teste", ignore_case = TRUE)))
-
+```{r database , include=FALSE}
+dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/base_arrumada_1409.csv")
 ```
 
 
@@ -164,22 +140,6 @@ $$
 
 ```{r renda, include=FALSE}
 dados_renda <- dados |> 
-  mutate(renda = case_when(
-    stringr::str_detect(renda, "\\.00$") ~ stringr::str_remove(renda, "\\.00"),
-    stringr::str_detect(renda, "\\.") ~ stringr::str_remove(renda, "\\."),
-    TRUE ~ renda
-  )) |> 
-  mutate(renda = as.double(renda)) |> 
-  left_join(renda_corrigida, by = "record_id") |> 
-  mutate(renda.x = case_when(
-    !is.na(renda.y) ~ renda.y,
-    renda.x >= 1000000 ~ NA_real_,
-    renda.x == 0 ~ NA_real_,
-    TRUE ~ renda.x
-    )
-         ) |> 
-  rename(renda = renda.x) |> 
-  select(-renda.y) |> #View("renda")
   pull(renda)
 
 dados_etnia <- dados |> 
@@ -195,66 +155,107 @@ dados_med <- dados |>
   count(medicacao_semana) |> 
   mutate(p = n/sum(n))
 
+dados_regiao <- dados |> 
+  count(regiao) |> 
+  mutate(p = n/sum(n))
+
 ```
 
 
-A média de idade dos participantes foi de `r round(mean(pull(dados, idade)), 1)` $\pm$ `r round(sd(pull(dados, idade)), 1)` anos. Participaram `r sum(pull(dados, sexo) == "F")` pessoas do sexo feminino e `r sum(pull(dados, sexo) == "M")` pessoas do sexo masculino. O valor mediano da renda familiar mensal foi de R$ `r median(dados_renda, na.rm = TRUE)`. 
+A média de idade dos participantes foi de `r round(mean(pull(dados, idade)), 1)` $\pm$ `r round(sd(pull(dados, idade)), 1)` anos. Dos `r nrow(dados)` participantes, `r sum(pull(dados, sexo) == "F")` são do sexo feminino. O valor mediano da renda familiar mensal foi de R$ `r median(dados_renda, na.rm = TRUE)`,00. 
 
-A amostra foi composta por `r round(pull(select(filter(dados_etnia, etnia == 1), p)),3)*100`% de brancos, `r round(sum(pull(select(filter(dados_etnia, etnia == 2 | etnia == 3), p))),3)*100`% de pretos e pardos, `r round(pull(select(filter(dados_etnia, etnia == 4), p)),3)*100`% de amarelos e `r round(pull(select(filter(dados_etnia, etnia == 5), p)),3)*100`% indígenas.
+Em relação a etnia, `r round(pull(select(filter(dados_etnia, etnia == 1), p)),3)*100`% se declararam brancos, `r round(sum(pull(select(filter(dados_etnia, etnia == 2 | etnia == 3), p))),3)*100`% pretos ou pardos, `r round(pull(select(filter(dados_etnia, etnia == 4), p)),3)*100`% amarelos e `r round(pull(select(filter(dados_etnia, etnia == 5), p)),3)*100`% indígenas.
 
 Participantes com ensino superior completo compuseram `r round(pull(select(filter(dados_escolaridade, escolaridade == 9), p)),3)*100`% da amostra.
 
-`r round(sum(pull(select(filter(dados_med, medicacao_semana > 0 &  medicacao_semana < 7), p))),3)*100`% dos participantes afirmou fazer uso de medicação para dormir ao menos uma vez na semana, enquanto `r round(pull(select(filter(dados_med, medicacao_semana == 7), p)),3)*100`% afirmaram usar remédios para dormir todos os dias.
+`r round(sum(pull(select(filter(dados_med, medicacao_semana > 0 &  medicacao_semana <= 7), p))),3)*100`% dos participantes afirmou fazer uso de medicação para dormir ao menos uma vez na semana, enquanto `r round(pull(select(filter(dados_med, medicacao_semana == 7), p)),3)*100`% relataram usar remédios para dormir todos os dias.
 
 ---
 
 ## Resultados
 
-```{r mapa1, fig.align='center', message=FALSE, include=FALSE, out.width="80%"}
+```{r dados_mapa, include=FALSE}
 
-brasil <- geobr::read_country()
 estados <- geobr::read_state()
-regiao <- geobr::read_region()
 
-mapa <- dados |> 
-  filter(!is.na(latitude)) |> 
-  ggplot() +
-  geom_sf(data = brasil) +
-  geom_sf(data = regiao) +
-  #geom_sf(data = estados) +
-  geom_point((aes(x = longitude, y = latitude)),
-             position = "dodge",
-             size = 2) +
-  #geom_point((aes(x = latitude, y = longitude)))+
-  theme_minimal()
+para_mapa <- dados %>% 
+  select(estado, regiao) %>% 
+  mutate(regiao = stringr::str_remove(regiao, "Região ")) %>% 
+  mutate(estado = stringr::str_to_title(estado)) %>% 
+  with_groups(estado, mutate, n_estado = n()) %>% 
+  with_groups(regiao, mutate, n_regiao = n()) %>% 
+  with_groups(c(estado,regiao), summarise, n_regiao = mean(n_regiao), n_estado = mean(n_estado)) %>% 
+  with_groups(regiao, mutate, p_regiao = n_regiao/nrow(dados)*100) %>%
+  left_join(x = estados, y = ., by=c( "name_state" = "estado"))
+
+paleta_2 <- leaflet::colorNumeric(palette = 'viridis', domain = NULL, na.color = '#FFFFFF')
 
 ```
 
-```{r echo=FALSE, fig.align='center', message=FALSE, out.width="80%"}
-mapa
+
+```{r mapa1, eval=FALSE, message=FALSE, include=FALSE}
+
+leaflet::leaflet(para_mapa) |> 
+  leaflet::addPolygons(
+    popup = paste0(
+     '<b>Região:</b> ', para_mapa$name_region, '<br>',
+     '<b>Estado:</b> ', para_mapa$name_state, '<br>',
+     '<b>Participantes Região:</b> ', para_mapa$n_regiao, '<br>',
+     '<b>Participantes Estado:</b> ', para_mapa$n_estado, '<br>'
+    ),
+    fillColor = ~ paleta_2(para_mapa$p_regiao),
+    fillOpacity = 0.8, smoothFactor = 0.5, weight = 0.8, color = 'black'
+  ) |> 
+  leaflet::addTiles() |> 
+  leaflet::addLegend(
+    title = 'Porcentagem de<br>Participantes', position = 'bottomright', pal = paleta_2, 
+    values = ~ para_mapa$p_regiao, bins = 4, opacity = 0.8,
+    labFormat = leaflet::labelFormat(suffix = '%'))
+
 ```
+---
 
-```{r}
-brasil <- read_sf(brasil)
+## Resultados
 
+
+```{r histogramas, echo=FALSE, fig.alt="Distribuição das variáveis contínuas"}
+
+dados |> 
+  tidyr::pivot_longer(c(idade, igi_escore:dbas_score), names_to = "variavel", values_to = "escore") |> 
+  ggplot(aes(x = escore)) +
+  geom_histogram(bins = 10, color = "black", fill = "#024F84", alpha = .7) + 
+  facet_wrap(~ variavel, scales="free") +
+  theme_bw() +
+  labs(x = "Escore", y = "Frequência")
 ```
 
 ---
-# Resultados
+
+## Resultados
 
 ```{r data, include=FALSE}
 library(broom)
-dados_c <- readr::read_csv("../dadosc.csv")
+dados_c <- dados |> 
+  dplyr::mutate(idade = idade - 18) |> 
+  dplyr::mutate(dplyr::across(c(igi_escore:spaq_score), ~(.x - mean(.x, na.rm=TRUE)))) %>% 
+  dplyr::mutate(sexo = ifelse(sexo == "F", .5,-.5),
+                sexo = factor(sexo))
+  
+  
 mod1 <- lm(igi_escore ~ idade + sexo +ehad_ansiedade_escore + ehad_depressao_escore + dbas_score*aaq_score, data = dados_c)
 s <- summary(mod1)
 ```
 
 A análise de regressão indicou que o modelo foi capaz de predizer de forma significativa a severidade da insônia (F(`r round(s$fstatistic[[3]])`, `r round(s$fstatistic[[2]])`) = `r round(s$fstatistic[[1]],2)`), *p* < 0.001, $R^2_{adj}$ = `r round(glance(mod1)$adj.r.squared,2)`), explicando cerca de `r round(glance(mod1)$adj.r.squared,2)*100`% da variância.
 
-```{r resultados, echo=FALSE}
-broom::tidy(mod1)[-1,] |> 
+```{r echo=FALSE}
+report::report_table(mod1) |> 
+  tibble::as_tibble() |> 
+  dplyr::slice(-c(1,9:14)) |>
+  dplyr::select(Parameter, Std_Coefficient, Std_Coefficient_CI_low, Std_Coefficient_CI_high,
+                p) |> 
   knitr::kable(format = 'html', digits = 3,
-               col.names = c("Variável", "Coeficiente", "Erro Padrão", "t value", "p value"))
+               col.names = c("Parâmetro", "Coeficiente", "IC 95% Low", "IC 95% High", "p"))
 ```
 
 ---
