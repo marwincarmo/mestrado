@@ -80,7 +80,7 @@ O excesso de atividade cognitiva negativa sobre o sono pode maximizar preocupaç
 ---
 
 ## Introdução
-### O modelo cognitivo-comportamental da insônia
+### O modelo cognitivo-comportamental da insônia (Morin, 1993)
 
 Excitação, cognições, comportamentos e consequências percebidas desempenham um papel importante na manutenção dos sintomas de insônia.
 
@@ -90,16 +90,20 @@ Estas crenças e atitudes sobre o sono são gatilhos para excitação cognitiva 
 
 ---
 ## Introdução
-### O modelo meta-cognitivo da insônia
+### O modelo meta-cognitivo da insônia (Ong, Ulmer & Amber, 2012)
 
-O modelo metacognitivo da insônia define a atividade cognitiva como excitação primária. A forma como o sujeito interpreta estes pensamentos se configura como a excitação secundária.
+O modelo metacognitivo da insônia define a atividade cognitiva relacionada com a dificuldade de dormir como excitação primária. 
+
+A forma como o sujeito interpreta e se relaciona com estes pensamentos se configura como a excitação secundária.
+
+Sem a flexibilidade para gerar pensamentos alternativos aos desfuncionais, a insônia é perpetuada por meio da excitação secundária.
 
 Como os processos primários e secundários se influenciam mutualmente, o conteúdo dos pensamentos desadaptativos sobre o sono pode impactar mais fortemente a manutenção da insônia se houver um apego rígido a eles.
 
 ---
 class: center, middle
 
-```{r echo=FALSE, out.width = "60%", fig.cap = "Two-level model of sleep-related arousal (Ong et al. 2012)", fig.align='left'}
+```{r echo=FALSE, out.width = "60%", fig.cap = "Two-level model of sleep-related arousal (Ong, Ulmer & Amber, 2012)", fig.align='left'}
 knitr::include_graphics("img/ong-model.jpg")
 ```
 
@@ -162,13 +166,15 @@ dados_regiao <- dados |>
 ```
 
 
-A média de idade dos participantes foi de `r round(mean(pull(dados, idade)), 1)` $\pm$ `r round(sd(pull(dados, idade)), 1)` anos. Dos `r nrow(dados)` participantes, `r sum(pull(dados, sexo) == "F")` são do sexo feminino. O valor mediano da renda familiar mensal foi de R$ `r median(dados_renda, na.rm = TRUE)`,00. 
+A média de idade dos participantes foi de `r round(mean(pull(dados, idade)), 1)` $\pm$ `r round(sd(pull(dados, idade)), 1)` anos. Dos `r nrow(dados)` participantes, `r sum(pull(dados, sexo) == "F")` são do sexo feminino. A mediana da renda familiar mensal por participante foi de R$ `r median(dados_renda, na.rm = TRUE)`,00. 
 
 Em relação a etnia, `r round(pull(select(filter(dados_etnia, etnia == 1), p)),3)*100`% se declararam brancos, `r round(sum(pull(select(filter(dados_etnia, etnia == 2 | etnia == 3), p))),3)*100`% pretos ou pardos, `r round(pull(select(filter(dados_etnia, etnia == 4), p)),3)*100`% amarelos e `r round(pull(select(filter(dados_etnia, etnia == 5), p)),3)*100`% indígenas.
 
 Participantes com ensino superior completo compuseram `r round(pull(select(filter(dados_escolaridade, escolaridade == 9), p)),3)*100`% da amostra.
 
 `r round(sum(pull(select(filter(dados_med, medicacao_semana > 0 &  medicacao_semana <= 7), p))),3)*100`% dos participantes afirmou fazer uso de medicação para dormir ao menos uma vez na semana, enquanto `r round(pull(select(filter(dados_med, medicacao_semana == 7), p)),3)*100`% relataram usar remédios para dormir todos os dias.
+
+A maior parte dos participantes são residentes da Região Sudeste (`r round(pull(select(filter(dados_regiao, regiao == "Região Sudeste"), p)),3)*100`%).
 
 ---
 
@@ -193,7 +199,7 @@ paleta_2 <- leaflet::colorNumeric(palette = 'viridis', domain = NULL, na.color =
 ```
 
 
-```{r mapa1, eval=FALSE, message=FALSE, include=FALSE}
+```{r mapa1, echo=FALSE, message=FALSE}
 
 leaflet::leaflet(para_mapa) |> 
   leaflet::addPolygons(
@@ -213,12 +219,14 @@ leaflet::leaflet(para_mapa) |>
     labFormat = leaflet::labelFormat(suffix = '%'))
 
 ```
+
+
 ---
 
 ## Resultados
 
 
-```{r histogramas, echo=FALSE, fig.alt="Distribuição das variáveis contínuas"}
+```{r histogramas, echo=FALSE, fig.cap="Distribuição das variáveis contínuas"}
 
 dados |> 
   tidyr::pivot_longer(c(idade, igi_escore:dbas_score), names_to = "variavel", values_to = "escore") |> 
@@ -259,9 +267,21 @@ report::report_table(mod1) |>
 ```
 
 ---
+## Resultados
+
+```{r simple slope, echo=FALSE, out.width="60%", fig.align='center', fig.cap="Simple Slope Plot"}
+
+knitr::include_graphics("img/simple_slope_plot.png")
+
+```
+
+
+---
+class: middle, left
+
 # Conclusão
 
-Foi observado um efeito positivo da ansiedade, crenças disfuncionais e inflexibilidade psicológica nos escores de severidade da insônia.
+Foi observado um efeito positivo da ansiedade, crenças disfuncionais sobre o sono e inflexibilidade psicológica nos escores de severidade da insônia.
 
-O efeito de interação estatisticamente significativo indica que o efeito das crenças disfuncionais sobre o sono sobre a insônia pode se tornar mais positivo com o aumento nos níveis de inflexibilidade psicológica.
+O termo de interação estatisticamente significativo indica que o efeito das crenças disfuncionais sobre o sono na insônia pode se tornar mais positivo com o aumento nos níveis de inflexibilidade psicológica.
 
