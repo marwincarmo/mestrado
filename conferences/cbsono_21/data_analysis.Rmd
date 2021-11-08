@@ -135,6 +135,7 @@ dados <- base_elegiveis |>
 
 ```{r salvando a base}
 #readr::write_csv(dados, "G:/Documentos/ProjetosR/ASONO/act_insonia/dados/base_arrumada_1409.csv")
+dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/base_arrumada_1409.csv")
 ```
 
 

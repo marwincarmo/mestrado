@@ -427,9 +427,128 @@ Ausência de média: se for reportado a mediana, é aceitável que se utilize es
 
 Ausência do desvio padrão: Pode ser calculado pelo IC 95%, EP, p-valor, IQR. Se não for reportado nada que permita estimar, pode ser imputado usando SD de outros ECs e/ou MAs
 
-## A06
+## A07. Vídeo 03 – Atribuição de peso aos estudos
+
+Efeitos fixos: todo erro padrão observado em cada estudo será unicamente baseado no erro padrão daquele estudo. Na realidade não tem outra caracteristica do estudo que não o tamanho dele. Diz que o efeito real é o mesmo para todos os estudos; a estimativa vai ser diferente, mas na realidade há o mesmo efeito.
+
+Efeitos aleatórios: existe uma distribuição de efeitos verdadeiros, e não depende somente do padrão da amostra mas também de um erro aleatório.
+
+Os efeitos fixos vão valorizar pouco estudos pequenos e mais os estudos grandes. Os efeitos aleatórios tendem a distribuir melhor e a lidar melhor com heterogeneidade.
+
+Nos efeitos fixos, como os grandes estão dominando, temos um IC pequeno. Nos efeitos aleatórios o IC é maior.
+
+Na prática, quase sempre se escolhe efeitos aleatórios.
+
+## A07. Vídeo 04 – Interpretação dos resultados
+
+Avaliação da **heterogeneidade**: É importante pois o verdadeiro efeito pode ser diferente. Haver vieses nos ECRs. eventualmente invalidar os resultados.
+
+É medido com o $I^2$ e $\chi^2$.
+
+Não tem parâmetros bem definidos, mas quanto maior, pior (mais heterogeneidade).
+
+Análise subgrupo: avaliar se houve diferença nos estudos entre a qualdiade deles
+
+Meta-regressão: regredir de acordo com outras variáveis (ver a razão da heterogeneidade)
+
+Random-effects: Normalmente "melhor", mas eventualmente "pior" se houver sugestão de publication bias/ small study effects. Pode aumentar o viés dos estudos menores por valorizar eles.
+
+## A09
+
+### GRADE
+
+Tem uma proposta mais abrangente, não se propõe apenas a falar de RS e MA. Se propõe a avaliar toda sorte de estudos secundários e até primários.
+
+Se propõe a ser disponível para um público menos especialista
+
+Validade interna: Risco baixo, risco indeterminado (não penaliza ou diminui 1 nível), risco alto (diminui 1 nível ou diminui 2 níveis).
+
+Inconsistência: avalia a heterogeneidade dos resultados (forest plot)
+
+Imprecisão: ICs largos por estudos com baixo poder estatístico (resultado final do que foi obtido na MA)
+
+Evidência indireta: Adequação do PICO
+
+Viés de publicação: publicação seletiva dos resutlados que fornece uma estimativa aumentada ou diminuída dos resultados.
+
+**Características de interesse para avaliação da Imprecisão**
+
+O IC é grande, mas não é estabelecido o que é considerado grande.
+
+Leva em conta se o total de pacientes de todos os estudos é maior do que o n estimado de um estudo ideal (calculado com poder adequado para obter um poder de amostra adequado)
+
+Poucos estudos
+
+Amostras pequenas nos estudos
+
+Desfechos pouco comuns (raros)
+
+Com base nestes critérios, pode ser reduzido em 0, 1 ou 2 níveis. 
+
+Se atingiu o N mínimo (OIS) ou se o N é alto. Se o IC sobrepõe, rebaixa a nota. Se não atingiu, rebaixa a nota em 1 ou 2 níveis dependendo do número ideal e se cruzou o IC ou não.
+
+**Indirectness**: propõe avaliar se a pergunta do estudo é respondida pela RS ou MA. Compara o PICO ideal com o PICO real
+
+**Inconsistência**: Avalia a heterogeneidade, se há ou não diferença entre os estudos da RS.
+
+- Metodológica: diferentes amostras, diferentes desenhos, diferentes intervenções, diferentes comparações
+
+## A10
+
+### A10. Video 01 - Estudos observacionais
+
+Quase-experimentais: são randomizados mas podem ser mascarados. Por exemplo, o avaliador não sabe qual é a intervenção.
+
+Estudos observacionais: não tem intervenção
+
+- Caso-controle: Olha para o passado. Ve pessoas com e sem a doença e vai olhar para trás para ver se essas pessoas foram expostas a exposição ou fatores de risco.
+
+- Prevalência: Olha para o presente. Ve o corte de um determinado momento e associar quem foi exposto e tem a doença vs quem não foi exposto e não tem a doença. Análise por razão de chances.
+
+- Coorte: olha para o futuro. Começa a partir de pessoas sem doenças e depois de um tempo ve quantas pessoas desenvolveram a doença dentre as que foram expostas e as que não foram. A medida é o risco relativo.
+
+São úteis para avaliar exposições de longo tempo, complexas, em grupos vulneráveis e/ou que intervenção não seria ética
+
+- Problemas:
+
+A variável de confusão é um dos principais problemas do desenho do estudo.
+
+Não foram desenhados para avaliar efeito de intervenção/ exposição em questão. Não é atualizada. Não é corrigida para múltiplas comparações.
+
+Ausência de randomização: grupos são difererntes, sujeito a viés de confusão. 
+
+Ausência de mascaramento: efeito "saudável" de participar da coorte.
+
+Ausência de intervenção experimental: tratamento/ exposição flutua naturalmente com o tempo.
+
+Análises costumam ser ajustadas/utilizam métodos complexos: aumento da heterogeneidade. Cada coorte faz uma analise diferente, controlando para diferentes efeitos.
+
+Estudos/ análises não costumam ser registradas previamente: viés de publicação costuma ser muito alto. Funnel plot mais "extremo" para estudos pequenos.
+
+Não existem ferramentas bem definidas para avaliar a qualidade dos estudos observacionais. Um deles é o STROBE.
+
+Dados necessários podem não estar relatados para os fins da RS e MA: necessidade de requisitar novas análises, muitas vezes complexas, aos autores.
+
+Peso assimétrico para coortes grandes: importância maior do que RCTs ou CC.
+
+Estudos publicados ao longo de várias décadas: pode ter efeito de mudanças nas características e hábitos de população.
+
+- Possíveis soluções
+
+Estudos observacionais são exploratórios, MAs destes também: a evidência fica pendente do ensaio clínico. Não indica intervenções/ tratamentos; pode indicar necessidade de RCTs; harmonização de coortes (juntar os dados individuais da coorte e ajustar pelos mesmos critérios/ avaliações ao longo do tempo, para ter estimativas mais precisas).
+
+Ajuste para variáveis de confusão são necessários: o viés vai ser maior ainda se não ajustar vs ajustar.
+
+Muitas análises de subgrupos: baseados em: desenho do estudo; duração (exposição) de tratamento; ano de publicação; tipo de tratamento; qualidade dos estudos
+
+Preferir random-effects: incorpora melhor heterogeneidade, tirando peso excessivo de estudos muito grandes
+
+Funnel plot separado por desenho
+
+Ter cuidado maior na descrição dos achados
 
 
 
+### A10. Vídeo 06 – MA de rede (Network MA)
 
-
+**Transitividade**: Cada nó (tratamento) tem que estar falando de populações semelhantes. Há transitividade se variáveis clínicas e demográficas que estão relacionadas com o desfecho (definido a priori) são mais ou menos homogêneas. É violada quando modificadores de efeito são diferentes entre os estudos

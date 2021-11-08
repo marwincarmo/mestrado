@@ -209,7 +209,7 @@ dp_diff <- function(sd_b, sd_f, corr) {
   sqrt((sd_b^2) + (sd_f^2) - (2*corr*sd_b*sd_f))
 }
 
-dp_vals <- purrr::map_dbl(cor_vals, ~df_diff(5, 6, .x))
+dp_vals <- purrr::map_dbl(cor_vals, ~dp_diff(5, 6, .x))
 
 mean_diff
 dp_vals
@@ -218,4 +218,8 @@ dp_vals
 
 
 #### 11. Baseado na revisão que você fez nas aulas passadas, procure extrair o dado de no mínimo 5 artigos identificados de maneira independente ao seu colega. Discutam as dificuldades e pontos de dissenso.
+
+# Aula 6
+
+#### 1. Com base nos artigos selecionados nas aulas passadas, classifique a (a) imprecisão, (b) inconsistência, (c) indirectness e (d) viés de publicação da MA rodada.
 
