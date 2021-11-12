@@ -1,0 +1,180 @@
+---
+title: "Prova 1o semestre 2021"
+author: "Marwin Carmo"
+date: "12/11/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Qual das ferramentas abaixo é utilizada para um melhor reporting de RS e MAs?
+
+R: (a) PRISMA
+
+AMSTAR 2: Avalia também a qualidade mas o objetivo é principalmente avaliar o que é reportado. Se a RS/MA incluiu os componentes do PICO, se foi estabelecido protocolo prévio (PROSPERO, OSF) se se especificou quais os artigos que seriam incluidos (RCT, NRCT).
+
+ROBIS: Avalia o risco de viés das RS. É um pouco mais aberto.
+
+Cochrane Risk of Bias Tool: Avalia o risco de viés dos RCT
+
+## 2. Quais dos vieses abaixo não dizem respeito à validade interna de um Ensaio Clínico Randomizado?
+
+R: (d) Generalização
+
+Randomização, Mascaramento e Intervenção dizem respeito à validade interna. O estudo está livre de viés e, portanto, tem alta validade interna.
+
+Viés de randomização: uma maneira de um participante ou um membro da equipe descobrir para qual grupo o próximo paciente será alocado.
+
+Generalização também é chamada de validade externa. Avalia se os resultados que foram encontrados no estudo podem ser generalizados para a população alvo.
+
+## 3. Qual dos desenhos abaixo confere maior causalidade?
+
+R: (a) Ensaio clínico randomizado
+
+Causalidade é poder atribuir uma relação de causa e efeito. Uma população homogênea recebe a intervenção de uma maneira aleatorizada. Muito provavelmente as variáveis de confusão vão se distribuir entre os grupos de uma maneira aleatória.
+
+No Ensaio clínico aberto ainda conseguimos uma causa e efeito mas não temos um grupo controle.
+
+Estudos transversais e de coorte não temos manipulação experimental.
+
+## 4. Considere os pares abaixo. Qual dos pares são conceitualmente diferentes?
+
+R: (a) Odds Ratio e Risco Relativo
+
+Medidas de efeito para dados contínuos são medidas de efeito padronizadas: diferença entre as médias dos grupos dividida pelo desvio padrão. O cálculo do desvio padrão vai mudar relativo à medida de efeito utilizada. Não são conceitualmente diferentes.
+
+Para dados categóricos as medidas de efeito são odds ratio e risco relativo. O risco relativo é uma razão de risco (risco de desenvolver no grupo ativo dividido pelo risco de desenvolver no grupo placebo, ou vice-versa). O OR é a razão de chances, o quanto está associado o desfecho com o grupo.
+
+Quando fazemos um desenho longitudinal, podemos falar de RR. Quando avaliamos de forma transversal, só podemos falar de OR (o OR pode ser em qualquer delineamento (?)).
+
+A Redução de Risco Absoluto significa a diferença de risco entre as duas condições. O Número Necessário para Tratar (NNT) é quantas vezes tem que acontecer a intervenção para que tenha o desfecho; é calculado por 1 - Risco Absoluto. São conceitualmente iguais pois estão diretamente relacionados.
+
+## 5. Das características abaixo, qual não é uma vantagem da MA de dados individuais em relação a MA de dados agregados?
+
+R: (c) Maior facilidade de obtenção de dados.
+
+Em uma MA de dados agregados só temos M e DP do grupo 1 e M e DP do grupo 2.
+
+Com dados individuais temos maior precisão dos resultados, pois pode ocorrer de nem sempre ser fácil obter os dados necessários dos dados agregados. Também teremos um ruído menor.
+
+É mais difícil que os autores dos estudos fornecam os dados individuais. Os pesquisadores podem nao ter recursos para disponibilizar os dados individuais.
+
+Quando temos individuais podemos utilizar um recorte que quisermos, permitindo facilitar a padronização.
+
+## 6. A meta-análise de rede (NMA) apresenta várias vantagens, mas possui também desafios adicionais. Qual dos desafios abaixo é um desafio adicional da NMA - ou seja, que é observada apenas para NMA e não para outros desenhos de MA?
+
+R: (b) Transitividade.
+
+Na MA "pairwise" estamos sempre comparando um grupo com outro (A x B). Somente duas comparações por vez.
+
+Na NMA comparamos tudo simultâneamente(A x B x C x D). É importante pois podemos encontrar números que, de fato, podemos comparar e ranquear.
+
+Baixa generalização ou baixa validade externa é saber se os dados obtidos na meta-análise podem ser generalizados, ou utilizados para fazer políticas públicas. Isto vai depender da característica dos estudos utilizados, se são generalizáveis ou não. Pode-se supor que a NMA talvez apresente uma melhor generalização, mas não é uma vantagem considerável.
+
+Só podemos supor que podemos fazer comparações se houver transitividade entre os nós. É o pressuposto de que as populações são comparáveis (não há alguma diferença entre elas que possa modificar o efeito).
+
+## 7. GRADE - Qual dos critérios/aspectos o GRADE não contempla na avaliação de um estudo?
+
+R: (d) Escolha do resultado para ser extraído em uma meta-análise de rede (por exemplo, comparações pairwise ou resultado obtido na rede).
+
+O GRADE vai avaliar:
+
+- Inconsistência: heterogeneidade dos resultados
+
+- Imprecisão: ICs largos por etudos com baixo poder estatístico
+
+- Evidência indireta: Adequação do **PICO**
+
+A transitividade está dentro da evidência indireta se considero que as populações estão variando entre os diferentes nós.
+
+## 8. Ao fazer uma revisão de revisões, uma dúvida é o que fazer quando há revisões sistemáticas (RS) elegíveis, porém que incluíram estudos semelhantes. Neste caso, qual é o procedimento que vem sendo mais adotado?
+
+R: (a) Incluir apenas a RS mais recente / de maior qualidade / mais relevante.
+
+É importante definir apriori o que é maior qualidade e maior relevância.
+
+## 9. Em qual situação não se justifica contatar os autores de um estudo a ser incluído?
+
+As respostas d e b são plausíveis
+
+R: 
+
+(d) Solicitação de dados secundários e não essenciais para o objetivo principal da meta-análise.
+
+(b) Dados de desfecho descritos apenas em figuras, mesmo que de forma completa.
+
+Se temos ausência completa dos dados, faz sentido solicitar.
+
+Dados de desfecho descritos apenas em figuras podem ser extraídos de uma forma automática das figuras, logo não justifica o contato
+
+Dúvidas a respeito de possíveis vieses se justifica.
+
+## 10. Qual das tecnologias abaixo não se encontra disponível na realização de RSs e MAs?
+
+R: (c) Ferramentas para extração automática de dados de estudos.
+
+## 11. Qual é o gráfico utilizado para verificar “small-study effects”?
+
+R: (a) Funnel plot
+
+Leave-one-out: Resultado da MA caso um estudo seja excluído.
+
+## 12. Qual é o gráfico utilizado para verificar a influência individual de um estudo?
+
+R: (d) Leave-one-out
+
+Verifica a influência de um estudo. O que acontece quando ele é retirado.
+
+## 13. Qual dos conceitos abaixo não descreve uma medida de dispersão de dados?
+
+R: (d) Intervalo de Confiança
+
+Erro padrão e desvio padrão são interrelacionados.
+
+Intervalo interquartil diz onde se concentra 50% das observações.
+
+O IC não é uma medida de dispersão, é uma simulação probabilística.
+
+## 14. Qual das seguintes fontes não faz parte da “literatura cinzenta” ?
+
+R: (c) Banco de dados biomédicos que fazem indexação de periódicos publicados na China.
+
+A literatura cinzenta é aquela que não faz parte de indexações oficiais ou padronizadas, que são feitas de uma maneira regular. A opção (c) não faz parte da literatura cinzenta porque é uma fonte oficial de dados.
+
+Nem sempre o que é menos acessível é literatura cinzenta.
+
+## 15. Sobre “umbrella reviews” (URs):
+
+R: (a) A unidade de estudo é a revisão sistemática.
+
+## 16. Ao se aplicar os critérios GRADE para meta-análises de rede, qual é o tipo de viés que são normalmente identificados nestas MAs?
+
+R: (b) Evidências indiretas.
+
+Na NMA estamos simulando comparações que não aconteceram na prática.
+
+## 17. Em casos de alta heterogeneidade observada em uma Meta-Análise, o que deve ser feito, após checar se os dados foram corretamente digitados?
+
+R: (b) Realizar análises de sensibilidade, inicialmente verificando a heterogeneidade de acordo com a qualidade dos estudos (baixo risco de viés vs. outros)
+
+Heterogeneidade é um dos grandes problemas da MA, se for um estudo grande a MA será sensível a essa heterogeneidade. Temos sempre que tentar entender o que está acontecendo.
+
+## 18. Qual é o número mínimo de sujeitos, na soma de todos os estudos, necessários para realizar uma meta-análise?
+
+R: (d) Não há uma recomendação.
+
+## 19. Na extração e síntese de dados, é comum se deparar com estudos que possuem 3 grupos. Imagine um estudo em que o grupo A avaliou o efeito de uma droga em dose x, o grupo B avaliou o efeito dessa mesma droga em dose 2x e o grupo que utilizou placebo. Neste caso, o que não se recomenda fazer?
+
+R: (b) Realizar 2 comparações (A vs C e B vs C) para efeitos de MA.
+
+Na opção (b) um grupo é repetido e com isso há uma multiplicação de pacientes. Isto é problemático pois pode introduzir um viés de acordo com a característica dos participantes que foram repetidos.
+
+## 20. Qual das descrições abaixo está relacionada com um maior risco de viés:
+
+R: (c) “O atrito (perdas de seguimento) do estudo foi de 20% e por isso consideramos como resultados primários apenas dos participantes que completaram o estudo até o endpoint pré-estabelecido”.
+
+Temos sempre que considerar a população de intenção de tratamento e não a população de protocolo.

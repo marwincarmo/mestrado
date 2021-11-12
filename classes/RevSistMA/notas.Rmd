@@ -639,3 +639,16 @@ O network plot une vários tatamentos entre si. Permite comparações diretas e 
 
 **Consistência (coerência)**: se tamanho de efeitos diretos e indiretos são semelhantes.
 
+# Aula 11
+
+### A11. Vídeo 03 – PRISMA texto principal
+
+Titulo: **(1)** identificar como RS, MA ou ambos, evitar apenas "review". É importante para que o estudo possa ser incluído ou excluido olhando apenas o titulo.
+
+Abstract: **(2)** Resumo estruturado do estudo.
+
+Introdução: **(3)** racional do estudo e **(4)** objetivos (apresentar os PICOS)
+
+Métodos: **(5)** protocolo e registro; **(6)** critérios de elegibilidade (PICOs, criterios para incluir/excluir artigos, importante para definir validade externa da MA, **(10)** extração de dados (como os dados foram extraidos, autores foram contactados, **(11)** itens extraidos)); **(7)** fontes de informação (literatura + literatura cinzenta, periodo considerado, **(8)** estrategias de busca (estrategia completa (sintaxe) de pelo menos um banco de dados, quem fez a busca, **(9)** seleção dos estudos)); **(12)** risco de viés intra-estudos (material e tabelas suplementares, **(15)** risco de viés entre estudos); análise: software utilizado, **(13)** medidas de efeito (tipos), **(14)** métodos de análise (avaliação da heterogeneidade/ inconsistencia ($I^2$), processamento/transformação dos dados, zero-cells); (16) analises adicionais
+
+Resultados: (17) Seleção dos estudos (descrição no texto + flowchart)
