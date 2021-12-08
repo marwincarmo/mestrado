@@ -1,5 +1,5 @@
 ---
-main_topsize: 0.15 #percent coverage of the poster
+main_topsize: 0.13 #percent coverage of the poster
 main_bottomsize: 0.07
 poster_height: "150cm"
 poster_width: "80cm"
@@ -24,25 +24,32 @@ primary_colour: "#024F84"
 secondary_colour: "#C00000"
 body_bgcol: "#ffffff"
 #---POSTER BODY OPTIONS---#
-reference_textsize: "32px"
+reference_textsize: "28px"
+caption_textsize: "32px"
+affiliation_textsize: "32px"
 #Column
 column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
+main_textalign: "left"
+main_textsize: "160px"
+main_textalpha: 99
 main_findings:
-  - "Lower levels of psychological flexibility may enhance the effects of dysfunctional beliefs on insomnia symptoms."
-logoleft_name: img/fapesp2.png
-logoright_name: img/ipq_2.png
-logocenter_name: img/qr_imglg.png
+  - "Lower psychological flexibility can enhance the effects of dysfunctional beliefs on insomnia severity."
+main_textcol: "#ffffff"
+logoleft_name: img/fapesp-white.png
+logoright_name: img/ipq-white3.png
+logocenter_name: img/qrcode.png
 output: 
   posterdown::posterdown_betterport:
     highlight: NULL
     self_contained: false
     pandoc_args: --mathjax
     number_sections: false
-bibliography: packages.bib
+    template: custom_template.html
+bibliography: references.bib
 link-citations: true
-css: custom.css
+csl: apa7.csl
 nocite: '@*'
 ---
 
@@ -71,7 +78,7 @@ table1 <- readr::read_csv("table1data.csv")
 
 # Introduction
 
-The **cognitive-behavioral model** of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The metacognitive model of insomnia expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because primary and secondary processes mutually influence each other, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.
+The cognitive-behavioral model of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The <b><span style="color: #C00000;">metacognitive model of insomnia</b></span> expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because <b><span style="color: #C00000;">primary and secondary processes mutually influence each other</b></span>, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.
 
 ```{r, include=FALSE}
 knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
@@ -90,7 +97,7 @@ Data were collected from online surveys responded by 629 adults, aged 18 to 59 y
 3. Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);
 4. Acceptance and Action Questionnaire (AAQ-II). 
 
-All continuous parameters were standardized prior to data analysis. A linear model (estimated using OLS) was fitted to predict ISI scores from DBAS-16 and AAQ-II with age, sex and HADS subscales as covariates:
+All continuous predictors were standardized prior to data analysis. A linear model (estimated using OLS) was fitted to predict ISI scores from DBAS-16 and AAQ-II with age, sex and HADS subscales as covariates:
 
 $$
 IGI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
@@ -109,13 +116,14 @@ table1 %>%
   ) %>% 
   column_spec(1, width = "60%") %>%
   column_spec(2, width = "100%") %>%
-  row_spec(0, background = "#CCCCCC") %>%
+  #row_spec(0, background = "#CCCCCC") %>%
   #row_spec(1:nrow(table1), background = "FFFFFF") %>% 
   kableExtra::pack_rows("Gender", 2,3) %>% 
   kableExtra::pack_rows("Race/ethnicity", 4,7) %>% 
   kableExtra::pack_rows("Education", 8,10) %>% 
   kableExtra::pack_rows("Region of origin", 11,15) %>% 
-  kableExtra::pack_rows("Sleep Medication", 16,18)
+  kableExtra::pack_rows("Sleep Medication", 16,18) %>% 
+  kable_minimal(html_font = "Rasa")
 ```
 
 
@@ -164,12 +172,15 @@ tab <- modelsummary(models, output = 'huxtable', align = 'lcr',
                     coef_map = cm, stars = TRUE, 
                     title = cap, gof_omit = ".*",
                     statistic = NULL,
-                    note = "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
+                    note = "* p < 0.05, ** p < 0.01, *** p < 0.001",
                     coef_omit = "Intercept") 
 tab %>% 
-  set_align(1, everywhere, "center") %>% 
+  #set_align(1, everywhere, "center") %>% 
+  #set_align(everywhere, c(2,3), "left") %>%
   set_bold(row = 1, col = everywhere) %>% 
-  set_background_color(row = 1, col = everywhere, "grey95") %>% 
+  set_top_border(row = 1, value = 0) %>% 
+  set_bottom_border(row = 9, value = 0) %>% 
+  set_background_color(row = c(1,9), col = everywhere, "white") %>% 
   set_width(1)
   #set_background_color(row = 2:nrow(.), col = everywhere, "white") 
   
@@ -221,6 +232,11 @@ figure1
 
 # Conclusion
 
-Insomnia severity scores were influenced by higher scores on anxiety, dysfunctional beliefs about sleep and psychological inflexibility. Although very small, the significant interaction effect indicates that the prediction effect of dysfunctional beliefs about sleep may become more positive for additional levels of psychological inflexibility.
+Insomnia severity scores were influenced by higher scores on anxiety, dysfunctional beliefs about sleep and psychological inflexibility. The <b><span style="color: #C00000;">significant interaction effect</b></span> indicates that the prediction effect of dysfunctional beliefs about sleep may become more positive for additional levels of psychological inflexibility.
+
+## Remarks
+<span style="text-align: left;">
+This poster was created using `posterdown` package [@R-posterdown]. Full reproducible code available at https://bit.ly/postercbs
+</span>
 
 # References
