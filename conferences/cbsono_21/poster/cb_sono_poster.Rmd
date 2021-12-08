@@ -24,7 +24,7 @@ primary_colour: "#024F84"
 secondary_colour: "#C00000"
 body_bgcol: "#ffffff"
 #---POSTER BODY OPTIONS---#
-reference_textsize: "28px"
+reference_textsize: "24px"
 caption_textsize: "32px"
 affiliation_textsize: "32px"
 #Column
@@ -32,10 +32,10 @@ column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
 main_textalign: "left"
-main_textsize: "160px"
+main_textsize: "170px"
 main_textalpha: 99
 main_findings:
-  - "Lower psychological flexibility can enhance the effects of dysfunctional beliefs on insomnia severity."
+  - "Lower **psychological flexibility** can enhance the effects of **dysfunctional beliefs** on **insomnia severity**."
 main_textcol: "#ffffff"
 logoleft_name: img/fapesp-white.png
 logoright_name: img/ipq-white3.png
@@ -108,7 +108,7 @@ $$
 ```{r table1}
 table1 %>% 
   knitr::kable(
-    caption = "Participant characteristics", 
+    caption = "Study participants (N = 629) descriptive statistics.", 
     #align = 'c',
     col.names = c("", "N/Mean (%/SD)"),
     align = "lc",
@@ -165,12 +165,13 @@ cm <- c( '(Intercept)' = 'Constant', 'idade' = 'Age', 'sexo0.5' = 'Sex',
          'ehad_ansiedade_escore' = 'HADS-A', 'ehad_depressao_escore' = 'HADS-D',
          'dbas_score' = 'DBAS-16', 'aaq_score' = 'AAQ-II',
          'dbas_score:aaq_score' = 'DBAS-16 x AAQ-II')
-cap <- 'Table 2: A modelsummary table customized with kableExtra'
+cap <- 'Table 2: Results from the regression model examining the effects of age, sex, cognitive processes (DBAS-16 and AAQ-II) and anxiety and depressive symptoms (HADS-A and HADS-D) on the severity of insomnia.'
 
 tab <- modelsummary(models, output = 'huxtable', align = 'lcr',
                     estimate  = c("{estimate} [{conf.low}, {conf.high}]{stars}", "{std.error}"),
                     coef_map = cm, stars = TRUE, 
-                    title = cap, gof_omit = ".*",
+                    title = cap, 
+                    gof_omit = ".*",
                     statistic = NULL,
                     note = "* p < 0.05, ** p < 0.01, *** p < 0.001",
                     coef_omit = "Intercept") 
@@ -187,7 +188,7 @@ tab %>%
 ```
 
 
-```{r myprettycode, echo=FALSE, fig.cap='Boxplots, so hot right now!', fig.height=6, out.width="100%", dpi=300}
+```{r myprettycode, echo=FALSE, fig.cap='Decomposing dysfunctional beliefs about sleep by psychological inflexibility interaction via simple slopes for psychological inflexibility.', fig.height=6, out.width="100%", dpi=300}
 #trim whitespace
 par(mar=c(2,2,0,0))
 
