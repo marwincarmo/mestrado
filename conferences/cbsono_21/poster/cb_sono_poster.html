@@ -125,7 +125,7 @@ font-style: italic;
 padding-top: 0;
 }
 .references {
-font-size: 24px;
+font-size: 28px;
 line-height: 90%;
 }
 /* Create three unequal columns that floats next to each other */
@@ -402,7 +402,7 @@ span > #tab:mytable {
 
 
 <p id="affiliation" class="affiliation">
-<sup>1</sup> Department of Psychiatry, University of São Paulo
+<sup>1</sup> Department of Psychiatry, University of São Paulo, Brazil
 </p>
 </div>
 
@@ -419,13 +419,13 @@ span > #tab:mytable {
 <p>Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms. Participants completed self-report questionnaires, including:</p>
 <ol style="list-style-type: decimal">
 <li>Hospital Anxiety and Depression Scale (HADS);</li>
-<li>Insomnia Severity Scale (ISI);</li>
+<li>Insomnia Severity Index (ISI);</li>
 <li>Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);</li>
 <li>Acceptance and Action Questionnaire (AAQ-II).</li>
 </ol>
 <p>All continuous predictors were standardized prior to data analysis. A linear model (estimated using OLS) was fitted to predict ISI scores from DBAS-16 and AAQ-II with age, sex and HADS subscales as covariates:</p>
 <p><span class="math display">\[
-IGI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
+ISI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
 \]</span></p>
 </div>
 <div id="results" class="section level1">
@@ -656,7 +656,7 @@ Figure 2: Decomposing dysfunctional beliefs about sleep by psychological inflexi
 <div id="remarks" class="section level2">
 <h2>Remarks</h2>
 <p><span style="text-align: left;">
-This poster was created using <code>posterdown</code> package <span class="citation">(<a href="#ref-R-posterdown" role="doc-biblioref">Thorne, 2019</a>)</span>. Full reproducible code available at <a href="https://bit.ly/postercbs" class="uri">https://bit.ly/postercbs</a>
+This poster was created using <code>posterdown</code> package for R <span class="citation">(<a href="#ref-R-posterdown" role="doc-biblioref">Thorne, 2019</a>)</span>. Reproducible code available at <a href="https://bit.ly/postercbs" class="uri">https://bit.ly/postercbs</a>
 </span></p>
 </div>
 </div>
@@ -674,9 +674,6 @@ Ong, J. C., Ulmer, C. S., &amp; Manber, R. (2012). Improving sleep with mindfuln
 </div>
 <div id="ref-R-posterdown" class="csl-entry">
 Thorne, B. (2019). <em>Posterdown: Generate PDF conference posters using r markdown</em>. <a href="https://github.com/brentthorne/posterdown">https://github.com/brentthorne/posterdown</a>
-</div>
-<div id="ref-R-pagedown" class="csl-entry">
-Xie, Y., Lesur, R., Thorne, B., &amp; Tan, X. (2021). <em>Pagedown: Paginate the HTML output of r markdown with CSS for print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>
 </div>
 </div>
 </div>

@@ -18,13 +18,13 @@ author:
     email: 'rerafihi@usp.br '
 affiliation:
   - num: 1
-    address: Department of Psychiatry, University of São Paulo
+    address: Department of Psychiatry, University of São Paulo, Brazil
 # Main Colour Scheme
 primary_colour: "#024F84"
 secondary_colour: "#C00000"
 body_bgcol: "#ffffff"
 #---POSTER BODY OPTIONS---#
-reference_textsize: "24px"
+reference_textsize: "28px"
 caption_textsize: "32px"
 affiliation_textsize: "32px"
 #Column
@@ -93,14 +93,14 @@ To investigate if psychological inflexibility moderates the relationship between
 Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms. Participants completed self-report questionnaires, including:
 
 1. Hospital Anxiety and Depression Scale (HADS);
-2. Insomnia Severity Scale (ISI);
+2. Insomnia Severity Index (ISI);
 3. Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);
 4. Acceptance and Action Questionnaire (AAQ-II). 
 
 All continuous predictors were standardized prior to data analysis. A linear model (estimated using OLS) was fitted to predict ISI scores from DBAS-16 and AAQ-II with age, sex and HADS subscales as covariates:
 
 $$
-IGI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
+ISI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
 $$
 
 # Results
@@ -237,7 +237,7 @@ Insomnia severity scores were influenced by higher scores on anxiety, dysfunctio
 
 ## Remarks
 <span style="text-align: left;">
-This poster was created using `posterdown` package [@R-posterdown]. Full reproducible code available at https://bit.ly/postercbs
+This poster was created using `posterdown` package for R [@R-posterdown]. Reproducible code available at https://bit.ly/postercbs
 </span>
 
 # References
