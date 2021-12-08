@@ -33,13 +33,13 @@ column_numbers: 2
 main_fontfamily: "PT Sans"
 main_textalign: "left"
 main_textsize: "170px"
-main_textalpha: 99
+main_textalpha: "cf"
 main_findings:
   - "Lower **psychological flexibility** can enhance the effects of **dysfunctional beliefs** on **insomnia severity**."
 main_textcol: "#ffffff"
 logoleft_name: img/fapesp-white.png
 logoright_name: img/ipq-white3.png
-logocenter_name: img/qrcode.png
+logocenter_name: img/qrcode.svg
 output: 
   posterdown::posterdown_betterport:
     highlight: NULL
