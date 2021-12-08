@@ -18,6 +18,7 @@
 
 
 
+<link rel="stylesheet" href="custom.css" type="text/css" />
 
 <!--
 Font-awesome icons ie github or twitter
@@ -81,7 +82,7 @@ code {
 font-size: 25pt;
 font-family: monospace;
 background-color: #C0000024;
-color: #002060;
+color: #024F84;
 padding: 1.2mm;
 line-height: 1;
 border-radius: 2mm;
@@ -118,7 +119,7 @@ font-style: italic;
 padding-top: 0;
 }
 .references {
-font-size: 20px;
+font-size: 32px;
 line-height: 90%;
 }
 /* Create three unequal columns that floats next to each other */
@@ -128,7 +129,7 @@ padding: 0px;
 }
 .outer {
 width: 80cm;
-height: calc(150cm *  (1 - 0.1 - 0.1 - 0.01) );
+height: calc(150cm *  (1 - 0.15 - 0.07 - 0.01) );
 -webkit-column-count: 2; /* Chrome, Safari, Opera */
 -moz-column-count: 2; /* Firefox */
 column-count: 2;
@@ -149,7 +150,7 @@ column-rule-style: none;
 column-rule-color: black;
 background-color: #ffffff;
 font-family: Rasa;
-margin-top: calc(150cm *  0.1 );
+margin-top: calc(150cm *  0.15 );
 padding-top: 1em;
 padding-bottom: 1em;
 }
@@ -171,7 +172,7 @@ font-weight: normal;
 background: 0;
 }
 #author {
-color: #002060;
+color: #024F84;
 margin: 0;
 line-height: 85%;
 font-size: 1.17em;
@@ -215,9 +216,9 @@ font-weight: bold;
       to left,
       #ffffff 1%,
       #ffffff 20%,
-      #00206075 33%,
-      #002060 50%,
-      #00206075 66%,
+      #024F8475 33%,
+      #024F84 50%,
+      #024F8475 66%,
       #ffffff 80%,
       #ffffff 99%
     )
@@ -242,12 +243,12 @@ text-align: left;
 }
 .main {
 width: 80cm;
-height: calc(150cm * 0.1);
+height: calc(150cm * 0.15);
 position: absolute;
-background-color: #002060;
+background-color: #024F84;
 color: #ffffff90;
 font-family: PT Sans;
-background-image: linear-gradient(#002060 50%,#C00000);
+background-image: linear-gradient(#024F84 50%,#C00000);
 }
 .main strong {
 color: #ffffff;
@@ -313,11 +314,11 @@ padding: 0cm;
 }
 .main_bottom {
 width: 80cm;
-height: calc(150cm * 0.1);
-margin-top: calc(150cm * (1 - 0.1));
+height: calc(150cm * 0.07);
+margin-top: calc(150cm * (1 - 0.07));
 position: absolute;
-background-color: #002060;
-background-image: linear-gradient(#C00000 10%, #002060);
+background-color: #024F84;
+background-image: linear-gradient(#C00000 10%, #024F84);
 }
 .section {
   padding-left: 10mm;
@@ -371,7 +372,7 @@ span > #tab:mytable {
 <h1 id="title"><strong>The association between sleep-related cognitions, psychological flexibility, and insomnia symptoms</strong></h1><br>
 <h3 id="author" class="author">
 
-<strong>Marwin M. I. B. Carmo</strong><sup> 1, <a class="orcid" href="https://orcid.org/0000-0002-1099-3857"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+<strong>Marwin M. I. B. Carmo</strong><sup> 1</sup><br>
 <a class="twitter" href="https://mobile.twitter.com/marwincarmo"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@marwincarmo</a><br>
 
 <a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
@@ -391,7 +392,7 @@ span > #tab:mytable {
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The cognitive-behavioral model of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The metacognitive model of insomnia expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because primary and secondary processes mutually influence each other, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.</p>
+<p>The <strong>cognitive-behavioral model</strong> of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The metacognitive model of insomnia expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because primary and secondary processes mutually influence each other, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.</p>
 <div id="objective" class="section level2">
 <h2>Objective</h2>
 <p>To investigate if psychological inflexibility moderates the relationship between dysfunctional beliefs about sleep and insomnia severity.</p>
@@ -399,8 +400,7 @@ span > #tab:mytable {
 </div>
 <div id="methods" class="section level1">
 <h1>Methods</h1>
-<p>Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms.</p>
-<p>Participants completed self-report questionnaires, including:</p>
+<p>Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms. Participants completed self-report questionnaires, including:</p>
 <ol style="list-style-type: decimal">
 <li>Hospital Anxiety and Depression Scale (HADS);</li>
 <li>Insomnia Severity Scale (ISI);</li>
@@ -414,7 +414,7 @@ IGI \sim Age + Sex + HADSA + HADSD + DBAS\times AAQII
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
-<table style="width:80%;">
+<table style="width:100%;">
 <caption>
 <span id="tab:table1">Table 1: </span>Participant characteristics
 </caption>
@@ -606,44 +606,57 @@ Figure 1: Distribution of continuous variables in the model.
 </p>
 </div>
 <p>The results of the regression indicated that the model significantly predicted ISI scores (F(621, 7) = 42), <em>p</em> &lt; 0.001, <span class="math inline">\(R^2_{adj}\)</span> = 0.31), accounting for 31% of the variance.</p>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 100%; margin-left: auto; margin-right: auto;  " id="tab:table2">
+<caption style="caption-side: top; text-align: center;">Table 2: A modelsummary table customized with kableExtra</caption><col><col><col><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: bold;"> </th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: bold;">Coef.</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(242, 242, 242); font-weight: bold;">Std.Error</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Age</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.003 [-0.003, 0.010]</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.003</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sex</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.027 [-0.131, 0.185]</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.080</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">HADS-A</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.149 [0.057, 0.241]**</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.047</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">HADS-D</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.071 [-0.023, 0.165]</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.048</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">DBAS-16</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.393 [0.317, 0.469]***</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.039</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AAQ-II</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.107 [0.006, 0.208]*</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.051</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">DBAS-16 x AAQ-II</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.068 [0.009, 0.127]*</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.030</td></tr>
+<tr>
+<td colspan="3" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
+</table>
+
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:myprettycode"></span>
 <img src="cb_sono_poster_files/figure-html/myprettycode-1.png" alt="Boxplots, so hot right now!" width="100%" />
 <p class="caption">
 Figure 2: Boxplots, so hot right now!
 </p>
 </div>
-<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:table2">
-<caption style="caption-side: top; text-align: center;">A modelsummary table customized with kableExtra</caption><col><col><tr>
-<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> </th><th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Model 1</th></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Sex</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.027 [-0.131, 0.185]</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">HADS-A</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.149 [0.057, 0.241]**</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">HADS-D</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.071 [-0.023, 0.165]</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">DBAS-16</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.393 [0.317, 0.469]***</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AAQ-II</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.107 [0.006, 0.208]*</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">DBAS-16 x AAQ-II</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.068 [0.009, 0.127]*</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">Num.Obs.</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">629</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">R2</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.321</td></tr>
-<tr>
-<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">F</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">42.003</td></tr>
-<tr>
-<td colspan="2" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
-</table>
-
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
 <p>Insomnia severity scores were influenced by higher scores on anxiety, dysfunctional beliefs about sleep and psychological inflexibility. Although very small, the significant interaction effect indicates that the prediction effect of dysfunctional beliefs about sleep may become more positive for additional levels of psychological inflexibility.</p>
 </div>
-<div id="references" class="section level1">
+<div id="references" class="section level1 unnumbered">
 <h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-rmarkdown" class="csl-entry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2021. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.
+</div>
+<div id="ref-R-posterdown" class="csl-entry">
+Thorne, Brent. 2019. <em>Posterdown: Generate PDF Conference Posters Using r Markdown</em>. <a href="https://github.com/brentthorne/posterdown">https://github.com/brentthorne/posterdown</a>.
+</div>
+<div id="ref-rmarkdown2018" class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
+<div id="ref-rmarkdown2020" class="csl-entry">
+Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbook</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown-cookbook">https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</div>
+<div id="ref-R-pagedown" class="csl-entry">
+Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2021. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
+</div>
+</div>
 </div>
 
 </div>
@@ -651,9 +664,9 @@ Figure 2: Boxplots, so hot right now!
 <p>Lower levels of psychological flexibility may enhance the effects of dysfunctional beliefs on insomnia symptoms.</p>
 </div>
 <div class="main_bottom">
-<img id="main-img-left" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png>
-<img id="main-img-center" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/qr-code-black.png>
-<img id="main-img-right" src=https://raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png>
+<img id="main-img-left" src=img/fapesp2.png>
+<img id="main-img-center" src=>
+<img id="main-img-right" src=img/ipq_2.png>
 </div>
 </div>
 

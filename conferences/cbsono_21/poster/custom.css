@@ -1,2 +1,34 @@
+:root {
+  /* Colors */
+  --text-color: #515151;
+  --header-color: #024F84;
+  --background-color: #FFFFFF;
+  --link-color: #024F84;
+  --text-bold-color: #002060;
+  --code-highlight-color: rgba(255,255,0,0.5);
+  --inverse-text-color: #000000;
+  --inverse-background-color: #FF961C;
+  --inverse-header-color: #FFFFFF;
+  --inverse-link-color: #024F84;
+  --title-slide-background-color: #FFFFFF;
+  --title-slide-text-color: #024F84;
+  --header-background-color: #024F84;
+  --header-background-text-color: #FFFFFF;
+  --primary: #024F84;
+  --secondary: #FF961C;
+  --white: #FFFFFF;
+  --black: #000000;
+}
 
 
+
+table.tbody {
+  background-color: #FFFFFF;
+  color: var(--text-color);
+}
+table.display tbody tr.odd {
+  background-color: #FFFFFF;
+}
+table.display tbody tr.even {
+  background-color: #FFFFFF;
+}

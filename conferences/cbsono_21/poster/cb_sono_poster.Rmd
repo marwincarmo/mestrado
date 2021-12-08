@@ -1,6 +1,6 @@
 ---
-main_topsize: 0.1 #percent coverage of the poster
-main_bottomsize: 0.1
+main_topsize: 0.15 #percent coverage of the poster
+main_bottomsize: 0.07
 poster_height: "150cm"
 poster_width: "80cm"
 #ESSENTIALS
@@ -9,7 +9,7 @@ author:
   - name: '**Marwin M. I. B. Carmo**'
     affil: 1
     main: true
-    orcid: '0000-0002-1099-3857'
+    #orcid: '0000-0002-1099-3857'
     twitter: marwincarmo 
     email: marwin@usp.br
   - name: Renatha El Rafihi Ferreira
@@ -20,24 +20,30 @@ affiliation:
   - num: 1
     address: Department of Psychiatry, University of São Paulo
 # Main Colour Scheme
-primary_colour: "#002060"
+primary_colour: "#024F84"
 secondary_colour: "#C00000"
+body_bgcol: "#ffffff"
+#---POSTER BODY OPTIONS---#
+reference_textsize: "32px"
 #Column
 column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
 main_findings:
   - "Lower levels of psychological flexibility may enhance the effects of dysfunctional beliefs on insomnia symptoms."
-logoleft_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
-logoright_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/betterhexlogo.png
-logocenter_name: https&#58;//raw.githubusercontent.com/brentthorne/posterdown/master/images/qr-code-black.png
+logoleft_name: img/fapesp2.png
+logoright_name: img/ipq_2.png
+logocenter_name: img/qr_imglg.png
 output: 
   posterdown::posterdown_betterport:
+    highlight: NULL
     self_contained: false
     pandoc_args: --mathjax
     number_sections: false
 bibliography: packages.bib
 link-citations: true
+css: custom.css
+nocite: '@*'
 ---
 
 ```{r, include=FALSE}
@@ -47,22 +53,25 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE,
                       fig.align = 'center',
                       out.width = "100%")
-options(knitr.table.format = "html") 
+#options(knitr.table.format = "html") 
 #options(kableExtra.html.bsTable = T)
 ```
 
 ```{r data, include=FALSE}
 library(dplyr)
 library(ggplot2)
+library(modelsummary)
+library(huxtable)
 library(kableExtra)
 source("plot_template.R")
 dados <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/base_arrumada_1409.csv")
 table1 <- readr::read_csv("table1data.csv")
 ```
 
+
 # Introduction
 
-The cognitive-behavioral model of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The metacognitive model of insomnia expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because primary and secondary processes mutually influence each other, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.
+The **cognitive-behavioral model** of insomnia proposes that arousal, cognitions, behaviors, and perceived consequences play an important role in maintaining insomnia symptoms. The metacognitive model of insomnia expands this idea by defining cognitive activity as primary arousal and how one interprets those thoughts as a secondary arousal. Because primary and secondary processes mutually influence each other, the content of maladaptive sleep-related thoughts can impact the maintenance of insomnia disorder more strongly if one is rigidly attached to them.
 
 ```{r, include=FALSE}
 knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
@@ -74,9 +83,7 @@ To investigate if psychological inflexibility moderates the relationship between
 
 # Methods
 
-Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms.
-
-Participants completed self-report questionnaires, including:
+Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms. Participants completed self-report questionnaires, including:
 
 1. Hospital Anxiety and Depression Scale (HADS);
 2. Insomnia Severity Scale (ISI);
@@ -98,7 +105,7 @@ table1 %>%
     #align = 'c',
     col.names = c("", "N/Mean (%/SD)"),
     align = "lc",
-    table.attr = "style='width:80%;'"
+    table.attr = "style='width:100%;'"
   ) %>% 
   column_spec(1, width = "60%") %>%
   column_spec(2, width = "100%") %>%
@@ -140,6 +147,33 @@ s <- summary(mod1)
 ```
 
 The results of the regression indicated that the model significantly predicted ISI scores (F(`r round(s$fstatistic[[3]])`, `r round(s$fstatistic[[2]])`) = `r round(s$fstatistic[[1]],2)`), *p* < 0.001, $R^2_{adj}$ = `r round(broom::glance(mod1)$adj.r.squared,2)`), accounting for `r round(broom::glance(mod1)$adj.r.squared,2)*100`% of the variance.
+
+```{r table2, out.width="100%"}
+
+models <- list(
+    "Coef."     = mod1,
+    "Std.Error" = mod1)
+cm <- c( '(Intercept)' = 'Constant', 'idade' = 'Age', 'sexo0.5' = 'Sex',
+         'ehad_ansiedade_escore' = 'HADS-A', 'ehad_depressao_escore' = 'HADS-D',
+         'dbas_score' = 'DBAS-16', 'aaq_score' = 'AAQ-II',
+         'dbas_score:aaq_score' = 'DBAS-16 x AAQ-II')
+cap <- 'Table 2: A modelsummary table customized with kableExtra'
+
+tab <- modelsummary(models, output = 'huxtable', align = 'lcr',
+                    estimate  = c("{estimate} [{conf.low}, {conf.high}]{stars}", "{std.error}"),
+                    coef_map = cm, stars = TRUE, 
+                    title = cap, gof_omit = ".*",
+                    statistic = NULL,
+                    note = "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
+                    coef_omit = "Intercept") 
+tab %>% 
+  set_align(1, everywhere, "center") %>% 
+  set_bold(row = 1, col = everywhere) %>% 
+  set_background_color(row = 1, col = everywhere, "grey95") %>% 
+  set_width(1)
+  #set_background_color(row = 2:nrow(.), col = everywhere, "white") 
+  
+```
 
 
 ```{r myprettycode, echo=FALSE, fig.cap='Boxplots, so hot right now!', fig.height=6, out.width="100%", dpi=300}
@@ -184,50 +218,6 @@ figure1 <- dados_c %>%
         axis.title=element_text(size=16))
 figure1
 ```
-
-
-
-```{r eval=FALSE, include=FALSE}
-report::report_table(mod1) |> 
-  tibble::as_tibble() |> 
-  dplyr::mutate(Parameter = dplyr::case_when(
-    Parameter == "idade" ~ "Age",
-    Parameter == "sexo [0 5]" ~ "Sex",
-    Parameter == "ehad ansiedade escore" ~ "HADS-A",
-    Parameter == "ehad depressao escore" ~ "HADS-D",
-    Parameter == "dbas score" ~ "DBAS-16",
-    Parameter == "aaq score" ~ "AAQ-II",
-    Parameter == "dbas score * aaq score" ~ "DBAS-16 x AAQ-II"
-  )) |>
-  dplyr::slice(-c(1,9:14)) |>
-  dplyr::select(Parameter, Std_Coefficient, Std_Coefficient_CI_low, Std_Coefficient_CI_high,
-                p) |> 
-  knitr::kable(format = 'html', digits = 3,
-               col.names = c("Predictor", "$\\beta$", "95% CI Low", "95% CI High", "p-value"),
-               escape = FALSE)
-```
-
-
-```{r table2, out.width="100%"}
-library(modelsummary)
-library(huxtable)
-cm <- c( '(Intercept)' = 'Constant', 'IDADE' = 'Age', 'sexo0.5' = 'Sex',
-         'ehad_ansiedade_escore' = 'HADS-A', 'ehad_depressao_escore' = 'HADS-D',
-         'dbas_score' = 'DBAS-16', 'aaq_score' = 'AAQ-II',
-         'dbas_score:aaq_score' = 'DBAS-16 x AAQ-II')
-cap <- 'A modelsummary table customized with kableExtra'
-
-tab <- modelsummary(mod1, output = 'huxtable',
-                    estimate  = "{estimate} [{conf.low}, {conf.high}]{stars}",
-                    coef_map = cm, stars = TRUE, 
-                    title = cap, gof_omit = 'IC|Log|Adj',
-                    statistic = NULL,
-                    note = "+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001",
-                    coef_omit = "Intercept") 
-tab 
-  
-```
-
 
 # Conclusion
 
