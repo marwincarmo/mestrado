@@ -147,4 +147,46 @@ plot(boot2, statistics= c("strength","closeness","betweenness"))
 #CS-coefficient
 corStability(boot2)
 
+## legenda spaq
+
+base_spaq <- raw_data |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::mutate(dplyr::across(spaq_5:spaq_8, ~ 6 - .x)) |> 
+  dplyr::select(igi_escore, spaq_1:spaq_8) |> 
+  dplyr::rename(isi = igi_escore,
+                Q1 = spaq_1, Q2 = spaq_2,
+                Q3 = spaq_3, Q4 = spaq_4,
+                Q5 = spaq_5, Q6 = spaq_6,
+                Q7 = spaq_7, Q8 = spaq_8
+  )
+
+fatores <- c("ISI", rep("Activities Engagement", 4), rep("Willingness", 4))
+names <- c("ISI", paste0("Q", 1:8))
+legend <- c("Insomnia Severity Index",
+            "Although things have changed, I am living a \n normal life despite my sleeping problems",
+            "I lead a full life even though I have sleeping problems",
+            "My life is going well, even though I have sleeping problems",
+            "Despite the sleeping problems, \n I am now sticking to a certain course in my life",
+            "Keeping my sleeping problems under control takes first priority",
+            "I need to concentrate on getting rid of my sleeping problems",
+            "It's important to keep on fighting these sleeping problems",
+            "My thoughts and feelings about my sleeping problems must change \n before I can take important steps in my life"
+)
+
+NetworkSPAQ <- estimateNetwork(base_spaq, default = "EBICglasso", weighted = TRUE)
+
+plot(NetworkSPAQ, layout = "spring",
+     label.scale=F, theme = "colorblind",
+     nodeNames = legend, groups = fatores,
+     layoutScale = c(1,1), layoutOffset = c(0,3), GLratio = .2,
+     vsize = 10,details = F, legend = TRUE)
+
+png("G:/Documentos/ProjetosR/mestrado/conferences/clinica_psiquiatrica/spaq_legend.png", 
+    width = 8, height = 6, units = 'in', res = 300)
+plot(NetworkSPAQ, layout = "spring",
+     label.scale=F, theme = "colorblind",
+     nodeNames = legend, groups = fatores,
+     layoutScale = c(1,1), layoutOffset = c(0,3), GLratio = .2,
+     vsize = 10,details = F, legend = TRUE)
+dev.off()
 

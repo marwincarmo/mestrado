@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>The association between sleep-related cognitions, psychological flexibility, and insomnia symptoms</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 14.29cm 25.40cm;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 14.29cm;
+height: 25.40cm;
+text-align: justify;
+font-size: 12pt;
+line-height: 1.02;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 0cm;
+margin-bottom: 0cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #C00000 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #C0000024;
+color: #C00000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 6pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #C0000020;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+
+}
+
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 6pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 8pt;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 14.29cm;
+height: calc(25.40cm *  (1 - 1.0e-2 - 7.0e-2 - 0.01) );
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(25.40cm *  1.0e-2 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #C00000;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #C00000;
+}
+#title {
+font-size: 18pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:#024F84;
+margin: 0;
+line-height: 85%;
+font-size: 12pt;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 10pt;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 8pt;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 12pt;
+}
+.author_extra {
+color: #C00000;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  font-size: 16pt;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #024F8475 33%,
+      #024F84 50%,
+      #024F8475 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 14.29cm;
+height: calc(25.40cm * 1.0e-2);
+position: absolute;
+background-color: #024F84;
+color: #ffffffcf;
+font-family: PT Sans;
+/*background-image: linear-gradient(#024F84 50%,#C00000); */
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffffcf;
+}
+
+#main-img-left {
+width: 25%;
+left: 0.5in;
+bottom: 0in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-center {
+width: 10%;
+left: calc(14.29cm * 0.45);
+bottom: 0.05in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-right {
+width: 15%;
+right: 0.5in;
+bottom: 0.04in;
+position: absolute;
+opacity: 80%;
+}
+.main p {
+font-size: 12pt;
+font-family: PT Sans;
+text-align: left;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 0.8em;
+}
+
+.fab {
+color: #00000060;
+font-size: 9pt;
+}
+.twitter, i {
+color: #00000060;
+font-size: 9pt;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 9pt;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 9pt;
+text-decoration: none;
+}
+.poster_wrap {
+width: 14.29cm;
+height: 25.40cm;
+padding: 0cm;
+}
+.main_bottom {
+width: 14.29cm;
+height: calc(25.40cm * 7.0e-2);
+margin-top: calc(25.40cm * (1 - 7.0e-2));
+position: absolute;
+background-color: #024F84;
+/*background-image: linear-gradient(#C00000 10%, #024F84);*/
+}
+.section {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>The association between sleep-related cognitions, psychological flexibility, and insomnia symptoms</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Marwin M. I. B. Carmo</strong><sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
+ Renatha El Rafihi Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+ </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Psychiatry, Faculty of Medicine, University of São Paulo, Brazil
+</p>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The <b><span style="color: #C00000;">metacognitive model of insomnia</b></span> defines cognitive activity as primary arousal and the interpretation given to those thoughts as a secondary arousal. It proposes that the content of maladaptive sleep-related thoughts contributes to the maintenance of insomnia disorder due to the <b><span style="color: #C00000;">mutual influence of primary and secondary processes</b></span>. This work tests if psychological inflexibility moderates the relationship between dysfunctional beliefs about sleep and insomnia severity.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>Data were collected from online surveys responded by 629 adults, aged 18 to 59 years, who reported experiencing insomnia symptoms. Participants completed self-report questionnaires, including: I) Hospital Anxiety and Depression Scale (HADS); II) Insomnia Severity Index (ISI); III) Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16); IV) Acceptance and Action Questionnaire (AAQ-II). A linear model (estimated using OLS) was fitted to predict ISI scores from DBAS-16 and AAQ-II with age, sex and HADS subscales as covariates.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>The model significantly predicted ISI scores (F(621, 7) = 42), <em>p</em> &lt; 0.001, <span class="math inline">\(R^2_{adj}\)</span> = 0.31), accounting for 31% of the variance.</p>
+<table class="huxtable" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; width: 100%; margin-left: auto; margin-right: auto;  " id="tab:table2">
+<caption style="caption-side: top; text-align: center;">Table 1: Results from the regression model examining the effects of age, sex, cognitive processes (DBAS-16 and AAQ-II) and anxiety and depressive symptoms on the severity of insomnia.</caption><col style="width: 40%"><col style="width: 50%"><col style="width: 10%"><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 255); font-weight: bold; font-size: 8pt;"> </th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 1pt 6pt; background-color: rgb(255, 255, 255); font-weight: bold; font-size: 8pt;"><p>Coef.</p>
+</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 1pt 0pt;    padding: 6pt 6pt 1pt 6pt; background-color: rgb(255, 255, 255); font-weight: bold; font-size: 8pt;"><p>SE</p>
+</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Age</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.003 [-0.003, 0.010]</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 1pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.003</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Sex</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.027 [-0.131, 0.185]</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.080</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">HADS-A</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.149 [0.057, 0.241]**</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.047</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">HADS-D</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.071 [-0.023, 0.165]</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.048</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">DBAS</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.393 [0.317, 0.469]***</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.039</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">AAQ</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.107 [0.006, 0.208]*</td><td style="vertical-align: top; text-align: left; white-space: normal; padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.051</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">DBAS x AAQ</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.068 [0.009, 0.127]*</td><td style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.030</td></tr>
+<tr>
+<td colspan="3" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; background-color: rgb(255, 255, 255); font-weight: normal; font-size: 8pt;">* p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr>
+</table>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:myprettycode"></span>
+<img src="cb_sono_poster_viicp_files/figure-html/myprettycode-1.png" alt="Decomposing dysfunctional beliefs about sleep by psychological inflexibility interaction via simple slopes for psychological inflexibility." width="100%" />
+<p class="caption">
+Figure 1: Decomposing dysfunctional beliefs about sleep by psychological inflexibility interaction via simple slopes for psychological inflexibility.
+</p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>The <b><span style="color: #C00000;">significant interaction effect</b></span> indicates that the prediction effect of dysfunctional beliefs about sleep may become more positive for additional levels of psychological inflexibility.</p>
+</div>
+
+</div>
+<div class="main">
+<p></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=img/fapesp-white.png>
+<img id="main-img-center" src=img/qrcodeL.svg>
+<img id="main-img-right" src=img/ipq-white3.png>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>
