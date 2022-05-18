@@ -1,0 +1,161 @@
+---
+title: "This page and the next page should be removed"
+shorttitle:  "Subliminal Header"
+
+author: 
+  - name        : ""
+    affiliation : ""
+
+affiliation:
+  - id          : ""
+    institution : ""
+
+class: doc,11pt, twoside
+#lang: english
+figsintext: yes
+lineno: no
+footnotelist: no
+figurelist: no
+
+bibliography: ["Bibs/references.bib", "Bibs/r-references.bib"]
+
+output:
+  papaja::apa6_pdf:
+    includes:
+      after_body: 
+      #- Chapter01_files/Appendix_Chapter1.tex
+      - croco/Appendix_croco.tex
+      
+header-includes:
+  - \setcounter{tocdepth}{3}
+  - \addtolength\oddsidemargin {0.5cm}
+  - \addtolength\evensidemargin {-0.5cm}
+  - \linespread{1.2} 
+  - \usepackage{setspace} 
+  - \shorttitle{}
+  - \fancyheadoffset[L]{0pt}  
+  - \fancyhf{}
+  - \fancyhead[RO,LE]{\small\thepage} 
+  - \renewcommand{\headrulewidth}{0pt}
+  - \interfootnotelinepenalty=10000
+---
+
+<!--To remove the first two pages use the following code in ubuntu:
+pdftk myDocument.pdf cat 3-end output removedPages.pdf
+-->
+
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+\setcounter{page}{1}
+
+\thispagestyle{empty}
+\begin{center}
+\vspace*{10mm}
+\textbf{\Large An example document using RMarkdown and papaja to write your dissertation}\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=!,totalheight=!,scale=0.18]{usp-brazao.jpg}
+\end{center}
+\end{figure}
+{\setstretch{1.7} 
+Inauguraldissertation\\
+zur\\ 
+Erlangung des Doktorgrades\\
+der Humanwissenschaftlichen Fakultät\\
+der Universität zu Köln  \\
+nach der Prüfungsordnung vom 10.05.2010  \\
+vorgelegt von  \\ 
+\smallskip
+\textbf{Tobias Heycke}\\
+\smallskip
+aus  \\
+Bergisch Gladbach  \\
+\smallskip
+Tag der Abgabe: 01.01.1970\\
+}
+\end{center}
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+<!--
+\vspace*{\fill}
+\thispagestyle{empty}
+\begin{flushleft}
+1. Berichterstatter: Prof. Dr. XXX (Köln) \\
+2. Berichterstatter: Prof. Dr. XXX (Köln) \\  
+Diese Dissertation wurde von der Humanwissenschaftlichen Fakultät der Universität zu Köln im Juli 2018 angenommen.\\
+Tag der mündlichen Prüfung: XX.XX.2018
+\end{flushleft}
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+-->
+
+\textbf{Acknowledgment} 
+
+\bigskip
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor danke frederik invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+
+\begin{flushleft}
+{\setstretch{1.0}
+\tableofcontents
+}
+\end{flushleft}
+
+\newpage
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+\thispagestyle{empty}
+
+# Summary
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+
+
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+\thispagestyle{empty}
+
+# Zusammenfassung
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+
+```{r 'Chapter01.Rmd', child="Chapter01.Rmd"}
+```
+
+\newpage
+
+\clearpage\mbox{}\thispagestyle{empty}\clearpage
+
+
+
+# References
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}

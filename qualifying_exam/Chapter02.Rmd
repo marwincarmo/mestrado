@@ -1,0 +1,932 @@
+
+# Chapter 2: Subliminal influence on preferences? A test of evaluative conditioning for brief visual conditioned stimuli using auditory unconditioned stimuli
+
+```{r init6, message = FALSE, warning = FALSE, results = "hide"}
+# #################################################################################################################################
+
+#Set the following 4 parameters when running the analyses
+
+# if True, BF results will be loaded from cache, if false all analyses will be recalculated and cached results will be overwritten (a subfolder called cachedResults needs to be present). Analyses may take several hours
+cacheBF <- TRUE
+
+#if True, data will not be loaded from git but from cache, set FALSE if loading data directly from git (may take several minutes per data set, set to FALSE if you run this script fo the first time, subfolder "cachedResults" needs to be present)
+cacheGitData <- TRUE
+
+#if TRUE, multicore will be used in all BayesFactor analyses. Does not work under Windows. Analyses may take several hours longer when set FALSE.
+mcore <- TRUE
+
+#number of cores to be used in the brm analyses
+ncores <- 4
+
+#If all boolean variables above are set to True, running the entire script may take several days (good luck)
+# #################################################################################################################################
+
+# load all librarys
+library("papaja")
+library("afex")
+library("BayesFactor")
+library("tidyr")
+#library("ggplot2")
+#theme_set(theme_apa(box = TRUE))
+
+#render_appendix("Appendix_croco.Rmd")
+
+options(contrasts = c("contr.sum", "contr.poly"))
+
+#ANOVA print BF Function
+printBF <- function(BF, Hypothesis = 1, index = 1, OutputSize = 1000, HStyle = 0){
+  if(Hypothesis == "1" & as.vector(BF[index]) >= 1) return("\\linebreak  __BayesFactor larger 1, but Output for H1 selected__ \\linebreak ")
+  if(Hypothesis == "0" & as.vector(BF[index]) < 1 & HStyle == 0) return("\\linebreak  __BayesFactor smaller 1, but Output for H0 selected__ \\linebreak ")
+  if(Hypothesis == "0") return(ifelse(as.vector(BF[index])>OutputSize, paste0('$\\mathit{BF}_{01} > ', OutputSize, '$'), paste0('$\\mathit{BF}_{01} = ', printnum(as.vector(BF[index])), '$')))
+  if(Hypothesis == "1") return(ifelse(1/as.vector(BF[index])>OutputSize, paste0('$\\mathit{BF}_{10} > ', OutputSize, '$'), paste0('$\\mathit{BF}_{10} = ', printnum(1/as.vector(BF[index])), '$')))
+}
+
+#t test print function
+printBFt <- function(BF, HStyle = 0, index = 1, OutputSize = 1000, postit = 100000){
+  if(as.vector(BF[index]) < 1 & HStyle == 0){
+    b <- 1/as.vector(BF[index])
+    num <- "01"
+  }else{
+    b <- as.vector(BF[index])
+    num <- "10"
+  }
+  if(as.character(class(BF@numerator[[names(BF@numerator)[index]]])) == "BFoneSample"){ 
+    rBF <- BayesFactor::ttestBF(BF@data[,1], mu = BF@numerator[[names(BF@numerator)[index]]]@prior$mu, rscale = BF@numerator[[names(BF@numerator)[index]]]@prior$rscale)
+  }
+  if(as.character(class(BF@numerator[[names(BF@numerator)[1]]])) == "BFindepSample"){ 
+      rBF <- BayesFactor::ttestBF(subset(BF@data, BF@data[,2] == "x")[,1] , subset(BF@data, BF@data[,2] == "y")[,1], rscale = BF@numerator[[names(BF@numerator)[index]]]@prior$rscale, paired = FALSE)
+    }
+  post <- BayesFactor::posterior(rBF, index = index, iterations = postit)
+  d <- median(post[, "delta"])
+  HDI <- coda::HPDinterval(post[, "delta"])
+  ifelse(b > OutputSize, paste0('$\\mathit{BF}_{', num, '} > ', OutputSize, '$', ', ', '$d = ', printnum(d), '$', ', ', '95% HDI [', printnum(HDI[1]), ', ', printnum(HDI[2]), ']'), paste0('$\\mathit{BF}_{', num, '} = ', printnum(b), '$', ', ', '$d = ', printnum(d), '$', ', ', '95% HDI [', printnum(HDI[1]), ', ', printnum(HDI[2]), ']'))
+}
+
+printBFbrms <- function(b, num, post){
+  #calculate d and HDI from posterior
+  postd <- post * sqrt(3) / pi
+  #if BF larger 1000 report BF > 1000, else report exact BF
+  b <- ifelse(b > 1000, "> 1000", paste0("= ", as.character(printnum(b))))
+  median_d <- median(postd)
+  hdi_d <- coda::HPDinterval(as.mcmc(postd))
+  paste0('$\\mathit{BF}_{', num, '} ', b, '$', ', ', '$d = ', printnum(median_d), '$', ', ', '95% HDI [', printnum(hdi_d[1]), ', ', printnum(hdi_d[2]), ']')
+}
+
+#Function reading data from github (does not work for Exp 3, as there are more than 1000 data files in the folder)
+read_gitdata <- function(page, extension){
+    github_page <- read_html(page)
+    file_nodes <- html_nodes(github_page, ".content .css-truncate-target .js-navigation-open")
+    file_names <- html_text(file_nodes)
+    file_url <- html_attr(file_nodes, "href")[grep(extension, file_names)]
+    file_names <- gsub(".txt", "", file_names)
+    file_url <- paste0("https://raw.githubusercontent.com", file_url)
+    file_url <- gsub("blob/", "", file_url)
+    #add data to a data frame
+    data <- lapply(file_url, read.delim)
+    data <- do.call("rbind", data)
+    data
+}
+
+
+#calculate HDI and plotting plot
+BFtHDIlow <- function(value, xpos = 1, postit = 100000){
+  post <- BayesFactor::posterior(BayesFactor::ttestBF(value, mu = 0), iterations = postit)
+  HDI <- coda::HPDinterval(post[, "mu"])
+  arrows(x0 = xpos, y0 = mean(value), y1 = HDI[1], angle = 90, length = 0.1)
+}
+BFtHDIup <- function(value, xpos = 1, postit = 100000){
+  post <- BayesFactor::posterior(BayesFactor::ttestBF(value, mu = 0), iterations = postit)
+  HDI <- coda::HPDinterval(post[, "mu"])
+  arrows(x0 = xpos, y0 = mean(value), y1 = HDI[2], angle = 90, length = 0.1)
+}
+  
+```
+
+The acquisition of preferences plays an important role in our daily life: Companies want us to prefer their products over their competitors', politicians want us to prefer them over their opponents, and governmental bodies want us to adopt a healthy lifestyle.
+Given the multitude of motivations to sway our preferences it is important to establish whether a person's attitudes can be shaped without her <!-- generic fem --> becoming aware of the procedure.
+Evaluative conditioning (*EC*) is one way in which preferences can be acquired: When an initially neutral stimulus (the conditioned stimulus or *CS*) is paired with a positive or negative stimulus (the unconditioned stimulus or *US*), it is subsequently evaluated in accordance with the valence of the US.
+We argue that understanding processes underlying evaluative conditioning could have a major impact on the understanding of preference acquisition in general. 
+There are currently two dominant families of theories trying to explain the mechanisms that underlie the EC phenomenon [see @sweldens_role_2014 for a review].
+Single-process theories propose that the acquisition of preferences can only happen in a conscious, deliberate, propositional manner [e.g., @lovibond_role_2002; @mitchell_propositional_2009].
+Dual-process models, in contrast, propose that preferences can also be acquired in an automatic, non-conscious manner [e.g.,@gawronski_associative_2006].
+Whereas dual-process models posit an "indirect influence on propositional reasoning mediated by direct influence on associative
+evaluation" [@gawronski_associative_2006, *p.* 703] for which contingency awareness is not necessary, propositional single-process models posit that contingency awareness is a necessity for changes in preference to occur [@mitchell_propositional_2009].
+Whether a change in preferences can be achieved when people are unaware of the contingency between the CS and US is, therefore, a central question for theories of EC. 
+
+In support of associative processes, @olson_implicit_2001 report EC effects for participants who were unaware of the CS-US contingency. 
+Others however, have argued that awareness is a necessary condition for EC effects to occur: 
+Pleyers and colleagues have demonstrated that unaware EC effects are found only for those CS-US pairs for which participants could recall the specific US that had been paired with the given CS [@pleyers_aware_2007].
+Similarly, @stahl_respective_2009 found that EC effects are absent when participants cannot recall the valence of the US that was paired with a given CS. 
+An alternative explanation for these findings is that participants relied on their automatic affective response to the CS to answer questions about the paired US valence rather than reporting their actual memory [@gawronski_what_2012;@stahl_respective_2009].
+Such an 'affect-as-information' account can explain the correlation of EC effects with participants' report of US valence from a dual-process perspective in which EC is in fact independent from awareness [@hutter_dissociating_2012].
+Consistent with the latter view, when using a method that avoids this problem, Hütter and colleagues found EC effects in the absence of contingency awareness [@hutter_dissociating_2012]. 
+
+Because these previous studies investigating contingency awareness as a necessary precondition for EC have relied on retrospective reports by participants, they have been the target of two methodological criticisms: 
+First, such reports are merely correlational and thus causal inferences cannot be drawn; second, they are susceptible to forgetting.
+When awareness of the CS-US pair is assessed only after the learning phase [@sweldens_role_2014; @lovibond_role_2002], it is possible that a stimulus pair has been perceived during the learning phase but the episode cannot be retrieved during the contingency-awareness assessment at the end of the study.
+Awareness is therefore systematically underestimated if assessed by retrospective reports [@lovibond_role_2002].
+To the same effect, a recent meta-analysis also showed that awareness tests of unconscious learning effects are often underpowered [@vadillo_underpowered_2015]. 
+The authors of this meta analysis show that a joint analysis of awareness checks yields clear evidence for above-chance levels of awareness, a finding that contradicts the null findings reported in the investigated individual studies that were due to insufficient statistical power.
+
+Experimental manipulations of contingency awareness may provide stronger evidence and further illuminate the discussion.
+One way to manipulate contingency awareness is by way of presentation duration [see @dedonder_overcoming_2014 for a different approach]:
+Briefly presented and masked stimuli may sometimes be processed without reaching consciousness [@dehaene_conscious_2006; @van_den_bussche_mechanisms_2009].
+By showing either CS or US very briefly, the complete CS-US pair cannot be perceived consciously, thereby interfering with contingency awareness.
+Observing EC under such conditions would support the notion that EC effects can be formed "independent[ly] of conscious awareness" in associative learning [@gawronski_associative-propositional_2014, *p.* 193].
+A dual-process model would provide the most plausible explanation for such a finding, given that propositional theories propose that "associative learning is never automatic and always requires controlled processes" [@mitchell_propositional_2009, *p.* 187].
+
+Previous experiments have demonstrated EC effects with subliminal stimuli [@de_houwer_verbal_1994; @de_houwer_evaluative_1997; @fulcher_when_2001; @krosnick_subliminal_1992; @niedenthal_implicit_1990].
+In those studies, however, it was the US (not the CS) that was presented subliminally.
+This is critical because it has been shown that the perception of valenced information may be possible even with very short presentation times [@nasrallah_murder_2009; @zeelenberg_impact_2006; cf. Lähteenmäki et al., 2015].
+If, in the above studies, the valence of the US has been processed consciously, then any EC effects in these studies can be explained by a propositional single-process model and do not require dual processes.
+Only very few studies have so far reported EC effects for briefly presented CSs [e.g., @dijksterhuis_i_2004], and these studies' methodologies have been criticized, for example, for employing between-subject manipulations of the CSs or of US valence [@sweldens_role_2014; see @stahl_subliminal_2016 for a brief review].
+Hofmann and colleagues conclude in their meta analysis on EC in humans that more research is needed before any conclusions can be drawn about a subliminal EC effect [@hofmann_evaluative_2010].
+
+A recent study in our lab addressed the possibility of subliminal EC in a series of experiments that attempted to overcome the above-discussed methodological problems. 
+In this study, CS-US contingency was manipulated by varying CS presentation duration and/or masking, and awareness of brief and masked visual CSs was assessed immediately after their paired presentation with visual US images. 
+Across six experiments no EC effects were found, despite the fact that CS identification was slightly above chance [@stahl_subliminal_2016].
+The present study aims to test whether EC effects can be found under slightly above-chance CS identification conditions, when three potential shortcomings of the study by @stahl_subliminal_2016 are addressed. 
+
+### The present study 
+
+The goal of the present set of experiments is to provide an even more stringent and fair test of EC with briefly presented CSs than @stahl_subliminal_2016.
+As in those studies, our goal was to improve upon the methodological shortcomings of previous studies discussed by @sweldens_role_2014. 
+In line with previous work, therefore, we manipulated positive and negative USs within participants to rule out any effects of mood induction;
+and we manipulated presentation conditions of the CSs rather than the USs to avoid that--- even if USs are not reliably identified---conscious processing of US valence could be invoked as a single-process explanation for an EC effect.
+
+First, note that, in the study by @stahl_subliminal_2016, both the CS and the US were visual stimuli, presented concurrently and next to each other on the computer screen.
+This was done to increase the chances of EC effects by way of an implicit misattribution process [@jones_implicit_2009], which assumes that participants first experience an affective response (elicited by the US) that is then misattributed to the CS because it happens to be the stimulus that is attended at the time the affective response occurs.
+Factors that supposedly increase the chances of implicit misattribution with visual stimuli are (1) relative salience of the CS, (2) simultaneous onset of CS and US stimuli, (3) shifts of attention (eye gaze) between CS and US, and (4) moderately valent ('mildly evocative') US stimuli [@jones_implicit_2009].
+One problem that arises with the above method is that, when limiting presentation duration of the CS, participants' attention must be directed towards the CS during its brief presentation for it to have any chance of affecting cognition and behavior.
+This may interfere with the effect of a simultaneous stimulus onset in the sense that it requires that participants process the US and CS sequentially and in that order.
+If that is the case, it was perhaps less likely in this procedure that participants experienced an affective response elicited by the US while they attended the CS.
+
+On a related note, recent studies have investigated the effect of sequential versus simultaneous CS-US presentation on implicit EC effects.
+Results indicated that EC by way of an automatic process requires simultaneous pairing of stimuli, whereas an EC effect by propositional processes can also be found with sequential pairings [@hutter_dissociating_2012; @sweldens_evaluative_2010].
+This finding might contribute to explaining the absence of an EC effect in the experiments by @stahl_subliminal_2016.
+
+To address these problems, we used a cross-modal EC procedure in which the visually presented CS is paired with a simultaneously presented auditory US.
+This allows not only for a simultaneous CS-US presentation but also for a simultaneous *processing* of CS and US.
+Auditory USs paired with visual CSs have been used in conditioning procedures with children [@neumann_use_2008] and product preference studies [@gorn_effects_1982; @schemer_does_2008].
+The previously mentioned meta analysis by Hofmann and colleagues [@hofmann_evaluative_2010] estimated that the size of a cross-modal EC effect does not differ significantly from unimodal EC effects.
+Using this cross-modal approach of CS-US presentation allows for a brief CS presentation and ensures that CS and US can be attended at the same time, an issue which has received only little attention in previous studies on subliminal EC. 
+
+Second, we assessed whether EC for near threshold visible CSs can be obtained not only in the presence but also in the absence of an online CS identification task.
+To ensure that briefly presented stimuli are not clearly visible, in two initial studies we will measure visibility during the learning phase, thereby using an online visibility criterion as in the studies by @stahl_subliminal_2016.
+Following every CS-US pairing, participants will be asked to identify the previously presented CS from a selection of all CSs.
+Using this online visibility criterion, we can assess an average identification rate for each CS for each participant.
+We use this estimate as a proxy for the perceptual awareness of the CS (while recognizing that this measure may be influenced by unconscious influences on familiarity as well as guessing).
+If we observe an EC effect for stimuli that were not identified at above-chance levels during the learning phase, this would constitute strong evidence that this EC effect was caused by associative processes and not by conscious propositional processes.
+If we observe no EC effect, even for CSs that were correctly identified at slightly above-chance levels, a single-process model of evaluative learning would be preferred as the more parsimonious account.
+
+The visibility-check task has the additional benefit of directing participants' attention toward the CS, but it may also induce an analytic task set that may not be conducive for automatic EC.
+In addition, participants are presented with a set of several CSs as choice options in close temporal proximity with the US; this may dilute automatic EC effects because (a) affective response may be attributed to different CSs, and/or (b) the additional CSs presented on the visibility-check task may also be associated with USs of different valence over the course of the learning phase.
+In sum, it may be argued that the visibility-check task may interfere with the formation of subtle CS-US associations during learning.
+To address this possibility, in a final study participants will work on a different task during the learning phase.
+
+Third, in order to provide optimal conditions for obtaining even subtle EC effects, we introduced an additional, potentially more sensitive dependent measure:
+In a two alternative forced choice (2-AFC) task, we are pitting two CSs against one another that were paired with USs of opposite valence. 
+In at least one study on subliminal influence a 2-AFC task showed a significant effect while an evaluative rating did not show an effect [@verwijmeren_goal_2012]. 
+It seems plausible, therefore, that small and subtle EC effects might not be reflected in evaluative ratings because they were not perceived as large enough to justify selection of a different point on, say, a 7-point scale---but may nevertheless tip the scale when being forced to choose between two CSs that were paired either with a positive or a negative US. 
+
+As in @stahl_subliminal_2016, we wanted to be certain that automatic processes have a fair chance to operate and to produce EC effects.
+In the study at hand we therefore realized near-threshold but slightly above-chance (instead of fully subliminal) presentation conditions.
+We can therefore be certain that the brief visual CS stimuli could in fact be processed, and that automatic processes were given a fair chance to operate on them.
+
+Taken together, across three experiments we investigated EC effects for clearly visible as well as for near-threshold visual CSs that were paired with auditory USs. 
+In the unregistered Experiments 1 and 2, we used an online visibility-check task as an index of contingency awareness; the pre-registered Experiment 3 tested whether near-threshold cross-modal EC can be found in the absence of an online visibility check.
+In Experiments 1 and 3, a 2-AFC choice measure was administered to test whether EC with briefly presented CSs can be found on this potentially more sensitive measure.
+
+## Registered Experiment 3
+
+The goal of Experiment 3 was to replicate the findings of Experiment 1 and 2 in a sample large enough to detect medium to small EC effects for near-threshold CSs, or conversely to accumulate conclusive statistical evidence for the absence of such an effect.
+The only major difference to Experiment 2 was that we did not administer the visibility check throughout the learning task to avoid inducing an analytic deliberative mindset that may have obstructed automatic processes in Experiments 1 and 2 [see also @stahl_subliminal_2016].
+As in Experiment 1, we additionally assessed CS preferences in a 2-AFC choice task.
+In a high-powered study, this inclusion will contribute to answering the question whether choice is a more sensitive measure to detect small changes in preference as compared to evaluative ratings.
+From the visibility data of Experiment 2, we can conclude that the visibility of the briefly presented CSs was above chance even at 20 ms.
+Given that CSs are identified above chance, an absence of an EC effect for briefly presented CSs would be highly informative because we have attempted to create optimal conditions under which dual-process theories of EC would predict an automatic EC effect.
+
+If, on the other hand, we observed an EC effect with briefly presented CSs, the results would contradict findings by Stahl and colleagues [@stahl_subliminal_2016] who found no EC effect for near-threshold but above-chance visual CSs.
+Such a result would call into question their conclusion that there is no automatic EC effect, and it would lend credibility to the critique that the absence of EC in previous studies may have been caused by the experienced delay between CS and US, by a focused, analytic stimulus processing mindset induced by instructions to memorize CS-US pairings, or by interference from the online visibility check.
+Thus, Experiment 3 will provide a stringent and fair test of the predictions of single- versus dual-process models of EC.
+
+### Procedure 
+
+The procedure was the same as in Experiment 2 except that all briefly presented CSs were displayed for 20 ms and all CS onsets were delayed by 400 ms relative to USs.
+The study, thus, followed a 2 (*presentation time*: 20 ms or 1000 ms) $\times$ 2 (*US valence*: positive or negative) $\times$ 2 (*DV order*: 2-AFC or rating first) design; the first two factors were manipulated within participants.
+The order of dependent variables was counterbalanced across participants. 
+
+We substituted the visibility task with a target-detection task similar to the one used by @olson_implicit_2001 in the surveillance paradigm. 
+In Experiment 3, one of the two filler CSs was randomly selected to serve as the target stimulus for this task. It was presented for 200 ms (while the other filler stimulus was presented for 80 ms), and participants were instructed to press the space bar as quickly as possible whenever it appeared on screen during the learning phase.
+This task achieves the goal of focusing participants' visual attention on the CSs in a manner comparable to the CS identification task while being much less resource-demanding and considerably easier to perform.
+Most importantly, the task has repeatedly been shown to successfully support EC effects in incidental EC procedures that are supposedly due to the operation of automatic associative processes [@olson_implicit_2001].
+
+#### Material
+
+Based on the combined visibility data from Experiment 2 and the small pilot test administered afterwards, we decided to select the four most clearly visible CSs to be shown for 1000 ms only and the four CSs with lowest visibility to be presented for 20 ms only (for an overview of the visibility rates see Appendix H).
+Note that all CSs were identified at above-chance levels in both data sets.
+
+### Analysis plan
+
+```{r Demographics3, warning = FALSE}
+################################################################################################################################################
+# Read and prepare Data
+###############################################################################################################################################
+
+if(cacheGitData){
+  load("croco/cachedResults/DemoData3")
+} else{
+#add here the largest participantnumber in order for all data to be read:
+#N <- 193
+
+# This script automatically checks for the largest Participantnumber which is on github
+github_page <- read_html("https://github.com/methexp/rawdata/tree/master/croco3")
+file_nodes <- html_nodes(github_page, ".content .css-truncate-target .js-navigation-open")
+file_names <- html_text(file_nodes)
+file_names <- gsub(".txt", "", file_names)
+
+#count the number of Croco3_log files and this is the number of participants (these files appear at top of list on github)
+tmp <- table(substring(file_names, 1, 10) == "Croco3_log")
+N <- as.numeric(tmp[names(tmp)=="TRUE"])
+
+##################################################################################################################
+
+#list of all data files
+file_url <- paste0("https://raw.githubusercontent.com/methexp/rawdata/master/croco3/Data_Demographics_Croco3_", 1:N, ".txt")
+
+#add data to a data frame
+DemoData3 <- lapply(file_url, read.delim)
+DemoData3 <- do.call("rbind", DemoData3)
+
+#pp162 is causing problem due to " and was not read during previous read.delim
+p62 <- readLines("https://raw.githubusercontent.com/methexp/rawdata/master/croco3/Data_Demographics_Croco3_162.txt")
+p62 <- gsub("\"-", "-", p62) # remove "
+
+#add data of participant to data file
+DemoData3 <- rbind(DemoData3, read.delim(textConnection(paste(p62, collapse = "\n"))))
+save(DemoData3, file = "croco/cachedResults/DemoData3")
+}
+
+# remove data sets when exp was aborted and started again or for test trials:
+# numbers 217 and 218 were used to investigate no sound problem
+# computer crashed for participant Nr. 135 (Same participant took part in study with number 136)
+# 311 aborted experiment immediately and took part as 313
+# 38 aborted and took part as 40
+# 343 aborted and took part with 345
+VPExcl3 <- c(38, 135, 217, 218, 311, 343)
+
+#Total N collected (including participant who took part twice)
+TotalN3 <- length(unique(DemoData3$ParticipantNumber)) - length(unique(VPExcl3))
+
+# additional unforeseen exclusions
+# Participant 180 and participant 332 took part for a second time
+# participants 215 and 216 had no sound (due to a driver update ?)
+
+VPExcl3 <- c(VPExcl3, 180, 215, 216, 332)
+
+# add ParticiapntNumber to VPExcl3 list if pp reported that they took of the headphones during the experiment
+#HeadphoneAnswer <- unique(DemoData3$Kopfhörer)
+#if yes, or ja (look at all answers and add manually) remove participants from analysis ######################################################### check manually
+#VPExcl3 <- c(VPExcl3, subset(DemoData3, Kopfhörer %in% c("ja", "yes"))$ParticipantNumber)
+```
+
+```{r read_trialData3_space_button}
+
+# did participants press the space bar when a target appeared 
+# Read the trial data
+if(cacheGitData){
+  load("croco/cachedResults/TrialData3")
+} else{
+#list of all data files
+file_url <- paste0("https://raw.githubusercontent.com/methexp/rawdata/master/croco3/DataTrials_Croco3_", 1:N, ".txt")
+
+#add data to a data frame
+TrialData3 <- lapply(file_url, read.delim)
+TrialData3 <- do.call("rbind", TrialData3)
+save(TrialData3, file = "croco/cachedResults/TrialData3")
+}
+# see how often each participant pressed space
+# table(TrialData3$ParticipantNumber, TrialData3$space)
+# possibly identify participants who pressed space on almost everty trial (and exclude in exploratory analysis)
+
+# get only trials where a spacebar had to be pressed 
+TrialData3 <- subset(TrialData3, Length == "170")
+SpaceData3 <- as.data.frame(table(TrialData3$ParticipantNumber, TrialData3$space))
+SpaceData3 <- subset(SpaceData3, Var2 == "Space")
+
+# Outlier analysis with IQR
+criSpace3 <- summary(SpaceData3$Freq)[2] - 1.5 * IQR(SpaceData3$Freq)
+
+#a minimum of two errors have to be made for our outlier crietrion to be used, see below
+criSpace3 <- ifelse(criSpace3 > 7, 7, criSpace3)
+
+# uncomment if one wants to see distribution of N trials space was pressed by participant
+#plot(SpaceData3$Freq)
+#abline(h = ifelse(criSpace3 > 7, 7, criSpace3), col = "red") 
+
+# Add participantNumber to exclusionList based on Tukey outlier criterion in the space bar task
+# VPExcl3 needs to be defined above, otherwise remove here
+NnoSpace3 <- length(unique(as.numeric(as.character(subset(SpaceData3, Freq <= criSpace3)$Var1))[!(as.numeric(as.character(subset(SpaceData3, Freq <= criSpace3)$Var1)) %in% VPExcl3)]))
+
+VPExcl3 <- c(VPExcl3, as.numeric(as.character(subset(SpaceData3, Freq <= criSpace3)$Var1)))
+```
+
+```{r read_knowing_data3}
+# Read the knowing data
+if(cacheGitData){
+  load("croco/cachedResults/KnowingData3")
+} else{
+#list of all data files
+file_url <- paste0("https://raw.githubusercontent.com/methexp/rawdata/master/croco3/DataKnowing_Croco3_", 1:N, ".txt")
+
+#add data to a data frame
+KnowingData3 <- lapply(file_url, read.delim)
+KnowingData3 <- do.call("rbind", KnowingData3)
+save(KnowingData3, file = "croco/cachedResults/KnowingData3")
+}
+
+#overview of reponses
+knowing3VeryWell <- table(KnowingData3$knowing)
+
+#exclusion list only with people who knew one of the 20 ms animals very well - for exploratory analysis
+VPExcl3subKnowOnly <- c(VPExcl3, unique(subset(KnowingData3, knowing == "Kenne ich sehr gut" & CS %in% c("04.png", "20.png", "50.png", "51.png"))$ParticipantNumber))
+
+# add participants to exclusion list, if they report to know at least one Pokémon very well
+Nknwowell3 <- length(unique(unique(subset(KnowingData3, knowing == "Kenne ich sehr gut")$ParticipantNumber)[!(unique(subset(KnowingData3, knowing == "Kenne ich sehr gut")$ParticipantNumber) %in% VPExcl3)]))
+VPExcl3 <- c(VPExcl3, unique(subset(KnowingData3, knowing == "Kenne ich sehr gut")$ParticipantNumber))
+
+```
+
+```{r Demographics3RemoveOutliers, warning = FALSE}
+DemoData3 <- subset(DemoData3, !ParticipantNumber %in% VPExcl3)
+
+# participant 11 typed in "1 9  " as age - this was changed to 19
+DemoData3$Alter[DemoData3$ParticipantNumber == 11] <- "19"
+#age as numeric so mean can be calculated
+DemoData3$Alter <- as.numeric(DemoData3$Alter)
+```
+
+Before conducting our analyses, we excluded participants who 
+(a) reported for at least one of the Pokémon CSs that they 'know it very well' (because pre-experimental preferences towards the stimuli are typically not affected by EC); 
+(b) reported that they did not wear the headphones during the learning task;
+(c) missed too many targets in the ongoing task (participants were excluded based on Tukey's outlier criterion, but only if that criterion reaches 3 misses, thereby allowing for 1 or 2 lapses during the learning phase);
+(d) aborted the experiment prematurely;
+or (e) explicitly reported other major (but unforeseeable) issues during the experiment that hindered them to participate in an orderly fashion (e.g., loud noises during experiment, difficulty understanding the instructions; based on our experience from previous studies we expect at most one of such cases to occur).
+
+After the initially set $N$ was reached, we analyzed the data using frequentist and Bayesian data analyses. 
+All further incoming data were analyzed using a sequential Bayesian analysis [@schonbrodt_sequential_2015; @rouder_optional_2014]. 
+
+#### Planned sample size
+
+We first collected a fixed number of 122 participants based on the same a-priori power analysis as described for Experiment 1, which ensured adequate power for a one-sided paired $t$-test with $\upalpha = \upbeta = .05$ and medium-to-small effects of $d = 0.3$ that are at the lower end of typical incidental EC effect sizes.
+A minimal $N = 122$ should also help to minimize the chance of a false positive finding in the sequential Bayesian analyses [@schonbrodt_sequential_2015]. 
+We continued data collection until all targeted Bayes factors had reached (or exceeded) 10 or greater (or less than 1/10 when the inverse Bayes factor is considered), or until we ran out of money (i.e., participants were paid 2€ for the short study, and funds were available to pay a maximum of $N = 300$ participants).
+The total $N$ might be higher than 300 because some participants may opt to participate in exchange for partial course credit. 
+After the minimal sample size was reached, the data were analysed after every day of data collection.
+
+##### Stopping rule
+
+We planned to stop data collection when the evidence for both EC effects (20 ms and 1000 ms) was conclusive, both for evaluative ratings and the choice measure. 
+That is, we monitored four Bayes Factors, and we stopped data collection when, in each of the four cases, either $\mathit{BF}_{01} > 10$ or $\mathit{BF}_{10} > 10$.
+
+#### Confirmatory analysis 
+
+```{r read_rating_data3}
+# Read in the Rating data
+if(cacheGitData){
+  load("croco/cachedResults/ratingData3")
+} else{
+#list of all data files
+file_url <- paste0("https://raw.githubusercontent.com/methexp/rawdata/master/croco3/DataRating_Croco3_", 1:N, ".txt")
+
+#add data to a data frame
+ratingData3 <- lapply(file_url, read.delim)
+ratingData3 <- do.call("rbind", ratingData3)
+save(ratingData3, file = "croco/cachedResults/ratingData3")
+}
+
+#code US as either positive or negative- actual number of US saved here does not have any meaning
+# the CS was not paired one to one but in the python script the last US from the pair list was saved to the field 'US'
+ratingData3$correspondingUS <- ifelse(substr(ratingData3$correspondingUS, 1, 1) == "n", "negative", "positive")
+
+# create which DV was measured first
+ratingData3$Order <- ifelse(ratingData3$ParticipantNumber %% 2 == 1, "RatingFirst", "ChoiceFirst")
+
+#Exclude participants (see above), but only those who reported to know subliminal animal very well
+ratingData3subExpl <- subset(ratingData3, !ParticipantNumber %in% VPExcl3subKnowOnly)
+
+# Exlucde participant from rating data set (see above)
+ratingData3 <- subset(ratingData3, !ParticipantNumber %in% VPExcl3)
+
+# explicitly create factors
+ratingData3$ParticipantNumber <- as.factor(ratingData3$ParticipantNumber)
+ratingData3$correspondingUS <- as.factor(ratingData3$correspondingUS)
+ratingData3$correspondingTime <- as.factor(ratingData3$correspondingTime)
+ratingData3$CS <- as.factor(ratingData3$CS)
+ratingData3$Order <- as.factor(ratingData3$Order)
+
+# caluculate mean rating per time and valence
+ratingDataAggr3 <- aggregate(likingRating ~ ParticipantNumber * correspondingUS * correspondingTime + Order, ratingData3, mean)
+
+# wide format of rating data
+ratingData3wide <- spread(
+  ratingDataAggr3
+  , key = "correspondingUS"
+  , value = "likingRating"
+)
+
+NrateReg <- length(unique(subset(ratingData3wide, correspondingTime == "152" & Order == "RatingFirst")$ParticipantNumber))
+NChoiceReg <- length(unique(subset(ratingData3wide, correspondingTime == "152" & Order == "ChoiceFirst")$ParticipantNumber))
+```
+
+In our confirmatory Bayesian analyses, which were also the basis of our data collection stopping rule, we first tested if the order of dependent measures affects the outcome of our experimental manipulations. 
+Only when finding compelling evidence that the order of dependent measures did not affect results ($\mathit{BF}_{01}$ > 10) we ignored the factor of dependent measure order. 
+If we observed inconclusive statistical evidence, or if we found evidence that the order of dependent measures affected our results ($\mathit{BF}_{10}$ > 10), we would analyze the evaluation data only for the subset of participants who first evaluated the CSs, and vice versa for the choice data analysis.
+For the frequentist analyses planned to be conducted on the initial fixed sample size of $N = 122$, we would ignore the factor of dependent measure order if we did not find a significant effect of the order on our results. 
+
+### Initial confirmatory analysis
+
+To probe for the presence or absence of EC effects within each level of the presentation time factor (20 ms and 1000 ms), we calculated one-tailed (Bayesian and frequentist) paired $t$-tests.
+We used the same priors and settings as in Experiment 1 and 2.
+For the initial analysis, we used the first 122 valid data sets (i.e., continued data collection if we had to exclude participants for any of the reasons given above until $N = 122$ was reached).
+
+
+#### Evaluation
+
+```{r BFEvalinitExp3}
+# global anova, including order factor
+if(cacheBF){
+  load("croco/cachedResults/aovBF_all3.1")
+} else{
+aovBF_all3.1 <- anovaBF(
+  likingRating ~ correspondingUS * correspondingTime * Order + ParticipantNumber
+  , data = subset(ratingDataAggr3, as.integer(as.character(ParticipantNumber)) < 173)
+  , whichRandom = "ParticipantNumber"
+  , whichModels = "top"
+  , multicore = mcore  
+)
+while(any(aovBF_all3.1@bayesFactor$error > 0.01)) aovBF_all3.1 <- recompute(aovBF_all3.1, multicore = mcore)
+save(aovBF_all3.1, file = "croco/cachedResults/aovBF_all3.1")
+}
+
+#afex anova for gEtaSq
+aovBF_all3.1eta <- apa_print(aov_ez(
+  dv = "likingRating" 
+  , within = c("correspondingUS", "correspondingTime")
+  , between = "Order"
+  , data = subset(ratingDataAggr3, as.integer(as.character(ParticipantNumber)) < 173)
+  , id = "ParticipantNumber"
+  , fun_aggregate = mean
+))
+
+# since order has an influence, only rating data for order == first will be analyzes
+# and the following t-test to test for an EC effect seperately 
+
+NRfirstInitial <- length(unique(subset(ratingData3wide, correspondingTime == "250" & Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)$ParticipantNumber))
+
+# Stopping rule t tests
+#EC effect in 1000 ms condition 
+tBF_3_1000.1 <- ttestBF(
+  subset(ratingData3wide, correspondingTime == "250" & Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+  , subset(ratingData3wide, correspondingTime == "250" & Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+#EC effect in 20 ms condition
+tBF_3_20.1 <- ttestBF(
+  subset(ratingData3wide, correspondingTime == "152" & Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+  , subset(ratingData3wide, correspondingTime == "152" & Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+#BF for H1 = 2.449 when including the participants who say they knew any of the Pokemons very well
+
+
+
+# ANOVA for rating first data only
+if(cacheBF){
+  load("croco/cachedResults/aovBF_all3_rfirst.1")
+} else{
+aovBF_all3_rfirst.1 <- anovaBF(
+  likingRating ~ correspondingUS * correspondingTime + ParticipantNumber
+  , data = subset(ratingDataAggr3, Order == "RatingFirst" & as.integer(as.character(ParticipantNumber)) < 173)
+  , whichRandom = "ParticipantNumber"
+  , whichModels = "top"
+  , multicore = mcore  
+)
+while(any(aovBF_all3_rfirst.1@bayesFactor$error > 0.01)) aovBF_all3_rfirst.1 <- recompute(aovBF_all3_rfirst.1, multicore = mcore)
+save(aovBF_all3_rfirst.1, file = "croco/cachedResults/aovBF_all3_rfirst.1")
+}
+```
+<!--
+```{r plotBFResultsinit3}
+plotEvalinitBF <- subset(ratingDataAggr3, as.integer(as.character(ParticipantNumber)) < 173)
+plotEvalinitBF$correspondingTime <- ifelse(plotEvalinitBF$correspondingTime == "152", "20 ms", "1000 ms")
+plotEvalinitBF$'Presentation Time' <- plotEvalinitBF$correspondingTime
+plotEvalinitBF$'US Valence' <- plotEvalinitBF$correspondingUS
+plotEvalinitBF$Evaluation <- plotEvalinitBF$likingRating
+
+
+apa_beeplot(
+  id = "ParticipantNumber"
+  , dv = "Evaluation"
+  , data = plotEvalinitBF
+  , factors = c("Order",  "US Valence", 'Presentation Time')
+  , fun.aggregate = mean
+  , dispersion = wsci
+  , jit = 0.25
+  , args_points = list(bg = c("#fc8d59", "lightblue"), col = c("#b30000", "#045a8d"), cex = c(1.5, 1.5))
+  , las = 1
+)
+```
+-->
+```{r FreqEvalinitExp3}
+aovOrder3 <- aov_ez(
+  id = "ParticipantNumber"
+  , dv = "likingRating"
+  , data = subset(ratingDataAggr3, as.integer(as.character(ParticipantNumber)) < 173)
+  , within = c("correspondingUS", "correspondingTime")
+  , between = "Order"
+  , fun_aggregate = mean
+)
+apa_aovOrder3 <- apa_print(aovOrder3)
+
+
+#EC effect in 1000 ms condition
+t_3_1000 <- t.test(
+    subset(ratingData3wide, correspondingTime == "250" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+  , subset(ratingData3wide, correspondingTime == "250" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+  , paired = TRUE
+  , alternative = "greater"
+)
+
+
+# effect size for 1000 ms effect
+source("croco/TrueCohensD.r")
+d_t_3_1000 <- TrueCohensD(x = subset(ratingData3wide, correspondingTime == "250" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+                        , y =  subset(ratingData3wide, correspondingTime == "250" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+                        , method = "paired")
+
+#EC effect in 20 ms condition
+t_3_20 <- t.test(
+    subset(ratingData3wide, correspondingTime == "152" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+  , subset(ratingData3wide, correspondingTime == "152" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+  , paired = TRUE
+  , alternative =  "greater"
+)
+
+# effect size for 20 ms effect
+d_t_3_20 <- TrueCohensD(subset(ratingData3wide, correspondingTime == "152" & as.integer(as.character(ParticipantNumber)) < 173)$positive
+                      , subset(ratingData3wide, correspondingTime == "152" & as.integer(as.character(ParticipantNumber)) < 173)$negative
+                      , method = "paired")
+```
+
+Since the results of the frequentist and Bayesian analyses diverged, we will report them separately.
+
+##### Frequentist analysis
+
+There were no indications for an interaction of the measurement order and the US valence, `r apa_aovOrder3$full_result$Order_correspondingUS`, nor the measurement order and the US valence and CS presentation time, `r apa_aovOrder3$full_result$Order_correspondingUS_correspondingTime`. 
+We therefore used the data of all participants (i.e., participants who did the evaluation task first and participants who did the choice task first) for further analyses of the evaluation.
+Of the CSs presented for 1000 ms, those shown with positive USs were evaluated more positively than those presented together with negative USs, `r apa_print(t_3_1000)$stat`, $d = `r d_t_3_1000`$.
+There were no indications for an EC effect for CSs presented for 20 ms, `r apa_print(t_3_20)$stat`, $d = `r d_t_3_20`$ .
+
+##### Bayesian analysis
+
+The Bayesian analyses on the potential influence of the order of measurement did not yield sufficient evidence to ignore the factor of measurement order. 
+This was true for the three way interaction of  order $\times$ presentation time $\times$ US valence, `r printBF(aovBF_all3.1, 0, index = 1)`, `r aovBF_all3.1eta$estimate$Order_correspondingUS_correspondingTime`, and the interaction between  US valence and  order, `r printBF(aovBF_all3.1, 0, index = 3)`, `r aovBF_all3.1eta$estimate$Order_correspondingUS`.
+For the following analyses, we therefore only used the data of participants who performed the evaluation task before the choice task ($N = `r NRfirstInitial`$).
+As in the frequentist analyses, for the CSs presented for 1000 ms a clear EC effect was found, `r printBFt(tBF_3_1000.1)`.
+There was however, no evidence for nor against an EC effect for CSs presented for 20 ms, `r printBFt(tBF_3_20.1)`.
+Since both of these Bayes factors were part of the sequential stopping rule, we continued data collection after the initial data analysis.
+
+
+### Confirmatory analysis after sequential testing
+
+During the sequential data collection, one of the target Bayes Factors did not reach our pre-set level (i.e., > 10 or < 1/10), and we therefore collected the previously set maximum data of 300 paid participants (`r TotalN3` participants in total, including participants who took part for partial course credit).
+Two participants took part twice and the second data set was removed.
+The data of one participant was removed because she reported that she did not wear the headphones and two participants were excluded due to technical difficulties. 
+Additionally, `r NnoSpace3` participants were excluded because they did not press the space bar at least 8 times when the target was shown and additional `r Nknwowell3` participants were excluded because they reported to know at least one Pokémon very well.
+Consequently `r length(unique(DemoData3$ParticipantNumber))` participants are included in the analysis (age *M* = `r mean(DemoData3$Alter, na.rm = TRUE)`, *SD* = `r sd(DemoData3$Alter, na.rm = TRUE)`; `r length(unique(DemoData3$ParticipantNumber[(DemoData3$Geschlecht %in% c("weiblich", "Weiblich", "W", "w", "weiblich ", "w.", "Weiblich ", "weibl"))]))` female).
+
+#### Evaluation
+
+```{r evaluation_analysis_study3, warning = FALSE}
+# global anova, including order factor
+if(cacheBF){
+  load("croco/cachedResults/aovBF_all3")
+} else{
+aovBF_all3 <- anovaBF(
+  likingRating ~ correspondingUS * correspondingTime * Order + ParticipantNumber
+  , data = ratingDataAggr3
+  , whichRandom = "ParticipantNumber"
+  , whichModels = "top"
+  , multicore = mcore  
+)
+while(any(aovBF_all3@bayesFactor$error > 0.01)) aovBF_all3 <- recompute(aovBF_all3, multicore = mcore)
+save(aovBF_all3, file = "croco/cachedResults/aovBF_all3")
+}
+
+#compute afex anova to generate gEtaSq
+aovBF_all3eta <- apa_print(aov_ez(
+  dv = "likingRating" 
+  , within = c("correspondingUS", "correspondingTime")
+  , between = "Order"
+  , data = ratingDataAggr3
+  , id = "ParticipantNumber"
+  , fun_aggregate = mean
+))
+
+# since order has an influence, only rating data for order == first will be analyzes
+# and the following t-test to test for an EC effect seperately 
+
+# Stopping rule t tests
+#EC effect in 1000 ms condition 
+tBF_3_1000 <- ttestBF(
+  subset(ratingData3wide, correspondingTime == "250" & Order == "RatingFirst")$positive
+  , subset(ratingData3wide, correspondingTime == "250" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+#EC effect in 20 ms condition
+tBF_3_20 <- ttestBF(
+  subset(ratingData3wide, correspondingTime == "152" & Order == "RatingFirst")$positive
+  , subset(ratingData3wide, correspondingTime == "152" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+#BF for H1 = 2.449 when including the participants who say they knew any of the Pokemons very well
+
+# ANOVA for rating first data only
+if(cacheBF){
+  load("croco/cachedResults/aovBF_all3_rfirst")
+} else{
+aovBF_all3_rfirst <- anovaBF(
+  likingRating ~ correspondingUS * correspondingTime + ParticipantNumber
+  , data = subset(ratingDataAggr3, Order == "RatingFirst")
+  , whichRandom = "ParticipantNumber"
+  , whichModels = "top"
+  , multicore = mcore  
+)
+while(any(aovBF_all3_rfirst@bayesFactor$error > 0.01)) aovBF_all3_rfirst <- recompute(aovBF_all3_rfirst, multicore = mcore)
+save(aovBF_all3_rfirst, file = "croco/cachedResults/aovBF_all3_rfirst")
+}
+```
+
+```{r plotBFResults3, fig.cap = "Evaluations of CSs in Experiment 3, split by the order of dependent variables, CS presentation time, and valence of the US paired with the CS. Error bars represent 95% within-subjects confidence intervals, dots represent participants' individual data points. \\label{fig:plotBFResults3}"}
+
+#prepare data set to have correct names in figure
+plotEvalBF <- ratingDataAggr3
+plotEvalBF$correspondingTime <- ifelse(plotEvalBF$correspondingTime == "152", "20 ms", "1000 ms")
+plotEvalBF$'Presentation Time' <- factor(plotEvalBF$correspondingTime, levels = c("20 ms", "1000 ms"), labels = c("20 ms", "1000 ms"))
+plotEvalBF$'US Valence' <- plotEvalBF$correspondingUS
+plotEvalBF$Evaluation <- plotEvalBF$likingRating
+plotEvalBF$`Order` <- factor(plotEvalBF$Order, levels = c("ChoiceFirst", "RatingFirst"), labels = c("Choice first", "Rating first"))
+
+apa_beeplot(
+  id = "ParticipantNumber"
+  , dv = "Evaluation"
+  , data = plotEvalBF
+  , factors = c('Presentation Time', "US Valence", "Order")
+  , fun.aggregate = mean
+  , dispersion = wsci
+  , jit = 0.25
+  , args_points = list(bg = c("#fc8d59", "lightblue"), col = c("#b30000", "#045a8d"), cex = c(1.5, 1.5))
+  , args_legend = list(plot = c(1, 0), x = "topleft", title = "US valence", legend = c("Negative", "Positive"), horiz = TRUE, bg = c("#fc8d59", "lightblue"), col = c("#b30000", "#045a8d"), inset = c(0.01, -0.025), cex=0.85)
+  , las = 1
+)
+
+
+```
+
+Since we observed an interaction between US valence and the order of dependent measures, `r printBF(aovBF_all3, 1, index = 3)`, `r aovBF_all3eta$estimate$Order_correspondingUS`, we analyzed only the data of participants who performed the evaluation task before the choice task ($N = `r NrateReg`$).
+As in the initial analysis, we observed an EC effect for CSs presented for 1000 ms, `r printBFt(tBF_3_1000)`. 
+Interestingly, we also observed an indication for the presence of an EC effect for briefly presented CSs, `r printBFt(tBF_3_20)`, see \autoref{fig:plotBFResults3} (and see for a visual comparison of all EC effects). 
+Even though this Bayes Factor did not reach our pre-set thresholds, and the effect size is small, the results indicate that even when CSs were presented for only 20 ms, participants evaluated CSs presented with positive USs as more positive than CSs presented with negative USs.
+
+### Exploratory analysis
+
+In a first set of additional---not registered---analyses, we explored the sensitivity of our results to our pre-registered participant exclusion criteria. 
+In a second set of analyses, we explored the interaction between our two dependent variables.
+
+#### Different participant exclusion criteria
+
+```{r sublKnowingonlyExcl, warning = FALSE}
+# explicitly create factors
+ratingData3subExpl$ParticipantNumber <- as.factor(ratingData3subExpl$ParticipantNumber)
+ratingData3subExpl$correspondingUS <- as.factor(ratingData3subExpl$correspondingUS)
+ratingData3subExpl$correspondingTime <- as.factor(ratingData3subExpl$correspondingTime)
+ratingData3subExpl$CS <- as.factor(ratingData3subExpl$CS)
+ratingData3subExpl$Order <- as.factor(ratingData3subExpl$Order)
+
+# caluculate mean rating per time and valence
+ratingData3subExplAggr <- aggregate(likingRating ~ ParticipantNumber * correspondingUS * correspondingTime + Order, ratingData3subExpl, mean)
+
+#EC effect in 20 ms condition
+tBF_3_20subKnowing <- ttestBF(
+  subset(ratingData3subExplAggr, correspondingTime == "152" & Order == "RatingFirst" & correspondingUS == "positive")$likingRating
+  , subset(ratingData3subExplAggr, correspondingTime == "152" & Order == "RatingFirst" & correspondingUS == "negative")$likingRating
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+#knowing of 20 ms images of participants who report to know one of the 1000ms animals very well, but none of the 20 ms animals
+#table(subset(KnowingData3, ParticipantNumber %in% VPExcl3[!(VPExcl3 %in% VPExcl3subKnowOnly)] & CS %in% c("04.png", "20.png", "50.png", "51.png"))$knowing)
+```
+
+<!--analyses for table (rating and Choice)-->
+```{r includeSpaceguys, warning = FALSE}
+
+load("croco/cachedResults/ratingData3includeSpaceguys")
+
+#aovBF_all3_space <- anovaBF(
+#  likingRating ~ correspondingUS * correspondingTime * Order + ParticipantNumber
+#  , data = ratingData3includeSpaceguys
+#  , whichRandom = "ParticipantNumber"
+#  , whichModels = "top"
+#  )
+
+ratingData3includeSpaceguysWide <- spread(
+  ratingData3includeSpaceguys
+  , key = "correspondingUS"
+  , value = "likingRating"
+)
+
+#EC effect in 1000 ms condition 
+tBF_3_1000spaceRF <- ttestBF(
+  subset(ratingData3includeSpaceguysWide, correspondingTime == "250" & Order == "RatingFirst")$positive
+  , subset(ratingData3includeSpaceguysWide, correspondingTime == "250" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+tBF_3_20spaceRF <- ttestBF(
+  subset(ratingData3includeSpaceguysWide, correspondingTime == "152" & Order == "RatingFirst")$positive
+  , subset(ratingData3includeSpaceguysWide, correspondingTime == "152" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+NrateSpace <- length(unique(subset(ratingData3includeSpaceguysWide, Order == "RatingFirst")$ParticipantNumber))
+NchoiceSpace <- length(unique(subset(ratingData3includeSpaceguysWide, Order == "ChoiceFirst")$ParticipantNumber))
+
+```
+
+
+```{r includeknowers, warning = FALSE}
+load("croco/cachedResults/ratindData3wideSpaceExcl")
+
+
+#EC effect in 20 ms condition
+tBF_3_20knowRF <- ttestBF(
+  subset(ratindData3wideSpaceExcl, correspondingTime == "152" & Order == "RatingFirst")$positive
+  , subset(ratindData3wideSpaceExcl, correspondingTime == "152" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+#EC effect in 1000 ms condition
+tBF_3_1000knowRF <- ttestBF(
+  subset(ratindData3wideSpaceExcl, correspondingTime == "250" & Order == "RatingFirst")$positive
+  , subset(ratindData3wideSpaceExcl, correspondingTime == "250" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+NrateKnow <- length(unique(subset(ratindData3wideSpaceExcl, Order == "RatingFirst")$ParticipantNumber))
+NchoiceKnow <- length(unique(subset(ratindData3wideSpaceExcl, Order == "ChoiceFirst")$ParticipantNumber))
+
+```
+
+```{r includeSpaceandKnowing, warning = FALSE}
+load("croco/cachedResults/ratingDataAggr3SpaceandKnowingOut")
+
+dAllWide <- spread(
+  ratingDataAggr3SpaceandKnowingOut
+  , key = "correspondingUS"
+  , value = "likingRating"
+)
+
+
+#EC effect in 20 ms condition
+tBF_3_20spaceKnowRF <- ttestBF(
+  subset(dAllWide, correspondingTime == "152" & Order == "RatingFirst")$positive
+  , subset(dAllWide, correspondingTime == "152" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+#EC effect in 1000 ms condition
+tBF_3_1000spaceKnowRF <- ttestBF(
+  subset(dAllWide, correspondingTime == "250" & Order == "RatingFirst")$positive
+  , subset(dAllWide, correspondingTime == "250" & Order == "RatingFirst")$negative
+  , rscale = "medium"
+  , paired = TRUE
+  , nullInterval = c(0, Inf)
+)
+
+NrateSpaceKnow <- length(unique(subset(dAllWide, Order == "RatingFirst")$ParticipantNumber))
+NchoiceSpaceKnow <- length(unique(subset(dAllWide, Order == "ChoiceFirst")$ParticipantNumber))
+
+```
+
+
+In a first analysis we focused on the small EC effect on evaluative ratings obtained for CSs presented for 20 ms; this effect was based on the subset of participants who completed the evaluation task before the choice task.
+Here, we again analysed only the evaluation data for those participants, and we again excluded all participants who did not press the space bar at least 8 times. 
+The only difference to our confirmatory analyses was that we only excluded those participants who reported to know any of the *Pokémons shown for 20 ms* very well (in the confirmatory analysis, a participant was excluded as soon as she indicated knowing *any* Pokémon very well). 
+In effect, this analysis included 137 participants (instead of 125 in the confirmatory analysis). 
+Including participants who report to know any of the Pokémon shown for 1000 ms very well---but none of the Pokémon presented for 20 ms---should not have an effect on the evaluation of CSs in the 20 ms condition.
+However, the results of the evaluation analysis for CSs presented for 20 ms (evaluation-first only) was now inconclusive, `r printBFt(tBF_3_20subKnowing)` (i.e., there was no evidence for a preference for positively paired CSs over negatively paired CSs anymore).
+Even though adding these participants to the analysis should not influence the ratings for CSs presented for 20 ms, the Bayes Factor was reduced and we did not find any statistical evidence for the alternative hypothesis over the null hypothesis.
+
+We additionally explored the effect of relaxing all previously set exclusion criteria (i.e., include participants who did not press the space bar often enough, include participants who knew at least one of the Pokémon very well, or both) on the choice measure as well as the evaluation measure (see *Table removed*), with the following results: 
+For the choice measure, relaxing any of the exclusion criteria did not affect the pattern of results.
+Similar, the conclusions remain unaltered for EC effects on evaluative ratings of CSs presented for 1000 ms.
+Results changed only for evaluation of CSs presented for 20 ms; here, the Bayes Factor was smaller---and inconclusive---when additional participants (other than those in the registered analysis) were included.
+It should however be noted that, in theses analyses, we also found no statistical evidence for the absence of an EC effect for CSs presented for 20 ms.
+
+#### Influence of order of the dependent variables
+
+#### Evaluation
+As reported above, we observed a clear indication for an interaction between US valence and the order of dependent measures in the evaluation task, `r printBF(aovBF_all3, 1, index = 3)`, `r aovBF_all3eta$estimate$Order_correspondingUS`.
+There was an indication for the absence of the interaction between US valence, the order of dependent measures, and the presentation time of CSs, `r printBF(aovBF_all3, 0, index = 1)`, `r aovBF_all3eta$estimate$Order_correspondingUS_correspondingTime`.
+Interestingly, for the CSs shown for 1000 ms the interaction between US valence and order of dependent variables was inconclusive.
+This interaction for CSs presented for 20 ms reflects the finding that the EC effect was larger when the evaluation was administered before the choice task, than when it was administered after the choice task.
+(a parallel comparison for CSs presented for 1000 ms yielded inconclusive results.
+
+### Discussion Experiment 3
+
+The main goal of the third experiment was to investigate whether we can find EC effects with brief (20 ms) and longer (1000 ms) CS presentation times when participants do not have to answer to a visibility check after every trial. 
+For an evaluation of CSs after the learning phase as well as a 2-AFC task, we found that CSs presented for 1000 ms and paired with positive USs were preferred over CSs presented for 1000 ms and paired with negative USs.
+On the evaluative rating measure, we also found some evidence that CSs presented for 20 ms and paired with positive USs were rated as more positive as CSs presented for 20 ms and paired with negative USs. 
+Interestingly, this pattern was not found in the choice task:
+Here, CSs presented for 20 ms were as likely chosen when they were paired with positive USs as when they were paired with negative USs.
+We additionally observed that the EC effect on evaluative ratings in the 20 ms condition was modulated by the choice task, in that the EC effect was smaller after the choice task compared to the effect found when the evaluation was administered before the choice task.
+In the following section, we will discuss the finding of an EC effect for CSs presented for 1000 ms, the diverging findings of EC effects for CSs presented for 20 ms, and the potential interference of the choice task on the rating task.
+
+The finding of an EC effect in the evaluation of CSs presented for 1000 ms replicated the previous two experiments, as well as previous studies on cross-modal EC with stimuli that can be consciously perceived. 
+The result therefore shows that the present paradigm is capable of reliably demonstrating cross-modal EC effects in evaluative ratings.
+Results were somewhat more mixed with regard to the choice measure: In Experiment 1, the evidence for an EC effect for CSs presented for 1000 ms in the 2-AFC task was not conclusive. 
+In Experiment 3, however, we found compelling evidence that CSs presented for 1000 ms and paired with positive USs were preferred over CSs presented for 1000 ms and paired with negative USs.
+This finding shows that evaluative conditioning might be a useful tool to influence decision-making behavior, and it lends ecological validity to the EC phenomenon. 
+Future studies in an applied setting could further build on this finding.
+
+In contrast to CSs presented for 1000 ms, we did not find a preference for positively paired CSs presented for 20 ms in the 2-AFC task. 
+We can only speculate whether this is due to the fact that either it is simply not possible to influence participants' decision-making behavior with briefly presented CSs, or whether the choice task was not sufficiently sensitive to detect small effects.
+Based on previous findings [@verwijmeren_goal_2012], we had originally speculated that choice might be a more sensitive measure of preferences than evaluations.
+In both Experiment 1 and Experiment 3---which used both choice and evaluation as dependent measures---effect sizes in the evaluation task were larger than effect sizes in the choice task. 
+In light of these findings, we would argue that choice might not be a more sensitive measure than evaluation.
+
+Consistent with this interpretation, there was some evidence for an EC effect in the 20 ms condition in the evaluation (but not the choice) task. 
+For the interpretation of this effect, it should be noted that---as in the Study by @stahl_subliminal_2016---the briefly presented CS stimuli were not truly subliminal but in fact visible at above-chance levels.
+We therefore refrain from claiming that we have found an EC effect for stimuli that were truly subliminal.
+Nevertheless, the present indication for an EC effect for stimuli presented only very briefly contradicts previous findings [@stahl_subliminal_2016] suggesting that EC effects require much longer CS presentation durations.
+There are a few factors that might explain this discrepancy:
+In contrast to the experiments by @stahl_subliminal_2016, the present studies (1) did not include a visibility check after each trial, and (2) they implemented a cross-modal EC procedure which might have allowed for a more simultaneous experience of CS and US [@jones_implicit_2009].
+Combined, these changes might have resulted in the formation of an EC effect even with a very brief presentation time.
+It has to be noted, however, that the effect size found in this study was very small; this could explain why previous studies (e.g., Experiment 1 and Experiment 2) did not find the effect.
+Another important point is that, in contrast to the effect for CSs presented for 1000 ms, the effect in the 20 ms presentation time condition was not robust to additional---exploratory---analyses. 
+Including only a few additional participants (i.e., those who knew one or more of the CS stimuli presented for 1000 ms but not those presented for 20 ms) sharply reduced the statistical evidence for an EC effect in the 20 ms condition (i.e., the Bayes Factor indicated merely anecdotal evidence).
+Nevertheless, the EC effects on the evaluation of CSs presented for 20 ms are interesting and give reason to invest additional efforts into the question whether a cross-modal setting to achieve simultaneous presentation of CS and US---as used in this paper---might be well-suited for automatic EC effects.
+
+It is additionally worth discussing the order effect of our dependent variables.
+For CSs presented for 20 ms, the evaluation EC effect was smaller when evaluation was administered after (as compared to before) the choice task.
+One possible explanation for this pattern of results is a consistency effect in the choice-first group: participants may have evaluated the CSs in line with their previous choices; if, as our results indicate, there was no EC effect on choice, these choices were likely to be random (i.e., equally likely to be consistent as inconsistent with US valence), and this may have masked, or interfered with, the small EC effect on evaluations.
+This is in line with research showing that choices can influence the preference of initially equally valued items [@brehm_postdecision_1956]. Note, however, that this finding has recently been critically discussed, and possible boundary conditions were suggested for the influence of choice on preferences [@voigt_endogenous_2017]. 
+
+## General Discussion
+
+We set out to test the hypothesis that simultaneous CS-US presentation might be beneficial for EC with briefly presented CSs. 
+To achieve a simultaneous CS-US presentation that guaranteed that the visual attention could be directed towards the briefly presented CS, we implemented a cross-modal paradigm with auditive USs and visual CSs.
+In the first two studies, we did not observe an EC effect for briefly presented CSs:
+If anything, we observed some evidence for the *absence* of an EC effect for briefly presented CSs. 
+However, interference arising from the CS identification task---which was prompted after every trial in the learning phases of Experiment 1 and 2---, as well as lack of statistical power, could be reasons for not finding an EC effect in these conditions. 
+We therefore omitted the CS identification task in a high-powered Experiment 3, and we additionally introduced a slightly delayed CS onset to create a more simultaneous experience of CS and US. 
+In this third study, we found some evidence for an EC effect for briefly presented CSs, which appeared to be contingent on our---registered---exclusion criteria.
+
+One important limitation is that CSs were not presented truly subliminally in any of the presented studies.
+CS identification was above chance for all the realized conditions, such that the observed EC effects might have been driven by some participants' conscious perception of some of the CS presentations. 
+Awareness of the contingency between these CSs and the auditive USs may therefore have formed consciously and might underlie the EC effects found in the brief presentation condition.
+It therefore does not follow that the process underlying the EC effect with briefly presented CSs in Experiment 3 must have been an automatic one. 
+The notion that only a few stimuli were consciously perceived by perhaps only a small subset of participants could also explain the small effect size found for CSs presented for 20 ms in Experiment 3, which could arise from a mixture of an average-sized EC effect contributed by participants who saw the briefly presented stimuli and a null EC effect of participants who did not see the stimuli.
+Nevertheless, the results of Experiment 3 give reason to further investigate the possibility of an EC effect with truly subliminal CS presentation.
+
+The core proposition of this paper was that a simultaneous presentation of CS and US might be beneficial for EC effects with briefly presented CSs.
+Through a cross-modal EC procedure with visually presented CSs and auditive USs, we attempted to achieve a simultaneous experience of CS and US.
+Using this procedure an EC effect with briefly presented---but above chance visible---CSs was obtained, which is in contrast to the findings by @stahl_subliminal_2016.
+However, the present study does not address whether the procedural changes indeed had the discussed causal effects, due to the non-experimental manipulation of the (presence versus absence of the) CS identification task, and due to the lack of evidence regarding the effect (or its absence) of slightly delaying the CS onset on EC with briefly presented CSs.
+
+Future research should more directly address the possibility that a simultaneous experience of CS and US might be beneficial for EC effects to occur [@jones_implicit_2009], and that a CS identification task to assess visibility, administered after every trial, might interfere with EC for briefly presented CSs.
+Perhaps most importantly, the present work found a small EC effect with briefly presented CSs, suggesting that the search for a set of enabling conditions for subliminal EC effects might prove worthwhile, and that the cross-modal paradigm proposed here might be a useful method for future studies.
+
