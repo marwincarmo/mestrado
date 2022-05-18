@@ -136,6 +136,8 @@ centralityPlot(NetworkSPAQ, scale = c("z-scores"),
 #Acuracia das arestas
 boot1 <- bootnet(NetworkSPAQ, nBoots = 1000)
 
+summary(boot1)
+
 plot(boot1, labels = FALSE,
      order = "sample")
 
@@ -177,7 +179,7 @@ NetworkSPAQ <- estimateNetwork(base_spaq, default = "EBICglasso", weighted = TRU
 
 plot(NetworkSPAQ, layout = "spring",
      label.scale=F, theme = "colorblind",
-     nodeNames = legend, groups = fatores,
+     nodeNames = legend, groups = fatores, legend.cex = 0.6,
      layoutScale = c(1,1), layoutOffset = c(0,3), GLratio = .2,
      vsize = 10,details = F, legend = TRUE)
 
