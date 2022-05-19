@@ -18,7 +18,7 @@ footnotelist: no
 figurelist: no
 
 bibliography: ["Bibs/references.bib", "Bibs/r-references.bib"]
-
+csl: apa7.csl
 output:
   papaja::apa6_pdf:
     includes:
@@ -28,9 +28,10 @@ output:
       
 header-includes:
   - \setcounter{tocdepth}{3}
-  - \addtolength\oddsidemargin {0.5cm}
-  - \addtolength\evensidemargin {-0.5cm}
-  - \linespread{1.2} 
+  #- \addtolength\oddsidemargin {0.5cm}
+  #- \addtolength\evensidemargin {-0.5cm}
+  - \setlength{\parskip}{5pt}
+  - \linespread{1.5} 
   - \usepackage{setspace} 
   - \shorttitle{}
   - \fancyheadoffset[L]{0pt}  
@@ -125,35 +126,20 @@ Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming 
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
 
 
-
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
-
-\thispagestyle{empty}
-
-# Zusammenfassung
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
-
-
 ```{r 'Chapter01.Rmd', child="Chapter01.Rmd"}
 ```
 
 \newpage
 
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
+```{r 'Chapter03.Rmd', child="Chapter03.Rmd"}
+```
 
+\newpage
 
+```{r 'Chapter04.Rmd', child="Chapter04.Rmd"}
+```
+
+\newpage
 
 # References
 
