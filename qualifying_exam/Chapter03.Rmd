@@ -3,7 +3,14 @@
 
 ## Participants and Study Design
 
-This study's participants were 277 college students (239 females) from the Faculty of Psychology at the Universitat de Barcelona, Spain. The average age of participants was 20.85 ± 5.71, and the participants received credit for agreeing to participate in this study. The committee of bioethics of the University of Barcelona (Institutional Review Board IRB00003099) approved this study. First, participants were informed about the main objective of the research and signed the informed consent. Then, they responded to a 45-minute online survey (as part of a more extensive study) using the online platform Qualtrics, including the Spanish version of GASP and the HEXACO.
+```{r power-analysis}
+ss_closefit <- semTools::findRMSEAsamplesize(rmsea0=.05, rmseaA=.059, df=74, power=.80)
+ss_notclosefit <- semTools::findRMSEAsamplesize(rmsea0 = .08, rmseaA = .059, df=74, power=.80)
+```
+
+To estimate an adequate sample size for the confirmatory factor analyses we used MacCallum et al.’s [-@maccallum1996] root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R [@R-base] using `semTools` [@semtools]. Morin [-@morin2007a] reports RMSEA = 0.059 in a confirmatory factor analysis for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA > 0.08 and the test of close fit of RMSEA < 0.05 with a power of 0.80 and $\alpha$ = 0.05. Results show that `r ss_notclosefit` subjects are necessary to reject the test for not-close fit, and the test of close fit would be rejected with `r ss_closefit` participants. Therefore, we aimed at a minimum sample size of `r ss_closefit` participants.
+
+This study was approved by the committee of ethics of the Department of Psychiatry at the Faculty of Medicine of Universidade de São Paulo (Institutional Review Board IRB00003099). To be included, participants must age between 18 and 59 years and indicate no difficulties in reading or writing. Participants will be informed about the main objective of the research and sign the informed consent. Then, they are requested to respond to an online survey using REDCap electronic data capture tools hosted at Hospital das Clinicas de Sao Paulo - FMUSP [@harris2009research; @harris2019redcap], including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
 
 ## Measures
 
