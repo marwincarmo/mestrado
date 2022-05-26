@@ -4,16 +4,31 @@
 ## Participants and Study Design
 
 ```{r power-analysis}
-ss_closefit <- semTools::findRMSEAsamplesize(rmsea0=.05, rmseaA=.059, df=74, power=.80)
-ss_notclosefit <- semTools::findRMSEAsamplesize(rmsea0 = .08, rmseaA = .059, df=74, power=.80)
+ss_closefit_dbas <- semTools::findRMSEAsamplesize(rmsea0=.05, rmseaA=.059, df=98, power=.80)
+ss_notclosefit_dbas <- semTools::findRMSEAsamplesize(rmsea0 = .08, rmseaA = .059, df=98, power=.80)
+
+ss_closefit_spaq <- semTools::findRMSEAsamplesize(rmsea0=.05, rmseaA=.08, df=19, power=.80)
+ss_notclosefit_spaq <- semTools::findRMSEAsamplesize(rmsea0 = .10, rmseaA = .08, df=19, power=.80)
+
 ```
 
-To estimate an adequate sample size for the confirmatory factor analyses we used MacCallum et al.’s [-@maccallum1996] root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R [@R-base] using `semTools` [@semtools]. Morin [-@morin2007a] reports RMSEA = 0.059 in a confirmatory factor analysis for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA > 0.08 and the test of close fit of RMSEA < 0.05 with a power of 0.80 and $\alpha$ = 0.05. Results show that `r ss_notclosefit` subjects are necessary to reject the test for not-close fit, and the test of close fit would be rejected with `r ss_closefit` participants. Therefore, we aimed at a minimum sample size of `r ss_closefit` participants.
+To estimate an adequate sample size for the confirmatory factor analyses we used MacCallum et al.’s [-@maccallum1996] root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R version 4.1.3 [@R-base] using `semTools` version `r packageVersion("semTools")` [@semtools]. Morin [-@morin2007a] reports RMSEA = 0.059 in a confirmatory factor analysis for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA > 0.08 and the test of close fit of RMSEA < 0.05 with a power of 0.80 and $\alpha$ = 0.05. Results show that `r ss_notclosefit_dbas` subjects are necessary to reject the test for not-close fit, and the test of close fit would be rejected with `r ss_closefit_dbas` participants. Therefore, we aimed at a minimum sample size of `r ss_closefit_dbas` participants. SPAQ's fit index was not considered in this power analysis due to the large RMSEA (0.081) reported by the original authors [@bothelius2015].
 
-This study was approved by the committee of ethics of the Department of Psychiatry at the Faculty of Medicine of Universidade de São Paulo (Institutional Review Board IRB00003099). To be included, participants must age between 18 and 59 years and indicate no difficulties in reading or writing. Participants will be informed about the main objective of the research and sign the informed consent. Then, they are requested to respond to an online survey using REDCap electronic data capture tools hosted at Hospital das Clinicas de Sao Paulo - FMUSP [@harris2009research; @harris2019redcap], including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
+This study was approved by the committee of ethics of the Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo - HCFMUSP (CAAE: 46284821.1.0000.0068). To be included, participants must age between 18 and 59 years and indicate no difficulties in reading or writing. Participants will be informed about the main objective of the research and sign the informed consent. Then, they are requested to respond to an online survey using REDCap electronic data capture tools [@harris2009research; @harris2019redcap], including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
 
-## Measures
+### Item translation
 
-## Translation
+The procedures described were applied both to Dysfunctional Beliefs and Attitudes about Sleep (DBAS-16) as well as to the SPAQ. However, the expert committee and the first translation team had a different configuration for each instrument.
+
+In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators in each case, of which two were familiar with the instrument constructs and the other unaware of its concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals. Then, two independent translators fluent in the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by the first author of the original questionnaire. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version. 
+
+As the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). As to avoid restricting the feedback to specific regional contexts [@borsaAdaptacaoValidacaoInstrumentos2012], we aimed to diversify our sample with participants from every region of the country and with varying educational level. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant. Overall participants had a good comprehension of the test items and instructions and only a single term was replaced in DBAS-16.
+
+## Aditional measures
+
+1. *Insomnia Severity Index (ISI)* [@bastien2001; @morin2011a] is a 7-item questionnaire to assess insomnia severity and its impact on the patient's life. Raters use a 5-point scale raging from 0 (no problem) to 4 (very severe problem). We used the Brazilian-portuguese version [@castro].
+
+2. The *Hospital Anxiety and Depression Scale (HADS)* [@zigmond1983hospital] is a scale used to assess psychological distress in non-psychiatric patients. It is formed by a two-factor structure with 7 items assessing Anxiety plus 7 items measuring Depression. 
+
 
 ## Analytical Plan

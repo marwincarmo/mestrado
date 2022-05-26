@@ -284,7 +284,7 @@ Individuals that show stronger insomnia symptoms typically demonstrate firm endo
 \hypertarget{measurement}{%
 \subsubsection{Measurement}\label{measurement}}
 
-To assess dysfunctional sleep-related beliefs and habits, Morin et al. (1993) developed the Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS). The DBAS started as a 30-item self-report instrument rated in a 100-mm visual analog scale of agreement/disagreement. Later, Morin and colleagues (2007) shortened it to a 16-item version, and replaced the response format for a 0-10 Likert-type scale. The items of the brief version were selected from the original scale based on criteria of response distribution, range, item-total correlations and exploratory oblique factor analysis. A 4-factor structure was fitted to the 16 items in a confirmatory factor analysis, labeled (a) consequences of insomnia, (b) worry about sleep, (c) sleep expectations, (d) medication, and a 5th second-order general factor. The DBAS is broadly employed in experimental studies assessing sleep-related cognitions, especially the 16-item version (Thakral et al., 2020). Many researchers translated and validated the DBAS-16 across various cultures. These studies successfully replicated the original factor structure and presented good validity evidences (Boysan et al., 2010; Dhyani et al., 2013; Lang et al., 2017). Moreover, the DBAS-16 outperformed the 30 and 10-item versions in reproducibility of factor structure, measures of internal consistency, concurrent validity and sensitivity to change (Chung Ka-Fai et al., 2016).
+To assess sleep-disruptive cognitions, Morin et al. (1993) developed the Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS). The DBAS started as a 30-item self-report instrument rated in a 100-mm visual analog scale of agreement/disagreement. Later, Morin and colleagues (2007) shortened it to a 16-item version, and replaced the response format for a 10-point scale ranging from 0 (strongly disagree) to 10 (strongly agree). The items of the brief version were selected from the original scale based on criteria of response distribution, range, item-total correlations and exploratory oblique factor analysis. A 4-factor structure was fitted to the 16 items in a confirmatory factor analysis, labeled (a) consequences of insomnia, (b) worry about sleep, (c) sleep expectations, (d) medication, and a 5th second-order general factor. The DBAS is broadly employed in experimental studies assessing sleep-related cognitions, especially the 16-item version (Thakral et al., 2020). Many researchers translated and validated the DBAS-16 across various cultures. These studies successfully replicated the original factor structure and presented good validity evidences (Boysan et al., 2010; Dhyani et al., 2013; Lang et al., 2017). Moreover, the DBAS-16 outperformed the 30 and 10-item versions in reproducibility of factor structure, measures of internal consistency, concurrent validity and sensitivity to change (Chung Ka-Fai et al., 2016).
 
 \hypertarget{sleep-problem-acceptance-questionnaire-spaq}{%
 \subsection{Sleep Problem Acceptance Questionnaire (SPAQ)}\label{sleep-problem-acceptance-questionnaire-spaq}}
@@ -308,15 +308,29 @@ The present project therefore aims at (a) developing a Brazilian portuguese tran
 \hypertarget{participants-and-study-design}{%
 \subsection{Participants and Study Design}\label{participants-and-study-design}}
 
-To estimate an adequate sample size for the confirmatory factor analyses we used MacCallum et al.'s (1996) root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R (R Core Team, 2022) using \texttt{semTools} (Jorgensen et al., 2021). Morin (2007) reports RMSEA = 0.059 in a confirmatory factor analysis for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA \textgreater{} 0.08 and the test of close fit of RMSEA \textless{} 0.05 with a power of 0.80 and \(\alpha\) = 0.05. Results show that 267 subjects are necessary to reject the test for not-close fit, and the test of close fit would be rejected with 1177 participants. Therefore, we aimed at a minimum sample size of 1177 participants.
+To estimate an adequate sample size for the confirmatory factor analyses we used MacCallum et al.'s (1996) root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R version 4.1.3 (R Core Team, 2022) using \texttt{semTools} version 0.5.6 (Jorgensen et al., 2021). Morin (2007) reports RMSEA = 0.059 in a confirmatory factor analysis for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA \textgreater{} 0.08 and the test of close fit of RMSEA \textless{} 0.05 with a power of 0.80 and \(\alpha\) = 0.05. Results show that 216 subjects are necessary to reject the test for not-close fit, and the test of close fit would be rejected with 920 participants. Therefore, we aimed at a minimum sample size of 920 participants. SPAQ's fit index was not considered in this power analysis due to the large RMSEA (0.081) reported by the original authors (Bothelius et al., 2015).
 
-This study was approved by the committee of ethics of the Department of Psychiatry at the Faculty of Medicine of Universidade de São Paulo (Institutional Review Board IRB00003099). To be included, participants must age between 18 and 59 years and indicate no difficulties in reading or writing. Participants will be informed about the main objective of the research and sign the informed consent. Then, they are requested to respond to an online survey using REDCap electronic data capture tools hosted at Hospital das Clinicas de Sao Paulo - FMUSP (Harris et al., 2009, 2019), including the Brazilian-Portuguese version of DBAS-16 and SPAQ and other auxiliary instruments.
+This study was approved by the committee of ethics of the Hospital das Clínicas da Faculdade de Medicina da Universidade de São Paulo - HCFMUSP (CAAE: 46284821.1.0000.0068). To be included, participants must age between 18 and 59 years and indicate no difficulties in reading or writing. Participants will be informed about the main objective of the research and sign the informed consent. Then, they are requested to respond to an online survey using REDCap electronic data capture tools (Harris et al., 2009, 2019), including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
 
-\hypertarget{measures}{%
-\subsection{Measures}\label{measures}}
+\hypertarget{item-translation}{%
+\subsubsection{Item translation}\label{item-translation}}
 
-\hypertarget{translation}{%
-\subsection{Translation}\label{translation}}
+The procedures described were applied both to Dysfunctional Beliefs and Attitudes about Sleep (DBAS-16) as well as to the SPAQ. However, the expert committee and the first translation team had a different configuration for each instrument.
+
+In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators in each case, of which two were familiar with the instrument constructs and the other unaware of its concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals. Then, two independent translators fluent in the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by the first author of the original questionnaire. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version.
+
+As the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). As to avoid restricting the feedback to specific regional contexts (Borsa et al., 2012), we aimed to diversify our sample with participants from every region of the country and with varying educational level. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant. Overall participants had a good comprehension of the test items and instructions and only a single term was replaced in DBAS-16.
+
+\hypertarget{aditional-measures}{%
+\subsection{Aditional measures}\label{aditional-measures}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{Insomnia Severity Index (ISI)} (Bastien et al., 2001; Morin et al., 2011) is a 7-item questionnaire to assess insomnia severity and its impact on the patient's life. Raters use a 5-point scale raging from 0 (no problem) to 4 (very severe problem). We used the Brazilian-portuguese version (Castro, 2011).
+\item
+  The \emph{Hospital Anxiety and Depression Scale (HADS)} (Zigmond \& Snaith, 1983) is a scale used to assess psychological distress in non-psychiatric patients. It is formed by a two-factor structure with 7 items assessing Anxiety plus 7 items measuring Depression.
+\end{enumerate}
 
 \hypertarget{analytical-plan}{%
 \subsection{Analytical Plan}\label{analytical-plan}}
@@ -345,6 +359,9 @@ Akram, U., Gardani, M., Riemann, D., Akram, A., Allen, S. F., Lazuras, L., \& Jo
 \leavevmode\vadjust pre{\hypertarget{ref-americanpsychiatricassociation2013}{}}%
 Association, A. P. (Ed.). (2013). \emph{Diagnostic and statistical manual of mental disorders: {DSM}-5} (5th ed). {American Psychiatric Association}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-bastien2001}{}}%
+Bastien, C. H., Vallières, A., \& Morin, C. M. (2001). Validation of the {Insomnia Severity Index} as an outcome measure for insomnia research. \emph{Sleep Medicine}, \emph{2}(4), 297--307. \url{https://doi.org/10.1016/s1389-9457(00)00065-4}
+
 \leavevmode\vadjust pre{\hypertarget{ref-beck1979cognitive}{}}%
 Beck, A. T. (1979). \emph{Cognitive therapy of depression}. Guilford press.
 
@@ -354,6 +371,12 @@ Belanger, L., Savard, J., \& Morin, C. M. (2006). Clinical management of insomni
 \leavevmode\vadjust pre{\hypertarget{ref-blanken2020}{}}%
 Blanken, T. F., Borsboom, D., Penninx, B. W., \& Van Someren, E. J. (2020). Network outcome analysis identifies difficulty initiating sleep as a primary target for prevention of depression: A 6-year prospective study. \emph{Sleep}, \emph{43}(5), zsz288. \url{https://doi.org/gghm2s}
 
+\leavevmode\vadjust pre{\hypertarget{ref-borsaAdaptacaoValidacaoInstrumentos2012}{}}%
+Borsa, J. C., Damásio, B. F., \& Bandeira, D. R. (2012). {Adaptação e validação de instrumentos psicológicos entre culturas: algumas considerações}. \emph{Paidéia (Ribeirão Preto)}, \emph{22}(53), 423--432. \url{https://doi.org/10.1590/S0103-863X2012000300014}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bothelius2015}{}}%
+Bothelius, K., Jernelöv, S., Fredrikson, M., McCracken, L. M., \& Kaldo, V. (2015). Measuring {Acceptance} of {Sleep Difficulties}: {The Development} of the {Sleep Problem Acceptance Questionnaire}. \emph{Sleep}, \emph{38}(11), 1815--1822. \url{https://doi.org/10.5665/sleep.5170}
+
 \leavevmode\vadjust pre{\hypertarget{ref-boysan2010}{}}%
 Boysan, M., Merey, Z., Kalafat, T., \& Kağan, M. (2010). Validation of a brief version of the dysfunctional beliefs and attitudes about sleep scale in {Turkish} sample. \emph{Procedia - Social and Behavioral Sciences}, \emph{5}, 314--317. \url{https://doi.org/10.1016/j.sbspro.2010.07.095}
 
@@ -362,6 +385,9 @@ Brewin, C. R. (1996). Theoretical foundations of cognitive-behavior therapy for 
 
 \leavevmode\vadjust pre{\hypertarget{ref-carney2006}{}}%
 Carney, C. E., \& Edinger, J. D. (2006). Identifying {Critical Beliefs About Sleep} in {Primary Insomnia}. \emph{Sleep}, \emph{29}(3), 342--350. \url{https://doi.org/10.1093/sleep/29.3.342}
+
+\leavevmode\vadjust pre{\hypertarget{ref-castro}{}}%
+Castro, L. S. (2011). \emph{Adaptação e validação do {Índice} de {Gravidade} de {Insônia} ({IGI})} {[}PhD thesis{]}. Universidade Federal de São Paulo.
 
 \leavevmode\vadjust pre{\hypertarget{ref-chen2017}{}}%
 Chen, P.-J., Huang, C. L.-C., Weng, S.-F., Wu, M.-P., Ho, C.-H., Wang, J.-J., Tsai, W.-C., \& Hsu, Y.-W. (2017). Relapse insomnia increases greater risk of anxiety and depression: Evidence from a population-based 4-year cohort study. \emph{Sleep Medicine}, \emph{38}, 122--129. \url{https://doi.org/10.1016/j.sleep.2017.07.016}
@@ -432,6 +458,9 @@ Marques, D. R., Allen Gomes, A., Clemente, V., Santos, J. M., \& Castelo-Branco,
 \leavevmode\vadjust pre{\hypertarget{ref-morin1993insomnia}{}}%
 Morin, C. M. (1993). \emph{Insomnia: Psychological assessment and management.} Guilford press.
 
+\leavevmode\vadjust pre{\hypertarget{ref-morin2011a}{}}%
+Morin, C. M., Belleville, G., Bélanger, L., \& Ivers, H. (2011). \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3079939}{The {Insomnia Severity Index}: {Psychometric Indicators} to {Detect Insomnia Cases} and {Evaluate Treatment Response}}. \emph{Sleep}, \emph{34}(5), 601--608.
+
 \leavevmode\vadjust pre{\hypertarget{ref-morin1993}{}}%
 Morin, C. M., Stone, J., Trinkle, D., Mercer, J., \& Remsberg, S. (1993). Dysfunctional beliefs and attitudes about sleep among older adults with and without insomnia complaints. \emph{Psychology and Aging}, \emph{8}(3), 463--467. \url{https://doi.org/frwwvp}
 
@@ -461,6 +490,9 @@ Taylor, D. J., Lichstein, K. L., Durrence, H. H., Reidel, B. W., \& Bush, A. J. 
 
 \leavevmode\vadjust pre{\hypertarget{ref-thakral2020}{}}%
 Thakral, M., Von Korff, M., McCurry, S. M., Morin, C. M., \& Vitiello, M. V. (2020). Changes in dysfunctional beliefs about sleep after cognitive behavioral therapy for insomnia: {A} systematic literature review and meta-analysis. \emph{Sleep Medicine Reviews}, \emph{49}, 101230. \url{https://doi.org/10.1016/j.smrv.2019.101230}
+
+\leavevmode\vadjust pre{\hypertarget{ref-zigmond1983hospital}{}}%
+Zigmond, A. S., \& Snaith, R. P. (1983). The hospital anxiety and depression scale. \emph{Acta Psychiatrica Scandinavica}, \emph{67}(6), 361--370.
 
 \end{CSLReferences}
 
