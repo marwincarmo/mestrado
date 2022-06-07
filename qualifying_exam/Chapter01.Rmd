@@ -24,6 +24,13 @@ To assess sleep-disruptive cognitions, Morin et al. [-@morin1993insomnia] develo
 
 ### Measurement
 
+## The cross-cultural adaptation process
+
+Before using existing measures in a distinct cultural context of where it was originally developed it's important to assess the construct existence and similarity in this new context, since it may manifest differently [@flakeConstructValidationSocial2017; @herdmanModelEquivalenceCultural1998]. A model proposed by @herdmanModelEquivalenceCultural1998 devise five types of equivalence to be assessed, namely, (1) conceptual equivalence; (2) Item equivalence; (3) Semantic equivalence; (4) Operational equivalence; and (5) Measurement equivalence.
+
+A minimum of two translators, fluent in both source and target language and acquainted with both cultural backgrounds, should produce the initial translation of the instrument [@borsa2012, @epstein2015; @geisinger1994; @reichenheim2007]. They should work independently and it is preferred that one translator is aware of the concepts underlying the questionnaire while the second should be someone with no medical or clinical background and blind to the concepts in the questionnaire [@beaton2000]. 
+
+
 # Objectives
 
 The present project therefore aims at (a) developing a Brazilian portuguese translation of the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16) and Sleep Problem Acceptance Questionnaire (SPAQ), (b) examining its factorial structure, and (c) examining its construct validity.

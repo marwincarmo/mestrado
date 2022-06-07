@@ -12,3 +12,13 @@ generate_svg(
   foreground = "white",
   background = "#024F84"
 )
+
+postercode <- qr_code("forms.gle/E2Jo7EQVhDpNeFL18", "M")
+
+generate_svg(
+  postercode,
+  "conferences/cbsono_21/poster/img/qrcodeLmp.svg",
+  size = 300,
+  foreground = "#fe1817",
+  background = "#fbfde2"
+)
