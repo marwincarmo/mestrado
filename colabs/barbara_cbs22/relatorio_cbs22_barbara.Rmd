@@ -1,0 +1,133 @@
+---
+title: "Relatório Barbara - Congresso Brasileiro de Sono 2022"
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+#options(OutDec = ",", digits = 2)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+```
+
+```{r pacotes}
+library(flextable)
+library(dplyr)
+library(ggplot2)
+library(modelsummary)
+```
+
+
+```{r funcoes}
+refator <- function(x) {
+  factor(x,
+         levels = c("Muito Baixa", "Baixa", "Média", "Alta", "Muito Alta"))
+}
+
+lista_regex <- list(
+  superior_incompleto = c(
+    "Ensino Fundamental Completo",
+    "Ensino Fundamental Incompleto",
+    "Ensino Médio Completo",
+    "Ensino Superior Incompleto",
+    "Técnico/Profissionalizante Completo"
+  )
+) %>%
+  purrr::map(stringr::str_c, collapse = "|") %>%
+  purrr::map(stringr::regex, ignore_case = TRUE)
+
+big_border = officer::fp_border(color="black", width = 2)
+small_border = officer::fp_border(color="black", width = 1)
+
+my_theme <- function(x, ...) {
+    x <- colformat_double(x, big.mark = "", decimal.mark = ",", digits = 2)
+    x <- set_table_properties(x, width = 1, layout = "autofit")
+    x <- border_remove(x)
+    x <- hline_top( x, border = small_border, part = "all" )
+    x <- hline_bottom(x, border = small_border, part = "all" )
+    x
+
+}
+
+```
+
+
+```{r bases}
+neoffi <- readxl::read_xlsx("~/Mestrado/data/neoffi_geral_1708.xlsx") |> 
+  janitor::clean_names() |> 
+  dplyr::select(-dplyr::starts_with("questao")) |> 
+  dplyr::mutate(dplyr::across(dplyr::ends_with("_t"), as.double))
+
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+
+neo2 <- neoffi |>
+  dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1)) |>
+  dplyr::mutate(
+    dplyr::across(dplyr::ends_with("classificacao"), refator),
+    superior_completo = dplyr::case_when(
+      stringr::str_detect(escolaridade, lista_regex$superior_incompleto) ~ 'Não',
+      TRUE ~ 'Sim'
+    ),
+    idade = as.double(idade)
+  )
+```
+
+# 1. Análises descritivas
+
+```{r continuos}
+neo2 |> 
+  dplyr::select(idade, grupo, dplyr::ends_with("_t"), sexo, superior_completo) %>%
+  datasummary_balance(~grupo, data=.,  output = 'flextable') |> 
+  my_theme()
+```
+
+<br>
+
+```{r categoricos}
+neo2 |> 
+  dplyr::select(grupo, dplyr::ends_with("classificacao")) |> 
+  tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
+                      names_to = "traco") |> 
+  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>%
+  datasummary(traco ~ factor(grupo) * (classificacao * (N + Heading("%")* Percent("col"))), data = .,
+              output = 'flextable') |> 
+  my_theme()
+```
+
+# 2. Análises estatísticas
+
+```{r}
+neomc <- neo2 |> 
+  dplyr::mutate(
+    neuroticismo_escore_t = neuroticismo_escore_t - mean(neo2$neuroticismo_escore_t),
+    extroversao_escore_t = extroversao_escore_t - mean(neo2$extroversao_escore_t),
+    amabilidade_escore_t = amabilidade_escore_t - mean(neo2$amabilidade_escore_t),
+    conscienciosidade_escore_t = conscienciosidade_escore_t - mean(neo2$conscienciosidade_escore_t),
+    abertura_escore_t = abertura_escore_t - mean(neo2$abertura_escore_t),
+    idade = idade - mean(neo2$idade, na.rm = TRUE))
+```
+
+```{r}
+fit <- glm(
+  grupo ~  superior_completo + idade + sexo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+  family = binomial(link = "logit"),
+  data = neomc
+)
+
+
+```
+
+```{r}
+tablogit <- tableone::ShowRegTable(fit, exp=TRUE)
+as.data.frame(tablogit) |> 
+  tibble::rownames_to_column() |> 
+  flextable() |> 
+  my_theme()
+```
+
