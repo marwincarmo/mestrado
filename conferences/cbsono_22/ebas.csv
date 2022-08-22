@@ -1,0 +1,1420 @@
+record_id,nome,cpf,redcap_event_name,sexo,idade,igi_escore,ehad_depressao_escore,ehad_ansiedade_escore,aaq_score,dbas_score,ebas_1,ebas_2,ebas_3,ebas_4,ebas_5,ebas_6,spaq_score,insonia
+1,Roseli Maria Doretto,05483474848,elegibilidade_arm_1,1,56.7,12,6,9,20,91,7,5,2,2,1,3,22,1
+2,Paulo Juliano dos Santos Prieto,29473208839,elegibilidade_arm_1,2,40.3,18,14,16,35,139,2,7,7,7,6,6,6,1
+3,Bruno Eduardo Siffoni Belloni,34123019811,elegibilidade_arm_1,2,35,21,11,10,32,102,1,3,5,3,4,3,15,1
+8,Fernanda Trópia Costa,03124276620,elegibilidade_arm_1,1,48.1,15,8,12,18,139,4,4,2,3,2,4,22,1
+10,Ana Carolina Galante Pereira Vouzella de Andrade,00835504700,elegibilidade_arm_1,1,44.3,12,5,5,14,46,3,1,4,1,1,4,37,1
+12,Verônica Magalhães Raimundo,22003882847,elegibilidade_arm_1,1,42.6,10,2,5,14,80,4,3,1,2,2,4,37,1
+15,Jose Azevedo Pinto Junior,26387511895,elegibilidade_arm_1,2,43.8,10,7,11,13,43,4,2,4,4,2,3,36,1
+16,Karyne Sumico de Lima Uyeno Jordão,35668574830,elegibilidade_arm_1,1,32.3,18,10,13,41,104,2,5,7,7,5,7,8,1
+20,Fabrício Sapienza,28237245830,elegibilidade_arm_1,2,38.3,17,1,7,10,60,6,4,2,3,1,6,33,1
+22,Lara Santana Tartari,01460654501,elegibilidade_arm_1,1,21.8,21,8,15,34,141,4,5,3,3,5,5,7,1
+24,Lais Stocco Zancanaro,35632574857,elegibilidade_arm_1,1,33.4,14,9,11,27,100,2,4,2,2,2,2,28,1
+26,Valquiria Maria Gonçalves,36844881860,elegibilidade_arm_1,1,31.3,18,3,10,30,80,2,2,4,4,4,4,23,1
+27,Mércia Sacramento dos Santos,01136319522,elegibilidade_arm_1,1,36.6,20,2,8,25,79,6,5,3,4,3,4,26,1
+28,Ênio Luis Damaso,06023752667,elegibilidade_arm_1,2,37.4,10,7,4,24,90,3,2,3,4,4,5,30,1
+31,Gabriela Volpe pinhabel,38382922864,elegibilidade_arm_1,1,30.7,17,4,6,10,125,5,2,1,1,4,2,6,1
+35,Sofia Pimentel Serra,52164085841,elegibilidade_arm_1,1,20.7,24,8,8,33,127,2,6,7,7,4,7,13,1
+36,Karen Cristine tjioe,35056166804,elegibilidade_arm_1,1,35.3,16,7,12,30,107,2,5,5,5,4,6,32,1
+39,Bruno Leme Torino,32820391826,elegibilidade_arm_1,2,37,17,8,15,42,110,2,5,7,6,5,3,9,1
+40,Maria Thereza Leuzzi Silva Leuzzi,12015473858,elegibilidade_arm_1,1,56,19,5,7,16,125,1,1,7,7,1,7,21,1
+63,Ana Cristina Vaz Neto Ferreira,02041921706,elegibilidade_arm_1,1,57.8,12,0,2,10,11,2,1,3,4,1,3,41,1
+65,Otávio Pelegrino Rocha,35666160877,elegibilidade_arm_1,2,34,13,8,12,37,94,2,3,5,6,3,2,28,1
+66,Lilian  Rose Dias Abdo Agamme,09116422856,elegibilidade_arm_1,1,54,12,11,9,19,84,5,4,4,1,1,1,30,1
+71,Samanta do Nascimento Sciola,22254882821,elegibilidade_arm_1,1,41.6,16,15,14,43,124,5,6,5,5,7,4,8,1
+73,Nayara Borges Balestero,44713071854,elegibilidade_arm_1,1,22,14,7,13,29,76,5,2,5,5,4,6,17,1
+74,Juan Ramon Alberich Cheffer,10956355730,elegibilidade_arm_1,2,35.8,20,13,17,40,127,1,7,6,5,4,5,12,1
+76,Thaís Voigt Espínola,09981581941,elegibilidade_arm_1,1,23.1,11,3,5,20,99,1,3,2,2,3,4,26,1
+82,Queila T. Diniz de Andrade,02939474818,elegibilidade_arm_1,1,59.3,22,10,10,35,94,4,3,7,7,6,7,23,1
+83,Julieta Kazue Honda,07645313870,elegibilidade_arm_1,1,51.4,22,12,16,29,129,3,7,6,5,4,7,31,1
+84,Viviane Gomes de Jesus Frutuoso,13273580852,elegibilidade_arm_1,1,51.1,25,12,13,38,75,7,4,7,7,4,7,15,1
+85,Juliano Mendes de Oliveira,03205512618,elegibilidade_arm_1,2,44.1,18,5,9,18,84,1,1,6,6,4,6,26,1
+87,VERONICA HELENA ALEXANDER,05188072823,elegibilidade_arm_1,1,57.7,23,15,20,43,133,6,1,7,7,1,2,5,1
+93,Karen Bauab,22272733808,elegibilidade_arm_1,1,39.2,21,15,15,39,141,1,6,6,6,6,6,8,1
+95,Yara Ramos Camargo,12792493828,elegibilidade_arm_1,1,58.4,22,7,14,30,134,1,1,1,4,5,4,13,1
+96,Leonardo Maia Pires,02751837344,elegibilidade_arm_1,2,34.2,21,10,5,18,122,3,2,5,6,6,4,29,1
+97,Heloísa Kuhnen Ferreira de Carvalho,44413538803,elegibilidade_arm_1,1,22,23,10,14,33,126,5,5,5,7,6,7,17,1
+103,MONIA MICHELLE SHIMIZU DE CARVAL,73916650106,elegibilidade_arm_1,1,42.4,20,16,14,26,104,3,4,4,5,4,1,12,1
+105,Vinicius de Oliveira Rodrigues,38146071805,elegibilidade_arm_1,2,28.5,22,11,15,41,123,4,5,4,4,6,5,14,1
+106,Yona Raquel de Assunção Sousa,21881539873,elegibilidade_arm_1,1,40.2,21,8,10,25,125,2,2,6,6,6,7,11,1
+107,Mirian Letrari Borges,91188288091,elegibilidade_arm_1,1,43,26,21,21,44,140,4,4,6,5,6,7,9,1
+113,Katia cilene LOBRACCI,13913933840,elegibilidade_arm_1,1,50.4,25,19,18,40,158,2,6,6,6,7,7,1,1
+115,Marcia Benjamim de Oliveira,10132792800,elegibilidade_arm_1,1,55.6,13,10,13,42,96,2,1,3,2,2,7,25,1
+116,Milson de Jesus Santos Lima,56529740287,elegibilidade_arm_1,2,45.5,26,16,13,43,142,3,7,5,5,7,6,1,1
+117,Thiana de Cássia Silva da Rocha,46315821898,elegibilidade_arm_1,1,23,18,7,11,33,104,5,5,4,4,3,5,20,1
+120,Herminia Maria Olmos Hernandez,09793795842,elegibilidade_arm_1,1,53.8,23,4,11,30,124,2,4,7,7,4,7,20,1
+122,Tatiana Vieira da Silva,32584129876,elegibilidade_arm_1,1,36.7,24,14,12,38,137,3,6,4,5,5,7,5,1
+124,Rafaella Borel da Silva,10482522720,elegibilidade_arm_1,1,22.6,19,7,14,33,117,3,4,5,4,5,5,12,1
+130,Pablo Marcus de Abreu Prestes,16020555801,elegibilidade_arm_1,2,45.3,24,14,19,46,118,2,1,6,6,5,5,18,1
+131,Lucia Maria da Silva Barutti,14729089880,elegibilidade_arm_1,1,47,17,3,5,21,102,6,2,1,3,3,2,30,1
+135,Barbara Cecato Serricchio,29327354893,elegibilidade_arm_1,1,38.3,16,11,7,36,105,1,4,1,1,1,1,9,1
+138,Denise regina piva,32084017874,elegibilidade_arm_1,1,37.7,20,9,12,35,118,1,2,3,4,7,3,21,1
+139,patricia briza bicudo,10692108890,elegibilidade_arm_1,1,52.6,10,13,18,38,92,2,2,4,5,5,5,22,1
+141,Regina dos Santos,29082083850,elegibilidade_arm_1,1,40.3,18,11,8,25,128,4,1,4,4,4,5,19,1
+143,Andrea de Moraes Camargo Martins,09374772817,elegibilidade_arm_1,1,48.8,13,4,9,20,119,6,6,1,4,4,3,22,1
+149,Loretta Farisco,30163405859,elegibilidade_arm_1,1,37.7,14,1,9,34,86,3,3,3,6,7,6,28,1
+153,GABRIELA CHAGAS AUTRAN RIBEIRO,10185499864,elegibilidade_arm_1,1,47.8,17,5,2,11,126,2,4,4,5,4,6,30,1
+162,Ivânia Matos de Lima Uyeno,20729162591,elegibilidade_arm_1,1,59.6,22,15,19,48,118,6,1,6,5,6,6,17,1
+166,Simone Ferreira de Souza Albanese,18705683890,elegibilidade_arm_1,1,44.9,23,11,14,36,139,4,5,4,4,7,7,9,1
+172,Natan Jamil Angelo,47227615820,elegibilidade_arm_1,2,20.4,19,9,15,18,98,5,1,2,2,3,4,16,1
+175,Vinícius Ribeiro da Silva,49068433873,elegibilidade_arm_1,2,20.8,17,12,4,40,102,4,4,5,4,5,4,17,1
+178,Bruna Venâncio da Silva,38084380885,elegibilidade_arm_1,1,28.5,19,4,2,32,141,6,7,1,5,2,2,7,1
+181,Raphael De Lucca Marcello Jarcovis,40631048855,elegibilidade_arm_1,2,26.2,14,5,9,26,61,4,2,4,4,2,5,26,1
+184,Raissa Pereira Bicudo,43318874809,elegibilidade_arm_1,1,20.4,19,9,15,25,113,7,5,4,3,4,5,24,1
+189,Luana gabrieli Ferreira de Sousa,05709295124,elegibilidade_arm_1,1,21.9,24,14,16,45,129,7,1,5,7,7,1,12,1
+194,Claudia Del Fava,05741045855,elegibilidade_arm_1,1,57.1,17,13,7,33,134,6,4,4,5,4,4,17,1
+195,Carla De Gouveia Barreto e Silva,45403728821,elegibilidade_arm_1,1,20.4,20,6,8,11,102,2,2,2,2,2,5,27,1
+198,Paulo Freitas da Paixao,51913364534,elegibilidade_arm_1,2,51.9,23,3,12,20,155,6,6,6,6,6,6,23,1
+199,Péricles Camillo Barra Nova de Melo,44782239807,elegibilidade_arm_1,2,24.2,16,6,11,26,117,3,4,3,5,4,6,20,1
+201,Ana Paula Pires Lorenzon Zumpano,22042686824,elegibilidade_arm_1,1,39.9,20,12,8,23,68,6,1,4,5,1,5,28,1
+203,Verônica da silva Alves,09555673780,elegibilidade_arm_1,1,39,24,12,13,29,155,4,4,5,4,4,4,2,1
+205,Jacqueline Carraca Wright da Silveira,02051887101,elegibilidade_arm_1,1,33.4,22,8,14,33,114,2,2,4,5,5,4,14,1
+210,Guilherme Cury Viana França,12752853769,elegibilidade_arm_1,2,30.4,23,11,20,46,98,1,4,7,6,4,6,4,1
+211,Karla Danielle Silva Marques,02206304376,elegibilidade_arm_1,1,34.1,14,11,12,28,104,5,3,4,4,3,5,19,1
+213,Juliana Schio,32337527840,elegibilidade_arm_1,1,35.8,18,12,13,24,109,6,4,4,4,4,6,19,1
+215,Michelle Nunes Garbulha,93286830178,elegibilidade_arm_1,1,40,22,10,16,49,88,5,4,6,4,5,7,15,1
+216,Camila branca venazzi,02923035135,elegibilidade_arm_1,1,31.4,27,15,21,48,121,4,5,7,6,6,6,4,1
+218,Maria Silvia Franco Figueiredo Caceres,14053548870,elegibilidade_arm_1,1,50.5,23,17,17,42,122,4,4,6,7,6,6,15,1
+219,Andrea Correa Lagareiro,37490951836,elegibilidade_arm_1,1,32.3,25,8,6,21,131,4,4,6,6,5,7,11,1
+221,Keli de Cassia Silva Lira,13327483841,elegibilidade_arm_1,1,48.1,23,11,14,33,117,5,5,5,5,5,5,11,1
+228,Patricia Audibert Menezes,01225865069,elegibilidade_arm_1,1,33.8,20,2,5,26,43,2,4,5,5,1,7,38,1
+230,luciana gomes de andrade,26415670832,elegibilidade_arm_1,1,43,23,16,20,40,132,7,6,5,5,7,5,6,1
+231,Valéria Cecília de Moraes Sita Bertolazzi,36931599801,elegibilidade_arm_1,1,33.3,18,7,15,25,95,2,4,6,5,5,5,24,1
+232,Natália Martim Leite,38701268848,elegibilidade_arm_1,1,31.6,25,10,13,41,145,7,5,4,4,5,7,13,1
+234,Luciana de Camargo Crê,14881049801,elegibilidade_arm_1,1,46.7,22,8,10,18,66,1,2,1,2,2,2,27,1
+235,Zuleide de Freitas Cordeiro da Silva,13570892875,elegibilidade_arm_1,1,50,17,11,15,29,127,5,1,7,7,4,7,16,1
+238,Nayara Azevedo Santos de Brito,22828643875,elegibilidade_arm_1,1,23.9,26,14,19,48,148,6,6,6,5,7,7,7,1
+239,Rosecler Aparecida Derrico Abreu,08913920840,elegibilidade_arm_1,1,55,18,12,7,26,105,3,4,5,4,4,7,25,1
+241,Ana maria marques de andrade,11743594801,elegibilidade_arm_1,1,59.3,10,6,1,16,74,1,1,2,1,1,1,30,1
+242,Emiliana monte dos santos,01491500328,elegibilidade_arm_1,1,35,25,14,20,44,138,4,5,6,5,4,5,20,1
+244,Gabriel Moreira da Costa,43461206873,elegibilidade_arm_1,2,24.5,20,12,14,33,160,4,4,4,7,4,3,11,1
+245,José Mauro Bonagura Prado,12608994890,elegibilidade_arm_1,2,54.6,19,12,9,32,112,4,5,2,5,5,2,8,1
+246,Daniele Nahomi Oshiro,32144494860,elegibilidade_arm_1,1,37.4,20,15,13,37,97,4,4,6,4,4,3,2,1
+247,THAYANNE NEZGODA,08113844970,elegibilidade_arm_1,1,30.2,24,14,13,43,135,7,7,4,4,4,7,1,1
+248,Leandro olmedila galioti,25398452827,elegibilidade_arm_1,2,44.9,15,5,4,13,123,5,3,4,3,3,4,18,1
+249,Gisele Corvacho Gonçalves,31125269880,elegibilidade_arm_1,1,37.4,22,15,18,41,114,2,6,6,7,5,7,11,1
+253,Pedro Sérgio Pereira,10727044800,elegibilidade_arm_1,2,51.7,14,4,3,22,105,3,2,2,2,4,1,21,1
+254,Patrícia Maria Martins Guerra Braga,12456623762,elegibilidade_arm_1,1,33.6,22,5,17,44,99,7,7,7,7,7,7,10,1
+256,Rudney Queiroz de Almeida,27646480819,elegibilidade_arm_1,2,40.9,19,17,16,47,134,2,4,6,5,5,7,1,1
+258,Juliana Vital Alves Pina Figueiredo,35302857812,elegibilidade_arm_1,1,33.2,22,4,13,17,141,2,1,7,7,7,7,10,1
+259,Angela C M PALEDZKI,04474014839,elegibilidade_arm_1,1,57,23,16,16,37,132,2,4,6,6,4,6,12,1
+261,Vitória Penido de Paula,09713911652,elegibilidade_arm_1,1,25.7,17,5,10,31,143,4,7,2,7,7,6,11,1
+264,Cintia Suemi Serikawa,34903706869,elegibilidade_arm_1,1,34.7,11,11,11,30,104,4,6,2,1,2,2,12,1
+265,Viviane Rodrigues Ferraz,27442336841,elegibilidade_arm_1,1,43.1,19,10,16,25,119,5,4,4,4,5,5,6,1
+267,Bianca Paes Leme Bertotti Bueno Mariz,15436347886,elegibilidade_arm_1,1,48.3,12,13,5,34,97,1,1,1,1,1,1,19,1
+271,Sueli Soares Hauauini,02306777896,elegibilidade_arm_1,1,57.5,23,12,12,35,154,5,5,5,5,5,7,0,1
+273,Graziele David Batista,01161841083,elegibilidade_arm_1,1,29.6,17,8,13,26,107,5,6,7,7,3,5,23,1
+274,Heitor Ribeiro da Silva Vallim,41053019858,elegibilidade_arm_1,2,23.1,19,8,9,29,106,2,1,3,5,4,4,23,1
+277,Paula Pamboukian Faria,29754850852,elegibilidade_arm_1,1,37.8,18,10,14,18,126,6,6,6,6,4,6,16,1
+278,Maria Carolina Gonzalez Santos,26470440827,elegibilidade_arm_1,1,42.9,27,14,19,47,150,7,7,7,7,7,7,0,1
+279,Ana Clara Scheuer,12309188921,elegibilidade_arm_1,1,18,19,15,19,47,139,7,5,4,5,6,7,11,1
+280,Priscila Oliveira,29435398804,elegibilidade_arm_1,1,39.2,22,3,12,32,127,7,5,7,7,7,7,15,1
+283,Juliana Begueldo Daniele,31038851807,elegibilidade_arm_1,1,36.2,22,8,10,28,97,4,4,4,2,2,6,28,1
+286,Bárbara Garcia Ferri,40969040822,elegibilidade_arm_1,1,28.3,18,11,14,39,110,3,3,6,7,4,5,22,1
+287,Fernanda de Faria Sanches,05438623643,elegibilidade_arm_1,1,37.7,12,5,6,21,79,4,4,4,3,2,2,29,1
+295,Marina Silva de Souza,34078467890,elegibilidade_arm_1,1,35.1,17,8,18,47,149,7,5,5,6,5,7,13,1
+296,Daniel Araujo Silva,04011108693,elegibilidade_arm_1,2,40.7,25,14,12,42,136,5,4,6,5,5,7,6,1
+298,Lucienne Ulbrich,02694322999,elegibilidade_arm_1,1,43.8,17,5,12,29,134,5,3,6,6,4,7,21,1
+299,Graziela Jarandya,21442022817,elegibilidade_arm_1,1,39.1,21,15,16,43,113,6,6,7,7,6,6,8,1
+301,Priscila Duarte Porfirio,36919630800,elegibilidade_arm_1,1,33.2,15,3,10,11,130,7,7,7,7,7,7,9,1
+304,Amanda da cruz dell osa,33628804876,elegibilidade_arm_1,1,28.1,23,6,10,40,117,5,1,7,7,5,3,9,1
+305,Liliana Quinta Serafim,08058047813,elegibilidade_arm_1,1,53.5,18,8,13,29,117,6,7,4,2,4,4,22,1
+306,Nathália Prince,33229485874,elegibilidade_arm_1,1,22.4,12,9,17,27,82,2,5,4,4,3,6,20,1
+307,Celia Ricardo de Souza,08628354883,elegibilidade_arm_1,1,54.1,20,17,17,40,154,1,4,7,5,5,7,3,1
+309,Ana Beatriz Cisne da Costa,07372029392,elegibilidade_arm_1,1,22.9,15,6,11,19,124,6,5,6,4,6,4,8,1
+311,Elisabete Mitiko Watanabe,16248641803,elegibilidade_arm_1,1,46.8,15,10,11,24,117,4,3,3,3,4,4,20,1
+313,Beatriz Fernanda Amaral Francisco,34403119883,elegibilidade_arm_1,1,32.6,21,11,15,28,139,6,3,5,6,4,7,21,1
+315,Paulo Alexandre galasso do Amaral,25441308818,elegibilidade_arm_1,2,47.9,20,7,6,31,103,6,4,6,6,6,7,18,1
+316,Andréia Cristina Faxina,16135147862,elegibilidade_arm_1,1,45.2,26,6,7,16,120,6,4,4,4,4,6,19,1
+318,Mariana Sá Barreto Rodrigues Gomes,81457120500,elegibilidade_arm_1,1,39.8,19,5,4,16,81,4,2,5,5,4,6,19,1
+320,Tatiane Aparecida dos Santos,35085717856,elegibilidade_arm_1,1,33.2,16,9,10,27,109,4,1,4,3,5,3,13,1
+321,Debora Ribeiro,36889720822,elegibilidade_arm_1,1,33.2,22,10,15,29,121,6,4,7,7,6,7,16,1
+322,Vinícius,36229603888,elegibilidade_arm_1,2,33.4,17,1,3,21,95,5,2,5,6,5,7,21,1
+324,Felipe Eiji Tamai,39568370823,elegibilidade_arm_1,2,29.7,18,12,13,38,100,5,4,6,6,4,4,21,1
+325,Bruna Maurilio dos Santos,40710450869,elegibilidade_arm_1,1,27.7,17,16,12,47,120,2,2,7,7,5,7,10,1
+326,Arthur Mancio Prata,35995043854,elegibilidade_arm_1,2,32.4,20,10,18,44,131,6,5,6,6,6,6,5,1
+332,Khary Styliany Pediatidakis,413345878-84,elegibilidade_arm_1,1,24.9,24,11,17,36,125,5,7,7,7,5,7,9,1
+333,Priscila Geromes,36355494871,elegibilidade_arm_1,1,31.5,18,10,11,30,148,5,3,4,4,5,5,5,1
+335,Maria das Graças de Souza Silva,28874498268,elegibilidade_arm_1,1,50.8,26,12,11,28,130,1,4,4,2,4,3,11,1
+339,Eva Paula da Silva Alves,21895454808,elegibilidade_arm_1,1,38.8,20,14,11,25,125,4,5,7,6,4,6,21,1
+340,Patrícia sayuri Hayashi tina,34066844839,elegibilidade_arm_1,1,30.5,26,6,16,34,118,4,4,5,6,4,7,21,1
+341,Soraya Pinheiro Ferraz,04913309951,elegibilidade_arm_1,1,38.1,24,7,9,25,146,6,4,4,2,4,6,8,1
+342,Allan Rodrigues da Costa Caldeira Ribeiro,42160879819,elegibilidade_arm_1,2,20.6,22,15,14,36,132,2,4,4,5,5,6,7,1
+343,Marina Martinhao de Godoi Panichella,02746601133,elegibilidade_arm_1,1,32.6,20,11,15,38,130,5,6,7,7,6,7,16,1
+345,Vivian Andrade Araújo,27672033824,elegibilidade_arm_1,1,41.6,13,10,9,23,85,1,2,2,3,2,2,26,1
+346,Anderson Tavares Correia da Silva,31300479809,elegibilidade_arm_1,2,37.2,11,3,5,24,110,1,2,2,3,2,4,32,1
+347,Debora Priscila Panhoto,19439838876,elegibilidade_arm_1,1,46.4,24,15,15,47,134,4,7,5,7,7,6,13,1
+348,Nataly Tardelli Morales,22992616800,elegibilidade_arm_1,1,34.7,12,11,11,36,118,6,4,6,6,4,7,23,1
+351,Ticianna da Cunha Mujalli,06736689678,elegibilidade_arm_1,1,36.9,21,9,12,34,125,6,5,3,4,4,6,7,1
+352,Matheus Tarsus,40414676897,elegibilidade_arm_1,2,27,25,11,17,36,132,1,4,7,7,7,7,8,1
+353,Nor Mustafa Mohamad,40707281806,elegibilidade_arm_1,1,23.9,24,14,17,36,111,7,5,6,5,6,7,5,1
+354,Telma Rodrigues da Silva,18930200885,elegibilidade_arm_1,1,48.2,17,7,8,21,93,4,4,4,4,4,4,29,1
+355,Debora Ki Yun Kim,35692834880,elegibilidade_arm_1,1,34.6,16,3,7,25,129,3,4,2,2,3,3,25,1
+357,Camila de Gouvêa e Silva,36921956806,elegibilidade_arm_1,1,31.7,16,16,18,46,94,1,5,7,7,2,5,20,1
+360,Pâmela Pereira Sant'Ana Cardoso,22804450856,elegibilidade_arm_1,1,34.1,22,8,10,35,121,4,6,5,4,7,7,9,1
+361,Ediza Pereira dos Santos Zaterka,34105905315,elegibilidade_arm_1,1,55.1,13,5,11,12,71,2,1,1,1,1,1,31,1
+363,Karla peixoto sento se,08587746740,elegibilidade_arm_1,1,40.2,16,13,13,41,115,5,4,4,4,4,4,15,1
+364,Laerte Bach de Souza,02309561142,elegibilidade_arm_1,2,33.4,22,13,13,19,93,1,5,1,5,5,6,21,1
+365,Eliana Leonel da Silva Pontani,09650311874,elegibilidade_arm_1,1,53.2,17,10,10,26,106,6,2,5,6,6,6,15,1
+366,Rosana Cretendio Pajares,25150957801,elegibilidade_arm_1,1,46.3,15,5,8,24,117,2,5,4,3,4,4,30,1
+368,Regina Vitória Karasawa,22519973854,elegibilidade_arm_1,1,41,21,13,15,48,137,1,6,4,4,5,5,8,1
+369,Rebeca Zavan Tristao,45332921861,elegibilidade_arm_1,1,23.7,18,2,13,44,112,3,4,2,6,2,6,21,1
+370,Hayla Escobar Stefanoni,17325817894,elegibilidade_arm_1,1,45.1,28,9,15,36,142,4,6,7,7,7,7,5,1
+372,CAROLINA ALINE DE OLIVEIRA,21828088846,elegibilidade_arm_1,1,40.1,19,6,13,23,89,4,2,2,4,2,7,14,1
+373,Camila Farias de Araujo,08980143443,elegibilidade_arm_1,1,29.9,14,0,4,29,90,1,5,5,6,7,6,24,1
+374,TIciane Mara Martins Oliveira,22444197895,elegibilidade_arm_1,1,39.2,20,6,9,37,78,4,2,6,7,6,7,17,1
+375,Letícia Alves Barbosa,34891304804,elegibilidade_arm_1,1,28.2,23,14,14,42,138,2,7,5,7,5,5,13,1
+377,Maria Carmen Fontoura Nogueira da Cruz,33243158320,elegibilidade_arm_1,1,56.7,15,3,3,14,91,4,4,5,5,3,5,25,1
+379,Andrea Moreira Kuzuyama,15269177854,elegibilidade_arm_1,1,47.1,15,7,4,14,33,1,5,1,2,1,4,37,1
+380,Priscila Rodrigues Rabelo Lopes,05114474693,elegibilidade_arm_1,1,38.3,17,4,13,15,71,4,1,2,5,4,4,17,1
+381,Gabriela Albertini Maronese,39549312810,elegibilidade_arm_1,1,30.4,21,9,14,28,136,7,6,7,7,4,6,8,1
+382,Mônica Cristina do Nascimento Soares Cordeiro Louback,01295359669,elegibilidade_arm_1,1,36.9,14,14,16,42,101,1,2,1,1,3,2,10,1
+388,Naiara Oliveira,45547428817,elegibilidade_arm_1,1,24.3,23,14,14,45,125,5,5,5,4,5,4,21,1
+393,Flávio Hermes dos Santos,14846119858,elegibilidade_arm_1,2,44.8,24,10,15,37,80,4,1,5,4,4,7,17,1
+394,Lara Bataglini Quintiliano de Oliveira,04420449926,elegibilidade_arm_1,1,35.9,21,14,10,30,142,4,5,5,6,6,7,7,1
+397,Rafaella Erenita Quintella Sodré,11416609709,elegibilidade_arm_1,1,34.9,25,16,18,45,144,4,3,6,7,7,7,4,1
+407,Christiane de Miranda Pinto Comitre,28828576839,elegibilidade_arm_1,1,40.7,17,5,9,21,105,3,2,5,6,3,5,18,1
+408,Mirna Jorge de Oliveira Chaves,97941611368,elegibilidade_arm_1,1,39.9,15,12,9,28,98,2,1,4,4,2,4,26,1
+409,marcelo pavan paiva,30363345809,elegibilidade_arm_1,2,39,18,5,8,23,104,3,6,5,5,4,6,28,1
+412,Anderson da Silva Lima,26919932806,elegibilidade_arm_1,2,42,17,4,4,13,112,7,2,3,4,3,4,23,1
+413,Bruna de Paula Marcondes,33521750809,elegibilidade_arm_1,1,28.8,22,18,16,49,139,7,7,5,5,6,7,16,1
+415,Ágata Medeiros Maldonado,33508086895,elegibilidade_arm_1,1,30.8,25,17,13,44,132,6,5,6,7,6,7,10,1
+418,Nathalia Antunes Ceneviva,34479233857,elegibilidade_arm_1,1,35.8,20,9,7,27,100,1,2,4,2,2,5,40,1
+422,Valéria Gibim,87203154904,elegibilidade_arm_1,1,48,24,4,10,15,154,5,7,5,5,6,7,24,1
+425,LYARA LUIZA VAL,10888843933,elegibilidade_arm_1,1,22.8,22,12,17,49,102,7,5,7,7,7,7,21,1
+429,Rafael Da Silva Vieira,27853939884,elegibilidade_arm_1,2,42.1,26,11,10,27,121,7,5,4,5,4,7,24,1
+430,Juliana Costacurta Marcato,30749602805,elegibilidade_arm_1,1,37.3,14,9,10,13,49,1,1,1,1,2,2,33,1
+432,Rodrigo Angelino de Oliveira,25884065809,elegibilidade_arm_1,2,42.6,15,5,8,25,108,4,3,2,1,2,4,19,1
+435,Maria Angelica dos Santos,77935381704,elegibilidade_arm_1,1,56.7,19,7,11,28,134,7,3,6,5,4,4,20,1
+437,Cristina Bueno Alves dos.Santos,95003177704,elegibilidade_arm_1,1,54,16,14,16,39,125,4,2,4,4,5,5,11,1
+438,Dayanne Bernardi,36187042832,elegibilidade_arm_1,1,32.4,19,10,8,17,80,4,3,4,3,2,4,21,1
+439,Bruna Susaki,05403141960,elegibilidade_arm_1,1,35.4,23,15,17,49,119,3,4,6,7,7,6,4,1
+440,Adrielly Honorio Rodrigues,05641184438,elegibilidade_arm_1,1,34.8,20,9,11,27,100,2,5,1,2,2,1,19,1
+445,Maicon Faccioni de Mello,06531004932,elegibilidade_arm_1,2,31.7,17,9,9,26,118,2,4,4,5,4,4,24,1
+446,Eva Vilma Henrique Fernandes,03637473704,elegibilidade_arm_1,1,47.1,26,16,19,46,118,4,5,1,7,7,5,9,1
+448,Lorena Sobrinha Erlacher,14498180720,elegibilidade_arm_1,1,26.6,26,5,9,24,124,4,3,4,4,4,6,9,1
+451,Bruna Nogueira Motta,60621939323,elegibilidade_arm_1,1,25.6,19,7,10,32,106,4,5,4,4,4,5,11,1
+452,Michel Santos Costa,05849102310,elegibilidade_arm_1,2,29.1,18,12,14,31,139,4,6,6,4,4,7,12,1
+453,Thrissy Collares Maestri,77379624253,elegibilidade_arm_1,1,37.2,13,7,11,22,101,1,6,4,5,4,5,18,1
+455,Isis Bagnhatori Valsecchi,36210966802,elegibilidade_arm_1,1,34.5,17,10,10,38,100,4,4,5,5,2,7,23,1
+457,Ana Lúcia Cardoso,41041592809,elegibilidade_arm_1,1,27.9,18,8,5,25,120,5,6,5,6,3,5,21,1
+458,Paulo Victor Rodrigues Bastos,98088386349,elegibilidade_arm_1,2,32.4,14,9,15,36,127,4,4,3,3,4,4,22,1
+463,Eduardo Banharoto Dutra Silva,44739352800,elegibilidade_arm_1,2,23,19,13,10,33,117,1,7,6,6,6,5,26,1
+468,Jerry Adriani Cristiano,73196614972,elegibilidade_arm_1,2,48.5,21,10,11,31,117,5,4,7,7,6,5,16,1
+469,Aline Mayumi Kano,41374343870,elegibilidade_arm_1,1,28,10,2,11,23,72,4,2,6,4,4,5,29,1
+470,Valdir Olivo Junior,35558247835,elegibilidade_arm_1,2,33.6,22,10,12,29,144,4,4,7,7,5,7,9,1
+471,Pedro Rodrigues da costa júnior,06576018371,elegibilidade_arm_1,2,19.8,14,9,7,26,99,6,4,6,6,3,7,17,1
+472,Lais Santiago Decev,40390229826,elegibilidade_arm_1,1,28.6,18,5,3,13,89,1,2,5,5,1,5,28,1
+473,Jaqueline Cristine Bordin,36630655885,elegibilidade_arm_1,1,33.5,18,3,6,12,33,2,1,4,4,2,4,30,1
+481,Fernanda Garcia Elias,06134361992,elegibilidade_arm_1,1,34.5,22,4,10,29,113,2,3,5,6,4,7,21,1
+489,Cintia Figueiredo de noroes brito,00203553357,elegibilidade_arm_1,1,37.1,18,9,9,26,116,7,5,1,1,6,2,16,1
+491,Karoline Costa Paiva,27662789829,elegibilidade_arm_1,1,42.3,17,2,8,24,116,6,4,5,5,3,1,24,1
+494,Vitória Baldissera de Souza,08549945994,elegibilidade_arm_1,1,30,13,5,9,13,97,6,4,4,6,2,5,32,1
+498,Francisca Kalline de Almeida Barreto,02995541298,elegibilidade_arm_1,1,30,19,2,11,26,83,5,2,6,7,3,7,16,1
+499,Cristiane Henrique da Silva,36407479843,elegibilidade_arm_1,1,35.3,17,5,10,28,72,4,4,4,4,4,5,24,1
+502,Tereza Davila Figueiredo de Norões Brito,17384206391,elegibilidade_arm_1,1,62.4,18,13,12,34,139,4,4,5,5,5,5,6,1
+503,Ana Paula Cardoso de Lucena,01749095208,elegibilidade_arm_1,1,25.2,16,12,11,30,123,3,4,4,4,4,4,20,1
+509,Nadja Silva de Almeida,91607671387,elegibilidade_arm_1,1,43.5,11,10,6,31,89,4,4,4,4,4,5,27,1
+523,Celso Ferreira da Silva,38568185886,elegibilidade_arm_1,2,31.6,23,11,13,40,128,7,3,6,7,6,7,9,1
+533,Daniela Souza Pereira,16285994803,elegibilidade_arm_1,1,50.7,19,5,14,20,81,7,2,3,3,2,5,38,1
+539,Artur Izidoro Fernandes neves,21559872500,elegibilidade_arm_1,2,58.5,14,5,4,14,68,2,2,2,2,2,2,29,1
+540,Tatiane Freitas Sousa Guerra,27195720802,elegibilidade_arm_1,1,41.2,19,4,6,18,55,1,1,4,4,2,2,24,1
+547,Maria José de Lima,03064337963,elegibilidade_arm_1,1,52.9,27,14,16,38,140,2,7,4,6,7,7,13,1
+549,Matheus Antonio Scussel Borges,08965522684,elegibilidade_arm_1,2,31.3,18,8,15,25,129,3,4,6,6,6,5,16,1
+552,Tatiane Freitas Sousa Guerra,22777218838,elegibilidade_arm_1,1,41.2,25,1,7,17,97,1,4,4,4,4,4,12,1
+553,Marcos Henrique da Silva Amaral,73145700197,elegibilidade_arm_1,2,33.2,20,8,11,33,94,1,2,5,6,5,5,17,1
+554,Lucila Kikuti,26206553825,elegibilidade_arm_1,1,44.7,24,7,9,34,144,4,4,6,4,5,6,11,1
+555,Camilla Borges Campos,09791951608,elegibilidade_arm_1,1,30.7,18,15,11,18,89,1,1,3,2,6,4,14,1
+557,João gustavo Alves da anunciação,05031274506,elegibilidade_arm_1,2,26.2,17,9,16,35,124,2,4,5,5,5,5,22,1
+564,Stela Cláudia Barboza da Silva,07622299774,elegibilidade_arm_1,1,44.2,18,9,7,25,95,2,4,3,3,4,4,26,1
+565,Zenita Cibele Oliveira de Souza,34208657839,elegibilidade_arm_1,1,36.2,16,5,13,38,131,2,5,5,6,4,4,8,1
+568,Cláudia Padilha Gonçalves,03516356960,elegibilidade_arm_1,1,55.1,24,7,7,15,109,4,2,5,4,4,4,24,1
+569,Melissa Miranda Lustosa Sousa,06028474355,elegibilidade_arm_1,1,20.6,24,12,17,47,145,2,2,6,7,7,7,1,1
+571,Tatiane Freitas Sousa Guerra,27195720802,elegibilidade_arm_1,1,41.3,25,1,7,17,97,1,4,4,4,4,4,12,1
+572,Heleni Hyfantides Passamichalis,41777366860,elegibilidade_arm_1,1,29.2,19,1,12,20,115,4,2,4,4,3,6,27,1
+573,GIOVANNA DE ASSIS PIRES,41949090892,elegibilidade_arm_1,1,28.3,25,16,18,46,136,4,3,6,6,6,7,5,1
+577,Sacha Aguiar Ventura,66649102334,elegibilidade_arm_1,1,30.5,24,14,19,45,121,6,6,5,6,7,6,17,1
+585,Iris Nunes Mariano,93155700653,elegibilidade_arm_1,1,49.5,19,15,7,27,97,2,2,1,1,1,1,0,1
+587,Jodi Dee Hunt Ferreira do Amaral,75579022620,elegibilidade_arm_1,1,50.4,18,5,13,17,115,5,2,1,2,4,3,24,1
+593,KELY MARIA PEREIRA DE PAULA,02721650777,elegibilidade_arm_1,1,54,14,6,11,30,102,2,1,6,6,2,4,20,1
+595,João Carlos Simões Frade,06368963824,elegibilidade_arm_1,2,56.4,25,15,18,47,146,1,7,7,7,7,7,1,1
+596,Maria lucia alves leria,05285149894,elegibilidade_arm_1,1,59.4,19,12,14,33,84,5,2,7,7,6,6,14,1
+600,Edileusa Borel Dias Moreira,04035497878,elegibilidade_arm_1,1,59,21,9,6,22,105,2,5,4,1,3,7,22,1
+604,Viviane Raquel Moreto de Souza Fernandes,30379285819,elegibilidade_arm_1,1,39.6,21,12,16,46,75,3,1,1,4,7,2,16,1
+606,Raphaela Augusto Dias Aragão,05346391940,elegibilidade_arm_1,1,28,19,11,12,29,135,1,6,2,2,4,6,28,1
+607,Thaís Gomes do Amaral,22710201828,elegibilidade_arm_1,1,37,18,5,5,13,116,4,4,2,4,3,2,19,1
+608,Priscila Silva Reis Quedas,26069251814,elegibilidade_arm_1,1,44.8,19,10,11,27,112,4,3,4,4,4,6,14,1
+610,tatiana carstens,02575532906,elegibilidade_arm_1,1,43.1,25,5,6,21,103,5,4,5,5,5,7,20,1
+611,Gisele Valentim da Silva,16955801848,elegibilidade_arm_1,1,48.2,22,20,18,40,113,5,4,7,7,7,7,1,1
+614,Ísis regina Gomes Amazonas,92081649268,elegibilidade_arm_1,1,25.5,20,15,14,37,108,3,2,6,6,4,5,14,1
+615,Ária José Souza da Silva,36799376871,elegibilidade_arm_1,1,38.7,17,11,3,15,110,3,4,4,5,4,4,26,1
+616,Flávia Amanda da Silva,38739918882,elegibilidade_arm_1,1,29.9,25,8,12,42,155,7,7,7,7,7,7,18,1
+617,Lilian Rodrigues Silva,43762474800,elegibilidade_arm_1,1,26.6,24,15,13,43,135,4,6,4,3,4,4,14,1
+618,Sarah Cristina Neris de Oliveira Kupper,40215588886,elegibilidade_arm_1,1,29.8,14,9,7,30,82,3,2,3,2,2,4,22,1
+620,Priscila de Campos Tiburcio,41711466824,elegibilidade_arm_1,1,26.2,19,8,11,29,143,7,1,5,5,5,7,32,1
+624,Thalyta Santos alves,04368626389,elegibilidade_arm_1,1,31.4,21,8,8,27,148,5,4,5,4,4,4,19,1
+633,Amanda da Paixão,37924870806,elegibilidade_arm_1,1,29.8,23,11,13,35,125,4,7,7,7,7,7,10,1
+634,IRIS DA CRUZ SENNA,32666767850,elegibilidade_arm_1,1,36.9,19,8,11,26,123,4,3,7,5,7,6,24,1
+638,Shirley Lori dupont,04755013909,elegibilidade_arm_1,1,35.6,20,5,10,30,132,4,3,5,5,4,6,27,1
+639,Viviane Christe Helfstein Domingues,25066739890,elegibilidade_arm_1,1,43.1,15,12,9,27,73,5,3,4,5,4,4,23,1
+640,Eliana Clara Andrea Sposato Dias,2556025873,elegibilidade_arm_1,1,44.5,26,19,20,49,143,4,7,7,7,7,7,3,1
+641,Marivaldo Felipe de Melo,91632439204,elegibilidade_arm_1,2,32.8,15,12,10,32,104,6,6,4,5,4,4,24,1
+642,Rogéria Cristiane Miranda Caetano,11205807810,elegibilidade_arm_1,1,52.9,25,15,21,45,156,7,6,7,7,7,7,0,1
+646,Sumara Regina Santiago de Almeida,08675494831,elegibilidade_arm_1,1,57.7,18,11,17,31,135,4,1,3,2,4,4,15,1
+649,Daniela Priscila lins,301472858-60,elegibilidade_arm_1,1,38.2,23,2,11,32,132,4,4,4,5,4,7,21,1
+651,Paulo Comis,08714303809,elegibilidade_arm_1,2,54,26,10,14,29,152,5,5,3,4,6,3,11,1
+653,Amanda Romana Santos da Silva,01822040302,elegibilidade_arm_1,1,34.1,22,11,14,43,140,5,4,4,6,6,7,19,1
+656,Luiza de Andrade Braga Farias,00709984340,elegibilidade_arm_1,1,37,23,6,8,18,137,5,6,6,6,4,7,14,1
+657,Roberta Natali de Lima GUEDES,33265516814,elegibilidade_arm_1,1,34.4,14,4,14,31,106,6,3,1,1,1,4,26,1
+659,Mônica Oliveira de Cerqueira,08470891855,elegibilidade_arm_1,1,52.9,20,16,20,41,131,6,4,4,4,4,6,12,1
+660,POLIANA APARECIDA AFONSO,07725822623,elegibilidade_arm_1,1,35.5,18,5,7,17,75,1,1,1,2,2,1,24,1
+661,eduardo carlos yun,22759079805,elegibilidade_arm_1,2,49.2,6,1,5,21,104,7,6,4,1,3,6,19,1
+662,Marcelo de Mesquita Spinola,14232289879,elegibilidade_arm_1,2,58.2,10,11,11,26,70,4,4,1,1,1,1,26,1
+666,Cristiane de Fátima Braulino,09388300823,elegibilidade_arm_1,1,52.3,27,19,21,48,113,2,7,7,6,7,7,5,1
+668,Fernanda de Souza Pereira Amorim,23180049863,elegibilidade_arm_1,1,31,21,13,11,40,118,3,2,5,5,3,6,4,1
+672,Edyane Maria de Souza Gonçalves,21432733800,elegibilidade_arm_1,1,41.5,19,9,12,30,131,3,3,5,3,6,7,21,1
+674,Fernanda Siqueira Maia Wolff,03578227900,elegibilidade_arm_1,1,41.9,24,16,12,17,118,2,6,7,7,6,6,3,1
+676,Gabriela Ramalho Lopes Silva,36142900856,elegibilidade_arm_1,1,26,16,14,15,32,78,5,3,5,6,2,5,30,1
+678,DANIELA DA SILVA ALVES LIMA,26841392884,elegibilidade_arm_1,1,43.3,17,14,12,36,125,1,4,1,1,1,2,8,1
+679,Bianca de Azevedo Pereira,12428684701,elegibilidade_arm_1,1,32.3,15,5,9,31,86,4,4,1,4,3,4,19,1
+681,Fernanda Krause,05317236908,elegibilidade_arm_1,1,24.9,14,12,15,25,126,1,4,1,1,1,1,12,1
+690,Julia Giovanna Neves Ganzaro,44766924860,elegibilidade_arm_1,1,21.5,19,7,19,28,124,6,1,5,3,7,7,13,1
+691,SIMARA PAULA DE OLIVEIRA,20532965850,elegibilidade_arm_1,1,44,20,13,16,46,86,1,1,4,4,4,4,15,1
+698,Tariane Franciele Bastos Pereira,38734497811,elegibilidade_arm_1,1,31.7,20,18,15,49,141,7,7,7,7,7,7,4,1
+699,Marcia Bordon Grande,15289934898,elegibilidade_arm_1,1,45.5,15,5,3,19,112,6,4,1,1,2,1,36,1
+702,Barbara Morais do Nascimento Silva,26309478826,elegibilidade_arm_1,1,43.7,24,9,12,27,140,7,6,7,7,6,7,8,1
+706,Jussara Cidamar Crismanis,11380097843,elegibilidade_arm_1,1,54.6,16,8,9,23,122,6,4,4,4,4,4,20,1
+707,Mirella Parolin Padilha,39320718830,elegibilidade_arm_1,1,32.1,21,4,12,27,114,7,3,5,7,4,7,13,1
+710,Henrique Prati,12066789925,elegibilidade_arm_1,2,22.8,12,3,13,27,91,2,2,3,3,3,5,36,1
+711,Claudia Pereira da Silva,18551583883,elegibilidade_arm_1,1,44.2,24,10,17,44,125,4,5,6,7,7,7,13,1
+713,Matheus Araujo Silva,11757087630,elegibilidade_arm_1,2,28.1,21,9,16,43,145,6,6,5,6,5,6,11,1
+718,Luciana de Souza Lima Barbosa a,25183235899,elegibilidade_arm_1,1,45.3,21,9,9,25,99,5,4,6,4,3,4,2,1
+719,Nathália Bordone rosa Zani sinto,15595866721,elegibilidade_arm_1,1,26,19,7,9,37,144,3,2,4,4,2,4,19,1
+722,Luís Roberto Borandi,31364576848,elegibilidade_arm_1,2,38.5,22,1,7,19,135,4,4,6,6,4,6,23,1
+724,Juliana Ribeiro da Silva,32437925848,elegibilidade_arm_1,1,35.4,16,12,11,28,91,4,4,3,3,4,3,20,1
+726,Silvana Gomes de Alcântara Rodrigues,06897915858,elegibilidade_arm_1,1,54.7,26,13,17,27,101,3,1,7,7,5,7,20,1
+728,Daniela Lima de Azevedo,29200004890,elegibilidade_arm_1,1,41,20,9,15,30,84,6,3,5,6,2,5,27,1
+733,Claudia Rodrigues de Aguiar,27317504807,elegibilidade_arm_1,1,44.9,17,6,6,16,82,1,4,1,4,1,1,27,1
+734,Leandro João Conti Neto,527255368-39,elegibilidade_arm_1,2,20.2,24,12,12,44,136,2,7,7,7,5,7,5,1
+735,Roseni Nunes Dias,88599205668,elegibilidade_arm_1,1,53.2,19,3,10,9,110,2,1,1,1,1,1,44,1
+739,Tatiani Barbosa de Jesus,28665284842,elegibilidade_arm_1,1,41.8,20,19,12,43,137,6,7,6,6,6,5,12,1
+741,Iremara Martins de Araujo Barreto,36673755814,elegibilidade_arm_1,1,32.6,17,7,7,30,90,1,1,5,5,4,5,17,1
+742,Carolina Esther Souza Gomes,31515596893,elegibilidade_arm_1,1,21.9,16,8,15,41,102,7,3,6,6,6,7,18,1
+745,Jacqueline Radi da Silva,34470056880,elegibilidade_arm_1,1,34.1,20,9,12,28,117,5,3,5,4,5,6,18,1
+746,Sarah Nascimento de Jesus,85781163565,elegibilidade_arm_1,1,24.2,18,11,19,34,125,5,5,5,4,4,3,15,1
+748,Raquel Ribeiro,42390756883,elegibilidade_arm_1,1,26.2,21,8,16,39,129,6,5,4,4,3,4,22,1
+751,erick yugo tashiro,48498671892,elegibilidade_arm_1,2,23,16,10,9,32,141,5,3,2,4,4,1,16,1
+754,Julia Astorga de Souza,41643553879,elegibilidade_arm_1,1,28.3,21,3,5,28,101,5,2,5,4,4,5,25,1
+756,Mariana Chaves Pellizzola Gomes,35980361839,elegibilidade_arm_1,1,27.2,23,16,21,47,155,6,6,7,7,7,7,8,1
+759,Fillipe Soares romano,39395086831,elegibilidade_arm_1,2,30.1,20,10,13,19,78,4,1,1,5,4,6,29,1
+761,Emanuele Naiara Quadros,08541005984,elegibilidade_arm_1,1,29,20,12,11,35,133,4,6,4,4,2,2,15,1
+762,Paloma Rodrigues do Carmo Magalhães,33451187850,elegibilidade_arm_1,1,35.9,22,8,12,35,101,5,4,5,5,5,6,23,1
+765,Victor dos Santos Guida,11612085776,elegibilidade_arm_1,2,34.7,22,11,7,18,138,4,3,7,6,5,7,11,1
+766,Roberta Marques Bezerra,61454630230,elegibilidade_arm_1,1,43.5,12,4,12,35,84,4,4,4,5,5,4,19,1
+768,Renata Nonato Santana,25297758858,elegibilidade_arm_1,1,43.8,14,11,14,35,154,2,5,5,5,5,5,12,1
+769,POLLYANA de Moraes boel,71528130197,elegibilidade_arm_1,1,29.3,26,11,13,35,140,1,6,7,7,5,5,13,1
+770,Ana Julia Marcondes da Cruz,46829457858,elegibilidade_arm_1,1,18.7,18,15,19,47,126,3,1,7,7,6,7,20,1
+772,Alexandre Henrique de Quadros,30452938821,elegibilidade_arm_1,2,47.6,27,16,11,43,142,5,7,5,7,7,7,12,1
+776,ivonegomes01@gmail.com,04729635892,elegibilidade_arm_1,1,58.1,18,4,11,27,87,4,1,3,1,1,1,19,1
+778,Sonia Maria Moretti Chaves,26973519814,elegibilidade_arm_1,1,57.8,20,5,8,25,75,2,1,4,3,1,5,24,1
+781,Isabela Borges,13078886662,elegibilidade_arm_1,1,21.5,13,11,4,25,89,2,4,6,6,3,5,26,1
+786,Roselene Farina Shumiski,16756829840,elegibilidade_arm_1,1,48.3,13,12,14,32,84,4,2,2,3,4,4,23,1
+790,Guilherme Lucas Ferraz Costa de Oliveira,08609533603,elegibilidade_arm_1,2,28.1,19,14,7,29,107,3,5,5,6,4,4,14,1
+791,Carolina Galli Bergonso,33946010873,elegibilidade_arm_1,1,35.9,17,11,15,47,118,7,6,1,4,2,6,28,1
+794,Rodrigo Marrubia Pereira,31214596860,elegibilidade_arm_1,2,37.4,18,9,11,31,103,6,1,5,4,4,6,24,1
+796,Janaina Barbosa de Oliveira,30669738832,elegibilidade_arm_1,1,41.5,22,14,4,32,123,4,5,5,7,6,7,5,1
+797,Letícia Scolar de Oliveira,40811951880,elegibilidade_arm_1,1,25.5,20,6,10,31,132,3,6,6,5,3,6,23,1
+798,Gustavo Itanaiu Berti,41815728892,elegibilidade_arm_1,2,27.5,17,10,8,29,118,4,5,3,4,3,6,21,1
+799,Helena Maria de Jesus Corrêa,27218942857,elegibilidade_arm_1,1,43.7,22,12,20,46,124,4,4,7,6,7,7,13,1
+805,Stephanie Padula Mattesco Horta,34825926835,elegibilidade_arm_1,1,29.6,16,7,8,17,123,6,6,5,6,5,7,31,1
+811,Juliana Pasqualini Carvalho,39365097860,elegibilidade_arm_1,1,30.7,20,9,8,20,106,2,1,6,6,4,1,13,1
+812,Roberta Belizário Alves,04206318794,elegibilidade_arm_1,1,45.5,19,12,9,11,125,2,2,7,7,6,5,11,1
+814,MARINA ELLER DE SOUSA,10578097729,elegibilidade_arm_1,1,35.4,26,15,14,39,141,5,7,6,6,7,7,7,1
+815,DANIELA nishiyama dias araujo,14646890836,elegibilidade_arm_1,1,49.7,14,1,1,8,88,6,3,4,4,4,7,26,1
+817,Lucimara de Souza Rodrigues,79500285568,elegibilidade_arm_1,1,38,24,15,15,46,143,4,5,5,6,7,7,5,1
+818,Josefa Losada Valle,07778347823,elegibilidade_arm_1,1,57,18,5,8,25,108,4,4,4,4,4,5,19,1
+820,Vera Lúcia Saraiva de Alencar,07527374810,elegibilidade_arm_1,1,58.6,23,18,15,48,125,4,5,7,7,7,7,5,1
+821,Ivete Soares de Souza,09268564807,elegibilidade_arm_1,1,52,18,6,9,17,124,2,2,2,6,6,7,12,1
+822,Danila de Andrade Custódio,26089712884,elegibilidade_arm_1,1,42.5,25,9,14,32,129,5,2,7,4,4,7,14,1
+824,Claudia Souza Santos,13225437808,elegibilidade_arm_1,1,46.7,22,12,8,27,136,7,4,7,6,4,6,4,1
+825,DANIELA ANDREA DE OLIVEIRA,26857194823,elegibilidade_arm_1,1,42.4,15,10,11,35,100,3,4,6,6,5,6,24,1
+828,Ingrid do Espirito Santo,42093243881,elegibilidade_arm_1,1,23.8,17,9,11,39,109,6,4,2,3,4,1,21,1
+830,Élide Marta do Carmo,24906718809,elegibilidade_arm_1,1,46.1,18,6,11,24,114,2,2,5,5,3,4,9,1
+832,Fabiana Ramos Silva,35713948870,elegibilidade_arm_1,1,34.5,23,13,16,43,137,6,7,6,6,6,7,5,1
+835,Karin Miyuki Souza Tomiyoshi,47493375879,elegibilidade_arm_1,1,20.8,17,8,11,31,106,2,5,3,5,3,7,24,1
+836,Carla Habibe Vasconcellos,070124608-14,elegibilidade_arm_1,1,52.8,26,10,10,18,89,6,3,6,7,4,7,16,1
+843,Elaine Martins Carneiro,21635716888,elegibilidade_arm_1,1,40.6,23,16,13,49,145,4,4,4,5,5,7,20,1
+844,Simone de cassia Monachesi,07508500865,elegibilidade_arm_1,1,55.3,18,6,2,15,75,4,2,4,2,4,4,24,1
+845,André Vieira,01432041576,elegibilidade_arm_1,2,21.7,18,6,7,26,127,2,1,4,5,4,4,17,1
+847,Jair Garcia dos Santos,82801959987,elegibilidade_arm_1,2,49.6,21,15,15,38,141,5,5,5,6,7,5,2,1
+849,Odeth Martins da Mota Lima,24968408889,elegibilidade_arm_1,1,43.2,17,12,20,26,114,3,2,3,3,5,5,14,1
+851,Fabíola Fratogianni Eid,32913736858,elegibilidade_arm_1,1,35.7,20,7,18,43,148,6,6,5,7,7,7,17,1
+856,Marlene Santos de Assis,450932615,elegibilidade_arm_1,1,53.4,24,4,7,28,142,7,1,7,6,4,7,11,1
+858,PATRICIA ALVARENGA ORTIZ,10104964847,elegibilidade_arm_1,1,51.2,20,12,9,26,113,5,5,5,5,4,7,11,1
+859,Elaine da silva Folly luercio,05179457700,elegibilidade_arm_1,1,45,11,2,15,23,83,4,1,5,6,1,6,27,1
+862,Pedro Moreira Vieira,60360387390,elegibilidade_arm_1,2,28.6,22,2,6,11,86,1,1,7,7,5,7,21,1
+863,Eduardo Gonçalves,07461071963,elegibilidade_arm_1,2,31.1,19,3,10,12,61,1,1,5,1,1,5,41,1
+866,Nilton Jefferson Filó,16477369869,elegibilidade_arm_1,2,49.6,27,17,19,47,156,2,7,7,7,7,7,0,1
+870,Regina Aparecida Fonseca de Oliveira,60105470597,elegibilidade_arm_1,1,47,14,4,6,27,105,5,4,4,5,5,6,15,1
+876,Patrícia Regina de Mattos,18170262836,elegibilidade_arm_1,1,45.9,16,15,14,41,109,6,4,4,6,4,6,13,1
+878,Laura Zatti Faria Lima,08939485602,elegibilidade_arm_1,1,33.4,16,8,20,36,121,6,4,7,7,7,7,8,1
+879,Cassia Sirlene Correia Bernardes da Costa,11584497807,elegibilidade_arm_1,1,50.7,21,16,12,38,140,6,5,5,5,3,5,17,1
+880,Geny oliveira Morselli,10972135871,elegibilidade_arm_1,1,52.3,25,17,18,45,140,5,6,7,7,7,6,8,1
+885,Camila de Oliveira,31105191869,elegibilidade_arm_1,1,39,18,16,13,33,140,4,6,5,4,5,6,1,1
+888,Marcelo Baptista,13288694824,elegibilidade_arm_1,2,48.2,24,17,17,40,142,1,6,7,7,7,7,10,1
+889,Laura Garcia Cohen,44233068833,elegibilidade_arm_1,1,21.9,18,12,12,39,124,4,6,6,7,5,7,14,1
+890,Marcella mayumi Kizaki beca,34641954810,elegibilidade_arm_1,1,21.2,19,13,9,39,118,7,7,3,3,3,7,16,1
+893,Lurdes Bigolin,603,elegibilidade_arm_1,1,54.6,16,4,6,9,120,6,2,4,2,3,3,18,1
+894,Maria Aparecida Braz dos Reis,02469355885,elegibilidade_arm_1,1,59.8,18,15,14,32,55,2,1,2,1,4,1,21,1
+896,Victor Alberto Martins,35985347877,elegibilidade_arm_1,2,32.7,22,19,8,41,137,1,4,7,7,7,7,0,1
+897,Rafael monteiro Sobral,32449948813,elegibilidade_arm_1,2,37.2,23,2,8,24,111,7,1,7,7,3,1,18,1
+898,Gabriela Hernandes Pires,35919354844,elegibilidade_arm_1,1,26.4,24,5,7,21,117,5,4,5,7,5,7,16,1
+902,Gisela Naiara Cardoso Gonçalves,06924416624,elegibilidade_arm_1,1,36.5,15,10,3,17,102,6,2,4,5,3,6,28,1
+913,kene karini rocha viana,01306441617,elegibilidade_arm_1,1,43.2,22,17,17,49,134,1,4,5,6,5,7,6,1
+914,Michelly Ribeiro dos Santos,44148386818,elegibilidade_arm_1,1,20.5,20,10,13,43,104,7,6,7,6,7,7,11,1
+915,Eliane Teixeira Romão,30546420893,elegibilidade_arm_1,1,41,21,4,10,15,127,2,2,7,7,3,7,9,1
+916,Arlene de Sena Vasconcelos,09778876690,elegibilidade_arm_1,1,32.7,19,15,13,41,141,4,6,4,6,5,6,13,1
+917,Italo Luiz Ferreira de Lima,12041946458,elegibilidade_arm_1,2,24.1,24,2,7,21,133,1,1,7,7,5,7,25,1
+918,Arthur Rossi Ricciardi,50905256840,elegibilidade_arm_1,1,20.4,22,13,17,40,130,6,5,6,7,5,7,20,1
+919,Regirene Cardoso de Souza,18303866893,elegibilidade_arm_1,1,49.8,21,11,15,39,128,2,2,5,6,6,7,18,1
+921,Aparecido Donizeti Afonso,09036379873,elegibilidade_arm_1,2,53.9,11,3,4,24,94,4,1,4,6,2,5,29,1
+922,Laís Zago,31769426809,elegibilidade_arm_1,1,32.3,18,12,9,35,89,6,5,2,3,4,6,21,1
+924,Daniel Gonçalves da Silveira,36761792851,elegibilidade_arm_1,2,33.5,24,11,13,34,142,4,4,7,4,5,7,10,1
+926,Mariana de Souza Teixeira,30711383855,elegibilidade_arm_1,1,38.8,20,10,10,25,123,4,1,3,4,4,7,13,1
+929,Pedro Paulo Rubin Borges,13772190707,elegibilidade_arm_1,2,31.4,9,4,6,24,119,4,2,3,4,4,4,9,1
+930,Felipe da Silva Santiago,42123512850,elegibilidade_arm_1,2,25.5,13,14,15,37,120,3,5,4,4,3,7,25,1
+935,Cláudia Elisangela Martins Santana,82612897534,elegibilidade_arm_1,1,41.7,25,6,11,25,131,5,5,5,3,5,4,0,1
+936,Lilian aparecida sena batista,39771752898,elegibilidade_arm_1,1,30.1,22,11,12,30,135,5,6,6,7,6,7,15,1
+938,Paulo Henrique Nunes da Silva,32425064800,elegibilidade_arm_1,2,35.5,15,10,11,30,113,3,2,4,5,4,4,10,1
+939,Dione Cinara de Aguiar Frasson,01799357988,elegibilidade_arm_1,1,49.3,15,1,1,9,93,6,1,5,4,5,6,19,1
+942,Vitor Braga Lovatto,41966162839,elegibilidade_arm_1,2,26.7,19,9,13,33,149,6,4,4,6,7,5,1,1
+944,Cristina Helena de Souza Teichner,10554724871,elegibilidade_arm_1,1,57.1,15,7,13,35,131,6,6,6,6,5,7,15,1
+945,Elisangela Colombini,25111368809,elegibilidade_arm_1,1,47.9,15,9,7,13,95,5,2,1,1,2,1,30,1
+948,Marta Costa Santos Passos,33912688168,elegibilidade_arm_1,1,54.5,28,17,12,33,147,2,4,7,7,7,7,1,1
+952,Thiago Alvarenga Souza Jardim,30490450865,elegibilidade_arm_1,2,37.1,21,13,14,36,115,4,3,6,4,7,7,14,1
+953,Thaina de Oliveira Avelino,44433593893,elegibilidade_arm_1,1,25.3,19,15,19,40,80,4,2,2,5,3,4,27,1
+954,Arthur Marques Gen,41945221844,elegibilidade_arm_1,2,27.6,19,5,11,28,67,3,4,5,5,4,5,24,1
+955,Josiana Gonçalves Amaro Cruz,10894362895,elegibilidade_arm_1,1,49,19,11,11,28,87,3,2,2,4,3,4,25,1
+956,ELIANA SHERLY LEMOS ALMEIDA,08878519839,elegibilidade_arm_1,1,54.7,25,6,17,34,123,6,5,6,6,5,7,13,1
+957,Renata Desio Polazzo,34812312884,elegibilidade_arm_1,1,33.7,28,20,21,49,160,6,7,7,7,7,7,1,1
+960,Mailson Silva Saraiva,36609712867,elegibilidade_arm_1,2,30.6,17,15,19,46,137,4,3,4,4,3,3,20,1
+967,Nathalia Padilha Souza,37894700827,elegibilidade_arm_1,1,32.2,23,7,8,25,137,7,5,4,7,7,7,13,1
+972,Marcelo Pádua Teixeira,21309498865,elegibilidade_arm_1,2,39.8,20,8,10,16,85,3,1,7,6,4,7,13,1
+975,Alessandra Maria Aquino Canivezi,16859985852,elegibilidade_arm_1,1,46.4,15,10,15,31,101,2,3,3,3,3,4,22,1
+976,Ananda Nossa Mendonca,36303693830,elegibilidade_arm_1,1,29.8,18,7,11,26,100,4,3,5,5,4,5,25,1
+979,Fernanda Zappa,37051343882,elegibilidade_arm_1,1,33.2,20,2,7,17,100,6,2,7,7,7,7,20,1
+980,Liberio Mendes Soares Junior,29761949800,elegibilidade_arm_1,2,39,19,7,8,18,92,3,5,1,2,1,1,26,1
+983,Carla giovanna belei martins,35625664846,elegibilidade_arm_1,1,32.7,15,8,18,25,83,5,4,3,4,3,4,36,1
+985,Mayara Cantalice vogel da Silva,06483837925,elegibilidade_arm_1,1,33.4,16,3,4,15,65,4,1,4,4,4,4,29,1
+986,Lucia de Fatima Raposo Cabral Camara,06414560855,elegibilidade_arm_1,1,57.4,21,16,11,42,114,7,1,7,5,5,6,15,1
+991,Roberta Fin Motta,96252081000,elegibilidade_arm_1,1,40,25,6,15,26,75,2,2,7,7,2,7,23,1
+1001,Guilherme Gomes Rodrigues,10642254621,elegibilidade_arm_1,2,30.5,23,11,13,37,125,5,4,5,6,5,5,20,1
+1002,Isadora Caetano de Freitas Moura,11576717640,elegibilidade_arm_1,1,28.8,20,10,15,39,150,5,6,5,5,6,7,2,1
+1008,Raphisa Abrahão Gebrim,06982491943,elegibilidade_arm_1,1,30,24,5,13,29,139,7,6,3,6,5,6,15,1
+1013,Ludmila suilan Silva Nogueira,07166450410,elegibilidade_arm_1,1,30.6,15,3,6,7,97,1,1,5,5,1,7,25,1
+1017,Guilherme Costa Gatto,42655632877,elegibilidade_arm_1,2,27.1,14,2,7,21,72,3,2,2,3,3,3,19,1
+1024,Bruna Caron,03255722080,elegibilidade_arm_1,1,25.9,19,8,18,40,126,3,5,5,6,4,5,12,1
+1026,Niva Karolina Pinto Silva,32114926826,elegibilidade_arm_1,1,35.8,22,13,10,42,147,6,6,6,7,6,7,6,1
+1029,Alessandra mendes,040871546-45,elegibilidade_arm_1,1,41.6,20,19,14,41,118,3,4,6,5,5,6,3,1
+1031,Raul Gomes de Sousa,43704090808,elegibilidade_arm_1,2,27.3,20,12,16,40,143,5,5,7,7,5,7,17,1
+1033,Nadia Waked,41009867857,elegibilidade_arm_1,1,30.3,16,10,10,31,120,5,5,7,7,7,4,16,1
+1035,Noemy Steinberg,22227480890,elegibilidade_arm_1,1,58.3,13,2,6,11,48,3,1,5,4,1,4,34,1
+1037,Jonas de Carvalho Simões Coelho,07327029680,elegibilidade_arm_1,2,32.4,20,12,18,35,143,5,5,7,6,5,7,4,1
+1039,Cassio Kley Borges de Assis,10950619841,elegibilidade_arm_1,2,47.1,24,11,8,39,119,4,5,4,1,4,7,8,1
+1042,Camila dos Santos Dias Altava,37628821855,elegibilidade_arm_1,1,22.2,14,10,12,36,86,4,4,3,5,5,3,25,1
+1048,Cibelle A de la Higuera Amato,11809499860,elegibilidade_arm_1,1,50.3,10,0,1,8,18,1,1,1,1,1,1,47,1
+1056,Lindiane crisostomk,71362673315,elegibilidade_arm_1,1,45.3,17,8,17,25,107,2,1,3,5,6,6,21,1
+1057,Elis Regina Simioni,04967369901,elegibilidade_arm_1,1,42.1,17,6,11,28,103,5,4,4,3,4,4,18,1
+1058,Luciana Coltri e Silva,32338989830,elegibilidade_arm_1,1,37.4,19,10,10,24,105,1,2,3,5,5,4,30,1
+1060,Cristiane Alves da Silva Ferraz,34907931883,elegibilidade_arm_1,1,35.3,18,9,9,12,89,5,5,4,3,2,3,40,1
+1063,WYLIAN CARLOS BORGES SILVA,48553395120,elegibilidade_arm_1,2,50.3,24,15,15,42,145,2,1,4,4,6,7,22,1
+1067,Cleyton Ferreira dos Santos Soares,28931384890,elegibilidade_arm_1,2,39.1,13,0,2,7,34,3,1,1,2,1,3,40,1
+1074,Marlene wan Dall Gonçalves,60710497920,elegibilidade_arm_1,1,55.7,13,11,13,32,112,4,4,2,1,2,4,23,1
+1075,Fabiane Rocha e Silva,54410371134,elegibilidade_arm_1,1,50.9,20,9,6,12,102,3,1,1,1,1,4,28,1
+1076,Juliana Costacurta Marcato,307496028-05,elegibilidade_arm_1,1,37.6,19,10,14,28,77,1,1,2,2,2,3,28,1
+1078,Luis Gustavo Ferraiuoli de Azevedo,01406908754,elegibilidade_arm_1,2,49.2,24,4,4,24,64,4,4,6,6,5,2,19,1
+1079,Andreia Nogueira Hernandes Rocha,33891502850,elegibilidade_arm_1,1,36.1,17,17,16,40,113,3,1,5,6,4,7,16,1
+1080,Maria Eduarda Gonçalves,08671952908,elegibilidade_arm_1,1,20.4,14,7,12,37,92,4,5,3,4,4,5,32,1
+1081,Sabrina Malichesqui Leite,26184039830,elegibilidade_arm_1,1,42.6,24,9,10,41,143,6,6,5,5,5,6,15,1
+1083,Roberto de Souza Junior,12929121890,elegibilidade_arm_1,2,51.4,26,13,15,26,132,1,2,4,4,4,6,10,1
+1084,Patricia Talita de Souza,33006205898,elegibilidade_arm_1,1,35.4,21,16,12,32,145,7,6,6,6,4,3,2,1
+1085,Marina Oliveira dos Santos,30021686882,elegibilidade_arm_1,1,41.5,15,10,10,33,133,3,4,4,5,4,4,13,1
+1088,Aline guimaraes,99913054087,elegibilidade_arm_1,1,39.4,14,7,14,27,66,2,2,2,5,4,4,25,1
+1089,Luciana Aparecida Ferreira Gaston Schwab,12401842802,elegibilidade_arm_1,1,48.6,19,10,14,32,94,6,2,3,5,4,5,17,1
+1094,Marilda Mercedes,86044699900,elegibilidade_arm_1,1,53,11,4,9,11,36,7,1,4,4,1,1,42,1
+1095,Camila Celestino de Oliveira,29984000869,elegibilidade_arm_1,1,39,17,5,10,20,79,3,3,5,5,4,5,19,1
+1099,Taciana PaulaLovetro Galhardo,21579043879,elegibilidade_arm_1,1,41.7,19,4,5,25,120,5,5,4,4,4,5,12,1
+1103,Camila Regina Prisco Moretti de Oliveira,30557831822,elegibilidade_arm_1,1,38.9,15,5,10,26,82,2,1,1,4,2,2,14,1
+1108,claudia gugliotti intatilo,08267914846,elegibilidade_arm_1,1,58.4,19,8,15,27,90,2,3,5,5,4,5,24,1
+1109,Magali Machado,15759311840,elegibilidade_arm_1,1,49.3,20,11,11,38,86,5,6,1,1,2,1,20,1
+1110,Rafael Renner Fonseca de Lima,99733404268,elegibilidade_arm_1,2,33,24,11,14,47,150,2,5,7,7,6,7,21,1
+1112,Nelson Nogueira dos Santos,11385412810,elegibilidade_arm_1,2,50.9,12,5,14,27,124,2,3,1,1,3,1,16,1
+1113,José Carlos Amador e Silva  Matos,37459820881,elegibilidade_arm_1,2,32.9,15,12,7,22,71,1,2,3,4,5,1,28,1
+1114,Michele Brofman,02373565978,elegibilidade_arm_1,1,42.5,15,3,14,31,86,1,3,3,3,2,2,34,1
+1119,Michele aparecida rocha,04250318966,elegibilidade_arm_1,1,37.7,15,5,18,42,95,1,2,2,3,4,4,26,1
+1121,Hichem Ayoub Hussein Ayoub,28563256882,elegibilidade_arm_1,2,41.2,16,11,14,35,133,5,3,4,4,4,4,22,1
+1123,Joice Vargas Bernardes,06454527697,elegibilidade_arm_1,1,38.7,19,9,10,36,125,2,2,7,7,7,7,2,1
+1124,Paula Guedes Ribeiro de Moura,36275010800,elegibilidade_arm_1,1,27.8,18,8,9,36,82,1,4,4,5,4,7,28,1
+1125,Roseli M.Pibernat,04233226803,elegibilidade_arm_1,1,58.6,21,15,11,32,147,6,7,7,7,7,7,15,1
+1127,Jérssyka Hanah da Silva Oliveira Lima,05472230136,elegibilidade_arm_1,1,25.8,27,5,8,41,144,1,5,4,7,4,7,22,1
+1129,Rosângela Bertouza Tashigian,27526538836,elegibilidade_arm_1,1,41.2,20,6,11,29,140,6,5,4,4,6,6,19,1
+1132,Joamara Barolo Teixeira Henke,12779492805,elegibilidade_arm_1,1,57.8,12,4,5,23,103,1,2,2,6,6,3,26,1
+1133,Tatiane Alves de Andrade,22703446807,elegibilidade_arm_1,1,37.8,12,11,11,30,108,3,3,4,5,5,5,19,1
+1134,Jonas Ariel van Langendonck Barretto de Carvalho,35322000828,elegibilidade_arm_1,2,33.2,23,10,16,40,90,2,1,3,4,4,3,16,1
+1135,Pedro Luiz Bueno de Andrade,25022317877,elegibilidade_arm_1,2,45.4,19,8,11,24,102,2,4,3,4,2,3,19,1
+1138,Gabriela Paula da Silva Martin,33181794856,elegibilidade_arm_1,1,35.8,15,5,6,19,68,4,4,4,4,3,7,23,1
+1139,Andréa dos Santos Fonseca,27654157819,elegibilidade_arm_1,1,42.1,16,10,9,22,121,4,4,5,5,5,3,13,1
+1141,Talita Gomes Baêta Lourenço,11578676770,elegibilidade_arm_1,1,32.7,20,7,16,45,119,7,4,6,7,6,7,9,1
+1142,Leandra vieira soares,11994990643,elegibilidade_arm_1,1,27.3,18,11,15,43,131,7,1,7,7,7,7,23,1
+1143,Juliana Alves,32612905871,elegibilidade_arm_1,1,38,26,16,15,32,105,4,1,4,1,1,6,6,1
+1144,Isabele Garzillo de Oliveira mainates,43822348830,elegibilidade_arm_1,1,25.3,17,7,11,26,133,4,4,3,3,5,5,7,1
+1145,Letícia Maria Alexandre Barreto,65820789334,elegibilidade_arm_1,1,21.9,18,11,16,39,133,2,1,6,6,4,5,22,1
+1148,Ananda Paula de Oliveira Mano,37020308830,elegibilidade_arm_1,1,25,18,12,14,39,146,3,5,6,5,4,7,16,1
+1149,Michele Araújo Soares,80846637049,elegibilidade_arm_1,1,42.5,21,17,13,42,113,1,4,1,1,6,1,8,1
+1151,Mariana Juventina Magrini,33728996874,elegibilidade_arm_1,1,35.6,13,5,12,15,96,1,4,2,4,4,1,27,1
+1158,Leisa Trentino Anholetto,25398531883,elegibilidade_arm_1,1,44.9,25,11,10,25,150,3,5,4,4,5,6,12,1
+1159,Herisson Henrique Cardoso de Souza,06702991622,elegibilidade_arm_1,2,36.6,21,7,7,39,105,4,3,5,6,4,5,14,1
+1160,Juliana Alves Barbosa Augusto,17081568874,elegibilidade_arm_1,1,42.2,17,11,11,35,93,6,1,4,4,1,7,23,1
+1161,Tamires de Araujo Pessoa,35544675880,elegibilidade_arm_1,1,33,17,6,14,24,122,4,1,7,5,4,7,11,1
+1163,Maria Eugênia Cezere Da Silva Pastana,40612822800,elegibilidade_arm_1,1,30.1,23,11,19,37,86,4,2,4,5,4,4,14,1
+1168,Fernanda Correa da Silva Cava,91305128168,elegibilidade_arm_1,1,40.6,20,11,14,38,115,2,1,7,7,6,7,14,1
+1170,Iúna Monte Cruz Rodrigues,63985560110,elegibilidade_arm_1,1,47.2,17,17,15,39,119,3,4,4,7,4,5,13,1
+1171,Rodrigo Zille Dutra,27751059800,elegibilidade_arm_1,2,40.5,25,8,12,14,116,4,3,7,7,4,3,7,1
+1172,Beatriz Marcelle Maria Tobias silva,10409457400,elegibilidade_arm_1,1,24.1,19,11,9,22,108,3,4,3,3,1,4,13,1
+1173,Rafaela Reale Paolella,34481082860,elegibilidade_arm_1,1,34.9,25,8,13,38,90,6,1,5,4,3,7,11,1
+1176,Heloísa Papassoni Zangheri,37033027800,elegibilidade_arm_1,1,33.7,16,10,14,29,132,4,3,3,3,4,4,17,1
+1178,Rosileide de Lima Rosendo,29715220835,elegibilidade_arm_1,1,42.3,16,8,12,24,90,5,2,2,2,2,5,19,1
+1180,Cicera clauidnea Duarte,18606800899,elegibilidade_arm_1,1,47.7,17,8,8,29,65,2,2,5,5,4,7,24,1
+1181,Natália da Paz Iamundo,41351058827,elegibilidade_arm_1,1,27.9,26,14,17,40,120,6,5,7,7,5,7,4,1
+1183,Flavia Costa,02564194346,elegibilidade_arm_1,1,33.8,15,8,6,32,88,2,2,1,1,2,1,9,1
+1185,Lucas Nascimento,37165210865,elegibilidade_arm_1,2,31.8,23,7,11,37,134,1,5,5,5,4,6,10,1
+1188,Rosana Dias da Silva,139421728t2,elegibilidade_arm_1,1,50.3,26,10,12,46,113,6,4,5,5,4,6,18,1
+1189,GRACIELE MEIRA,01308512139,elegibilidade_arm_1,1,36.5,18,16,17,32,113,5,4,2,4,5,1,9,1
+1191,Thais Monteiro Tronquini,42733266802,elegibilidade_arm_1,1,27.2,17,17,13,21,90,2,1,6,6,2,5,20,1
+1192,Jucileide Sampaio Silva Costa,49619691504,elegibilidade_arm_1,1,52.5,26,17,17,38,100,3,1,7,6,2,7,8,1
+1193,Patrick da Nóbrega Novais,02112382590,elegibilidade_arm_1,2,36,16,9,12,23,119,1,1,3,7,4,3,22,1
+1195,Tainá Tavares de Carvalho,06512636970,elegibilidade_arm_1,1,32.7,19,12,18,38,111,4,5,5,6,5,4,2,1
+1196,Carlos Henrique de Sousa Fernandes,39164881806,elegibilidade_arm_1,2,31.6,21,6,9,26,71,3,5,1,3,1,2,27,1
+1197,Erika Durigon Gonçalves da Mata,355120368-74,elegibilidade_arm_1,1,30.1,15,9,14,25,127,5,5,6,5,4,7,17,1
+1198,Ana Luiza Satie Voltolini Uwai,43078207897,elegibilidade_arm_1,1,26.7,23,14,14,43,94,2,5,6,6,4,5,10,1
+1199,Vanessa Nunes da Silva,29590522858,elegibilidade_arm_1,1,40.9,16,12,13,28,138,5,5,4,4,4,4,24,1
+1203,Fernanda de Almeida Pinheiro,08560827757,elegibilidade_arm_1,1,40.1,24,12,10,29,147,4,4,4,3,4,5,29,1
+1206,Pedro Tarla,41336042885,elegibilidade_arm_1,2,27.7,13,1,1,10,114,5,4,6,5,1,4,18,1
+1211,Lucia Florentino dos Santos,20002657821,elegibilidade_arm_1,1,43.2,25,19,20,49,139,6,3,7,7,7,7,1,1
+1212,Elaine aparecida dos Santos,0146138130,elegibilidade_arm_1,1,35.7,19,14,14,34,127,4,4,4,5,4,4,7,1
+1215,Thuany Nunes Prado,39647098839,elegibilidade_arm_1,1,31.3,16,6,9,31,124,4,4,3,4,3,5,23,1
+1221,Viviane Balbuglio,43065378892,elegibilidade_arm_1,1,26.8,15,5,15,31,101,3,2,5,5,4,6,18,1
+1222,Jeniffer Suellen Borges Becker,34425479890,elegibilidade_arm_1,1,34.1,18,12,16,27,72,6,4,4,6,4,6,12,1
+1223,MARIANA RAUWEY VONG,40965604802,elegibilidade_arm_1,1,29.4,20,13,16,39,108,1,5,4,4,4,4,3,1
+1224,Natália Aparecida Fontana,11113012633,elegibilidade_arm_1,1,29.7,19,13,15,36,114,4,3,4,4,4,5,18,1
+1225,Val Pigozzi,11268747874,elegibilidade_arm_1,1,55,11,5,4,21,79,6,4,3,4,1,5,38,1
+1227,Denis de Albuquerque,28458423847,elegibilidade_arm_1,2,42.9,22,16,16,34,126,4,6,5,7,5,6,12,1
+1229,Celso Luis Assis Ribeiro Bento,18712591858,elegibilidade_arm_1,2,45.2,23,7,8,25,104,2,4,6,6,5,7,22,1
+1235,Angela Andrade Pereira,91640385568,elegibilidade_arm_1,1,44.5,21,9,17,42,106,5,2,7,6,6,7,12,1
+1237,Ana Beatriz Montico Abranches Maia de Loureiro,05736316706,elegibilidade_arm_1,1,38.3,17,4,7,13,99,4,3,1,3,4,3,31,1
+1241,Taissa Lukjanenko Dutra,25554769896,elegibilidade_arm_1,1,46.3,16,5,6,7,61,6,1,4,5,1,6,36,1
+1244,Caroline maria furtado Aguiar de arruda,65979311300,elegibilidade_arm_1,1,31,20,5,14,26,116,4,2,5,5,5,6,21,1
+1245,Larissa Carvalho da Silva Alves,11250447720,elegibilidade_arm_1,1,27.3,27,15,20,47,137,6,6,7,7,7,7,5,1
+1247,Daniel da Silva Donadio,32808970846,elegibilidade_arm_1,2,37.2,17,9,11,33,125,5,4,6,6,5,6,18,1
+1250,Andrea Florence de Mello Aguiar,35038656838,elegibilidade_arm_1,1,35.4,18,8,16,38,87,5,7,6,5,7,7,26,1
+1257,Gabriela Thomé Souza de Freitas,40993020836,elegibilidade_arm_1,1,25.9,25,10,15,40,130,7,5,6,7,7,7,8,1
+1259,Silvia Maria dos Santos Mello,27257474818,elegibilidade_arm_1,1,43.1,24,5,14,27,136,7,6,7,7,7,7,13,1
+1262,Priscila da Silva Pereira,29823957894,elegibilidade_arm_1,1,41.6,18,2,4,10,85,1,1,5,5,1,6,29,1
+1263,Andréia Cardoso dos Reis,11602268819,elegibilidade_arm_1,1,49,22,12,13,30,139,4,6,5,5,4,4,2,1
+1265,Klebber de Souza Maciel,02932706942,elegibilidade_arm_1,2,41.1,13,6,4,22,100,2,5,3,4,2,4,30,1
+1266,Nathália Alves de Menezes,01537122606,elegibilidade_arm_1,1,31.3,18,13,14,35,69,4,6,6,6,4,3,27,1
+1269,Cristina Mura,05879033848,elegibilidade_arm_1,1,53.7,20,15,11,44,140,2,5,4,3,4,6,9,1
+1272,Gerlane Jesus da Silva,02960202570,elegibilidade_arm_1,1,32.9,14,1,5,15,81,4,1,1,1,2,1,32,1
+1273,Eulane Coutinho Santos,07610732567,elegibilidade_arm_1,1,22,20,10,8,26,101,7,1,7,7,7,7,18,1
+1275,Marina Gonçalves,39761986808,elegibilidade_arm_1,1,31,17,3,2,12,75,5,1,4,3,2,1,21,1
+1276,Ana Lúcia Medeiros Moraes,22457616859,elegibilidade_arm_1,1,38.9,18,6,9,22,111,5,4,3,2,4,5,26,1
+1281,Marciel Gomes,17199005822,elegibilidade_arm_1,2,48.1,18,9,13,25,100,6,3,1,5,4,6,17,1
+1285,Natiele Porto Fonseca,02027436081,elegibilidade_arm_1,1,32.8,18,14,14,31,112,5,4,4,5,4,5,21,1
+1288,Thiago Carvalho Pelucio Silva,27285566870,elegibilidade_arm_1,2,43.1,14,13,13,40,101,4,3,5,5,4,4,27,1
+1289,Saranuche acioly lopes,00285914375,elegibilidade_arm_1,1,36.9,23,15,20,41,143,2,5,7,7,7,7,2,1
+1290,Patrick Habran,29013403869,elegibilidade_arm_1,2,43.2,16,5,11,24,121,2,1,5,4,3,5,21,1
+1292,Clair Costa Miranda,38644460234,elegibilidade_arm_1,1,48.2,14,6,6,8,81,2,1,3,3,1,4,28,1
+1294,Rosimary de Melo,76534910497,elegibilidade_arm_1,1,50.2,18,7,7,11,116,5,4,4,5,2,6,19,1
+1296,Thais Siqueira de Carvalho,42463871857,elegibilidade_arm_1,1,26.4,19,9,12,33,123,3,5,5,3,3,5,28,1
+1300,Valeria Lima Frediani,35187490800,elegibilidade_arm_1,1,34,19,9,12,31,112,2,2,2,4,2,4,21,1
+1302,Edlane de Sousa jardim,32581232846,elegibilidade_arm_1,1,37.1,24,8,10,31,95,5,3,6,5,5,7,12,1
+1303,Marlizete Bento da Silva Soares,29263109869,elegibilidade_arm_1,1,41.3,22,14,19,49,145,4,4,4,4,5,6,7,1
+1306,Daniela de Almeida Santos,31443406828,elegibilidade_arm_1,1,37.1,18,8,8,18,137,5,2,1,1,2,3,19,1
+1307,Josiane Cristina dos Santos,28720131801,elegibilidade_arm_1,1,42.3,22,13,14,43,152,3,6,7,7,7,7,5,1
+1308,Dione Leila holanda Martins,24868099884,elegibilidade_arm_1,1,45.6,12,5,3,19,128,5,4,2,4,2,4,21,1
+1309,Daisy Bueno da Cruz,15960641830,elegibilidade_arm_1,1,49.6,20,11,6,33,136,4,5,6,3,4,7,23,1
+1311,Regina Alcântara Coelho,33153738840,elegibilidade_arm_1,1,37.3,22,13,15,46,134,6,6,5,5,7,7,3,1
+1313,Raphael Pinheiro Silva do Vale,36403618814,elegibilidade_arm_1,2,32.8,8,0,3,23,68,3,2,4,5,3,7,33,1
+1316,Gabriela Lucisna Braz,22832194850,elegibilidade_arm_1,1,32.4,21,14,15,39,98,4,4,5,5,4,5,13,1
+1317,Elielse Patrícia Lila Quadros Sampaio Andrade,56858850597,elegibilidade_arm_1,1,50,19,12,11,33,152,6,5,4,5,4,6,15,1
+1318,Daniela Soares da Cruz,39563601840,elegibilidade_arm_1,1,30.9,18,12,15,42,139,3,4,7,7,5,6,1,1
+1321,Sabrina Aparecida de Andrade Campos,04790750930,elegibilidade_arm_1,1,39.2,21,8,15,31,75,5,4,7,7,4,7,26,1
+1323,Estela Maris Delabari,39780773091,elegibilidade_arm_1,1,58.8,15,7,10,27,42,1,1,3,3,2,4,28,1
+1325,Ticiana Paiva de Vasconcelos,63927551368,elegibilidade_arm_1,1,40.4,19,3,11,21,34,4,5,5,6,3,4,28,1
+1326,Maria Rosângela Bueno Cardoso,11073629899,elegibilidade_arm_1,1,51.1,14,3,7,20,143,7,4,4,4,2,4,24,1
+1332,Ronald De Lima Santos,05793195556,elegibilidade_arm_1,2,27.1,22,7,15,41,113,6,3,5,6,5,7,18,1
+1333,Aline Duarte Martins,36428474808,elegibilidade_arm_1,1,34.5,23,15,12,37,126,4,7,7,7,5,7,19,1
+1338,Maria Cristina Bonini,10177052830,elegibilidade_arm_1,1,53.4,14,8,8,28,90,2,4,4,2,4,4,19,1
+1339,Magaly Pittoli,05728555837,elegibilidade_arm_1,1,54.6,16,13,15,32,112,1,4,2,2,2,1,29,1
+1340,Márcia da Costa Bonifacio,16173429802,elegibilidade_arm_1,1,45,10,3,6,12,57,1,1,1,2,2,2,29,1
+1341,Ronise Patrícia Mariano Pereira,11077238843,elegibilidade_arm_1,1,50,18,17,14,41,146,4,6,4,4,4,5,10,1
+1347,Viviane Ribeiro de Paula,01918461120,elegibilidade_arm_1,1,37.5,26,14,15,47,142,6,6,7,7,7,7,5,1
+1348,Martha zarza,02205027816,elegibilidade_arm_1,1,58.3,14,5,5,23,116,2,4,3,4,3,1,29,1
+1352,Ana Carolina Petrisin Muniz,26715829861,elegibilidade_arm_1,1,46.5,20,13,16,36,115,4,3,7,7,7,7,10,1
+1353,Miriam Castro dos Santos,04193735516,elegibilidade_arm_1,1,32.5,23,12,13,44,133,6,5,6,4,5,7,11,1
+1361,Lauren Frantz,02030119024,elegibilidade_arm_1,1,32,17,5,11,31,140,4,4,3,5,5,6,24,1
+1363,Marco Antonio Faccin,97704210068,elegibilidade_arm_1,2,41.3,18,10,6,16,135,6,4,5,6,5,6,20,1
+1366,Carlos Alberto Rodrigues Alves,14904331800,elegibilidade_arm_1,2,46.2,15,12,9,30,110,5,3,3,4,4,3,18,1
+1368,Paulo Rogério Fernandes,03237074918,elegibilidade_arm_1,2,41,18,6,10,19,125,5,5,5,6,5,7,32,1
+1375,Carlos Antônio do Nascimento,10762920890,elegibilidade_arm_1,2,53.1,13,9,8,9,49,7,1,1,1,3,1,33,1
+1378,Karinna Pereira Gongora,41006477861,elegibilidade_arm_1,1,30.2,19,5,7,13,112,5,4,5,4,5,3,29,1
+1379,Victor Tadao Tiba,28941362857,elegibilidade_arm_1,2,41.2,17,12,14,40,104,6,1,1,6,3,7,17,1
+1380,Amanda Alves Siqueira,05621117352,elegibilidade_arm_1,1,27.7,21,17,21,48,91,4,1,6,6,5,7,5,1
+1382,Michele Nobre Borges,09009968464,elegibilidade_arm_1,1,31.5,21,1,4,30,127,5,6,4,6,6,6,13,1
+1386,Mayara Mendonça Beckhauser,05662808929,elegibilidade_arm_1,1,35.8,19,6,13,33,130,5,4,4,4,6,4,13,1
+1388,Bruno Jorge Opa Mota,28007494820,elegibilidade_arm_1,2,42.7,19,10,14,24,142,4,7,6,5,4,5,19,1
+1393,Luciane Ferri,12642678865,elegibilidade_arm_1,1,49.8,19,14,13,33,67,4,4,3,4,4,3,18,1
+1394,Thatianne dos Reis Nicomedes Brasil,96817119120,elegibilidade_arm_1,1,38.4,22,10,12,20,107,1,2,4,5,4,4,11,1
+1395,Bianca Miranda,39323750840,elegibilidade_arm_1,1,23.4,20,0,1,7,81,1,2,2,1,1,2,42,1
+1396,Letícia Furlan Leme,40884078817,elegibilidade_arm_1,1,25.4,12,2,9,20,108,3,5,6,5,4,7,22,1
+1397,Kellem Lopes da Rosa,94312443068,elegibilidade_arm_1,1,40.9,18,9,8,19,98,4,3,4,4,4,6,19,1
+1400,rodrigo da silva souza,02565989164,elegibilidade_arm_1,2,34.3,17,13,15,45,73,2,2,6,6,4,5,7,1
+1402,Ana Cristina Gralhóz,14662227860,elegibilidade_arm_1,1,48.3,22,6,11,15,126,6,5,6,6,5,6,14,1
+1404,Fernanda de Carvalho Cremonesi,39366957846,elegibilidade_arm_1,1,31,19,12,9,29,123,1,5,2,2,2,4,17,1
+1415,Silvia Nunes da Silva,17634744883,elegibilidade_arm_1,1,47.3,20,7,8,28,89,4,3,4,5,3,6,23,1
+1417,Analice Pereira de Campos,07228725859,elegibilidade_arm_1,1,54.3,19,8,11,34,99,5,4,5,5,5,7,25,1
+1418,Luciana Ribeiro de Moraes,08698514898,elegibilidade_arm_1,1,57.6,16,4,2,34,107,3,3,4,5,4,7,17,1
+1419,Priscila Kaori Tsutsumiuchi,38569138822,elegibilidade_arm_1,1,30.2,20,16,11,40,155,5,6,4,4,3,6,8,1
+1421,Danilo bertazzi,21966483880,elegibilidade_arm_1,2,36.3,22,10,15,33,104,6,2,6,6,6,6,6,1
+1423,Suélen de Moraes Sanches,34442609896,elegibilidade_arm_1,1,37.6,22,16,15,32,105,3,5,6,5,4,5,10,1
+1424,Natalia Casagrande Salvador,36460021821,elegibilidade_arm_1,1,34.5,15,9,13,22,93,3,5,3,1,2,4,11,1
+1431,Eloisa Elena Bastos Rocha,08178464845,elegibilidade_arm_1,1,54,22,16,18,35,127,5,4,7,7,3,7,14,1
+1436,Jonathas Dorea silva,02164049594,elegibilidade_arm_1,2,35.2,24,11,14,42,157,4,7,7,6,7,7,3,1
+1437,Fabiana Aparecida Soria do Nascimento,29960965848,elegibilidade_arm_1,1,40.7,22,14,7,34,146,3,5,5,5,5,5,12,1
+1438,Maria Filomena Souza Dias,39805740838,elegibilidade_arm_1,1,31.6,22,7,6,18,121,5,4,4,1,2,4,14,1
+1439,Livia Maki Yoshikawa,37894726893,elegibilidade_arm_1,1,28.9,16,11,15,35,111,5,4,7,6,4,6,19,1
+1441,Rachel Maimone Tiago,29581392807,elegibilidade_arm_1,1,40.5,15,9,9,26,117,2,3,4,4,4,4,16,1
+1443,Andréa Cristina Coutinho,27041556824,elegibilidade_arm_1,1,43.2,20,11,8,30,155,1,5,5,7,7,7,18,1
+1444,Silvia Regina S Trombini,08191068877,elegibilidade_arm_1,1,57.2,25,10,15,39,136,6,2,5,3,5,7,25,1
+1446,Rory Willian Garcia Pimentel,13220828809,elegibilidade_arm_1,2,49.7,16,7,4,22,73,2,2,3,2,3,1,31,1
+1448,Marilda Rosa Luciano Neves,09333468866,elegibilidade_arm_1,1,59.2,19,11,10,27,130,6,5,6,4,4,5,4,1
+1453,Kelly Cristina do Nascimento,28298937864,elegibilidade_arm_1,1,40.1,18,12,15,36,114,4,4,6,4,4,6,17,1
+1454,Ana Silvia Moreira Franco,25383106871,elegibilidade_arm_1,1,45.3,16,7,14,27,133,5,6,7,6,4,6,16,1
+1458,CAMILA LARISSA SPINELLI SOARES DA SILVA,39168006802,elegibilidade_arm_1,1,32.1,19,6,8,27,122,6,5,6,6,4,7,21,1
+1460,Givaldo da Silva Costa Filho,29650433813,elegibilidade_arm_1,2,39.9,14,7,8,27,80,4,2,3,4,4,4,23,1
+1463,Micarla lins,10468249702,elegibilidade_arm_1,1,26.2,27,14,12,46,120,2,5,7,7,7,7,0,1
+1465,Regina RIBEIRO,14051674835,elegibilidade_arm_1,1,54.1,19,11,17,48,102,2,2,6,7,7,6,3,1
+1466,Jacqueline Luiz Leite Dantas,03004483688,elegibilidade_arm_1,1,44.1,14,7,10,15,63,1,2,5,4,4,6,25,1
+1467,Andreia dos Santos Sperandio,35963047846,elegibilidade_arm_1,1,35,14,11,8,30,101,2,5,2,4,2,1,26,1
+1470,Francisca das Chagas Lima Batista,24731564840,elegibilidade_arm_1,1,57,22,12,12,27,113,6,4,2,2,5,2,10,1
+1471,Angela Cristina Barboza Faggion Fabbri,1667562801,elegibilidade_arm_1,1,55.4,20,8,11,21,111,2,5,5,5,5,6,17,1
+1473,Andréa Peniche,16382701807,elegibilidade_arm_1,1,48,17,4,8,23,86,2,4,1,1,2,4,26,1
+1475,Patrícia Carla Soares Rocha,72739100400,elegibilidade_arm_1,1,50.7,22,9,5,30,155,1,4,7,7,7,7,10,1
+1477,Fernanda do nascimento,40412833883,elegibilidade_arm_1,1,29.4,24,11,17,37,130,6,5,7,7,7,7,5,1
+1481,GABRIELA FAGGIN MASTRO ANDREA ZAMUR,350620328-22,elegibilidade_arm_1,1,35.5,26,10,18,47,139,5,7,7,7,6,7,2,1
+1483,Liseleine M. Pompiani Bariquello,07226723816,elegibilidade_arm_1,1,55.8,14,13,15,18,96,6,6,1,5,4,4,17,1
+1484,Maicon Douglas Belitato de Melo,10706750918,elegibilidade_arm_1,2,23.2,17,14,17,40,144,4,5,7,7,7,7,8,1
+1485,Thaís de Oliveira da Silva,15792076774,elegibilidade_arm_1,1,26.1,18,6,9,28,113,3,4,3,6,3,1,28,1
+1486,Natalici martins,36873986844,elegibilidade_arm_1,1,32.7,15,9,16,38,65,4,2,4,2,2,4,22,1
+1487,Sintia Camila Schio,00563626097,elegibilidade_arm_1,1,36.2,17,3,8,27,138,7,6,7,7,6,6,20,1
+1488,Tatiana Fiscina de Santana,67085660520,elegibilidade_arm_1,1,49.1,18,7,12,32,122,1,1,5,6,2,7,27,1
+1490,Karina yuri miyoshi,32730549803,elegibilidade_arm_1,1,36.4,14,7,10,46,91,1,1,1,1,1,3,30,1
+1492,Tereza Vitória Lira Pinto,02690366282,elegibilidade_arm_1,1,25,17,13,10,42,72,2,3,4,5,2,6,24,1
+1494,Iris Carolina Valentim Hoelz da Silva,43028595800,elegibilidade_arm_1,1,25.4,21,6,10,40,110,7,5,6,7,7,7,23,1
+1498,Claudinei Aparecido Simielli Machado,06540939892,elegibilidade_arm_1,2,56.5,12,9,8,29,104,5,2,2,2,2,2,23,1
+1499,Monyse Brito Litrenta,32651517860,elegibilidade_arm_1,1,31.2,13,7,10,31,145,4,6,6,6,5,7,9,1
+1501,MAURICIO SCHIMENES OGLIARI,39033224828,elegibilidade_arm_1,2,31,18,5,6,22,113,1,1,2,4,2,3,29,1
+1503,Ana luisa cavichiole ferreira d'angelo,01125391901,elegibilidade_arm_1,1,29.4,23,10,11,31,125,1,4,3,4,4,1,31,1
+1505,Eloá Sales Davanzo,40571152856,elegibilidade_arm_1,1,30.9,19,4,12,22,113,6,2,3,3,3,4,17,1
+1509,Marcelo Botezini Sponchiado,83922776000,elegibilidade_arm_1,2,25.8,21,16,19,34,127,5,5,6,7,5,7,12,1
+1510,Marcos Vinícius de Almeida Garcia Silva,10738979660,elegibilidade_arm_1,2,19.4,17,10,11,35,108,1,4,4,4,5,4,15,1
+1511,Lais Roldan Azevedo,10385519788,elegibilidade_arm_1,1,31.9,16,9,15,37,91,1,4,7,7,6,7,24,1
+1513,Lucas Rosario,15961973743,elegibilidade_arm_1,2,27.9,18,8,11,41,134,3,5,5,4,5,6,19,1
+1515,Ana Lucia Costa de Oliveira Galvão,23854162120,elegibilidade_arm_1,1,59.4,16,14,12,36,61,2,4,4,5,4,6,20,1
+1518,Lethicia Satye Miossi,32465201867,elegibilidade_arm_1,1,31,21,10,15,29,94,4,3,5,5,5,6,30,1
+1519,Fernando Pereira Lima Filho,27507912272,elegibilidade_arm_1,2,54.3,26,8,7,31,131,5,4,4,4,3,4,16,1
+1520,Gustavo Herrera,23773631804,elegibilidade_arm_1,2,44.2,14,1,3,15,67,4,3,3,2,2,3,29,1
+1522,Felipe Rego Chaves de Aguiar Carvalho,039322t2t94,elegibilidade_arm_1,2,27.7,21,13,14,45,116,4,5,4,2,5,6,19,1
+1524,Gladis Helena da Silva,61288055909,elegibilidade_arm_1,1,54,13,10,10,27,79,3,3,4,3,2,4,30,1
+1525,Eliezia Lima Hora,34312609500,elegibilidade_arm_1,1,54.2,25,20,8,36,146,4,6,6,6,5,7,4,1
+1527,RENATA BAPTISTA NETO,08317142981,elegibilidade_arm_1,1,21.3,24,12,13,36,112,4,5,7,7,7,7,25,1
+1530,Patrícia Naomi Munekata,34807840840,elegibilidade_arm_1,1,34.1,16,10,11,30,152,4,6,4,5,6,6,9,1
+1533,Anna Katarina Vasconcellos,09207461790,elegibilidade_arm_1,1,39.1,14,4,7,24,61,3,4,4,5,4,5,34,1
+1534,Luiz Freitas,14971928898,elegibilidade_arm_1,2,53.4,19,8,7,18,74,1,1,4,4,2,4,32,1
+1535,Luana Barbosa Nodari,21293095850,elegibilidade_arm_1,1,36.7,17,3,6,13,137,3,6,4,4,4,3,16,1
+1539,Jenifer Jéssica de Oliveira lima,37029469852,elegibilidade_arm_1,1,33.8,17,11,13,36,98,5,3,7,7,6,7,11,1
+1540,José Eduardo da Silva,07681914838,elegibilidade_arm_1,2,56.8,17,10,14,27,99,4,2,4,4,4,2,26,1
+1541,Giane Rodrigues da Costa Souza,11717438822,elegibilidade_arm_1,1,52.2,16,1,3,12,89,4,2,2,4,2,4,30,1
+1542,Daniel Ribeiro Rodrigues,13227298678,elegibilidade_arm_1,2,23.9,10,13,9,34,79,1,2,2,2,3,2,23,1
+1543,Jessica Alves de Souza,05761369567,elegibilidade_arm_1,1,29.6,24,11,10,33,122,5,4,4,4,4,4,15,1
+1545,Alice Rodrigues de Souza,07092654505,elegibilidade_arm_1,1,24.7,18,6,12,28,120,4,4,7,7,4,6,15,1
+1551,Flavia Algaba Polo,27691533829,elegibilidade_arm_1,1,41,20,12,8,42,131,5,6,4,6,6,7,5,1
+1553,Tatiane Cerqueira Villela Santos,43349386806,elegibilidade_arm_1,1,26.2,20,7,16,31,123,6,5,5,5,6,7,17,1
+1561,Elisabete Cristina Pinheiro Drumond,22631161840,elegibilidade_arm_1,1,39,25,8,9,29,71,2,1,6,4,4,7,17,1
+1562,Rodrigo de Lima Ferreira,69245193691,elegibilidade_arm_1,2,50.8,18,14,18,36,125,2,4,2,5,4,5,21,1
+1563,Deborah Martinez Griebler,15184279873,elegibilidade_arm_1,1,54.7,17,12,11,35,116,5,4,5,5,4,4,14,1
+1567,Mônica Nardy Marzagão Silva,08699714840,elegibilidade_arm_1,1,55.4,25,11,13,34,115,5,5,7,7,6,7,12,1
+1579,Joana Helen Idelfonso dos Santos,07734933360,elegibilidade_arm_1,1,21.4,17,4,14,32,104,5,2,5,4,2,4,26,1
+1583,Edinária de Souza Almeida Cajaíba,30159828856,elegibilidade_arm_1,1,41.6,9,6,7,24,44,2,2,4,2,2,2,24,1
+1584,Livia Oliveira,32731503866,elegibilidade_arm_1,1,36.2,13,10,6,14,75,7,1,5,5,1,7,30,1
+1592,Fabiana Salustiano Madureira Santos,32327795818,elegibilidade_arm_1,1,36.3,19,11,17,25,71,3,3,3,3,2,3,28,1
+1597,Edvania de Souza crunfli,03326820801,elegibilidade_arm_1,1,57.1,13,8,12,24,95,2,1,3,4,2,6,41,1
+1598,Edna do Nascimento Nvemba,05291056835,elegibilidade_arm_1,1,54.7,14,7,8,14,78,2,2,1,1,1,1,21,1
+1599,Jacqueline Marques Reis,07815950108,elegibilidade_arm_1,1,18.8,19,16,14,35,107,5,2,1,5,3,6,19,1
+1600,Rubens Natale de Oliveira,16881347863,elegibilidade_arm_1,2,48.8,27,9,11,29,140,6,4,5,5,7,5,6,1
+1601,Deise Maria Zavan Tristão,10209673826,elegibilidade_arm_1,1,54.1,22,17,18,46,109,1,4,6,6,6,6,7,1
+1604,Guilherme Correa,22309259896,elegibilidade_arm_1,2,37.9,16,3,14,33,78,5,1,1,3,3,5,35,1
+1605,PAULA NUNES DA COSTA,29567959889,elegibilidade_arm_1,1,39.5,24,12,14,42,129,6,7,7,7,6,7,5,1
+1606,Adilson Leite,05550028883,elegibilidade_arm_1,2,55.2,19,16,18,41,141,5,5,5,5,5,7,9,1
+1607,Rogério Rossi,14805053828,elegibilidade_arm_1,2,47.6,16,16,13,35,129,1,3,4,4,4,4,5,1
+1613,Priscila Pitz Monteiro,08289114958,elegibilidade_arm_1,1,30,18,14,12,45,112,4,5,5,5,5,6,5,1
+1614,PATRICIA HEDISON SOUZA FURUTA LIMA,34024397869,elegibilidade_arm_1,1,36.1,23,15,14,27,157,4,7,5,6,4,7,8,1
+1615,Aline Lima Alves,34430081867,elegibilidade_arm_1,1,34.6,15,10,15,31,82,4,4,6,5,2,4,20,1
+1617,Natalie Fernandes Spanghero,41530092884,elegibilidade_arm_1,1,29.7,16,6,13,37,118,7,2,2,4,5,6,24,1
+1619,Mariana Del Nero,29050938892,elegibilidade_arm_1,1,38.9,17,8,13,42,68,4,3,5,6,4,4,24,1
+1621,Moroni dos Santos Alves,38209275810,elegibilidade_arm_1,2,26.5,15,13,12,37,78,3,4,4,4,2,4,14,1
+1622,Vanessa de Melo Araújo,29226137803,elegibilidade_arm_1,1,39.3,19,8,10,35,96,6,4,2,2,3,4,23,1
+1623,Cristiano Barros Gomes,27427882806,elegibilidade_arm_1,2,45.7,28,16,17,48,157,5,5,7,7,6,7,8,1
+1635,Larissa de Kassia Gonçalves Santos,05502892166,elegibilidade_arm_1,1,23.3,22,15,9,29,138,4,5,6,6,4,7,7,1
+1637,Adriana Matangrano,14911687819,elegibilidade_arm_1,1,51.3,23,12,17,38,151,4,4,5,4,4,5,6,1
+1638,Kelly Janine Navarro,26762744818,elegibilidade_arm_1,1,44.9,12,4,1,10,37,1,1,2,1,1,2,18,1
+1639,Juliana de Araújo Laurindo Silva,34569522874,elegibilidade_arm_1,1,35.7,20,16,12,41,127,1,4,6,6,4,7,7,1
+1641,Amanda Marques de Oliveira,34371944884,elegibilidade_arm_1,1,34.2,20,18,20,43,150,4,6,7,7,6,7,5,1
+1642,Isabel Cristina dos Santos,35459031842,elegibilidade_arm_1,1,35.4,21,9,9,37,137,7,7,6,7,6,7,12,1
+1643,Kumie Fujimori,11775259846,elegibilidade_arm_1,1,59.1,17,8,6,29,80,4,1,4,4,3,5,22,1
+1644,Jorgenei de Alves de Moraes,28700481300,elegibilidade_arm_1,2,57.5,25,5,10,14,148,7,4,7,7,7,6,16,1
+1646,Ana claudia Britto Lyra figueiredo,46034684404,elegibilidade_arm_1,1,56.3,15,10,14,26,96,6,1,4,5,4,6,15,1
+1650,Guilherme victor Rocha Pereira,07868252600,elegibilidade_arm_1,2,28,18,11,15,28,123,2,4,5,5,5,5,8,1
+1651,Alexandre Nunes Bassul,31147679827,elegibilidade_arm_1,2,38.9,24,19,18,38,70,1,1,6,6,5,6,9,1
+1652,JULIANA ARANTES DE OLIVEIRA,31436952859,elegibilidade_arm_1,1,38.3,22,5,11,16,95,7,3,5,6,6,7,10,1
+1654,Raphael Andre Tobias,12551537843,elegibilidade_arm_1,2,47.5,14,5,4,10,50,1,5,1,4,1,1,27,1
+1656,Renata Andrea Costa Prior,30124128831,elegibilidade_arm_1,1,44.7,24,13,11,40,145,4,7,7,7,6,7,0,1
+1658,Thaís Costa Silveira,37053346897,elegibilidade_arm_1,1,32.5,19,7,14,28,127,6,3,3,4,4,6,20,1
+1661,Isadora Rênia Lucena Oliveira,05177139344,elegibilidade_arm_1,1,22.8,14,7,7,30,113,2,2,4,4,2,4,11,1
+1670,lidia daiana,96949708300,elegibilidade_arm_1,1,36.5,15,6,8,17,127,4,1,2,3,4,3,20,1
+1675,Ana Caroline Mendes de Almeida,02082792374,elegibilidade_arm_1,1,26.6,12,13,9,27,102,2,4,3,3,7,2,16,1
+1678,Meraldiva Bonissoni,64429040915,elegibilidade_arm_1,1,53.5,25,15,18,39,139,5,4,6,6,5,5,3,1
+1679,Thiago Tavares Da Silva Ferreria,00416184162,elegibilidade_arm_1,2,37.9,26,6,16,38,130,5,1,7,7,4,7,18,1
+1683,Sthéfany Alves de Carvalho Pacheco,07145175790,elegibilidade_arm_1,1,37.6,25,3,4,15,109,3,2,4,2,2,2,16,1
+1686,Estella Elisabeth Anne Nilda Azevedo,85203114587,elegibilidade_arm_1,1,28.2,23,11,17,36,96,4,2,5,6,5,5,12,1
+1692,Andressa Reis de Freitas Mendonça,28798417800,elegibilidade_arm_1,1,43.6,17,16,20,47,147,6,7,7,7,7,7,4,1
+1697,Cassia Mariane Oliveira dos Reis,00434816124,elegibilidade_arm_1,1,36.7,12,14,13,42,134,1,4,5,5,3,2,20,1
+1698,simion dos santos cruz,41262373808,elegibilidade_arm_1,2,29,24,12,13,34,132,3,5,4,2,4,5,21,1
+1699,Adriana Macedo Mendes,34780343100,elegibilidade_arm_1,1,56.2,22,19,20,45,123,4,7,6,6,7,6,1,1
+1701,Sheila Doratiotto Schneider,27055827892,elegibilidade_arm_1,1,44.8,25,3,12,30,102,5,7,7,7,6,7,4,1
+1705,PAULO LUCENA MELO,60646659120,elegibilidade_arm_1,2,49.3,26,12,12,24,129,2,4,5,3,4,6,11,1
+1707,Wagner Farias De Sá,14711259805,elegibilidade_arm_1,2,57.8,24,15,14,48,134,4,4,6,6,5,5,11,1
+1720,Hannar Angélica de Melo Alverga,01807186229,elegibilidade_arm_1,1,28.3,23,3,7,21,126,7,4,7,7,6,7,22,1
+1722,ELZO NEWTON SOUZA CORREA,00991405277,elegibilidade_arm_1,2,28.4,22,8,8,33,132,3,4,4,7,6,5,12,1
+1723,Ivonete Paulino Bezerra,51292084120,elegibilidade_arm_1,1,50.9,12,8,10,29,120,5,4,4,4,4,6,8,1
+1725,Daniela Dantas de Oliveira,03264554186,elegibilidade_arm_1,1,31.4,21,7,17,40,114,1,1,4,7,4,7,31,1
+1727,Alessandra Giselle Soares da Rocha,01539224198,elegibilidade_arm_1,1,35.9,21,14,11,33,157,7,6,6,6,7,7,11,1
+1729,Mariana Carneiro Figueiredo,00126360103,elegibilidade_arm_1,1,29.4,14,5,11,36,135,5,7,6,6,7,7,17,1
+1731,Ana Carla de Souza,37338926824,elegibilidade_arm_1,1,32.4,10,9,12,33,117,1,3,1,1,1,3,23,1
+1732,Izabela de Fátima Braulino OlIveira,43815335850,elegibilidade_arm_1,1,24.1,19,4,8,38,118,3,3,2,3,4,4,15,1
+1733,ROBERTA DE ALMEIDA MELLO PASQUALUCCI,30758744854,elegibilidade_arm_1,1,42.1,28,11,13,37,138,1,5,7,7,7,7,16,1
+1734,Luiz Eduardo Neiva Rego Filho,03513365322,elegibilidade_arm_1,2,29,20,12,9,33,116,1,1,7,7,7,7,8,1
+1735,Alexandre Josué Cervo,61140228153,elegibilidade_arm_1,2,47.9,18,14,11,39,123,6,6,5,6,5,6,14,1
+1736,Claudia Nishi Inoue,25454429848,elegibilidade_arm_1,1,48,19,5,4,28,90,5,4,1,1,1,2,24,1
+1737,Marco aurelio barreto silva,60598344187,elegibilidade_arm_1,2,48.2,16,14,20,34,98,2,6,5,6,6,5,16,1
+1739,ERNANE pires maciel,38015153115,elegibilidade_arm_1,2,56.8,8,2,5,24,76,5,3,1,4,4,1,24,1
+1740,Cristina Michie Onoue,25344792883,elegibilidade_arm_1,1,48.5,21,16,11,36,110,3,6,5,4,4,4,16,1
+1742,Celia Regina Orlandim de Almeida,11543594840,elegibilidade_arm_1,1,51.4,24,5,6,28,121,1,1,7,4,5,6,15,1
+1746,Isabela Mayumi Nishino Aizawa,44018966881,elegibilidade_arm_1,1,29.3,3,1,4,15,31,2,1,1,2,2,1,31,0
+1748,Diego Gazoni Espinoza,43041856832,elegibilidade_arm_1,2,28.8,1,8,14,27,30,3,2,6,2,3,2,30,0
+1749,Jenniffer Pires da Silva,14978879760,elegibilidade_arm_1,1,25.4,1,4,4,29,74,4,5,1,2,1,1,24,0
+1751,Jovana Serio Veiga Lima,94852472653,elegibilidade_arm_1,1,46.7,3,4,5,13,49,5,1,1,1,1,1,24,0
+1754,Ana Flavia Bonini,26893798806,elegibilidade_arm_1,1,44,0,1,5,14,76,1,2,1,1,1,1,29,0
+1756,Mara Lúcia Ricarte Leme,57545421191,elegibilidade_arm_1,1,48.3,2,3,4,11,51,6,1,1,1,1,1,42,0
+1762,Samir Vidal Mussi,06261792623,elegibilidade_arm_1,2,36.9,3,0,2,10,43,2,1,1,1,1,1,24,0
+1770,Danniela El Rafihi Ferreira,02870390998,elegibilidade_arm_1,1,41,4,3,3,11,45,1,1,1,1,1,1,34,0
+1778,Thais Marcello Simões Pinto,47007814832,elegibilidade_arm_1,1,25.9,0,6,6,29,58,1,1,1,1,1,1,24,0
+1781,CASSIO BATISTA LACERDA,09278807680,elegibilidade_arm_1,2,32.6,1,2,4,14,10,2,1,1,1,2,1,38,0
+1786,Danielle Araujo Conway,13391636831,elegibilidade_arm_1,1,53.8,1,1,5,12,42,1,1,1,1,1,1,31,0
+1788,Rosana Aparecida Tasso,06417862801,elegibilidade_arm_1,1,54.8,2,12,18,45,60,2,2,2,2,2,2,24,0
+1789,Sheila Serra Vieira pinto,19128332806,elegibilidade_arm_1,1,46.8,7,4,3,27,92,1,4,1,1,1,1,32,0
+1793,Natalia Mendes Ferrer da Rosa,05900598900,elegibilidade_arm_1,1,35.3,1,3,6,16,46,2,2,1,1,2,2,24,0
+1797,Ariella Biasetto Rossi Imaizumi,31763920879,elegibilidade_arm_1,1,37.3,3,2,3,18,67,5,3,2,2,5,1,22,1
+1799,James Patrick Suplicy Conway,03840801893,elegibilidade_arm_1,2,59.7,1,1,7,15,46,2,1,1,1,1,1,46,0
+1800,Thaís Garcia Parra,42762008816,elegibilidade_arm_1,1,25.5,1,3,6,25,36,1,2,1,1,1,1,24,0
+1805,Natália Cosso Miranda Cajazeiras,44690435839,elegibilidade_arm_1,1,23.2,1,1,1,16,46,2,2,1,1,1,1,24,0
+1810,Gabriela Meloni Craveiro,34519539862,elegibilidade_arm_1,1,19.5,7,6,14,33,71,4,1,2,1,1,2,24,0
+1813,Ray Rodrigues Passos,42680188837,elegibilidade_arm_1,2,27.4,2,0,1,11,40,2,2,1,1,1,1,24,0
+1816,Viviane Soares Sales,43086549807,elegibilidade_arm_1,1,28.7,0,3,1,16,56,2,1,1,1,1,1,40,0
+1818,Fernanda Leite Muniz,11187305774,elegibilidade_arm_1,1,34.6,0,5,5,10,29,4,1,1,1,3,1,22,0
+1819,Sara de souza,43341953850,elegibilidade_arm_1,1,25.6,0,3,1,13,57,1,2,1,1,2,1,48,0
+1824,Jaqueline de Almeida Oliveira,29369512837,elegibilidade_arm_1,1,39.7,2,7,7,21,46,2,2,1,2,1,2,25,0
+1825,Karine Andrade Alves,33082452809,elegibilidade_arm_1,1,36.8,1,6,8,20,61,2,2,1,1,1,1,24,0
+1833,Marcelle Aryane Lima Cardoso,37332047861,elegibilidade_arm_1,1,31.7,2,6,4,19,79,1,2,1,1,1,1,29,0
+1834,Letícia Geraldo Firmino,37228648898,elegibilidade_arm_1,1,32.8,0,1,1,10,40,1,1,1,1,1,1,30,0
+1835,Vanilde Bernardes da Silva,07753289870,elegibilidade_arm_1,1,57.1,1,3,3,14,49,1,2,1,1,1,1,24,0
+1837,Priscila Antunes de Oliveira Paes,08853218630,elegibilidade_arm_1,1,35.3,3,2,3,13,40,1,4,1,1,1,1,24,0
+1839,Margareth canotilho da Silva,35336729809,elegibilidade_arm_1,1,35.4,4,8,3,13,57,1,1,1,1,1,1,24,0
+1844,Aline Flôr da Silva,32715043856,elegibilidade_arm_1,1,37.3,4,5,3,27,61,4,2,2,1,2,1,46,0
+1847,Allyson de Castro Eccard,08461140702,elegibilidade_arm_1,2,41.8,0,5,4,15,43,2,1,1,1,1,1,33,0
+1850,Viviane de Fatima Andrade Inocêncio Turteltaub,32555263888,elegibilidade_arm_1,1,37.7,1,4,4,20,75,1,1,1,1,1,1,17,0
+1851,Vanessa Regina da silva goes,27331888870,elegibilidade_arm_1,1,41.7,1,8,6,15,72,4,6,1,1,1,1,24,0
+1852,Fabiana Goto,17104404813,elegibilidade_arm_1,1,46.4,1,6,8,14,85,6,1,1,1,1,4,43,0
+1856,Vanessa Pereira da Silveira,46435204268,elegibilidade_arm_1,1,47.2,0,1,3,7,66,1,2,1,1,1,1,24,0
+1858,Clara Aparecida Faria,09906314605,elegibilidade_arm_1,1,31.4,7,6,13,32,58,2,1,1,1,1,2,24,0
+1859,Neide Amorim da Silva,14712606827,elegibilidade_arm_1,1,52.1,1,11,3,18,107,1,2,1,1,1,1,13,0
+1862,Marilia Batarra Lima,34305914816,elegibilidade_arm_1,1,35.3,2,6,12,33,12,2,2,1,1,2,2,24,0
+1869,Viviane Aparecida Cardoso de Campos,07127202605,elegibilidade_arm_1,1,36.7,5,9,8,29,75,2,2,1,1,2,1,24,0
+1871,Juliana Colomby Ortiz,01475986050,elegibilidade_arm_1,1,33.8,2,3,4,14,31,4,2,2,2,2,2,47,0
+1873,Mariana Aguiar Ceron,42361787881,elegibilidade_arm_1,1,27.5,1,10,13,35,29,1,1,1,1,1,1,24,0
+1878,Ludmila Maria Christofoletti,41903747848,elegibilidade_arm_1,1,29.1,4,6,13,23,55,1,1,1,1,1,3,42,0
+1879,Stephânia Campregher Bertti,32400171807,elegibilidade_arm_1,1,36.3,1,1,1,8,72,6,4,1,1,4,4,26,0
+1885,Joyce Mara de Freitas Silva,06722933660,elegibilidade_arm_1,1,36.3,2,4,3,10,30,1,1,1,1,1,1,24,0
+1888,Regina Ribeiro das Neves,08877159820,elegibilidade_arm_1,1,55.4,1,3,2,9,27,1,1,1,1,1,1,24,0
+1899,Carolina Barros,36837144847,elegibilidade_arm_1,1,30.2,1,3,8,28,59,2,2,3,2,2,1,25,0
+1901,Marcela Garcia Correa,46996945860,elegibilidade_arm_1,1,25.5,1,3,9,22,40,1,3,1,1,1,1,24,0
+1902,Pedro Henrique Fujarra Penha,41862232899,elegibilidade_arm_1,2,29.4,4,6,8,26,53,3,1,1,1,1,2,24,0
+1903,Tatiana garcia da Costa,27558036810,elegibilidade_arm_1,1,43.1,5,7,6,14,60,4,2,1,1,1,1,28,0
+1904,LUCAS THEODOROVITZ PRUST,09350564912,elegibilidade_arm_1,2,28.5,5,3,5,11,78,5,2,6,6,1,2,40,0
+1905,ALCENOR DE CARVALHO MIRANDA FILHO,01207092363,elegibilidade_arm_1,2,32.6,2,1,1,9,54,2,1,1,1,1,2,24,0
+1908,Eduardo Ramos Cunha,10153707640,elegibilidade_arm_1,2,30.1,4,3,2,10,53,1,2,1,1,2,1,33,0
+1910,joyce cristina peu da silva,22062280840,elegibilidade_arm_1,1,41.7,0,0,1,7,10,1,1,1,1,1,1,48,0
+1911,Veruska Francisconi Moura,25154993845,elegibilidade_arm_1,1,45.1,4,7,7,29,94,3,3,3,3,4,3,24,0
+1914,Cristina Nicoli,03720443604,elegibilidade_arm_1,1,43.6,3,8,6,25,61,2,5,1,2,2,2,24,0
+1915,Rodrigo César Tournour Verissimo,31345281854,elegibilidade_arm_1,2,38.6,0,0,2,8,67,1,1,1,1,1,1,24,0
+1917,Priscila Xander,04016926980,elegibilidade_arm_1,1,38.9,0,3,1,11,67,1,1,1,1,1,1,36,0
+1918,Isabela Molines Ismael,46036824840,elegibilidade_arm_1,1,21.6,2,2,6,16,25,1,1,1,1,1,1,48,0
+1920,Lygia Matos Barreto de Castro,45853932500,elegibilidade_arm_1,1,54.1,5,9,9,31,91,2,1,1,2,3,4,27,0
+1938,Evelyn Cjhagas de Azevedo,00911638466,elegibilidade_arm_1,1,34.4,0,2,1,13,78,1,1,4,1,2,1,24,0
+1941,Luciana Farias Mandelli,28755761860,elegibilidade_arm_1,1,42.1,1,0,3,11,44,1,1,1,1,2,1,48,0
+1944,Andrea Alves Santos,12844206808,elegibilidade_arm_1,1,48.3,1,6,3,27,93,3,2,1,1,1,1,23,0
+1951,Karina Toledo da Silva Antonialli,35948390870,elegibilidade_arm_1,1,33.5,0,1,5,14,65,6,2,1,1,1,1,24,0
+1961,Cleidiane A de Quadra,03669161902,elegibilidade_arm_1,1,40.1,3,11,10,35,84,3,2,2,2,2,2,24,0
+1962,Júlia D'El Rei Fernandes,85765528503,elegibilidade_arm_1,1,27.7,2,1,1,7,49,1,1,1,1,1,1,48,0
+1964,Vanessa Rodrigues de Oliveira,40393250873,elegibilidade_arm_1,1,31.2,0,6,3,25,105,1,1,1,1,1,1,6,0
+1965,Lucas Sueti Magalhães,15188725738,elegibilidade_arm_1,2,25.1,0,0,3,13,85,3,2,1,1,1,2,24,0
+1968,Silvia Cristina Moniz de Camara de Sa,14231705801,elegibilidade_arm_1,1,49.3,0,12,9,38,84,1,4,1,1,4,2,25,0
+1969,Iara ferreira de oliveira,27282239800,elegibilidade_arm_1,1,44.2,1,1,3,8,30,5,1,6,2,1,1,31,0
+1970,Hellen Silva de Castro,46916605855,elegibilidade_arm_1,1,26.4,3,6,3,26,58,1,2,1,1,1,1,24,0
+1971,Tatiana Teixeira Bastos Carnevali,29374433893,elegibilidade_arm_1,1,41.7,0,8,10,26,39,4,1,1,1,1,1,22,0
+1973,Aline Maria Maia de Oliveira CPF,10335232833,elegibilidade_arm_1,1,53.9,0,5,5,18,81,2,2,1,1,2,1,24,0
+1975,Bianca Kaisse Moura Bandeira,45178686802,elegibilidade_arm_1,1,26.8,1,4,2,13,128,1,2,1,1,1,2,8,0
+1976,Henrique Mota Manesco,35198655805,elegibilidade_arm_1,2,34.4,2,3,4,29,56,1,1,2,2,1,3,40,0
+1979,Valdineia Ribeiro Santana,106606848ii,elegibilidade_arm_1,1,51.7,1,3,2,15,118,2,2,1,1,2,1,23,0
+1980,Fabiana Sampaio Braun Senna do Valle,08506131758,elegibilidade_arm_1,1,41.3,1,5,6,25,66,1,1,1,1,1,3,8,0
+1987,Letícia Cataneo da Silva Queiroz de Oliveira,44273892871,elegibilidade_arm_1,1,26.7,2,2,5,12,64,6,2,1,1,1,1,24,0
+1988,Viviane Kelly Fernandes de Carvalho,07070099444,elegibilidade_arm_1,1,37.8,8,5,6,28,64,3,2,1,2,1,2,24,1
+1989,Andressa Tamie Yokota Nishikawa,35042979808,elegibilidade_arm_1,1,32.9,0,2,7,11,71,2,1,1,1,3,1,24,0
+2001,Marina Borges Pereira,02220711684,elegibilidade_arm_1,1,22.1,3,4,6,33,95,3,3,4,4,4,5,21,0
+2002,Silmara Batista de Faria,06019437671,elegibilidade_arm_1,1,37.9,1,2,3,12,59,4,4,1,1,1,2,24,0
+2004,PATRICK AKAMINE PESCARA,32634532890,elegibilidade_arm_1,2,37.3,1,6,6,24,64,1,3,1,1,1,1,24,0
+2008,Diane Frois de Souza,34202988892,elegibilidade_arm_1,1,37.1,2,3,4,19,81,2,1,1,1,1,1,19,0
+2009,Luiz Antônio Coppini Júnior,02513812000,elegibilidade_arm_1,2,31,8,5,3,17,91,1,6,1,1,3,3,44,1
+2011,Marilia Ayres Suarez,37627136857,elegibilidade_arm_1,1,31.5,2,2,6,10,53,2,2,1,1,4,1,24,0
+2015,Sandra Regina Nascimento,02170939814,elegibilidade_arm_1,1,59.3,1,3,3,14,53,2,4,1,1,4,1,28,0
+2016,Mariana de Moraes Ferreira,41595260803,elegibilidade_arm_1,1,21.9,2,0,4,29,120,4,5,2,2,1,4,24,0
+2019,Fabio Vieira Abrão,32816338894,elegibilidade_arm_1,2,37.6,1,5,8,32,33,1,2,1,1,1,1,41,0
+2022,Sabrina Marques Moraes,37629304811,elegibilidade_arm_1,1,30.4,1,16,17,42,60,3,4,1,1,1,1,24,0
+2024,Leidy Janeth Erazo Chavez,23852142881,elegibilidade_arm_1,1,32,6,3,3,20,78,3,2,1,1,1,1,41,0
+2026,Jessica Timoteo Jeremias,33323741846,elegibilidade_arm_1,1,28.6,0,0,2,8,43,1,1,1,1,1,1,24,0
+2027,Natália Gotardo Muniz de Souza,39659855826,elegibilidade_arm_1,1,27.4,3,3,2,17,55,1,1,1,1,1,1,25,0
+2031,Marcos Fernandes Silva,11699145601,elegibilidade_arm_1,2,29.5,1,1,6,22,98,2,4,1,1,2,1,28,0
+2032,Laiz Alves Araújo,01377047121,elegibilidade_arm_1,1,33.7,2,3,4,13,63,2,1,1,3,2,2,43,0
+2034,Mayelle Batista da Silva,05407090180,elegibilidade_arm_1,1,25.5,3,2,5,20,73,2,3,1,1,1,1,41,0
+2038,Valdirene Secreny da Costa,11764052846,elegibilidade_arm_1,1,53.2,1,5,2,7,63,1,1,1,1,1,1,31,0
+2041,Julia Parada Amed,47193192892,elegibilidade_arm_1,1,24.2,1,0,3,9,71,1,4,1,1,1,1,24,0
+2043,Sabrina Almeid,02389537936,elegibilidade_arm_1,1,47.3,0,7,7,25,45,2,2,2,2,5,2,28,0
+2047,Larissa Miranda Santos,41182392806,elegibilidade_arm_1,1,27.2,0,1,2,12,59,1,1,1,1,1,2,48,0
+2049,Bianca Martins,00811862909,elegibilidade_arm_1,1,40.9,0,3,11,15,82,3,1,1,1,3,3,36,0
+2050,Maria Rita Zoéga Soares,55962955900,elegibilidade_arm_1,1,59.7,0,2,2,10,49,1,1,1,1,1,1,46,0
+2051,Roberta Ertel Baierle,03491955956,elegibilidade_arm_1,1,38.5,0,2,6,22,62,3,3,1,1,1,1,24,0
+2056,Luciana Reis Pimentel,01088290574,elegibilidade_arm_1,1,37.9,2,2,3,12,68,1,1,1,1,2,2,24,0
+2059,Adja da silva oliveira,80599524553,elegibilidade_arm_1,1,42,4,5,7,21,78,1,4,1,1,1,1,26,0
+2060,Evelyn da Silva Bitencourt,36449923806,elegibilidade_arm_1,1,27.2,1,7,9,28,49,1,1,1,1,1,1,48,0
+2062,Thomas Patrick Araújo Conway,52139497899,elegibilidade_arm_1,2,19.8,7,1,4,11,9,5,1,4,3,1,1,27,0
+2067,Leocardia Aparecida Zavodine,00988585138,elegibilidade_arm_1,1,35.7,2,1,5,10,30,1,2,1,1,2,1,37,0
+2068,Natanael de Paula Portilho,91105331172,elegibilidade_arm_1,2,41.3,1,2,6,21,68,2,2,1,1,1,1,26,0
+2069,Patrícia de Lima Alves Dos Santos,84964090230,elegibilidade_arm_1,1,35.4,1,1,2,11,30,1,1,1,1,1,1,24,0
+2074,Suzana Afonso Silva Azevedo,28033841591,elegibilidade_arm_1,1,59.2,6,0,0,8,66,4,2,1,2,1,2,48,0
+2075,Raquel Pinto Caldeira Almeida,01364798123,elegibilidade_arm_1,1,35.7,9,4,4,13,60,3,2,1,1,1,1,40,1
+2077,Thainara Santos Pereira,06141791573,elegibilidade_arm_1,1,27.1,3,2,3,10,91,5,2,1,1,1,2,24,0
+2079,Sayuri Miranda de Andrade Kuratani,04144188590,elegibilidade_arm_1,1,29.4,5,12,14,36,103,5,7,3,2,6,6,24,0
+2080,Israel Soares Pompeu de Sousa Brasil,01908797509,elegibilidade_arm_1,2,36.8,2,1,4,10,38,2,2,1,1,1,1,29,0
+2083,Ademir Antonio Cazella,55151060910,elegibilidade_arm_1,2,58,5,8,9,18,89,5,2,1,1,2,3,26,0
+2085,Luana de Oliveira Carneiro,26878502845,elegibilidade_arm_1,1,44.3,1,9,9,20,77,4,3,3,1,4,1,24,0
+2092,Raphaela Medeiros Costa,35461847854,elegibilidade_arm_1,1,24.6,9,5,8,28,121,2,2,1,2,1,2,8,1
+2097,Emmanuelle Silva Tavares Sobreira,75730766300,elegibilidade_arm_1,1,43.6,1,0,5,13,44,1,1,1,1,1,1,42,0
+2103,Lediane Cunha Dias Moura,00739031163,elegibilidade_arm_1,1,35.8,0,9,8,27,74,1,1,1,1,2,2,26,0
+2104,Thalia Gabriela da Rosa Cichaczewski,05693338142,elegibilidade_arm_1,1,24.5,1,4,7,27,60,4,3,2,2,4,4,43,0
+2113,Ana Clara Farto Agapito,08647714873,elegibilidade_arm_1,1,42.6,2,9,3,13,77,1,4,1,1,5,1,26,0
+2117,Silvana Paulos,07560696880,elegibilidade_arm_1,1,57.2,1,2,2,16,44,4,2,1,1,1,1,24,0
+2121,Larissa Carla Lopes Cardoso Moreira,98696858115,elegibilidade_arm_1,1,41.1,2,2,6,18,80,5,4,1,1,1,2,24,0
+2130,Cássia de Oliveira Cavalcante Urioste,26534041847,elegibilidade_arm_1,1,43.8,1,8,3,23,76,1,2,2,2,2,2,24,0
+2136,Anna Luiza de Morais Azevedo Viscardi,04513327685,elegibilidade_arm_1,1,40.8,3,6,6,25,81,2,4,2,1,4,2,10,0
+2138,Raiany Campos Chaves,13164605765,elegibilidade_arm_1,1,27.5,1,1,5,13,62,2,2,1,1,1,1,24,0
+2142,Thainá Rocha Braga machado,12770240730,elegibilidade_arm_1,1,27.8,1,4,10,21,41,1,1,1,1,1,1,24,0
+2146,Flavia Mologni,33822048860,elegibilidade_arm_1,1,NA,2,4,8,29,49,1,4,1,1,1,1,24,1
+2149,Luciana Souza Borges Herkenhoff,12975472846,elegibilidade_arm_1,1,52.1,2,2,3,9,93,6,3,1,1,1,1,24,0
+2151,Tais Cristina Relva Lima,12001530811,elegibilidade_arm_1,1,44.5,3,9,1,12,55,1,1,1,1,1,1,24,0
+2152,Camila de Souza Wolf,03994887909,elegibilidade_arm_1,1,38.5,1,4,4,24,70,1,4,1,1,1,1,25,0
+2159,Lígia Kobayashi Bárbara,36208730899,elegibilidade_arm_1,1,34.3,8,2,5,25,89,2,4,2,2,3,2,30,1
+2168,Elaine Cristina Bofelli,05699742832,elegibilidade_arm_1,1,57.3,0,4,7,12,44,3,4,1,1,1,1,24,0
+2172,Suellen Cristina Ribeiro de Oliveira,35758760889,elegibilidade_arm_1,1,34.4,2,2,2,7,49,1,1,1,1,1,1,24,0
+2175,João Cezar da Silva Borges,40683322826,elegibilidade_arm_1,2,29.3,1,5,8,21,37,2,1,1,1,1,1,24,0
+2178,Caroline Uchoa Argento,38288364888,elegibilidade_arm_1,1,33.2,3,0,7,14,38,2,1,2,1,1,3,24,0
+2180,Márcia Muniz,15027282818,elegibilidade_arm_1,1,50.3,2,1,6,8,69,5,1,1,1,1,1,24,0
+2184,Ana Paula Knackfuss Freitas Silveira,02421918006,elegibilidade_arm_1,1,32.4,1,6,1,12,52,4,2,1,1,1,1,24,0
+2199,Júlia Perigo Chiuzi,44166654829,elegibilidade_arm_1,1,26.1,3,2,5,14,42,4,1,1,1,1,1,30,0
+2207,Ana Elise Machado Ribeiro Silotto,33749913862,elegibilidade_arm_1,1,36.5,0,8,3,13,62,4,4,1,1,1,2,24,0
+2212,Kalinka larino Rodrigues Pulegio,32517535841,elegibilidade_arm_1,1,36.2,1,2,5,14,88,5,4,1,1,2,1,29,0
+2219,Paule Graziella de Paula,31431544892,elegibilidade_arm_1,1,38.5,1,1,4,12,31,3,2,1,1,1,4,24,0
+2220,Francine Cristina da Silva,30876620896,elegibilidade_arm_1,1,38.1,0,0,1,9,30,2,1,1,1,1,1,42,0
+2222,Karen de Oliveira Biondi,36948323863,elegibilidade_arm_1,1,NA,4,8,6,26,54,4,1,1,1,2,2,24,1
+2224,Elisa Patricio Macedo,02085318150,elegibilidade_arm_1,1,33.6,0,5,6,22,58,4,3,1,1,1,1,40,0
+2226,Viviane de Araújo Almeida,30094793875,elegibilidade_arm_1,1,40.6,2,2,9,26,59,3,3,3,2,1,2,24,0
+2228,Vanessa Mariz Alencar,31936128802,elegibilidade_arm_1,1,38.3,0,5,4,9,96,3,1,1,1,1,4,14,0
+2229,Sheila Maria Loiola,29454483862,elegibilidade_arm_1,1,39.7,1,4,4,11,89,2,1,2,3,3,2,32,0
+2243,Aretusa dos Passos Baechtold,89635264968,elegibilidade_arm_1,1,44.5,1,1,2,9,24,2,1,1,1,1,2,48,0
+2247,Angela Kayo,25994767808,elegibilidade_arm_1,1,44.8,2,5,4,12,47,1,2,2,1,1,1,24,1
+2253,Jaqueline Alves Santana,22945647826,elegibilidade_arm_1,1,34.9,4,2,5,17,56,1,1,1,1,2,2,18,0
+2254,Aline Cristina Santos Souza,41014181879,elegibilidade_arm_1,1,29.6,2,1,7,34,64,5,1,1,1,1,1,24,0
+2257,Ester Costa da Silva,22422274838,elegibilidade_arm_1,1,38.3,2,11,11,33,50,1,1,1,1,1,1,24,0
+2259,Juliana Belloni Mendes Barreto,34813215890,elegibilidade_arm_1,1,35.2,9,7,8,24,83,2,4,1,2,2,2,27,1
+2261,Cristiane Maria Carezzato,21294654802,elegibilidade_arm_1,1,43.2,1,3,2,15,32,1,1,1,1,1,1,45,0
+2272,Laís Helena Pereira,10847651606,elegibilidade_arm_1,1,30.2,3,3,6,28,51,1,2,1,1,3,2,41,0
+2274,Renata Farrielo de Campos Murata,36636044896,elegibilidade_arm_1,1,34.5,0,1,2,12,61,2,4,1,1,1,1,26,0
+2280,Guilherme Preston Krug,01076628761,elegibilidade_arm_1,2,51.5,1,2,3,12,28,5,2,1,1,2,1,38,0
+2284,Bruna Alves de Sousa Fernandes,05265640320,elegibilidade_arm_1,1,30.1,1,7,10,37,90,5,4,1,1,1,2,18,0
+2288,Liliana Costa Netto,27434122838,elegibilidade_arm_1,1,43.7,1,4,4,29,59,5,4,1,1,2,3,23,0
+2289,Fernanda Alencar Xavier,32348048850,elegibilidade_arm_1,1,37,4,3,3,15,76,3,5,1,1,2,1,23,0
+2290,Jessica Leo Girão,35734637890,elegibilidade_arm_1,1,33.4,1,2,2,9,57,1,1,3,1,2,1,48,0
+2292,Adriana Gomes Mendonça,71169377653,elegibilidade_arm_1,1,53.4,2,5,5,18,72,3,4,1,1,2,2,23,0
+2295,Maria Emanuely Dias Silveira Faniou,34291901852,elegibilidade_arm_1,1,33.4,0,0,1,7,42,1,1,1,1,1,1,24,0
+2299,Marina de Góes Salvetti,25891299801,elegibilidade_arm_1,1,45.7,1,0,1,8,56,5,3,1,1,2,1,41,0
+2305,Claudia Romera Longhi Montes,32766146857,elegibilidade_arm_1,1,35.6,0,2,4,17,60,2,5,1,2,1,2,24,0
+2306,Ricardo Nakao,07300868878,elegibilidade_arm_1,2,55.2,1,5,8,18,73,2,2,1,2,1,1,24,0
+2311,JOSE FRANCISCO SAMPAIO SOUZA,02894517602,elegibilidade_arm_1,2,42.6,3,2,3,17,48,1,2,1,1,1,2,24,0
+2312,Daniele Fernanda de Oliveira,32320216898,elegibilidade_arm_1,1,31.9,1,3,2,10,16,1,1,1,1,1,1,24,0
+2316,Daniele Ferreira dos Santos Dantas,17395785894,elegibilidade_arm_1,1,44.4,0,2,4,9,78,4,2,1,1,1,1,24,0
+2324,Adriana Lima Amaral,18038189809,elegibilidade_arm_1,1,46.8,2,8,8,16,78,2,4,2,1,2,1,20,0
+2330,Elaine Cristina Colen Santos,29462538808,elegibilidade_arm_1,1,41.2,0,3,4,22,43,4,4,1,1,1,2,30,0
+2332,Ercilene Maria de  Souza Vita Ayoub,088135938-64,elegibilidade_arm_1,1,56.3,3,6,4,16,41,1,2,2,3,2,2,26,0
+2336,Pamela Martins do Carmo,37999361810,elegibilidade_arm_1,1,32.2,0,8,1,19,87,1,2,1,1,1,1,24,0
+2350,Débora Schirrmeister de Medeiros,35728077862,elegibilidade_arm_1,1,33.5,4,6,10,30,66,1,4,1,1,1,1,24,0
+2364,Alexandre Dijan Coqui,88570380500,elegibilidade_arm_1,2,48.8,1,4,13,32,42,1,1,1,1,1,1,25,0
+2368,Carolina Ejnisman,44982295840,elegibilidade_arm_1,1,23.8,0,1,6,21,29,6,1,1,1,1,2,40,0
+2371,TAINÁ Aparecida Martin,40237035839,elegibilidade_arm_1,1,27.2,0,3,3,10,62,2,2,1,1,1,2,30,0
+2383,Thatianne Ferreira Gomes Cintra,50391551825,elegibilidade_arm_1,1,NA,0,1,1,14,29,3,2,1,1,1,1,26,1
+2390,Ancile Maria Ziani Leal,96902124000,elegibilidade_arm_1,1,NA,0,1,2,11,45,1,1,1,1,1,1,42,1
+2391,Anelise Loureno Alves de Souza,39469489870,elegibilidade_arm_1,1,32.2,0,0,1,11,55,2,1,1,1,1,1,24,0
+2396,Marina Pequeneza de Moraes,36590146802,elegibilidade_arm_1,1,33.5,0,1,2,9,36,5,3,1,1,1,1,37,0
+2398,Vinícius Finisguerra Vianna,47309234804,elegibilidade_arm_1,2,22.9,3,2,3,17,44,4,2,7,2,1,2,39,0
+2400,Vanessa Berlato Lobão,39475330801,elegibilidade_arm_1,1,30.8,4,3,5,20,60,2,2,1,1,1,1,47,0
+2402,Beatriz do Carmo Rodrigues Dias,18702517841,elegibilidade_arm_1,1,43.9,2,1,3,9,66,4,2,1,3,1,2,31,0
+2404,Tiffany jeniffer euzebio de Oliveira,43661797840,elegibilidade_arm_1,1,27.3,2,14,7,31,115,2,3,1,1,1,1,24,0
+2408,MARIANE SAYURI YUI,31243202807,elegibilidade_arm_1,1,38,1,2,4,21,10,1,2,1,1,1,1,38,0
+2409,Bruna Fabiana Volpi,09429207911,elegibilidade_arm_1,1,27,2,3,5,25,74,4,2,1,3,2,1,28,0
+2411,Gabriela Rodrigues Oliveira,08082457759,elegibilidade_arm_1,1,42.5,1,4,4,13,18,1,1,1,1,1,2,24,0
+2415,Joanizia Feitoza de Souza,12754443851,elegibilidade_arm_1,1,49.1,0,4,2,9,28,6,6,2,1,2,2,24,0
+2416,Victor Leopoldo e Silva,43179114851,elegibilidade_arm_1,2,26.4,1,4,4,21,48,1,3,1,1,1,2,36,0
+2423,RAQUEL DE MIRANDA,98009834653,elegibilidade_arm_1,1,49,0,1,4,10,66,6,1,1,1,1,1,46,0
+2424,Larissa Teixeira de Abreu,50642801819,elegibilidade_arm_1,1,51,4,2,4,14,21,3,1,1,1,1,1,41,0
+2427,SORAYA IRENE BISCHOFF,75195488991,elegibilidade_arm_1,1,52,3,1,3,11,31,1,2,1,1,1,1,24,0
+2429,Suelen Alves Farias,10214781992,elegibilidade_arm_1,1,25.2,2,7,11,21,121,2,1,1,1,2,1,23,0
+2430,Sandra Doria xavier,26909474805,elegibilidade_arm_1,1,44.7,0,0,5,8,10,1,1,1,1,1,1,36,0
+2440,Amanda Amancio da Silva,22815599805,elegibilidade_arm_1,1,22.7,5,2,6,15,67,4,3,1,1,3,1,35,0
+2442,Carolina Pinheiro Silva de Almeida Prado,39447029809,elegibilidade_arm_1,1,22.4,2,9,8,35,59,4,2,1,1,1,1,24,0
+2444,Solange Emboava Dimas,33285584890,elegibilidade_arm_1,1,38.6,2,3,5,9,32,1,1,1,1,1,1,24,0
+2449,Monique Andrade Campos,461421003-10,elegibilidade_arm_1,1,35.1,0,2,7,23,61,3,3,1,1,2,1,42,0
+2450,Mariana Gil FUrlanetti,36877161807,elegibilidade_arm_1,1,33.8,4,6,3,15,75,4,5,1,1,4,1,43,0
+2452,Júlio César Cerqueira Leite,27491452876,elegibilidade_arm_1,2,43.4,0,6,5,15,20,1,1,1,1,1,1,24,0
+2474,Larissa Lanutto,44226455878,elegibilidade_arm_1,1,27.5,1,2,2,10,32,1,1,1,1,1,1,24,0
+2476,Rodrigo Limonge Reis Carvalho,15138821717,elegibilidade_arm_1,2,24.8,0,3,6,17,56,6,1,1,2,5,1,46,0
+2480,Viviana Alves de Oliveira,38330129861,elegibilidade_arm_1,1,34.5,1,8,7,22,50,2,2,1,1,1,1,24,0
+2492,Ana Kelly Marques Ferreira,22126754880,elegibilidade_arm_1,1,41.3,0,2,2,8,47,2,2,1,1,2,1,38,0
+2500,Alice Helena de Melo Santana Bighi,75948559734,elegibilidade_arm_1,1,59,1,1,3,9,99,4,2,1,1,3,1,16,0
+2502,Aline Rodrigues Corrêa Sudo,07246258795,elegibilidade_arm_1,1,45.9,1,4,6,11,43,1,2,1,1,1,2,25,0
+2509,Michele Keila Batista Pereira,82266859587,elegibilidade_arm_1,1,38.9,4,2,2,10,74,1,1,1,1,2,2,42,0
+2510,Jose humberto zago ribeiro junior,04180611147,elegibilidade_arm_1,2,29.2,5,2,6,15,63,6,4,2,2,4,2,28,0
+2511,MARLI SOARES DOS SANTOS,05803336718,elegibilidade_arm_1,1,37.7,0,4,2,12,55,1,1,1,1,1,1,27,0
+2522,Renan Garcez Flauto,34434582895,elegibilidade_arm_1,2,35.7,0,3,5,16,43,7,4,1,1,1,4,24,0
+2524,Thiago do Nascimento,13014942758,elegibilidade_arm_1,2,31.6,1,5,2,8,54,1,1,1,1,1,1,24,0
+2536,Luiza Fonseca Unsonst Cafe,10936510676,elegibilidade_arm_1,1,23.1,15,11,9,31,106,4,4,1,1,1,1,15,1
+2537,Maria Veronica Graterol Zackiewicz,27102410808,elegibilidade_arm_1,1,42.9,4,3,8,26,81,5,6,3,3,4,4,29,0
+2538,Bruna Bueno Chahud,36810687807,elegibilidade_arm_1,1,33.4,25,17,19,39,117,7,6,7,6,5,7,5,1
+2542,Carolina Gottardi Machado Lourenço,26671421870,elegibilidade_arm_1,1,43.9,19,15,14,30,108,4,4,4,3,4,6,11,1
+2543,Heverton da Silva,06822483632,elegibilidade_arm_1,2,37.6,16,2,8,14,140,7,4,7,7,5,7,21,1
+2547,Leni Azenatti Correia,26356779802,elegibilidade_arm_1,1,42.9,14,6,8,19,70,2,2,6,6,2,6,26,1
+2549,Everton Aguiar Freire,88082970120,elegibilidade_arm_1,2,NA,23,10,15,33,133,6,5,2,6,6,6,10,1
+2550,Alexandre Augusto Neves Figueiredo,01400930103,elegibilidade_arm_1,2,NA,27,12,13,32,139,6,6,6,6,6,6,8,1
+2556,Silvana Maria de Morais,26045565886,elegibilidade_arm_1,1,45.6,22,15,17,40,113,2,5,7,7,6,7,0,1
+2557,Juliana Ferreira de Sousa,07284676663,elegibilidade_arm_1,1,NA,20,12,12,28,131,5,3,4,5,5,6,11,1
+2558,Laura Affonseca de Affonseca Momberg de Oliveira,32563227860,elegibilidade_arm_1,1,35.6,19,8,10,25,105,2,6,3,6,2,3,12,1
+2559,Rogéria Cristiane Miranda Caetano,11105807810,elegibilidade_arm_1,1,53.6,24,12,20,35,152,1,4,6,7,7,7,7,1
+2563,KEILA NICACIO OLIVEIRA,42947503830,elegibilidade_arm_1,1,28.9,15,10,16,35,125,5,4,3,2,5,4,19,1
+2564,Cristiano de Paula do Lago,61018422153,elegibilidade_arm_1,2,48.4,13,5,7,22,89,4,1,1,5,3,4,20,1
+2565,José Américo Bottino Junior,27189117865,elegibilidade_arm_1,2,44.6,19,5,12,31,101,3,1,4,4,6,4,24,1
+2570,Gisela Guilherme,36919112850,elegibilidade_arm_1,1,33.2,19,2,6,28,151,4,5,5,4,6,6,19,1
+2571,Robson Cabral Valadão,74638971253,elegibilidade_arm_1,2,38,15,8,4,24,97,7,4,4,4,2,4,19,1
+2577,Fernanda Salete Guella,03947537980,elegibilidade_arm_1,1,37.5,15,4,9,23,104,3,3,1,1,3,2,24,1
+2579,Lhaise Hellen Rocha Gama,06195779598,elegibilidade_arm_1,1,24,13,10,11,42,126,2,5,4,5,3,6,21,1
+2583,Vania Raquel Boehm,57041032191,elegibilidade_arm_1,1,46.3,24,11,10,36,146,4,4,7,7,6,7,5,1
+2589,Gabriela Cerqueira Neves,21306578850,elegibilidade_arm_1,1,43.4,19,10,13,47,102,4,3,4,5,4,6,12,1
+2593,Giovanna Rapazzi dos Santos,08093066977,elegibilidade_arm_1,1,24.6,19,2,4,26,104,6,5,7,7,6,7,20,1
+2595,Priscila Aparecida Rodrigues,35493598884,elegibilidade_arm_1,1,34.8,15,5,4,12,88,4,4,1,1,1,1,16,1
+2596,Layla Thamm Jarruche,39595663875,elegibilidade_arm_1,1,28.5,12,5,9,21,89,4,5,4,4,3,3,36,1
+2598,Efraim Fernandes Marques,83492879268,elegibilidade_arm_1,2,36.3,12,7,10,30,108,5,3,3,3,3,5,23,1
+2606,Anne Santos Cardoso lima,02590902557,elegibilidade_arm_1,1,34.7,28,13,17,46,149,6,5,7,7,7,7,9,1
+2612,Kawan Felipe Lopes Maria,43097466835,elegibilidade_arm_1,2,27.6,21,9,16,47,124,4,5,6,7,7,7,6,1
+2613,Simone Aparecida dos Santos Silva,30254724809,elegibilidade_arm_1,1,42.3,16,10,12,35,62,4,2,1,1,4,4,34,1
+2615,Adriana Vieira Farias Mussi,78031184968,elegibilidade_arm_1,1,53.3,11,5,4,22,34,1,1,3,1,1,4,34,1
+2617,Américo Fabricio Neto,34094666818,elegibilidade_arm_1,2,36.2,22,11,16,35,145,7,6,6,5,6,7,8,1
+2627,Jamile Cristine Marques Barros,01698650299,elegibilidade_arm_1,1,26.8,15,5,4,7,111,1,1,4,3,4,6,24,1
+2631,Débora Aparecida de Almeida Silva,21597631876,elegibilidade_arm_1,1,40.6,18,8,15,41,59,4,1,4,4,2,7,21,1
+2633,Renata Rocha de Oliveira,82129754015,elegibilidade_arm_1,1,NA,24,11,15,27,136,3,4,4,1,2,5,15,1
+2635,Paula Eisenstadt,26037178801,elegibilidade_arm_1,1,44.8,17,4,11,15,98,4,4,1,1,3,3,17,1
+2636,Daiane Jacinta Lopes Silva,35465413832,elegibilidade_arm_1,1,25.2,18,10,10,33,134,3,5,6,6,7,6,25,1
+2643,Amanda Priscila matos,35694913825,elegibilidade_arm_1,1,29.3,18,9,12,32,124,6,2,6,5,7,4,20,1
+2644,Hélio Rocha Cardoso,35937122100,elegibilidade_arm_1,2,NA,23,9,14,32,134,4,4,6,4,6,6,14,1
+2646,Aline Ernandes Milhomens,37008681895,elegibilidade_arm_1,1,NA,15,7,8,21,124,5,6,6,5,4,6,19,1
+2648,Paula Cristina Silveira de Aguiar,30326189831,elegibilidade_arm_1,1,NA,27,16,19,36,137,7,7,7,7,7,7,1,1
+2649,Gislene Ferreira Calado,38482706845,elegibilidade_arm_1,1,25.8,20,10,13,24,128,4,4,5,5,5,6,12,1
+2650,Marina Barbosa da Cruz,38619609823,elegibilidade_arm_1,1,31.7,22,11,13,44,140,3,5,7,7,5,7,8,1
+2652,Leda Maria Araújo,03154868992,elegibilidade_arm_1,1,42.2,19,14,18,34,127,7,1,4,5,2,5,22,1
+2654,Maria do Carmo Garcia Ribeiro,08890050870,elegibilidade_arm_1,1,NA,14,4,12,27,80,5,2,4,4,4,4,17,1
+2655,Bianca Lima Silva,08847430631,elegibilidade_arm_1,1,33.9,20,14,18,39,147,3,7,6,6,6,6,4,1
+2659,Julianna Zamper Noschang,26778523816,elegibilidade_arm_1,1,42.2,11,0,6,9,44,7,1,5,3,1,4,38,1
+2660,Vanessa Vivianne Silva de Oliveira,07489461448,elegibilidade_arm_1,1,31.6,14,6,6,28,76,1,4,1,1,1,4,26,1
+2661,Geanete Carlini,21972362291,elegibilidade_arm_1,1,56.1,28,11,17,35,160,7,7,7,7,7,7,13,1
+2668,Aline squizani de Oliveira,02388589010,elegibilidade_arm_1,1,31.9,20,10,14,41,120,5,2,5,4,4,6,17,1
+2669,María Paula Ferreira Mileip,05643116774,elegibilidade_arm_1,1,38.6,19,7,17,42,142,3,3,7,6,5,7,13,1
+2670,Vivian Baptistella Fernandes,22847884831,elegibilidade_arm_1,1,34.7,19,6,12,30,133,7,5,7,6,5,5,20,1
+2672,Adriana Regina Campolina Cenachi,04466997640,elegibilidade_arm_1,1,41.7,13,8,10,20,105,7,5,4,5,3,5,21,1
+2675,Lara Reis de Souza,16711974700,elegibilidade_arm_1,1,21.9,20,4,16,43,100,3,4,3,4,5,6,20,1
+2677,Ana Paula de Souza Carvalho,19441078867,elegibilidade_arm_1,1,44.4,15,11,7,26,128,7,5,2,4,2,4,33,1
+2678,YAGO BESERRA  MARINHO MARTINS,01455851400,elegibilidade_arm_1,2,28.8,17,11,17,43,142,4,4,4,4,4,5,12,1
+2680,Felipe Oliveira Barbosa,08687506465,elegibilidade_arm_1,2,30.7,18,8,13,30,105,3,4,5,4,3,6,19,1
+2681,Gabriela Albertini Maronese,395493128-10,elegibilidade_arm_1,1,31.3,21,10,19,36,125,5,7,7,7,7,7,15,1
+2683,Marcia Rothen,16989026898,elegibilidade_arm_1,1,NA,27,18,20,34,130,2,3,5,6,4,7,2,1
+2687,Lilian de Melo Macedo,01307731660,elegibilidade_arm_1,1,NA,26,13,11,39,122,3,5,4,3,4,5,9,1
+2689,Alessandra Bergi Sarlo,02033601765,elegibilidade_arm_1,1,50.1,18,6,11,26,93,4,4,1,1,2,4,23,1
+2695,Mariana Prudenciatto,39587825829,elegibilidade_arm_1,1,30.6,18,5,12,28,110,3,5,4,3,7,5,25,1
+2698,Grazielle Bazoli,06089588911,elegibilidade_arm_1,1,35.9,14,5,17,32,107,4,2,3,4,3,4,28,1
+2704,Marilaine Cristina Bassam da Silva,33181360856,elegibilidade_arm_1,1,36.7,18,15,12,29,153,2,2,1,2,2,3,11,1
+2709,Fabíola Kempe Rossi,19073340845,elegibilidade_arm_1,1,47.2,23,12,11,36,127,3,4,6,7,6,7,11,1
+2714,Cristina Renó Monteiro,29688119830,elegibilidade_arm_1,1,43.6,17,14,12,35,127,2,7,4,4,5,5,9,1
+2718,Maria Regina S. M. A. Tampiri,25924565890,elegibilidade_arm_1,1,46.5,21,7,9,27,120,4,4,5,4,6,4,19,1
+2724,Ana Beatriz de Vilhena Pereira,08956702675,elegibilidade_arm_1,1,34.7,27,20,20,44,142,5,7,7,7,7,7,4,1
+2729,Veronica Ramos Lopes araujo,71040927149,elegibilidade_arm_1,1,41.1,22,13,6,25,116,2,5,5,6,5,6,24,1
+2731,adriana caetano,26176487889,elegibilidade_arm_1,1,45,20,7,5,38,131,7,4,7,6,4,7,20,1
+2734,CAMILA TARGINO QUEROZ,30221807802,elegibilidade_arm_1,1,NA,23,10,10,25,117,4,6,4,5,4,5,10,1
+2735,Michelle Silva de Araújo Barreto,28448630866,elegibilidade_arm_1,1,42.1,25,10,13,42,124,6,2,4,2,6,7,2,1
+2737,André de Sousa Miranda,04561840664,elegibilidade_arm_1,2,43.2,10,9,13,31,140,1,2,4,4,6,7,8,1
+2743,DIANE EDUGE DE MIRANDA MARCILIO,33977633805,elegibilidade_arm_1,1,36,21,14,13,40,119,3,5,6,5,5,7,7,1
+2747,Milena Santos de Oliveira,02180720580,elegibilidade_arm_1,1,NA,22,3,9,26,61,4,1,4,5,2,3,32,1
+2754,Cássia Bianca Lima dos Santos,14367171833,elegibilidade_arm_1,1,48.1,18,8,11,29,154,6,6,6,6,3,7,8,1
+2765,Gisele Borsotte Cruz,29383263865,elegibilidade_arm_1,1,40.9,18,3,5,19,123,7,7,7,7,7,7,27,1
+2774,Nair F Yoshida,38831008897,elegibilidade_arm_1,1,32.2,22,9,12,28,97,5,4,4,4,4,7,28,1
+2784,Sybil Chereguim Bueno,42688896806,elegibilidade_arm_1,1,30.1,25,10,14,33,124,6,6,7,7,4,7,14,1
+2786,Adriana Kelly Machado De Sousa,06804562364,elegibilidade_arm_1,1,26.3,19,20,14,49,94,6,4,5,5,5,4,12,1
+2787,Cristina Gabriela Fernandes,09533243627,elegibilidade_arm_1,1,31.6,8,8,14,33,66,1,1,2,2,4,5,35,1
+2788,Ana Marcia Andrade Moreira de Oliveira,75929295972,elegibilidade_arm_1,1,56.9,20,9,8,25,105,5,4,4,5,4,5,21,1
+2794,Nayara Scaglioni paganini,37223063882,elegibilidade_arm_1,1,NA,21,20,16,48,143,1,6,6,7,2,7,22,1
+2798,Ana Elisa Barreto Matias,05510875607,elegibilidade_arm_1,1,40,23,7,9,26,119,4,2,6,7,6,7,26,1
+2800,Ivana Maria Marcondes Hottum,06546523841,elegibilidade_arm_1,1,57.7,24,5,14,29,105,2,4,4,5,4,5,22,1
+2801,Maria Eduarda Rodrigues Souza,07626024656,elegibilidade_arm_1,1,22.4,16,3,9,24,141,3,3,7,7,7,5,14,1
+2805,Ana Lucia Genaro Borges Xavier da Rosa,12256565831,elegibilidade_arm_1,1,52.4,25,16,21,43,129,4,4,5,6,6,7,2,1
+2807,Erickson Lopes de Magalhães,00965970973,elegibilidade_arm_1,2,33.6,19,5,11,43,132,6,5,7,6,6,5,21,1
+2809,Daniela Ribeiro Hemesath,28129285819,elegibilidade_arm_1,1,43,16,8,7,11,98,1,1,3,1,1,7,21,1
+2811,Karina Fontes Lionço,6881890419-,elegibilidade_arm_1,1,38.5,25,15,19,44,146,7,6,5,5,7,7,1,1
+2813,Thiago Zambrano Mahrenholz,374050928-70,elegibilidade_arm_1,2,31.7,13,8,11,22,114,3,5,4,3,4,5,17,1
+2822,Tathiana Freitas de Paiva macedo,05736189410,elegibilidade_arm_1,1,37.2,27,14,17,40,140,6,5,7,7,7,7,0,1
+2826,Camila Diniz Fontanesi,33810401897,elegibilidade_arm_1,1,39,13,9,16,32,114,5,4,3,4,1,1,20,1
+2835,Carla Sasso Simon,009281995921,elegibilidade_arm_1,1,27.2,17,2,9,10,48,4,2,4,4,2,4,23,1
+2836,Carolina Pereira Monteiro,21929832800,elegibilidade_arm_1,1,42.2,21,17,17,49,154,4,6,4,4,6,7,10,1
+2837,Simone renata mendes Baruzzi brandao,26277580809,elegibilidade_arm_1,1,45.2,23,11,16,34,114,2,1,5,2,6,6,22,1
+2838,Gabriel Vinicius Loureiro Fernandes,00813705207,elegibilidade_arm_1,2,27.1,13,3,13,35,101,4,5,1,1,6,7,22,1
+2839,Mario Reinaldo Martins,28722003800,elegibilidade_arm_1,2,40.5,16,14,10,24,81,5,4,3,1,1,1,18,1
+2841,Cecilia Vidal Tróccoli,05112587636,elegibilidade_arm_1,1,39.7,17,4,7,15,126,5,4,6,6,5,7,20,1
+2842,Mauríce Ana dos Anjos,22675776823,elegibilidade_arm_1,1,43.5,19,12,15,29,160,5,5,5,5,5,5,22,1
+2843,Anderson Ataíde,30749149809,elegibilidade_arm_1,2,39.5,19,14,7,38,141,4,1,3,1,4,7,6,1
+2846,MARILENE DOS SANTOS VIEIRA,03038631450,elegibilidade_arm_1,1,52,28,17,21,48,146,2,7,7,7,7,7,2,1
+2848,RAFAEL TORRES CARRION,34464692818,elegibilidade_arm_1,2,NA,17,8,10,37,109,2,4,2,1,5,2,13,1
+2850,Italo Porfirio,41822762804,elegibilidade_arm_1,2,NA,19,2,6,27,124,5,6,1,7,7,5,20,1
+2854,Sabrina Lima Lopes Silva Goes,09018631655,elegibilidade_arm_1,1,32.5,14,15,4,27,138,5,2,7,6,4,7,23,1
+2856,Guilherme Henrique Rossi Cirelli Lima,33703003898,elegibilidade_arm_1,2,28.2,21,4,9,24,83,2,1,1,6,2,4,28,1
+2857,Julio Endrigo Zenatte,22443008894,elegibilidade_arm_1,2,39.5,25,10,20,33,152,5,6,6,4,6,7,6,1
+2859,Fabiana lopes de sousa,01045464333,elegibilidade_arm_1,1,37.9,14,1,5,23,97,5,2,4,4,3,4,28,1
+2860,Fabio Luiz de Carvalho Goes,31806670879,elegibilidade_arm_1,2,NA,16,5,7,15,106,1,4,4,5,4,5,29,1
+2861,GERSON VALÉRIO DA COSTA JUNIOR,68573120606,elegibilidade_arm_1,2,51.5,17,13,10,23,81,4,2,4,3,4,6,16,1
+2863,Juliana Melo,37329207802,elegibilidade_arm_1,1,32.7,21,14,9,32,128,6,5,6,6,5,7,21,1
+2866,Glaucia Cristina Garcia de Santana de Sá,14207462783,elegibilidade_arm_1,1,NA,15,3,6,27,121,5,2,6,6,6,6,10,1
+2867,Paula Dallagnol,00436764059,elegibilidade_arm_1,1,37.3,14,2,5,21,107,6,6,1,1,1,4,17,1
+2869,Alexsander Moreira Siqueira,05631006723,elegibilidade_arm_1,2,38.5,21,7,17,45,132,3,7,7,5,7,7,18,1
+2870,Eduardo Fernandes Lima Mendes,79778658587,elegibilidade_arm_1,2,NA,22,15,15,37,125,5,5,5,5,5,5,14,1
+2872,Nayara Ines Viana Santos,01586582640,elegibilidade_arm_1,1,33.8,20,16,13,37,129,1,4,6,7,4,7,12,1
+2878,Cesar Guedison Andrade Vieira,19428685372,elegibilidade_arm_1,2,NA,24,7,7,30,143,6,1,4,5,4,7,24,1
+2879,Alex Moreira Roberto,34606887850,elegibilidade_arm_1,2,34.8,19,13,13,39,93,2,2,4,6,5,4,14,1
+2882,Michelle Villas Boas,36023877800,elegibilidade_arm_1,1,34.2,23,10,7,20,120,6,4,4,5,3,6,15,1
+2888,Sueli Maria de Morais Ferreira,10398672865,elegibilidade_arm_1,1,57.1,20,14,12,35,141,5,6,6,6,4,7,8,1
+2900,Erica dias dos santos,43303533857,elegibilidade_arm_1,1,27.9,14,7,11,8,42,1,1,1,1,1,1,8,1
+2907,KAREN STAHL MERLIN PIRES,27342249840,elegibilidade_arm_1,1,44.4,15,16,15,31,98,2,4,4,1,3,1,20,1
+2908,Lucia Helena Martins,17075532898,elegibilidade_arm_1,1,54.9,25,9,20,46,129,4,4,6,6,6,7,9,1
+2910,Marcia Alexandre dos Santos Macedo de Lima,05628394882,elegibilidade_arm_1,1,56.8,9,6,12,34,54,1,1,7,5,1,5,30,1
+2912,Elaine Ferraz Rodrigues,06229908611,elegibilidade_arm_1,1,38.4,27,13,17,43,142,7,4,7,7,7,7,9,1
+2913,Ada André Pinheiro,08388293761,elegibilidade_arm_1,1,41.8,20,10,10,24,132,4,5,5,5,4,6,22,1
+2922,Vanessa Pesarini Rodrigues Botelho,06562001625,elegibilidade_arm_1,1,37.7,25,4,10,23,108,6,4,5,6,5,7,15,1
+2926,Sílvia Queiroz de Souza Matos,60394714687,elegibilidade_arm_1,1,51,23,15,7,34,118,7,7,7,7,7,7,17,1
+2928,Marcela Pelizaro Soares da Silva,22142892833,elegibilidade_arm_1,1,40.6,19,5,5,24,121,5,4,6,6,5,7,19,1
+2932,Tatiane Guaitolini Da Conceição,33677424810,elegibilidade_arm_1,1,35.9,3,5,3,17,62,1,4,1,1,1,1,39,0
+2938,Maria Verônica de Araújo Cavalcante,03478853494,elegibilidade_arm_1,1,45.7,16,9,9,30,130,5,6,6,7,4,7,22,1
+2945,Fabiana Luci de Oliveira Viana,25849058842,elegibilidade_arm_1,1,43.9,20,8,12,25,122,6,7,4,5,3,7,13,1
+2950,Larissa Vichnévski Crusco,36774939864,elegibilidade_arm_1,1,32.9,19,9,14,36,91,4,4,3,5,3,2,19,1
+2951,simone sayegh,17328793899,elegibilidade_arm_1,1,52,19,6,10,26,94,6,6,5,6,4,7,32,1
+2953,Antonio Marcelino da Silva,05669631838,elegibilidade_arm_1,2,NA,15,3,14,30,104,3,1,3,2,4,4,8,1
+2955,Marcelo Oliveira Coelho,06394979694,elegibilidade_arm_1,2,32.4,19,13,11,14,95,4,5,5,6,5,6,13,1
+2957,Rosângela m f Pereira,82770123734,elegibilidade_arm_1,1,57.4,20,12,15,32,127,2,4,4,4,5,4,12,1
+2959,Amanda da cruz dellosa,336288048-76,elegibilidade_arm_1,1,29,19,5,8,24,97,6,4,7,7,3,4,15,1
+2960,Angela Bernardo de Lorena,22196118842,elegibilidade_arm_1,1,42.7,12,7,11,17,100,5,1,1,2,2,1,35,1
+2961,Simone Batista Dos Santos,01012652475,elegibilidade_arm_1,1,39.9,23,10,8,36,131,4,4,4,4,4,4,20,1
+2962,Ana Carla de Silva Bussamra,08921447857,elegibilidade_arm_1,1,54.9,13,9,9,27,117,5,4,5,5,5,5,21,1
+2965,Isabela de Fátima Pina de Almeida,08475501419,elegibilidade_arm_1,1,30.1,11,2,10,27,101,4,4,3,4,2,4,27,1
+2968,Hadassa Gianinna Vieira Dos Santos,47563003835,elegibilidade_arm_1,1,20.7,20,9,16,30,131,5,2,6,7,5,5,13,1
+2972,Celia Ricardo de Souza,8628354883,elegibilidade_arm_1,1,55.1,24,19,20,49,153,7,7,7,7,7,7,2,1
+2974,Rosa Maria Frazão Pereira,00475746740,elegibilidade_arm_1,1,53.2,25,8,18,30,109,3,2,6,6,4,7,11,1
+2981,Caio Cezar Mayer de Azevedo,33280784875,elegibilidade_arm_1,2,37.6,19,6,11,28,93,2,5,7,6,7,7,20,1
+2984,HORACIO CESAR DE MENESES MEDEIROS,30764073842,elegibilidade_arm_1,2,39.7,11,13,16,35,24,1,1,7,7,1,1,36,1
+2987,Luciano Henrique Máximo,08388875892,elegibilidade_arm_1,2,57.3,23,6,16,33,84,3,3,6,5,4,5,16,1
+2988,Roberta Delgado Louzada,819434078,elegibilidade_arm_1,1,NA,18,14,10,30,116,4,4,4,2,2,4,16,1
+2989,Laura Pereira Sanches,47019865852,elegibilidade_arm_1,1,NA,12,3,11,27,117,7,6,1,2,2,7,30,1
+2990,Maria Paula Magnani Vergueiro Valentini,04741769917,elegibilidade_arm_1,1,37.9,17,11,13,29,110,5,5,4,5,6,6,24,1
+2991,Vanessa da Silva Martins,02144994722,elegibilidade_arm_1,1,47.3,20,15,17,37,133,3,5,4,4,5,5,15,1
+2995,Luciana Gibaja Souza Valente,12549669860,elegibilidade_arm_1,1,52.4,20,7,5,20,70,6,2,6,5,4,5,5,1
+2996,Lígia Regina Lins,11676592792,elegibilidade_arm_1,1,26.8,22,10,10,38,126,7,2,5,4,4,1,2,1
+2997,Ricardo,07857125776,elegibilidade_arm_1,2,42.8,12,14,7,23,106,4,1,1,3,2,1,19,1
+3000,Tamya Carolina Vilela Fernandes,32566766851,elegibilidade_arm_1,1,38.4,20,18,12,29,133,3,6,4,6,6,5,13,1
+3005,Selma Viana Lessa,00053202597,elegibilidade_arm_1,1,41.8,18,9,7,19,109,2,3,4,3,2,5,26,1
+3006,Karen ciaccio Secco,28784222875,elegibilidade_arm_1,1,41.9,26,13,10,24,148,5,4,4,5,7,7,17,1
+3011,Ana carolina ribeiro do vale,15601689601,elegibilidade_arm_1,1,21.2,16,12,15,40,111,6,4,4,4,2,5,29,1
+3012,Maylson Satoshi Ishihara Matos,35436579841,elegibilidade_arm_1,2,NA,25,13,13,21,91,4,3,7,7,5,6,17,1
+3013,Ana Flávia Hofer Barbosa,07106957992,elegibilidade_arm_1,1,29.3,28,5,9,29,118,3,4,7,7,6,7,17,1
+3015,Gisele Espinosa,01060021129,elegibilidade_arm_1,1,NA,25,18,20,49,139,5,6,7,7,7,7,5,1
+3016,Juliana Matias de Oliveira,00840816359,elegibilidade_arm_1,1,38.3,28,16,21,47,150,2,4,6,7,4,7,1,1
+3030,Suzete Gislon baesso,02956409956,elegibilidade_arm_1,1,42.7,27,20,17,39,122,3,6,6,7,7,7,5,1
+3032,Fernanda de Quadros Carvalho Mendonça,8097614057,elegibilidade_arm_1,1,NA,10,9,9,19,82,4,1,1,1,2,4,40,1
+3035,Adriano de Castro Vieira,05498419899,elegibilidade_arm_1,2,55.7,23,9,11,18,109,6,2,5,4,4,7,21,1
+3038,Cristina maria da Silva,60698292120,elegibilidade_arm_1,1,49.8,28,15,17,37,158,6,6,7,6,7,7,10,1
+3039,Loaiza de Oliveira Vasquez,38087184807,elegibilidade_arm_1,1,30.2,26,17,18,41,122,7,7,7,7,7,7,0,1
+3040,Bruna Paschoalini,33866000855,elegibilidade_arm_1,1,36.4,12,2,2,16,116,4,3,1,1,2,2,29,1
+3042,Moira Paula Chiaradia,56321732915,elegibilidade_arm_1,1,54.2,20,7,7,34,115,6,5,1,4,3,4,25,1
+3043,Renata Basílio Mendes,00906418763,elegibilidade_arm_1,1,51.2,24,9,11,32,138,4,1,7,6,6,7,5,1
+3045,Bruna Ramos Heinzen,06227731943,elegibilidade_arm_1,1,35.2,19,6,6,29,129,3,4,6,6,5,6,20,1
+3046,Dilei Witzel,06468697875,elegibilidade_arm_1,1,56.7,20,9,12,21,112,2,1,4,7,7,4,11,1
+3048,Lorena Gonçalves de Gouvêa Dias,06278951665,elegibilidade_arm_1,1,35.5,20,1,14,26,100,3,2,2,2,2,4,22,1
+3053,Silvia Maria dos Santos Mello,27,elegibilidade_arm_1,1,43.7,28,18,20,44,130,2,7,7,7,7,7,0,1
+3054,Josué Dias da Silva,14620301817,elegibilidade_arm_1,2,46.9,19,12,15,27,133,4,4,4,1,4,6,10,1
+3056,Maria cristina moraes,04995736849,elegibilidade_arm_1,1,57.3,25,11,5,20,126,4,5,7,7,5,5,10,1
+3058,Juliana zenerato,319403598-30,elegibilidade_arm_1,1,37.9,20,10,10,26,150,5,6,7,7,6,7,22,1
+3060,Wanessa Silva de Freitas,08312137955,elegibilidade_arm_1,1,NA,26,20,20,47,123,4,6,1,7,7,7,0,1
+3061,Kamila Caixeta e Ferreira Renovato,71954937172,elegibilidade_arm_1,1,NA,17,11,9,29,126,6,4,3,3,5,4,17,1
+3063,Raquel Marshall Gadea,41728068053,elegibilidade_arm_1,1,58.8,20,11,12,32,96,1,1,1,4,2,1,27,1
+3067,Nathalia Duarte Barros Rocha,09009069605,elegibilidade_arm_1,1,32,22,15,18,43,75,7,6,7,7,7,7,15,1
+3070,Juliana Cruz Sousa,04547095361,elegibilidade_arm_1,1,29.1,14,6,7,12,84,3,4,4,3,2,4,19,1
+3075,Cláudia Souza Gigoski,63939479004v,elegibilidade_arm_1,1,51.2,23,2,7,23,117,3,3,1,1,4,4,17,1
+3076,Janaína Navarro da  Silva,15247571878,elegibilidade_arm_1,1,47.4,13,8,9,36,119,7,4,7,7,3,7,22,1
+3077,Débora da Silva,10526163801,elegibilidade_arm_1,1,54.1,26,10,14,32,140,4,4,7,6,6,6,11,1
+3078,Bianca Cristina Piassava Bonassi Barros,03384585143,elegibilidade_arm_1,1,31.4,27,10,13,29,138,4,4,2,5,5,5,18,1
+3079,Francisca Natália Mendonça Cruz,03188763379,elegibilidade_arm_1,1,33.7,16,7,11,19,139,7,6,1,1,7,3,15,1
+3080,Jackeliny Rodrigues Moreira,82675848204,elegibilidade_arm_1,1,37.6,16,9,8,22,111,3,3,3,3,3,3,29,1
+3085,Marcos Paulo da Silva,13486407821,elegibilidade_arm_1,2,47.4,20,13,6,26,121,6,5,6,7,4,7,13,1
+3086,Suzana da Cruz Fonte,34526258757,elegibilidade_arm_1,1,34.1,15,12,13,36,107,6,4,4,3,4,4,26,1
+3094,Andrezza Medeiros Vieira da Silva,28641192859,elegibilidade_arm_1,1,45.5,22,12,15,43,119,2,4,6,2,5,4,18,1
+3095,Raquel Poltronieri de Matos,11174296798,elegibilidade_arm_1,1,35,22,11,13,40,125,2,5,6,5,5,5,12,1
+3097,Heloisa Spadaro Garrido,26651423843,elegibilidade_arm_1,2,45,20,11,15,42,152,6,6,6,3,5,7,17,1
+3104,Camilla Menossi,30452776830,elegibilidade_arm_1,1,39.8,19,13,7,18,127,6,5,2,1,1,1,15,1
+3107,Daniela Vieira da Silva,03511885418,elegibilidade_arm_1,1,42.5,26,14,15,27,143,7,6,6,4,7,7,0,1
+3112,Taina Karla Gomes Putini,32373164825,elegibilidade_arm_1,1,40,20,8,8,39,135,4,5,1,6,5,6,13,1
+3113,Andrei Gonçalves Vieira,12296063861,elegibilidade_arm_1,2,47.9,18,7,6,32,118,5,4,4,4,3,4,22,1
+3114,Tiago Scaranelli,33528479833,elegibilidade_arm_1,2,37.7,20,14,13,38,88,2,5,4,4,6,5,10,1
+3116,Tatiana Martinez Garcia Leme,32917206870,elegibilidade_arm_1,1,36,13,4,8,22,107,1,1,4,4,3,6,21,1
+3117,Sabrina Ramalho Vieira,04086259370,elegibilidade_arm_1,1,NA,24,14,9,33,147,3,7,3,6,6,3,10,1
+3120,Neusa Aita Agne,00880733004,elegibilidade_arm_1,1,37.7,20,0,10,22,79,4,5,4,6,5,7,23,1
+3121,Maximiliana Batista Ferraz dos Santos,02296464920,elegibilidade_arm_1,1,43,14,8,8,28,133,4,5,5,5,5,7,9,1
+3122,patricia honda settervall,21761447831,elegibilidade_arm_1,1,41.4,21,15,17,32,122,4,4,5,6,4,5,16,1
+3136,Antonio Andrade Caetano da Silva Junior,96107782753,elegibilidade_arm_1,2,55.6,18,6,7,26,105,3,3,6,5,4,5,25,1
+3138,Ana Paula De Andrade Flores,28797806838,elegibilidade_arm_1,1,43.7,22,8,4,35,133,4,4,5,5,7,6,22,1
+3144,SHEILA QUATROCCHI MORGADO,10620342870,elegibilidade_arm_1,1,56,20,15,12,30,131,4,4,2,2,2,3,20,1
+3145,Bruna Maria da silva,36518111828,elegibilidade_arm_1,1,33.1,23,9,8,29,146,5,6,5,5,6,6,9,1
+3148,Afonso Vitorino de Araújo Neto,42581272805,elegibilidade_arm_1,2,26.4,18,11,12,39,118,1,7,7,7,6,4,5,1
+3149,Rita de Kassia Fernandes de Almeida,65054148353,elegibilidade_arm_1,1,NA,24,12,13,44,137,3,7,5,6,5,6,9,1
+3150,Geisa Ribeiro,09515834767,elegibilidade_arm_1,1,41.2,20,14,15,39,136,5,4,4,6,6,7,9,1
+3156,Michelle Padilha de Oliveira,05641084484,elegibilidade_arm_1,1,35.3,24,8,7,20,120,4,4,4,4,1,5,12,1
+3157,Malu Xavier da Silva,07191788437,elegibilidade_arm_1,1,32.2,14,8,4,20,95,2,3,5,5,4,5,27,1
+3158,VIVIAN CRISTINA DE PAULA SILVA,29416889865,elegibilidade_arm_1,1,41.5,20,18,18,43,136,6,6,5,5,5,6,13,1
+3166,Simone Almeida da Silva,206032168,elegibilidade_arm_1,1,47,21,8,7,16,105,4,4,3,3,5,5,17,1
+3168,Paula Mangialardo da Luz,34719190820,elegibilidade_arm_1,1,36,15,5,5,23,129,4,1,1,5,2,4,40,1
+3177,Priscila Silva de Lima,33785167806,elegibilidade_arm_1,1,36,22,13,17,43,157,3,6,6,7,6,7,20,1
+3181,Isabele Filgueira dos Santos Loureiro,19051704836,elegibilidade_arm_1,1,47.8,8,4,4,10,41,3,1,1,1,1,1,39,1
+3185,JANAÍNA NASCIMENTO TEIXEIRA,82375666534,elegibilidade_arm_1,1,40.1,12,9,15,28,82,5,4,5,5,7,6,27,1
+3186,José Magno da Silva Rêgo Filho,03942310589,elegibilidade_arm_1,2,33.2,22,9,14,31,118,2,4,5,5,5,6,13,1
+3189,Francisca Renata Rodrigues de Queiroz,28222528823,elegibilidade_arm_1,1,44.2,19,3,5,12,85,3,2,1,3,3,4,23,1
+3191,Denise A. Chicoli,28830818836,elegibilidade_arm_1,1,42.3,14,12,10,18,58,2,2,1,2,2,2,34,1
+3192,Silvia Helena Fernandes de oliveira,14190892858,elegibilidade_arm_1,1,51.5,24,7,13,33,134,7,2,7,7,4,7,6,1
+3200,Aline Leão Reis,53366140259,elegibilidade_arm_1,1,28.8,19,10,14,33,119,3,3,1,1,4,4,26,1
+3202,Celso Scaranello Junior,21801228884,elegibilidade_arm_1,2,NA,19,10,11,31,99,1,1,4,4,4,1,25,1
+3207,Erica Nunes Gargantini,25907456809,elegibilidade_arm_1,1,45.3,23,5,6,11,131,2,5,1,5,5,4,12,1
+3208,Renê Alves de França,17682168862,elegibilidade_arm_1,2,44.5,23,12,15,34,138,5,5,5,5,5,6,24,1
+3209,Felipe Luis Melo de Souza,06936184693,elegibilidade_arm_1,2,37.6,12,4,2,12,86,3,3,2,4,2,1,30,1
+3212,Celso luiz portella neves,07396366852,elegibilidade_arm_1,2,58.9,22,8,12,35,124,5,1,6,6,6,5,19,1
+3230,Andreia Alves Vieira,29530800827,elegibilidade_arm_1,1,41.4,21,10,7,33,91,4,4,4,4,4,5,23,1
+3232,Regina Ferreira Lima Da Silva,34706750822,elegibilidade_arm_1,1,36.5,23,11,13,46,115,2,2,5,4,4,2,11,1
+3237,Otácia Azevedo Silva,40862205808,elegibilidade_arm_1,1,30.1,16,5,10,22,82,4,1,1,2,1,2,36,1
+3244,Maricy Santos Rabelo de Araújo,32667947886,elegibilidade_arm_1,1,40.3,27,14,19,37,88,1,7,7,7,7,7,8,1
+3245,Luana Galvão Ribeiro Silva,46510928884,elegibilidade_arm_1,1,19.6,22,8,17,45,139,3,6,7,7,7,7,9,1
+3246,Armando Rufino Barbosa Neto,30386328803,elegibilidade_arm_1,2,42.9,26,16,17,48,144,5,5,7,7,7,7,19,1
+3250,Stephanie Caroline Cavalheiro Vicentin,45564006860,elegibilidade_arm_1,1,27.3,20,7,17,22,127,5,2,4,3,3,4,20,1
+3251,Aline Moura da Silva,23108080830,elegibilidade_arm_1,1,36.1,20,9,14,44,149,6,5,7,7,4,7,12,1
+3252,Carmen Almiria Macena dos Anjos,10628128835,elegibilidade_arm_1,1,53.9,16,14,14,36,63,1,1,3,1,2,4,15,1
+3254,Renata Urbinati Máximo da Silva,35422711874,elegibilidade_arm_1,1,NA,15,14,10,34,114,6,5,4,4,2,5,33,1
+3255,Katia Cristina da Costa,19840113862,elegibilidade_arm_1,1,NA,11,9,14,40,83,3,4,3,3,2,2,29,1
+3260,Livia Cretaz,35891806843,elegibilidade_arm_1,1,34.7,13,17,7,29,92,1,1,2,1,2,4,28,1
+3264,Kelly Fernanda Costa de Oliveira,65427513515,elegibilidade_arm_1,1,47.5,25,12,16,38,144,6,6,6,7,7,7,5,1
+3266,Fabiana harumi shimabukuro,25096767841,elegibilidade_arm_1,1,45.8,12,2,8,18,96,5,1,2,1,4,5,22,1
+3267,Brenna Larissa da Silva Santos Nogueira,60023471352,elegibilidade_arm_1,1,NA,19,6,12,28,126,7,4,4,5,4,6,14,1
+3269,josefina sanches santos,16349630831,elegibilidade_arm_1,1,50.5,23,9,10,35,137,7,3,5,4,5,5,13,1
+3274,Daiane Wermeier Voigt,01036531040,elegibilidade_arm_1,1,NA,18,10,11,36,106,6,4,5,5,5,6,10,1
+3275,Ana Lúcia Tampellini,06681285856,elegibilidade_arm_1,1,58.2,11,8,11,34,67,1,1,4,4,3,4,24,1
+3281,Valter Henrique da Silva Junior,22966017821,elegibilidade_arm_1,2,NA,22,11,14,46,131,4,6,4,5,5,4,9,1
+3282,Tatiane Piza Teixeira Leite,13958415865,elegibilidade_arm_1,1,43.9,13,13,16,30,87,4,1,4,4,5,7,24,1
+3285,John Edward Miranda Longuinhos,09504019609,elegibilidade_arm_1,2,30.1,18,9,9,36,100,1,5,6,5,5,4,25,1
+3286,ANA LUIZA DAMSCHI,51438089015,elegibilidade_arm_1,1,57.4,18,16,16,40,144,2,6,4,4,7,5,5,1
+3287,Rosa Maria Noto Mercaldi,10435226894,elegibilidade_arm_1,1,58.4,22,5,9,17,112,6,2,5,5,4,5,33,1
+3288,Francisca Flaviana Ferreira da Silva de Vasconcelos,04242680350,elegibilidade_arm_1,1,31.3,19,16,17,48,159,2,6,3,4,6,7,8,1
+3302,Alexsandra Aparecida Arouck Marques,18746103805,elegibilidade_arm_1,1,48.2,22,13,11,44,123,3,6,6,4,5,4,11,1
+3303,Liane Nascimento Trindade da Silva,88458920263,elegibilidade_arm_1,1,35,19,11,15,48,115,1,3,4,6,3,5,19,1
+3304,RAFAEL MOREIRA SOARES,72228040134,elegibilidade_arm_1,2,NA,19,16,14,41,138,4,5,5,6,6,7,9,1
+3307,Letícia Lustosa Luz,04373140308,elegibilidade_arm_1,1,27.8,20,11,13,45,142,3,5,5,6,6,6,17,1
+3308,Francisco Eduardo Torres,10617568820,elegibilidade_arm_1,2,57.5,16,7,13,24,74,4,4,2,4,2,3,27,1
+3310,Bruna Kelly Duque Coelho,94929998204,elegibilidade_arm_1,1,34.8,23,8,12,31,131,7,6,5,7,6,7,20,1
+3311,Maria Ângela Biasin,10257269878,elegibilidade_arm_1,1,56.5,24,15,11,48,139,6,1,7,7,7,7,9,1
+3320,ADRIANA CRISTINA CASSEMIRO DIONÍSIO,31819933873,elegibilidade_arm_1,1,39.4,16,19,11,29,134,5,5,5,5,5,7,9,1
+3322,Raquel Monroy,34744636837,elegibilidade_arm_1,1,32.9,20,16,16,38,124,3,6,4,4,4,6,16,1
+3325,Maria de Jesus dos Santos Barbosa,00187041237,elegibilidade_arm_1,1,33.5,21,12,16,41,136,2,4,4,5,4,4,11,1
+3329,Marco Aurelio Machado do Carmo,08905521851,elegibilidade_arm_1,2,56,20,12,13,30,123,3,5,1,5,5,4,16,1
+3330,Elaine Louzada Bezerril,11505595860,elegibilidade_arm_1,1,58.3,18,10,9,22,89,2,4,3,4,4,1,26,1
+3333,Pâmela Calusne,22575064805,elegibilidade_arm_1,1,38.8,20,14,16,37,126,5,6,6,6,5,6,8,1
+3335,Valeska de Albuquerque Brasil,80411371134,elegibilidade_arm_1,1,44.6,12,6,7,27,113,3,4,6,6,4,6,20,1
+3337,Thaina Almeida de Souza,43467820867,elegibilidade_arm_1,1,NA,15,4,12,25,128,4,4,3,4,4,3,16,1
+3348,Luana Marquez Faria,22305514859,elegibilidade_arm_1,1,NA,16,7,11,36,122,5,4,5,5,5,4,12,1
+3351,Débora Gomes,08105212889,elegibilidade_arm_1,1,NA,22,12,16,44,103,4,4,7,7,6,7,12,1
+3353,Leiliane Ongaro Machowski,05751806921,elegibilidade_arm_1,1,35.7,23,13,15,34,103,5,4,3,4,4,4,13,1
+3355,maria emilia vaz silva,99747340534,elegibilidade_arm_1,1,42.2,20,11,14,39,111,5,5,7,6,4,7,15,1
+3356,Olindina María da Silva Krueger,00454066937,elegibilidade_arm_1,1,NA,19,14,17,34,105,1,2,5,4,3,4,24,1
+3358,Alexandre Sorio Neto,62673904034,elegibilidade_arm_1,2,52.5,22,14,11,28,142,6,6,6,6,6,6,13,1
+3361,Carla Raquel de Godoy,00763576000,elegibilidade_arm_1,1,37.4,21,16,15,41,99,4,4,4,4,4,1,25,1
+3368,Eduardo Pereira Rodrigues Chaves,02739886110,elegibilidade_arm_1,2,33.3,16,6,12,25,101,5,5,4,4,4,4,18,1
+3369,Cibele Giarrante,21494102811,elegibilidade_arm_1,1,NA,17,7,15,31,127,2,6,5,2,5,5,19,1
+3372,Daniela Oliveira,36409981899,elegibilidade_arm_1,1,35.5,19,4,4,12,108,2,2,1,1,1,1,29,1
+3373,Luana Silva Bessa Guimaraes,02703089384,elegibilidade_arm_1,1,32.3,10,3,2,12,71,1,1,1,2,2,1,41,1
+3377,Dila Reis Mendes,02778363521,elegibilidade_arm_1,1,34.1,17,5,5,19,64,2,3,4,6,3,6,31,1
+3381,Camila Boaventura,36829564840,elegibilidade_arm_1,1,34,26,5,11,28,60,1,1,1,4,2,5,21,1
+3382,Idione Eloiza Julião Teixeira,15549169843,elegibilidade_arm_1,1,49.8,16,11,9,27,101,2,2,4,4,2,5,21,1
+3384,Aldo Roggers de Oliveira Junior,27209104810,elegibilidade_arm_1,2,43.7,24,18,19,46,147,6,5,7,7,6,7,6,1
+3388,MARIANNE PINHEIRO,38742992877,elegibilidade_arm_1,1,30.8,16,11,12,29,134,6,5,4,4,5,4,19,1
+3392,Yasmin Rodrigues Cardoso,15577900786,elegibilidade_arm_1,1,NA,26,12,14,33,143,5,5,7,6,6,7,4,1
+3394,Daveron Vanini,77155637734,elegibilidade_arm_1,2,58,15,8,5,15,114,3,4,1,2,2,1,26,1
+3395,Carla Cristina Rodrigues,08205709823,elegibilidade_arm_1,1,NA,19,9,12,23,107,1,2,4,7,4,4,15,1
+3404,Patricia Lima Cavalcante,04069797319,elegibilidade_arm_1,1,30.5,14,6,13,30,98,4,5,6,4,5,5,15,1
+3408,Bruno Haroldo Moreira,04908499977,elegibilidade_arm_1,2,37.6,12,5,10,19,103,4,4,4,5,5,4,26,1
+3413,Daniel Duarte Conceição,18009640808,elegibilidade_arm_1,2,46.5,23,14,15,48,157,7,4,7,7,7,7,15,1
+3419,Dulcinéia julia da silva santos,08371384858,elegibilidade_arm_1,1,52.5,25,9,12,30,82,2,4,5,6,4,7,11,1
+3421,Carolina Fernandes dos Santos,34778958861,elegibilidade_arm_1,1,NA,22,11,12,36,130,4,2,5,5,4,6,16,1
+3423,Marta Bertolini Bastos,68119461053,elegibilidade_arm_1,1,50.1,23,12,11,33,140,7,7,6,6,6,7,17,1
+3428,Amanda Santos Barbosa,46143808830,elegibilidade_arm_1,1,28.5,22,18,16,48,128,6,6,6,7,5,5,6,1
+3429,Mariana Gikas,33830170874,elegibilidade_arm_1,1,37.2,13,12,4,27,114,4,5,2,4,5,3,14,1
+3432,Nádia Maria Rufino da Silva Dorneles,60754451615,elegibilidade_arm_1,1,58.1,17,13,11,37,108,2,3,7,6,4,5,23,1
+3434,Murilo Henrique de Almenau dos Santos,01213930979,elegibilidade_arm_1,2,26.4,16,13,14,39,124,4,4,1,3,4,4,17,1
+3435,Viviane Gonçalves Barroso,12523756706,elegibilidade_arm_1,1,32.9,18,7,11,21,113,1,5,5,7,2,4,23,1
+3436,Andressa Fortes Miranda,07912630961,elegibilidade_arm_1,1,28.5,17,13,15,35,107,2,4,4,5,2,4,16,1
+3440,Fernanda Antunes Nogueira Quintanilha,28383851863,elegibilidade_arm_1,1,NA,16,12,19,30,119,4,3,2,2,2,4,16,1
+3444,Marcelo Kilter de Oliveira,07510728851,elegibilidade_arm_1,2,54,19,12,14,37,140,6,6,6,6,6,7,9,1
+3446,Marina de Oliveira Andrade,42755959800,elegibilidade_arm_1,1,28.3,13,2,7,25,115,2,4,4,5,3,4,29,1
+3448,Débora Sayuri Katto,09832784905,elegibilidade_arm_1,1,25.8,10,4,14,45,129,4,4,5,4,3,6,17,1
+3449,Carolina Malcher,50969978200,elegibilidade_arm_1,1,40.3,25,4,8,23,139,4,4,7,6,5,6,8,1
+3450,Cinthya Marques Telles,14754905857,elegibilidade_arm_1,1,50.3,19,4,18,43,131,7,6,7,7,7,7,17,1
+3451,Ananda da Silva Paradeda,03152980060,elegibilidade_arm_1,1,27.7,14,4,7,27,102,1,1,5,5,4,5,22,1
+3454,Ania Priscila Azevedo de Vasconcelos,06356051477,elegibilidade_arm_1,1,37.7,25,7,12,27,140,4,5,4,4,4,6,12,1
+3456,Elenice,299309209878,elegibilidade_arm_1,1,NA,17,5,7,22,86,4,2,1,3,5,2,20,1
+3459,Kátia karina Gonçalves Ferreira de jesus,31120195802,elegibilidade_arm_1,1,41.7,17,5,7,22,96,2,2,4,1,4,4,25,1
+3460,Jordana Ribeiro de Carvalho,92695329687,elegibilidade_arm_1,1,50.3,24,14,12,43,135,3,4,5,7,7,7,9,1
+3461,Dayana Carla Pereira,33871712850,elegibilidade_arm_1,1,35.8,18,11,9,18,120,3,4,3,5,4,6,17,1
+3468,Pamella Silveira Sulai,06932191652,elegibilidade_arm_1,1,NA,21,4,15,30,114,4,3,6,7,4,7,29,1
+3469,Miguel Ferreira Silva,01962839141,elegibilidade_arm_1,2,34.7,20,11,11,40,129,4,4,7,7,6,7,14,1
+3474,Caroline Antonia da Silva Bandeira,36360574802,elegibilidade_arm_1,1,34.3,16,15,14,49,109,4,1,2,2,1,1,33,1
+3476,Ana Juli Cavassani Pimentel,43059512825,elegibilidade_arm_1,1,29.9,22,11,8,36,119,6,7,6,5,5,5,0,1
+3477,Viviane Paladino,20542129892,elegibilidade_arm_1,1,48.8,17,7,11,41,111,4,4,2,1,2,2,21,1
+3478,Marcella Deribani Bonoldi,41022986813,elegibilidade_arm_1,1,30.7,22,7,8,26,137,4,7,7,7,7,7,10,1
+3481,Moema Moreira de castilho,014756977-08,elegibilidade_arm_1,1,NA,20,12,10,33,118,5,5,4,5,4,5,9,1
+3482,Katia Regina Chianca de Castro,25542908810,elegibilidade_arm_1,1,44.5,23,12,9,29,124,4,4,6,7,5,7,6,1
+3486,Thais de Campos Tortosa Pino,38425412870,elegibilidade_arm_1,1,31.6,27,13,16,41,141,6,7,6,7,7,7,4,1
+3488,Adriana Collete de Oliveira,05362923706,elegibilidade_arm_1,1,39.5,24,9,15,41,156,7,6,6,6,6,7,17,1
+3489,Graziela Lojor de Araujo Oliveira,32681080835,elegibilidade_arm_1,1,37.4,21,10,9,29,125,2,5,5,5,5,5,4,1
+3502,Sabrina Gonçalves Costa,43695533854,elegibilidade_arm_1,1,NA,13,6,10,26,93,5,4,3,2,4,3,27,1
+3504,Giovanna Chiarelli dos Santos,52637146885,elegibilidade_arm_1,1,18,19,12,6,25,73,2,5,1,5,4,2,11,1
+3512,TELMA REGINA MARTINES TOZZI,08036358859,elegibilidade_arm_1,1,57.7,26,18,17,48,145,5,4,7,7,7,7,2,1
+3515,Jacqueline Ye li Win,50487381874,elegibilidade_arm_1,1,23.2,21,12,17,44,118,3,4,6,6,5,5,9,1
+3516,Giovanna Morgero,28131583805,elegibilidade_arm_1,1,42.7,17,1,9,12,116,5,4,7,7,7,7,18,1
+3520,DANILO MARASCA BERTAZZI,03164800886,elegibilidade_arm_1,2,37,23,4,9,34,115,6,4,4,7,5,2,25,1
+3523,Carla Chiarioni,17366561800,elegibilidade_arm_1,1,45.8,20,16,17,38,132,6,5,4,4,5,4,7,1
+3526,Daniela Leite Jabes,29328694859,elegibilidade_arm_1,1,42,18,4,10,31,108,2,4,5,6,4,6,24,1
+3544,Caio César Santos de Oliveira Silva,06429794428,elegibilidade_arm_1,2,31.2,24,9,11,31,128,4,5,7,6,5,7,10,1
+3545,Marcelo Rogério Ianella,09542564848,elegibilidade_arm_1,2,49.4,24,12,14,24,135,4,5,7,7,7,7,3,1
+3546,Stephanie Krubiniki,45396362863,elegibilidade_arm_1,1,25.1,20,9,15,35,106,6,1,5,5,6,7,22,1
+3551,Renata Alves de Oliveira,42752234899,elegibilidade_arm_1,1,27.2,16,10,6,27,115,5,4,2,2,4,2,19,1
+3555,katia carneiro,11543958800,elegibilidade_arm_1,1,52.5,17,17,18,44,135,6,6,6,6,6,6,7,1
+3558,Eder Quental de Araújo,08789518659,elegibilidade_arm_1,2,33.7,24,9,13,37,116,5,6,7,7,6,7,10,1
+3559,Karine Elias Passos,77318129104,elegibilidade_arm_1,1,46.7,21,14,10,20,127,4,7,6,7,5,7,9,1
+3568,Gabriela Vanina Toscanini,29673601801,elegibilidade_arm_1,1,41.9,2,3,3,11,18,6,3,1,1,1,1,45,0
+3574,MARTA BATISTA DE SOUZA,19249139845,elegibilidade_arm_1,1,44,0,2,9,20,76,1,4,1,1,3,1,46,0
+3580,Nadia Nogueira Assis Rodrigues,04340920614,elegibilidade_arm_1,1,41.2,1,4,5,11,30,2,2,1,1,2,1,29,0
+3582,Rosangela Celina Cavalcante,36130812884,elegibilidade_arm_1,1,35.2,2,12,7,23,38,4,1,1,1,1,1,24,0
+3583,Lucas Vieira de Carvalho,08284936429,elegibilidade_arm_1,2,32.9,1,6,4,20,114,5,4,2,1,1,1,8,0
+3587,Caio Augusto Ramos de Castilho,12416709780,elegibilidade_arm_1,2,NA,3,2,6,27,35,2,2,1,1,1,1,36,1
+3588,Jilvana de Godoi Oliveira Costa,32702872832,elegibilidade_arm_1,1,37.6,2,5,3,22,51,2,1,1,1,1,1,25,0
+3589,Cristiane de Almeida Teodoro,18697814812,elegibilidade_arm_1,1,46.9,2,1,2,9,25,5,3,1,1,1,1,23,0
+3592,Beatriz Kubota Juodinis,47995692870,elegibilidade_arm_1,1,NA,4,4,11,38,41,7,4,4,5,3,7,38,1
+3594,Clarissa Venturieri,01064528279,elegibilidade_arm_1,1,30.6,3,3,8,15,83,1,1,1,1,1,1,28,0
+3595,Fabrizio manenti zanatelli,38249606809,elegibilidade_arm_1,2,32.6,1,9,9,20,108,5,3,1,1,1,2,24,1
+3597,Giovana Bernardinelli de Souza,37256898819,elegibilidade_arm_1,1,23.8,5,5,10,34,94,4,3,4,3,4,3,21,0
+3599,ANA IZA GUTERRES MENDES,980799483-72,elegibilidade_arm_1,1,38.9,1,2,5,17,88,1,1,1,1,1,1,13,0
+3601,Giovanna Paula Samora Marques,43063858846,elegibilidade_arm_1,1,28.6,1,4,3,18,30,1,1,1,1,2,2,24,0
+3602,Mariana Carvalho da Silva,11166773698,elegibilidade_arm_1,1,25.9,1,2,3,17,67,4,1,2,2,1,1,38,0
+3608,Manuella Freire Sobrinho,05983577425,elegibilidade_arm_1,1,36.6,6,8,4,28,98,4,4,4,4,4,4,25,0
+3609,Vanessa Mara Plantier Frutuoso,28410285851,elegibilidade_arm_1,1,46.5,1,2,4,7,49,2,2,1,1,1,1,24,0
+3611,GABRIELE DOS SANTOS ROCHA MATOS,42253755877,elegibilidade_arm_1,1,NA,3,10,6,38,91,2,2,1,1,2,2,19,1
+3613,Mayara Drigo,45580181850,elegibilidade_arm_1,1,26.6,3,5,13,27,83,1,1,1,1,1,1,30,0
+3615,Ellen Farina,28894343816,elegibilidade_arm_1,1,42.2,2,5,9,24,57,4,4,2,2,1,2,24,0
+3620,Livia Sati Okada,40671822870,elegibilidade_arm_1,1,30.7,1,0,0,9,50,3,1,1,1,1,1,29,0
+3622,Lorena Barbosa Cunha macedo,06229376695,elegibilidade_arm_1,1,35,1,3,5,18,42,5,1,2,1,1,1,37,0
+3623,Fabio Farias Belga,00757638341,elegibilidade_arm_1,2,37.1,3,2,3,20,82,7,5,1,1,1,1,26,0
+3627,Vanessa Veronez,44403702848,elegibilidade_arm_1,1,25.3,4,7,7,32,91,2,4,6,4,4,3,36,0
+3632,Maíra de Almeida Santos Reis,22706315873,elegibilidade_arm_1,1,39.8,1,4,5,16,34,1,1,1,1,1,2,48,0
+3633,Nadine Anita Fonseca da Silva,09267740423,elegibilidade_arm_1,1,29.1,1,1,1,15,73,7,3,1,1,1,1,30,0
+3634,MARTA CRISTINA NOGUEIRA,27881003813,elegibilidade_arm_1,1,41.8,1,4,8,28,59,2,2,1,1,1,1,34,0
+3637,Cinthia Cristina Aranha Wilmers de Sá,13485594890,elegibilidade_arm_1,1,56.8,2,5,6,10,130,4,2,1,1,2,4,30,0
+3640,Danilo Araújo Lima,35694869826,elegibilidade_arm_1,2,32.8,0,0,0,7,62,3,1,1,1,1,1,24,0
+3645,Angélica Carreira dos Santos,4187673890,elegibilidade_arm_1,1,NA,1,1,4,20,48,3,2,2,1,1,2,36,1
+3648,Laura Karman,04988184897,elegibilidade_arm_1,1,51.7,4,4,9,26,78,4,4,1,3,4,1,8,0
+3651,Denise Silva Cardoso de Freitas,36854952832,elegibilidade_arm_1,1,34,0,5,4,21,67,2,2,1,1,2,2,38,0
+3653,Jeniffer Ferreira Costa,43143150831,elegibilidade_arm_1,1,23.5,1,2,3,21,55,1,1,1,1,1,1,41,0
+3659,Ana Paula Theodoro Rodrigues,22425478876,elegibilidade_arm_1,1,40.6,0,1,9,21,37,1,1,1,1,1,1,48,0
+3660,Loyana Kelly marinho almeida,38276381863,elegibilidade_arm_1,1,29.3,3,0,5,9,83,6,2,1,2,2,1,14,0
+3661,Widyane da Silva,41465678824,elegibilidade_arm_1,1,NA,1,4,2,21,66,2,2,1,1,1,3,25,1
+3662,Eduarda Faria Abrahao Machado,05237263682,elegibilidade_arm_1,1,39.7,1,4,5,10,76,3,2,1,1,1,1,24,0
+3677,Andrea de souza zortea,58035036068,elegibilidade_arm_1,1,53.3,1,3,4,11,100,5,5,1,1,6,1,9,0
+3682,Maria Paula Vasconcellos Corrêa,40070143889,elegibilidade_arm_1,1,22.5,0,1,2,10,91,6,4,1,1,1,1,25,0
+3685,Gabriel Luiz de Jesus Ribeiro,02271070635,elegibilidade_arm_1,2,22.5,2,6,14,40,44,5,1,2,1,3,1,30,0
+3692,Juliana Zabukas de Andrade,31362693812,elegibilidade_arm_1,1,38.8,0,0,2,10,8,1,1,1,1,1,1,48,0
+3693,Eduarda da Silva Ribeiro,10844129690,elegibilidade_arm_1,1,31.3,1,0,0,8,70,6,6,1,1,1,1,24,0
+3696,maria fernanda perri gurgel,32230283820,elegibilidade_arm_1,1,37.3,6,9,9,30,136,5,4,2,2,2,2,15,0
+3698,Vanessa regina da silva goes,31052498850,elegibilidade_arm_1,1,42.3,2,8,6,20,49,2,3,1,1,1,1,22,0
+3699,Isabela Oliveira Boitar,35380600883,elegibilidade_arm_1,1,31.1,0,3,5,21,64,2,7,3,1,2,3,4,0
+3702,Luciane Oikawa,28143723860,elegibilidade_arm_1,1,43.2,0,0,2,9,25,4,2,1,1,1,1,24,0
+3709,Mariana Gralato Batista Rodrigues Ferreira,11892362732,elegibilidade_arm_1,1,33.9,0,3,5,15,53,3,3,1,1,1,1,48,0
+3712,Adriana Castro Brasil,54000386115,elegibilidade_arm_1,1,47.5,3,3,4,19,61,1,1,1,2,2,1,22,0
+3715,Viviane Oliveira Leite,34414161800,elegibilidade_arm_1,1,36.9,1,3,10,21,61,2,2,1,1,3,1,24,0
+3722,Patricia Aparecida zuanetti,32593655836,elegibilidade_arm_1,1,37,1,0,3,14,55,2,4,1,1,1,2,24,0
+3726,Claudia Renzi,26840649890,elegibilidade_arm_1,1,NA,3,5,3,10,66,3,3,1,1,1,1,19,1
+3730,Isabella Ferreira Alves,40345938857,elegibilidade_arm_1,1,30.6,5,4,6,38,61,2,3,1,1,1,1,24,0
+3733,Andressa Vercosa de Carvalho Sales,04847081390,elegibilidade_arm_1,1,30.6,0,0,0,7,16,1,1,1,1,1,1,28,0
+3735,Beatriz Araújo Cavendish,04794359101,elegibilidade_arm_1,1,27.6,4,1,3,12,47,6,1,2,2,2,4,24,0
+3739,Elizabeth Maria do Espirito Santo lima,86580362791,elegibilidade_arm_1,1,57.6,2,1,4,14,89,6,2,3,2,3,4,20,0
+3741,Carliane Ferreira trigo,04455001310,elegibilidade_arm_1,1,30.7,0,0,1,9,66,1,4,1,1,1,1,24,0
+3745,Juliana Gomes Saito,31771133864,elegibilidade_arm_1,1,38.4,6,10,11,35,92,3,3,1,3,3,3,22,0
+3750,Carolina Cardona Siqueira Lobo,22962705812,elegibilidade_arm_1,1,31.3,0,2,0,10,102,5,3,1,1,1,1,30,0
+3753,Michele Gennaro Balseiro,29652728870,elegibilidade_arm_1,1,39.4,3,2,4,11,17,1,1,1,1,1,1,24,0
+3754,MARCELO MARTINS BORGES,13263088823,elegibilidade_arm_1,2,NA,3,9,6,34,93,6,6,4,5,4,4,23,1
+3762,Eliane Schutt,14174092826,elegibilidade_arm_1,1,NA,2,7,3,10,45,2,2,2,1,1,1,21,1
+3765,Roberta de Oliveira Carminati,05203826684,elegibilidade_arm_1,1,41.5,2,3,3,16,62,1,2,1,1,1,1,24,0
+3767,Kelly dos Santos,36687719874,elegibilidade_arm_1,1,34.9,2,0,5,17,41,2,3,1,1,2,1,43,0
+3771,Priscila Aparecida do Nascimento Silva,32064650873,elegibilidade_arm_1,1,39.1,0,5,3,16,55,4,4,1,1,1,2,24,0
+3781,Claudia Aparecida Pitta Pecego,12935010850,elegibilidade_arm_1,1,58,2,5,4,11,31,2,2,2,1,1,2,24,0
+3786,Gabriela Otofuji Pereira,34676985819,elegibilidade_arm_1,1,24.9,0,6,5,21,89,2,1,1,1,1,1,32,0
+3787,Marcela Argolo de Queiroz Coelho,78797810568,elegibilidade_arm_1,1,41.7,0,1,1,7,19,1,1,1,1,1,1,24,0
+3788,Anne Karina Pereira de Andrade,52776050291,elegibilidade_arm_1,1,36.1,3,6,5,17,60,3,4,2,2,1,1,45,0
+3789,Renata Hirano Junes,52173720287,elegibilidade_arm_1,1,40.2,6,6,4,13,58,1,2,2,1,3,3,34,0
+3799,Ana Luisa Fernandes Vital,06777156410,elegibilidade_arm_1,1,25.7,4,4,11,34,40,1,2,1,1,1,2,47,0
+3802,Marcela sales santos,02309307351,elegibilidade_arm_1,1,28.1,3,8,3,21,38,1,4,1,1,3,1,33,0
+3807,Flávia Maria Fernandes Senra,09830185613,elegibilidade_arm_1,1,28.4,0,1,9,25,50,6,4,1,1,1,1,24,0
+3809,Natálie Scandelai,05742606923,elegibilidade_arm_1,1,36.7,2,10,12,32,69,1,1,1,1,1,2,40,0
+3810,Marina Tavares Ribeiro,36875896842,elegibilidade_arm_1,1,33.8,5,2,1,15,55,5,1,1,1,1,2,47,0
+3813,Dangela Layne Silva Lassi,08084058614,elegibilidade_arm_1,1,33.9,0,1,3,7,37,3,2,1,1,1,1,44,0
+3815,Felippe Pimenta Rodrigues de Oliveira,38181338839,elegibilidade_arm_1,2,33.4,0,2,4,16,80,1,2,1,1,1,1,24,0
+3817,Fernando Jorge Guimarães Moura,03463638533,elegibilidade_arm_1,2,33.3,4,5,4,13,17,1,1,1,1,1,1,24,0
+3822,Marco Túlio Camilo dos Reis Silva,04607785601,elegibilidade_arm_1,2,53.8,1,0,1,7,26,1,1,1,1,1,1,23,0
+3839,Laura Brandao Barros,01788466276,elegibilidade_arm_1,1,26.4,1,3,5,19,93,6,5,1,1,1,2,33,0
+3840,Shirley Suely Dos Santos,03049215640,elegibilidade_arm_1,1,46.8,0,2,2,12,96,2,5,1,1,1,1,24,0
+3844,Simone Almeida Silva Prata Ferreira,12752817886,elegibilidade_arm_1,1,52.8,0,1,2,7,31,1,1,1,1,1,1,24,0
+3850,Elisa França Chaves,10611317699,elegibilidade_arm_1,1,25.2,4,7,5,33,68,5,5,1,1,3,1,26,0
+3852,Luciane de Andrade Barreto,10511051883,elegibilidade_arm_1,1,53.1,0,1,4,8,52,2,3,1,1,1,1,24,0
+3860,Bruna Gonçalves Guatimosim,09839116657,elegibilidade_arm_1,1,28.4,4,7,14,37,69,2,3,2,2,2,4,31,0
+3862,Marina Pires de Sousa Braga,03623419311,elegibilidade_arm_1,1,27.9,1,4,4,18,74,3,4,1,1,2,2,25,0
+3863,Renata Triper Mançano de Villa,32584898829,elegibilidade_arm_1,1,38.8,0,1,2,12,58,1,1,1,1,1,1,24,0
+3865,Renata Simões,22069612880,elegibilidade_arm_1,1,41.2,1,4,5,17,5,1,1,1,1,1,1,24,0
+3867,Carla Barros Mello Rodriguez,228329438,elegibilidade_arm_1,1,31.1,0,0,2,7,91,5,3,1,1,1,1,24,0
+3871,Mário Jorge de Albuquerque Maurício,01970775440,elegibilidade_arm_1,2,45.3,2,5,1,18,58,2,3,1,2,1,1,43,0
+3872,Vanessa Tarin,21690780886,elegibilidade_arm_1,1,40.2,7,12,14,40,82,2,3,2,2,2,2,25,0
+3874,Janine de Carvalho Bonfadini,99271087372,elegibilidade_arm_1,1,35,1,2,3,12,28,4,3,2,2,2,2,38,0
+3875,Maíra Nunez Gutierrez Passos,37076815800,elegibilidade_arm_1,1,33.9,1,8,5,27,92,2,4,1,2,4,3,24,0
+3881,Maria Isabel Lima Hamud,21767884869,elegibilidade_arm_1,1,37,0,3,3,17,76,1,2,1,2,2,3,14,0
+3885,Paula Maria Medeiros Campos Saita,09407109860,elegibilidade_arm_1,1,54.8,2,4,4,9,29,1,1,1,1,1,1,21,0
+3891,Calebe Calais Silva,00652493211,elegibilidade_arm_1,2,NA,3,5,5,24,75,4,3,2,2,3,1,19,1
+3895,Bruna campos laranjeira moraes,12062594771,elegibilidade_arm_1,1,35.3,0,0,1,9,73,4,4,1,1,1,1,21,0
+3897,Denise Janne Amaral da Silva,09565079482,elegibilidade_arm_1,1,27.8,2,2,3,15,83,5,3,3,2,2,1,28,0
+3898,Tatiana Maria Kapustin,38681783840,elegibilidade_arm_1,1,31.9,3,3,0,15,57,2,1,1,1,1,7,26,0
+3901,Milena Santos Silva,4p548084840,elegibilidade_arm_1,1,29.8,0,1,2,13,25,1,1,1,1,1,1,43,0
+3902,Gilda Reis da Cunha,35242493805,elegibilidade_arm_1,1,38.9,2,11,10,35,76,1,2,1,1,1,1,36,0
+3904,Rita de Cassia burnatowiski,26305792801,elegibilidade_arm_1,1,46.9,7,3,5,13,104,5,1,1,2,3,2,17,0
+3905,Diego Silva Carneiro,37206315836,elegibilidade_arm_1,2,35.1,0,1,1,15,51,3,2,1,1,1,1,24,0
+3906,Tatiana Goulart Barbosa Fragoso,33417560861,elegibilidade_arm_1,1,36.6,5,6,9,13,62,4,4,1,1,1,1,40,0
+3912,Giselle da Silveira Reis,95008268104,elegibilidade_arm_1,1,40.5,10,15,7,34,90,2,3,1,1,3,2,22,1
+3915,Cíntia Rodrigues de Souza,38067667896,elegibilidade_arm_1,1,31.4,6,11,10,34,99,3,4,2,2,2,4,22,0
+3916,Nádia Pereira Slwczuk Silva,22667306813,elegibilidade_arm_1,1,41.2,2,5,4,13,71,5,2,1,1,1,1,26,0
+3923,Marina Santiago Ribeiro,03305900148,elegibilidade_arm_1,1,32.9,2,2,5,11,33,1,1,1,1,1,2,24,0
+3926,Jessica Tolotti Canhisares,07050435929,elegibilidade_arm_1,1,32.9,1,1,5,18,102,2,4,1,1,1,1,40,0
+3932,Marília Godoy Fernandes,33372553888,elegibilidade_arm_1,1,35.9,0,1,2,8,17,1,1,1,1,1,1,40,0
+3936,Thiago da silva figueiredo,11595905758,elegibilidade_arm_1,2,35.2,3,6,12,27,60,3,3,1,1,1,1,24,0
+3941,Aline Soares Monteiro,31503186881,elegibilidade_arm_1,1,38.1,2,4,9,18,37,3,2,1,1,1,1,29,0
+3947,Isabel Cristina Medeiros da Silva,32706668881,elegibilidade_arm_1,1,37.6,0,1,1,16,36,1,1,1,1,1,1,32,0
+3948,Nielson Fortunato Souza dos Santos,32572753820,elegibilidade_arm_1,2,36.7,1,5,10,44,119,4,3,1,1,2,3,28,0
+3954,Leila Higa Estante,22355352836,elegibilidade_arm_1,1,41,0,3,5,30,20,2,5,1,1,1,1,42,0
+3959,Fabiana Bastos Passalacqua,26480067886,elegibilidade_arm_1,1,44.2,1,2,4,24,75,1,1,3,2,3,4,39,0
+3962,Mariana panizza Ferreira,40960493875,elegibilidade_arm_1,1,28.8,4,3,9,21,82,5,4,2,2,2,5,29,0
+3973,Patricia Hoffmann,36976994823,elegibilidade_arm_1,1,34.2,0,1,4,10,26,1,1,1,1,1,1,41,0
+3976,NICEIA INACIO DE SOUSA,38878507857,elegibilidade_arm_1,1,NA,1,3,4,12,23,4,3,1,1,1,1,30,1
+3978,Roseli Aparecida de Lima Alberto,07741791800,elegibilidade_arm_1,1,NA,5,10,8,33,69,4,4,1,1,1,4,31,1
+3979,Giulia Boyago Priore,45576626842,elegibilidade_arm_1,1,25.2,3,2,5,23,80,4,4,1,1,1,1,24,0
+3988,Paula Regina Barros de Souza,21842687808j,elegibilidade_arm_1,1,39.8,1,6,4,11,46,1,2,1,1,1,2,28,0
+3993,Diana Oliveira Santos,41058128825,elegibilidade_arm_1,1,30.1,5,9,16,36,80,1,7,3,2,7,3,21,0
+3995,Eliana Oliveira Serra,25498283806,elegibilidade_arm_1,1,46.8,1,3,2,8,5,1,2,1,1,1,1,24,0
+3998,Elaine Soares,00408181958,elegibilidade_arm_1,1,45.3,4,4,5,20,53,3,1,1,1,4,2,31,0
+4006,Bárbara Nieri de Souza Campos,220235078-04,elegibilidade_arm_1,1,41.2,0,4,3,10,55,2,2,1,1,1,1,20,0
+4007,Aline dos Santos Akimoto,35605091816,elegibilidade_arm_1,1,36.3,2,1,3,9,57,1,2,1,2,2,2,7,0
+4008,Luzia dos Santos Rabaça,15355919863,elegibilidade_arm_1,1,51,2,8,9,20,71,4,4,1,2,3,1,31,0
+4011,Tamiris de Farias Cavalcante,53724358873,elegibilidade_arm_1,1,NA,1,2,4,15,67,2,2,1,1,3,1,25,1
+4012,Vanessa Rodrigues Dunk Gomes,02422738150,elegibilidade_arm_1,1,34.4,1,4,9,27,58,4,3,2,1,2,2,30,0
+4017,Caroline Cunha Rezende Rodrigues,44520732808,elegibilidade_arm_1,1,NA,6,5,10,27,83,5,1,1,1,1,1,38,1
+4020,Maria Eduarda Oliveira Rego,85824830584,elegibilidade_arm_1,1,24.3,0,2,2,12,43,2,1,1,1,1,1,24,0
+4023,Edinalva Gomes Dantas,17958584865,elegibilidade_arm_1,1,NA,0,5,2,13,50,1,1,1,1,1,1,25,1
+4024,Amanda Buscaratti,30951769880,elegibilidade_arm_1,1,39.7,2,9,8,27,77,2,1,1,1,1,2,33,0
+4027,Lohaynne Edwiges de Oliveira Magalhães,42968851896,elegibilidade_arm_1,1,28,2,1,4,18,53,4,3,1,1,1,2,24,0
+4039,Beatriz S Spanghero,03265856830,elegibilidade_arm_1,1,51.4,6,7,4,24,96,4,3,1,1,1,1,34,0
+4040,Thaluana Cabral Padilha,31392535832,elegibilidade_arm_1,1,39.6,3,5,3,16,84,2,2,1,1,1,2,24,0
+4050,Marisa markunas,19459480861,elegibilidade_arm_1,1,47.1,1,2,3,8,26,1,1,1,1,1,1,46,0
+4052,Sidney Barbosa Ansaloni,03581889625,elegibilidade_arm_1,2,44.6,1,8,4,15,75,1,6,1,1,1,2,40,0
+4064,Sara Edith Souza de Assis Leão,06990261641,elegibilidade_arm_1,1,NA,1,2,4,13,66,4,2,1,1,1,1,37,1
+4066,Fabiana Pires,22383992836,elegibilidade_arm_1,1,NA,1,3,1,9,10,2,2,1,1,1,1,24,1
+4068,Rafael Guimaraes Moreira de Moura,36984616840,elegibilidade_arm_1,2,31.4,0,2,0,7,48,1,1,1,1,1,1,24,0
+4074,Fernanda Gaspar do Amaral,28648696836,elegibilidade_arm_1,1,41.9,1,1,3,11,21,2,2,1,1,1,1,42,0
+4080,Ana Paula Goulart,03355885908,elegibilidade_arm_1,1,40,2,1,2,8,57,2,4,1,1,3,1,24,0
+4081,Ewandra de Martini 2,14810795810,elegibilidade_arm_1,1,50.1,3,10,7,26,122,7,1,1,1,1,3,13,0
+4093,Isabele Martins Valentin,01629892646,elegibilidade_arm_1,1,33.2,0,4,4,7,42,2,2,1,1,1,1,20,0
+4094,Abigail Moraes de Ataide,23153589810,elegibilidade_arm_1,1,33.7,0,2,4,23,67,2,4,1,1,2,2,24,0
+4099,Simone Onaga,33764635819,elegibilidade_arm_1,1,36.1,2,3,2,11,96,5,2,1,1,1,2,25,0
+4107,Vinícius Dalben Rodrigues,17298419889,elegibilidade_arm_1,2,46.7,4,12,12,36,75,5,4,2,3,4,4,25,0
+4114,Paloma Alves Saraiva Teles,07198181333,elegibilidade_arm_1,1,25,5,11,12,28,82,4,3,2,2,2,3,27,0

@@ -78,6 +78,14 @@ neo2 <- neoffi |>
 
 # 1. Análises descritivas
 
+```{r geral}
+neo2 |> 
+  dplyr::select(idade, grupo, dplyr::ends_with("_t"), sexo, superior_completo) %>%
+  datasummary_balance(~1, data=.,  output = 'flextable') |> 
+  my_theme()
+```
+<br>
+
 ```{r continuos}
 neo2 |> 
   dplyr::select(idade, grupo, dplyr::ends_with("_t"), sexo, superior_completo) %>%

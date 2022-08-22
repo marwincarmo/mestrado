@@ -1,0 +1,387 @@
+---
+title: "Dissertation Analyses"
+#subtitle: "Example Rmd script"
+author: "Author: Marwin M I B Carmo"
+date: " `r Sys.Date()`"
+output: 
+    html_document: 
+    highlight: textmate
+    theme: flatly
+    toc: TRUE
+    tables: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+```
+
+#Summary 
+
+This document presents the results of a psychometric analysis of [describe item set]
+
+**Step 1** performs basic descriptive statistics at item level. 
+
+**Step 2** examines item properties according to non-parametric item response theory (IRT) requirements (Mokken Scaling Analysis; MSA).
+
+**Step 3** examines item properties according to parametric IRT requirements (Rasch or Rating Scale Model).
+
+**Step 4** examines the structure of the item set according to factor analysis (exploratory and confirmatory). 
+
+**Step 5** examines scale reliability and item properties for unidimensional item sets according to Classical Test Theory. 
+
+Finally, **step 6** computes total scores and score statistics for each unidimensional item set, and displays distributions as histograms. 
+
+```{r setup2, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(dplyr)
+library(ggplot2)
+library(psych)
+library(semTools)
+library(semPlot)
+library(mokken)
+# add functions needed in analyses
+
+# defines a function to partition an item set into mokken scales - lowerbound from .05 to .80 
+moscales.for.lowerbounds <- function( x, lowerbounds=seq(from=0.05,to=0.80,by=0.05) )
+{
+  ret.value <- NULL;
+  for( lowerbound in lowerbounds )
+  {
+    tmp <- aisp( x,  lowerbound=lowerbound );
+    if( is.null(ret.value) )
+    {
+      ret.value <- data.frame( "Item"=rownames(tmp), "Scales."=tmp[,1] );
+    }
+    else
+    {
+      ret.value <- cbind( ret.value, "Scales."=tmp[,1] );
+    }
+    names(ret.value)[ncol(ret.value)] <- sprintf("%.2f",lowerbound);
+  }
+  rownames(ret.value) <- NULL;
+  ret.value;
+}
+
+table_nums <- captioner::captioner(prefix = "Table")
+figure_nums <- captioner::captioner(prefix = "Figure")
+t.ref <- function(x) {
+  stringr::str_extract(table_nums(x), "[^:]*")
+}
+f.ref <- function(x) {
+  stringr::str_extract(figure_nums(x), "[^:]*")
+}
+
+```
+
+```{r dataset, warning=FALSE, message=FALSE, echo=FALSE}
+raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+```
+
+```{r data-wrangling}
+sel.data <- raw.data |>
+  # fill idade
+  dplyr::group_by(record_id) |>  
+  tidyr::fill(nome, .direction = "down") |>
+  tidyr::fill(idade, .direction = "down") |> 
+  tidyr::fill(cpf, .direction = "down") |> 
+  dplyr::ungroup() |> 
+  dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete)) |> 
+  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, idade, igi_escore, ehad_depressao_escore,
+                ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_"), ebas_1:ebas_6) |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::filter(!stringr::str_detect(nome, stringr::regex("teste", ignore_case = TRUE))) |> 
+  # reverse score spaq
+  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x)) %>% 
+  dplyr::mutate(spaq_score = dplyr::select(., spaq_1:spaq_8) %>% rowSums()) %>% 
+  dplyr::select(-c(spaq_1:spaq_8)) |> 
+  dplyr::mutate(insonia = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1))
+ebas <- dplyr::select(sel.data, ebas_1:ebas_6)
+ebas_full <- sel.data |> 
+  dplyr::filter(if_any(ebas_1:ebas_6, ~!is.na(.x)))
+#readr::write_csv(ebas_full, "../../conferences/cbsono_22/ebas.csv")
+```
+
+Sample size: `r nrow(ebas)`.
+
+Complete cases: `r sum(complete.cases(ebas))`
+
+# Step 1: Descriptives
+
+```{r}
+# compute unique levels in data frame
+lvls <- unique(unlist(ebas))
+  
+# apply the summation per value 
+freq <- sapply(ebas, 
+               function(x) table(factor(x, levels = lvls, 
+                                        ordered = TRUE)))
+freqebas <- as.data.frame(freq) |> 
+  tibble::rownames_to_column() |> 
+  dplyr::rename("score" = "rowname") |> 
+  dplyr::arrange(score)
+knitr::kable(freqebas)
+```
+
+```{r bar-plot}
+freqebas |> 
+  tidyr::pivot_longer(cols = dplyr::starts_with("ebas_"), values_to = "count", names_to = "item") |> 
+  dplyr::with_groups(score, summarise, count = sum(count)) |> 
+  ggplot(aes(x = score, y = count)) +
+  geom_bar(stat = "identity") +
+  theme_bw()
+```
+
+
+```{r frequencies}
+ebas <- janitor::remove_empty(ebas, "rows")
+mydata <- ebas
+psych::describe(ebas)
+```
+
+```{r cormatrix}
+library(corrplot)
+ebascor <- cor(ebas)
+
+corrplot(ebascor, method = "shade", shade.col = NA, tl.col = "black", tl.srt = 0, type="full",
+          addCoef.col = "black", cl.pos = "n", order = "AOE", tl.cex = 1.2, number.cex=1)
+```
+```{r}
+d2mydata <- psych::outlier(ebas, cex=.6, bad=3, ylim=c(0,130))
+```
+There were `r sum((1-pchisq(d2mydata, ncol(ebas)))<.001)` respondents with D^2^ values with probability values <.001 (considering a chi-squared distribution with df = 6). The maximum D^2^ value is `r round(max(d2mydata), 2)`. 
+
+## Interpretation
+
+- Are there any out-of-range values? **No**
+- Are all response options well-represented in the data? **Yes**
+- Are all associations between items positive? **Yes**
+- Are there multivariate outliers in the data? **Yes, 17**
+
+# Step 2: Item properties - Mokken Scaling Analysis (MSA)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+#__________________#
+####   STEP 2   ####
+#__________________#
+
+# define captions
+Tab_2.1_cap <- table_nums(name="tab_2.1", caption = "MSA: Homogeneity values (and standard errors) for items" )
+Tab_2.2_cap <- table_nums(name="tab_2.2", caption = "MSA: *aisp* for increasing H thresholds (c)")
+
+Fig_2.1_cap <- table_nums(name="fig_2.1", caption = "MSA: Guttman errors for all item set" )
+```
+
+## Results
+
+The distribution of Guttman errors is shown in `r f.ref("fig_2.1")`. 
+
+The homogeneity values of all items in the initial item set are showm in `r t.ref("tab_2.1")`.
+
+To test unidimensionality, the results of an automated item selection procedure (*aisp*) with all items are shown in `r t.ref("tab_2.2")`. 
+
+### (i) Data examination
+
+```{r, fig.width=5, fig.height=5, warning=FALSE, message=FALSE, echo=FALSE, fig.cap=Fig_2.1_cap}
+# Outliers
+xPlus   <- rowSums(mydata)
+gPlus   <- check.errors(mydata)$Gplus
+hist(gPlus)
+oPlus   <- check.errors(mydata, TRUE, TRUE)$Oplus
+# cor(cbind(oPlus, gPlus, xPlus))
+
+Q3 <- summary(gPlus)[[5]]
+IQR <- Q3 - summary(gPlus)[[2]]
+outlier <- gPlus > Q3 + 1.5 * IQR 
+# if needed to further analyse ouliers
+# cbind(mydata, gPlus)[outlier,]
+# then possible sensitivity analysis:
+#coefH(mydata[!outlier,])
+```
+```{r}
+# Adjusted Boxplot for Skew Distributions
+adjgPlus <- robustbase::adjbox(gPlus)
+outlier_adj <- gPlus > adjgPlus$fence[2]
+```
+There were `r sum(outlier_adj)` cases with a number of Guttman errors higher than (Q3 plus 1.5 times IQR). 
+### (ii) Scale identification
+
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# Compute scalability coefficients
+Hvalues <- coefH(mydata)
+# examine aisp for increasing c levels (run the function you defined above and give it a name)
+motable.mydata <- moscales.for.lowerbounds( mydata )
+# save it as a data frame
+aispmydata <- as.data.frame(motable.mydata)
+# if you need to view it
+# View(aispmydata)
+# if you need it outside the output file
+# write.table(motable.mydata, file="./aispmydata.csv", quote = FALSE, sep = "\t",row.names = FALSE)
+```
+
+```{r results = 'asis', echo=FALSE}
+knitr::kable(Hvalues$Hi, caption = Tab_2.1_cap)
+```
+
+The complete item set has a homogeneity value H(se) = `r Hvalues$H`.  
+
+```{r results = 'asis', echo=FALSE}
+knitr::kable(motable.mydata, caption = Tab_2.2_cap)
+```
+
+A selection of the items to investigate further (one scale or more subscales) can be performed by selecting a solution from the table above, or by selecting specific items in connection with theoretical considerations; most importantly, the items selected should show unidimensionality at a threshold level of .30 or higher. 
+
+### Subscale 1: 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+
+Tab_2.3a_cap <- table_nums(name="tab_2.3a", caption = "MSA: Subcale 1: item homogeneity values")
+Tab_2.4a_cap <- table_nums(name="tab_2.4a", caption = "MSA: Subcale 1: monotonicity with default minsize")
+Tab_2.5a_cap <- table_nums(name="tab_2.5a", caption = "MSA: Subcale 1: IIO with default minsize")
+
+Fig_2.2a_cap <- figure_nums(name="fig_2.2a", caption = "MSA: Subcale 1: ISRF with minsize=50" )
+Fig_2.3a_cap <- figure_nums(name="fig_2.3a", caption = "MSA: Subcale 1: IIO with minsize=50" )
+
+# select the most appropriate solution, for example code below is for the solution at lowerbound .30
+# myselection <- aisp(mydata,  lowerbound=.3)
+# myselection
+# check which items are in which subscales (here the first subscale)
+# names(mydata[,myselection==1])
+
+
+# check properties for subscales:
+# select the first subscale (if MSA confirms the initial 3-subscale structure)
+mysubscale1 <- mydata[,c("ebas_1", "ebas_2")]
+# check H 
+HvaluesSubscale1 <- coefH(mysubscale1)
+```
+
+The **homogeneity** values of all items in Subscale 1 are showm in `r t.ref("tab_2.3a")`.
+
+```{r, include=FALSE, warning=FALSE, echo=FALSE, message=FALSE}
+# check conditional association (local independence)
+CA.def.mysubscale1 <- check.ca(mysubscale1, TRUE)
+CA.def.mysubscale1$InScale
+CA.def.mysubscale1$Index
+CA.def.mysubscale1$Flagged
+```
+
+**Local independence** for the subscale 1 items is presented below as TRUE/FALSE values: 
+
+`r CA.def.mysubscale1$InScale[[1]]`
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# check monotonicity at different minsize:
+# with default minsize:
+monotonicity.def.mysubscale1 <- check.monotonicity(mysubscale1, minvi = .03)
+```
+
+**Monotonicity** tests are shown in `r t.ref("tab_2.4a")` for default minsize (alternative values of 60 and 50 are displayed below as R output). Item step response functions (minsize=50) are displayed visually in `r f.ref("fig_2.2a")`
+
+```{r results = 'asis', echo=FALSE}
+knitr::kable(summary(monotonicity.def.mysubscale1), caption = Tab_2.4a_cap)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# try different minsizes 60 to 10 
+monotonicity.60.mysubscale1 <- check.monotonicity(mysubscale1, minvi = .03, minsize = 60)
+summary(monotonicity.60.mysubscale1)
+#plot(monotonicity.60.mysubscale1)
+monotonicity.50.mysubscale1<- check.monotonicity(mysubscale1, minvi = .03, minsize = 50)
+summary(monotonicity.50.mysubscale1)
+#plot(monotonicity.50.mysubscale1)
+```
+
+```{r, fig.width=5*2, fig.height=2*2, warning=FALSE, echo=FALSE, message=FALSE, fig.cap=Fig_2.2a_cap }
+# plot ISRFs in a pdf
+#pdf( "./ISRFs-mydata1.pdf", width=5*2, height=2*2, paper="special" );
+par( mfrow=c(2,1));
+plot(monotonicity.50.mysubscale1, curves="ISRF", ask=FALSE, color.ci="yellow")
+#dev.off();
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# Investigate the assumption of non-intersecting item step response functions (ISRFs) 
+# using method MIIO (appropriate for ordinal items)
+#miio.mysubscale1 <- check.iio(mysubscale1)
+# or using rest score (for binary items)
+# restscore.mysubscale1 <- check.restscore(mysubscale1)
+# several other options are available in mokken: pmatrix, mscpm, and IT
+```
+
+# Step 4: Factor analysis
+
+```{r}
+# consider using tetrachoric correlations for binary items (cor="tet"), and polychoric for ordinal items (cor="poly"); Pearson correlations are specified below (default)
+fa.parallel(ebas , cor="poly"
+            )
+# very simple structure analysis
+vss(ebas, 5)
+```
+
+```{r, fig.width=5, fig.height=5, warning=FALSE, echo=FALSE, message=FALSE}
+
+# # default FA - 5 factor, min residual & principal axis
+# fa(mydata,  nfactors=2, fm="minres", n.iter=10)
+# fa(mydata,  nfactors=2, fm="pa")
+# plot the fa solution
+plot(fa(ebas,  nfactors=2, fm="pa"))
+```
+
+```{r, fig.width=5, fig.height=5, warning=FALSE, echo=FALSE, message=FALSE}
+# plot diagram fa solution
+fa.diagram(fa(ebas,  nfactors=2, fm="pa", rotate="oblimin"))
+# pca (in case you need it, but would not advise - data reduction, but not structural validity test)
+# principal(mydata,3,rotate="varimax")
+```
+
+```{r, fig.width=5, fig.height=5, warning=FALSE, echo=FALSE, message=FALSE}
+# hierarchical cluster analysis using ICLUST (groups items)
+ summary(iclust(ebas, title="ICLUST using Pearson correlations"))
+# iclust.diagram(iclust(mydata, title="ICLUST using Pearson correlations"))
+```
+```{r, fig.width=5, fig.height=5, warning=FALSE, echo=FALSE, message=FALSE}
+# hierarchical factor solution to find omega coefficient
+omega(ebas, nfactors=2, sl=FALSE)
+```
+
+```{r, fig.width=5, fig.height=5, warning=FALSE, echo=FALSE, message=FALSE}
+omega(ebas, nfactors=2, sl=TRUE)
+# omega with polychoric matrix
+# mydata.poly <- polychoric(mydata)
+# omega(mydata.poly$rho, nfactors=3,  sl=FALSE)
+```
+
+Confirmatory factor analysis:
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# CFA ####
+
+# specify the model
+CFA.ebas <- '
+# factor structure
+Subscale1 =~ ebas_1 + ebas_2
+Subscale2 =~ ebas_3 + ebas_4 + ebas_5 + ebas_6
+'
+
+# fit the model
+
+# to use an estimator better suited to ordinal or binary items (WLSMV), use "ordered" specification as here: http://lavaan.ugent.be/tutorial/cat.html)
+# alternatively, consider using estimator = "MLR" (robust maximum likelihood) for ordinal items with e.g. 7-point response scales
+
+fitCFA.ebas <- lavaan::cfa(CFA.ebas, data=ebas, std.lv = TRUE, estimator = 'DWLS', ordered = TRUE)
+# model summary
+summary(fitCFA.ebas, standardized=TRUE, fit.measures = TRUE)
+# coefficients only
+# coef(fitCFA.mydata)
+# CFA diagram from psych package
+# lavaan.diagram(fitCFA.mydata, errors=TRUE)
+```
+
+```{r, fig.width=10, fig.height=10, warning=FALSE, echo=FALSE, message=FALSE}
+# diagram from semPlot package
+#semPaths(fitCFA.mydata,what="std", label.cex=0.3, edge.label.cex=0.5, sizeLat=5, sizeMan=4, curvePivot = TRUE, rotation=4)
+semPaths(fitCFA.ebas,what="std",layout="circle",edge.label.cex=0.5, curvePivot = TRUE, rotation=3)
+```

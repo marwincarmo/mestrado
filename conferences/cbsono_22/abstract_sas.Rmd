@@ -1,0 +1,83 @@
+---
+title: "Development of the Sleep Acceptance Scale (SAS-6)"
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+#options(OutDec = ",", digits = 2)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+
+library(dplyr)
+library(psych)
+library(lavaan)
+library(MBESS)
+```
+
+```{r dataset}
+ebas_full <- readr::read_csv("ebas.csv") %>% 
+  dplyr::mutate(ebas_score = dplyr::select(., ebas_1:ebas_6) %>% rowSums())
+ebas <- dplyr::select(ebas_full, ebas_1:ebas_6)
+```
+
+```{r efa, include=FALSE}
+ebas.pa <- fa.parallel(ebas , cor="poly")
+```
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+# CFA ####
+
+# specify the model
+CFA.ebas2 <- '
+# factor structure
+Subscale1 =~ ebas_1 + ebas_2
+Subscale2 =~ ebas_3 + ebas_4 + ebas_5 + ebas_6
+'
+
+CFA.ebas1 <- '
+# factor structure
+SAS =~ ebas_1 + ebas_2 + ebas_3 + ebas_4 + ebas_5 + ebas_6
+'
+
+# fit the model
+
+# to use an estimator better suited to ordinal or binary items (WLSMV), use "ordered" specification as here: http://lavaan.ugent.be/tutorial/cat.html)
+# alternatively, consider using estimator = "MLR" (robust maximum likelihood) for ordinal items with e.g. 7-point response scales
+
+fitCFA.ebas <- lavaan::cfa(CFA.ebas1, data=ebas, std.lv = TRUE, estimator = 'DWLS', ordered = TRUE)
+#fitCFA.ebas <- lavaan::cfa(CFA.ebas1, data=ebas, std.lv = TRUE, estimator = 'MLR')
+fitCFA.ebas2 <- lavaan::cfa(CFA.ebas2, data=ebas, std.lv = TRUE, estimator = 'DWLS', ordered = TRUE)
+# model summary
+summary(fitCFA.ebas, standardized=TRUE, fit.measures = TRUE)
+# coefficients only
+# coef(fitCFA.mydata)
+# CFA diagram from psych package
+# lavaan.diagram(fitCFA.mydata, errors=TRUE)
+delta.ebas <- anova(fitCFA.ebas, fitCFA.ebas2)
+
+## Reliability
+
+Calphamysubscale1 <- psych::alpha(ebas[,1:2]) 
+omegamysubscale1 <- ci.reliability(data=ebas[,1:2], type="omega", conf.level = 0.95,
+               interval.type="perc", B=100)
+
+Calphamysubscale2 <- psych::alpha(ebas[,3:6]) 
+omegamysubscale2 <- ci.reliability(data=ebas[,3:6], type="omega", conf.level = 0.95,
+               interval.type="perc", B=100)
+```
+
+```{r, include=FALSE}
+sas.igi <- cor.test(ebas_full$ebas_score, ebas_full$igi_escore)
+sas.dbas <- cor.test(ebas_full$ebas_score, ebas_full$dbas_score )
+sas.aaq <- cor.test(ebas_full$ebas_score, ebas_full$aaq_score )
+sas.hadsa <- cor.test(ebas_full$ebas_score, ebas_full$ehad_ansiedade_escore )
+sas.hadsd <- cor.test(ebas_full$ebas_score, ebas_full$ehad_depressao_escore )
+sas.spaq <- cor.test(ebas_full$ebas_score, ebas_full$spaq_score )
+```
+
+
+**Introduction**: Insomnia symptoms are associated with higher levels of metacognitive control. Controlled information processing interferes with a healthy sleep process by preventing cognitive deactivation, which involves diminished verbal regulation and control, and acceptance of spontaneous physiological and mental processes. Because general tools for measuring acceptance do not address sleep-related behaviors, the development of specific instruments is essential for studying acceptance of insomnia. **Aim**: This study aimed to develop a new measure of sleep acceptance, titled Sleep Acceptance Scale (SAS-6), and examine its factorial structure, internal consistency, and construct validity. **Methods**: The SAS-6 was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance. Data were collected from online surveys responded by `r nrow(ebas_full)` participants, with and without insomnia symptoms. Participants completed additional measures, including, Hospital Anxiety and Depression Scale (HADS), Insomnia Severity Index (ISI), Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16), Acceptance and Action Questionnaire (AAQ-II), and Sleep Problem Acceptance Questionnaire (SPAQ). We conducted a parallel analysis and exploratory factor analysis (EFA; with oblimin rotation) to estimate the number of facets underlying the instrument items. Then, we ran a confirmatory factor analysis (CFA) to obtain fit statistics and parameter estimates. Reliability indices for each of the facets were obtained using Cronbach’s $\alpha$ and McDonald’s $\omega$. We assessed construct validity by examining the relations with variables known to be linked with insomnia. **Results**: Mean age was `r round(mean(ebas_full$idade, na.rm=TRUE), 1)` $\pm$ `r round(sd(ebas_full$idade, na.rm=TRUE), 1)` years. Our sample included `r dplyr::count(ebas_full, sexo)[1,2]` women and `r dplyr::count(ebas_full, insonia)[2,2]` participants with insomnia symptoms. The parallel analysis procedure indicated two latent factors: Factor 1 (two items) and Factor 2 (four items). The 2-factor model showed a good fit [$\chi^2$(`r fitMeasures(fitCFA.ebas2, "df")`) = `r round(fitMeasures(fitCFA.ebas2, "chisq"),2)`, RMSEA = `r round(fitMeasures(fitCFA.ebas2, "rmsea"),3)` [`r round(fitMeasures(fitCFA.ebas2, "rmsea.ci.lower"),2)`, `r round(fitMeasures(fitCFA.ebas2, "rmsea.ci.upper"),3)`]; CFI = `r round(fitMeasures(fitCFA.ebas2, "cfi"),3)`; RNI = `r round(fitMeasures(fitCFA.ebas2, "rni"),3)`; TLI = `r round(fitMeasures(fitCFA.ebas2, "tli"),3)`] and factor loadings ranging from .55 to .95. Internal consistency was poor for Subscale1 ($\alpha$ = `r round(Calphamysubscale1$total[1],2)` [`r round(Calphamysubscale1$feldt[[1]],2)`, `r round(Calphamysubscale1$feldt[[3]],2)`], $\omega$ = `r round(omegamysubscale1$est,2)` [`r round(omegamysubscale1$ci.lower,2)`, `r round(omegamysubscale1$ci.upper,2)`]) and excellent for Subscale2 ($\alpha$ = `r round(Calphamysubscale2$total[1],2)` [`r round(Calphamysubscale2$feldt[[1]],2)`, `r round(Calphamysubscale2$feldt[[3]],2)`], $\omega$ = `r round(omegamysubscale2$est,2)` [`r round(omegamysubscale2$ci.lower,2)`, `r round(omegamysubscale2$ci.upper,2)`]). The SAS-6 was positive and strongly correlated with ISI (*r* = `r round(sas.igi$estimate,2)`), DBAS-16 (*r* = `r round(sas.dbas$estimate,2)`), AAQ-II (*r* = `r round(sas.aaq$estimate,2)`), HADS-A (*r* = `r round(sas.hadsa$estimate,2)`), HADS-D (*r* = `r round(sas.hadsd$estimate,2)`), and negatively correlated with SPAQ (*r* = `r round(sas.spaq$estimate,2)`). **Conclusion**: Preliminary evidence suggest that SAS-6 is a valid tool to assess acceptance of sleep problems.
