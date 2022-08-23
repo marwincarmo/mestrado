@@ -366,6 +366,11 @@ Subscale1 =~ ebas_1 + ebas_2
 Subscale2 =~ ebas_3 + ebas_4 + ebas_5 + ebas_6
 '
 
+CFA.ebas5 <- '
+General =~ ebas_2 + ebas_3 + ebas_4 + ebas_5 + ebas_6
+
+'
+
 # fit the model
 
 # to use an estimator better suited to ordinal or binary items (WLSMV), use "ordered" specification as here: http://lavaan.ugent.be/tutorial/cat.html)
@@ -379,6 +384,13 @@ summary(fitCFA.ebas, standardized=TRUE, fit.measures = TRUE)
 # CFA diagram from psych package
 # lavaan.diagram(fitCFA.mydata, errors=TRUE)
 ```
+
+
+```{r}
+fitCFA.ebas5 <- lavaan::cfa(CFA.ebas5, data=ebas, std.lv = TRUE, estimator = 'DWLS', ordered = TRUE)
+anova(fitCFA.ebas, fitCFA.ebas5)
+```
+
 
 ```{r, fig.width=10, fig.height=10, warning=FALSE, echo=FALSE, message=FALSE}
 # diagram from semPlot package
