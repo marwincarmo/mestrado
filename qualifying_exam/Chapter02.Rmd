@@ -1,4 +1,4 @@
 
 # Objectives
 
-The present project therefore aims at (a) developing a Brazilian portuguese translation of the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16) and Sleep Problem Acceptance Questionnaire (SPAQ), (b) examining its factorial structure, and (c) examining its construct validity.
+The present project therefore aims at (a) developing a Brazilian-Portuguese translation of the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16) and Sleep Problem Acceptance Questionnaire (SPAQ), (b) examining its factorial structure and item properties, and (c) examining its construct validity.
