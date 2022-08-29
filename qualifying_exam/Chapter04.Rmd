@@ -1,11 +1,45 @@
 
 # Partial results
 
+```{r packages, include=FALSE}
+library(dplyr)
+```
+
+```{r dataset, include=FALSE}
+raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+location <- readr::read_csv("data_analyses/location_db.csv") |> 
+  dplyr::select(record_id, estado, region)
+
+dat <- raw.data |>
+  # fill idade
+  dplyr::group_by(record_id) |>  
+  tidyr::fill(nome, .direction = "down") |>
+  tidyr::fill(idade, .direction = "down") |> 
+  tidyr::fill(cpf, .direction = "down") |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(identificao_timestamp = lubridate::ymd_hms(identificao_timestamp),
+                idade2 = lubridate::time_length(difftime(identificao_timestamp, data_nascimento, unit="weeks"), "years"),
+                age = dplyr::coalesce(idade, idade2)) |> 
+  dplyr::select(-c(idade, idade2)) |> 
+  dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete),
+                age >= 18 & age < 60) |> 
+  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, age, igi_escore, ehad_depressao_escore,
+                ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_"), ebas_1:ebas_6) |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::filter(!stringr::str_detect(nome, stringr::regex("teste", ignore_case = TRUE))) |> 
+  dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1)) |> 
+  dplyr::left_join(location, by = "record_id")
+```
+
+
 ## Cross-cultural adaptation
 
+The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items was a mix of translations produced by the three (for each instrument) forward translators. To some items a determined translation was taken with minor or no modifications. Others were a merge of two or more versions with additions were it deemed necessary. The instruments versions produced in each stage of the cross-cultural adaptation process, as well as a detailed documentation of criteria for decisions, are available at [https://osf.io/av45j/](https://osf.io/av45j/).
 
-
-Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration (see change history on the electronic supplementary materials).
+Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language (see change history on the electronic supplementary materials).
 
 ## Sample description
 
+After excluding individuals who did not meet the inclusion criteria, the final sample was comprised of `r nrow(dat)` participants. Sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). 
