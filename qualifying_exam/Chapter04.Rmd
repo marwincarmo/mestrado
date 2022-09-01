@@ -8,6 +8,8 @@ library(dplyr)
 ```{r dataset, include=FALSE}
 raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
 gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+renda_corrigida <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/renda_corrigida_2610.csv")
+
 location <- readr::read_csv("data_analyses/location_db.csv") |> 
   dplyr::select(record_id, estado, region)
 
@@ -23,14 +25,29 @@ dat <- raw.data |>
                 age = dplyr::coalesce(idade, idade2)) |> 
   dplyr::select(-c(idade, idade2)) |> 
   dplyr::filter(!is.na(escala_breve_de_aceitao_do_sono_complete),
-                age >= 18 & age < 60) |> 
-  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, age, igi_escore, ehad_depressao_escore,
+                age >= 18 & age < 60,
+                dbas_16_versao_brasileira_complete == 2) |> 
+  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, age, etnia, estado_civil, escolaridade, renda, ocupacao, igi_escore, ehad_depressao_escore,
                 ehad_ansiedade_escore, aaq_score, dbas_score, contains("spaq_"), ebas_1:ebas_6) |> 
   dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
   dplyr::filter(!stringr::str_detect(nome, stringr::regex("teste", ignore_case = TRUE))) |> 
   dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
                                          TRUE ~ 1)) |> 
-  dplyr::left_join(location, by = "record_id")
+  dplyr::left_join(renda_corrigida, by = "record_id") |> 
+  dplyr::mutate(renda.x = case_when(
+    !is.na(renda.y) ~ renda.y,
+    # renda.x >= 1000000 ~ NA_real_,
+    # renda.x == 0 ~ NA_real_,
+    TRUE ~ renda.x
+    )
+         ) |> 
+  dplyr::rename(renda = renda.x) |> 
+  dplyr::select(-renda.y) |> 
+  dplyr::left_join(location, by = "record_id") |> 
+  dplyr::mutate(region = dplyr::case_when(
+    estado == "Distrito Federal/Goiás" ~ "Região Centro-Oeste",
+    TRUE ~ region
+  ))
 ```
 
 
@@ -42,4 +59,44 @@ Once each stage of the translation process was completed, both instruments were 
 
 ## Sample description
 
-After excluding individuals who did not meet the inclusion criteria, the final sample was comprised of `r nrow(dat)` participants. Sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). 
+After excluding individuals who did not meet the inclusion criteria and those who failed to complete at least the first questionnaire on the survey (DBAS-16), the final sample was comprised of `r nrow(dat)` individuals, of which `r nrow(dat[dat$sexo == 1,])` were female and `r nrow(dat[dat$grupo == 1,])` reported insomnia symptoms. Sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). There were `r nrow(dat[dat$ocupacao == 5,])` participants who reported having a formal job, and `r nrow(dat[dat$escolaridade == 9,])` had a university degree. A detailed description of the sample is found on Table X.
+
+```{r}
+dat |> 
+  dplyr::mutate(renda = dplyr::case_when(
+    renda > 40000 | renda < 100 ~ NA_real_,
+    TRUE ~ renda
+  )) |> 
+  dplyr::mutate(escolaridade = dplyr::case_when(
+    escolaridade %in% c(1:6) ~ "Primary School",
+    escolaridade %in% c(7:8) ~ "Secondary School",
+    escolaridade == 9 ~ "University degree or higher"),
+    etnia = dplyr::case_when(
+    etnia == 1 ~ "White",
+    etnia %in% c(2,3) ~ "Black",
+    etnia == 4 ~ "Asian",
+    !etnia %in% c(1:4) ~ "Other/Not informed"),
+    region = dplyr::case_when(
+    region == "Região Centro-Oeste" ~ "Central-West",
+    region == "Região Nordeste" ~ "Northeast",
+    region == "Região Norte" ~ "Northern",
+    region == "Região Sudeste" ~ "Southeast",
+    region == "Região Sul" ~ "Southern"),
+    sexo = dplyr::case_when(
+    sexo == 1 ~ "Female",
+    sexo == 2 ~ "Male"),
+    grupo = dplyr::case_when(
+    grupo == 1 ~ "Insomnia",
+    grupo == 0 ~ "Good sleeper"),
+    ocupacao = dplyr::case_when(
+    ocupacao == 1 ~ "Retired",
+    ocupacao == 2 ~ "Self-employed",
+    ocupacao %in% 3:4 ~ "Unemployed",
+    ocupacao == 5 ~ "Regular job", 
+    ocupacao == 6 ~ "Informal work",
+    ocupacao == 7 ~ "Student"
+    )) |> 
+  dplyr::select(sexo:ocupacao, grupo, region) %>%
+  table1::table1(~., data=.)
+```
+
