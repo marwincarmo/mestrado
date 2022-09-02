@@ -3,6 +3,7 @@
 
 ```{r packages, include=FALSE}
 library(dplyr)
+library(kableExtra)
 ```
 
 ```{r dataset, include=FALSE}
@@ -55,14 +56,14 @@ dat <- raw.data |>
 
 The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items was a mix of translations produced by the three (for each instrument) forward translators. To some items a determined translation was taken with minor or no modifications. Others were a merge of two or more versions with additions were it deemed necessary. The instruments versions produced in each stage of the cross-cultural adaptation process, as well as a detailed documentation of criteria for decisions, are available at [https://osf.io/av45j/](https://osf.io/av45j/).
 
-Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language (see change history on the electronic supplementary materials).
+Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. The final version of both SPAQ and DBAS-16 are on Appendix X.
 
 ## Sample description
 
 After excluding individuals who did not meet the inclusion criteria and those who failed to complete at least the first questionnaire on the survey (DBAS-16), the final sample was comprised of `r nrow(dat)` individuals, of which `r nrow(dat[dat$sexo == 1,])` were female and `r nrow(dat[dat$grupo == 1,])` reported insomnia symptoms. Sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). There were `r nrow(dat[dat$ocupacao == 5,])` participants who reported having a formal job, and `r nrow(dat[dat$escolaridade == 9,])` had a university degree. A detailed description of the sample is found on Table X.
 
-```{r}
-dat |> 
+```{r include=FALSE}
+tab1 <- dat |> 
   dplyr::mutate(renda = dplyr::case_when(
     renda > 40000 | renda < 100 ~ NA_real_,
     TRUE ~ renda
@@ -97,6 +98,39 @@ dat |>
     ocupacao == 7 ~ "Student"
     )) |> 
   dplyr::select(sexo:ocupacao, grupo, region) %>%
-  table1::table1(~., data=.)
+  tableone::CreateTableOne(data=.) 
+  #table1::table1(~., data=.)
 ```
+
+
+```{r echo=FALSE}
+tblheader <- paste0('*n*', " = ", nrow(dat))
+
+tab1b <- print(tab1, printToggle = FALSE) |> 
+  as.data.frame() |> 
+  slice(-1)
+rnames <- rownames(tab1b)
+rnames[1] <- "Sex Male (%)"
+rnames[2] <- "Age (mean (SD))"
+rnames[3] <- "Race (%)"
+rnames[8] <- "Marital Status (mean (SD))"
+rnames[9] <- "Educational Level (%)"
+rnames[13] <- "Monthly income (mean (SD))"
+rnames[14] <- "Occupation (%)"
+rnames[21] <- "Insomnia (%)"
+rnames[22] <- "Region (%)"
+row.names(tab1b) <- rnames
+
+kbl(tab1b,
+    caption = "Sample description",
+    booktabs = TRUE,
+    col.names = tblheader, format = 'latex',
+    align = "c") |>
+  kable_styling(full_width = TRUE) |>
+  #column_spec(1, align = "c") |>
+  add_indent(c(4:7, 10:12, 15:20, 23:27))
+```
+
+
+
 

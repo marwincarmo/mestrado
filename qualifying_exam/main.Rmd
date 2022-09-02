@@ -33,6 +33,7 @@ header-includes:
   - \setlength{\parskip}{5pt}
   - \linespread{1.5} 
   - \usepackage{setspace} 
+  - \usepackage{tabu}
   #- \usepackage{hyperref}
   #- \hypersetup{colorlinks = true, urlcolor = blue, linkcolor = blue, citecolor = red}
   - \shorttitle{}
@@ -139,6 +140,11 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
 \newpage
 
 ```{r 'Chapter04.Rmd', child="Chapter04.Rmd"}
+```
+
+\newpage
+
+```{r 'Chapter05.Rmd', child="Chapter05.Rmd"}
 ```
 
 \newpage
