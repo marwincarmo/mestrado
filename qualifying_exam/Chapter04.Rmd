@@ -56,7 +56,7 @@ dat <- raw.data |>
 
 The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items was a mix of translations produced by the three (for each instrument) forward translators. To some items a determined translation was taken with minor or no modifications. Others were a merge of two or more versions with additions were it deemed necessary. The instruments versions produced in each stage of the cross-cultural adaptation process, as well as a detailed documentation of criteria for decisions, are available at [https://osf.io/av45j/](https://osf.io/av45j/).
 
-Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. The final version of both SPAQ and DBAS-16 are on Appendix X.
+Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. The final version of both SPAQ and DBAS-16 are on Appendix X. Colocar mudança nas instruções do SPAQ.
 
 ## Sample description
 

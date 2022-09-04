@@ -16,6 +16,8 @@ figsintext: yes
 lineno: no
 footnotelist: no
 figurelist: no
+link-citations: true
+urlcolor: blue
 
 bibliography: ["Bibs/references.bib", "Bibs/r-references.bib"]
 csl: apa7.csl
@@ -24,7 +26,7 @@ output:
     includes:
       after_body: 
       #- Chapter01_files/Appendix_Chapter1.tex
-      - croco/Appendix_croco.tex
+      - croco/Appendix.tex
       
 header-includes:
   - \setcounter{tocdepth}{3}
@@ -34,8 +36,10 @@ header-includes:
   - \linespread{1.5} 
   - \usepackage{setspace} 
   - \usepackage{tabu}
-  #- \usepackage{hyperref}
-  #- \hypersetup{colorlinks = true, urlcolor = blue, linkcolor = blue, citecolor = red}
+  - \usepackage{ragged2e}
+  - \usepackage{graphicx}
+  - \usepackage{hyperref}
+  - \hypersetup{colorlinks = true, urlcolor = blue, linkcolor = blue, citecolor = red}
   - \shorttitle{}
   - \fancyheadoffset[L]{0pt}  
   - \fancyhf{}
@@ -64,20 +68,20 @@ pdftk myDocument.pdf cat 3-end output removedPages.pdf
 \end{center}
 \end{figure}
 {\setstretch{1.7} 
-Inauguraldissertation\\
-zur\\ 
-Erlangung des Doktorgrades\\
-der Humanwissenschaftlichen Fakultät\\
-der Universität zu Köln  \\
-nach der Prüfungsordnung vom 10.05.2010  \\
-vorgelegt von  \\ 
+Projeto de qualificação\\
+para\\ 
+Obtenção do título de mestre em ciências\\
+da Faculdade de Medicina\\
+da Universidade de São Paulo  \\
+Área de concentração: Psiquiatria  \\
+apresentado por  \\ 
 \smallskip
-\textbf{Tobias Heycke}\\
+\textbf{Marwin M I B Carmo}\\
 \smallskip
-aus  \\
-Bergisch Gladbach  \\
+Orientação:  \\
+Renatha El Rafihi Ferreira  \\
 \smallskip
-Tag der Abgabe: 01.01.1970\\
+São Paulo, Outubro de 2022\\
 }
 \end{center}
 
@@ -119,15 +123,9 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 # Summary
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+Insomnia disorder is characterized by frequent complaints about the quality and quantity of sleep and may cause physical and psychological damage. Maladaptive beliefs about sleep were identified as reinforcers of insomnia. A insônia se caracteriza por queixas frequentes sobre a qualidade e quantidade de sono e tende a implicar em danos físicos e psicológicos à saúde do indivíduo. Crenças desadaptativas sobre o sono vem sendo identificados como fatores reforçadores da insônia e, com isto, tratamentos com foco nos aspectos cognitivos como a Terapia Cognitivo-Comportamental e a Terapia de Aceitação e Compromisso tem sido adotados por pesquisadores e clínicos, demonstrando efetividade. Como forma de avaliar essas cognições foram desenvolvidas escalas como a Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16), avaliando a força de concordância com crenças desadaptativas a respeito do sono, e o Sleep Problem Acceptance Questionnaire (SPAQ), como alternativa para mensurar a aceitação dos problemas de sono. Embora ambas as escalas apresentem boas evidências de validade e boas propriedades psicométricas, ainda se faz necessário verificar sua validade para o contexto brasileiro a fim de que seja possível alcançar resultados válidos, confiáveis e reprodutíveis com estes instrumentos. O objetivo deste estudo é realizar a adaptação transcultural e verificação das propriedades psicométricas e evidências de validade das escalas DBAS-16 e SPAQ com uma amostra brasileira. Participarão do estudo adultos com idade entre 18 e 59 anos com diagnóstico de insônia e o tamanho amostral mínimo estimado será de 200 participantes. A adaptação transcultural será realizada em um processo de tradução, retrotradução, síntese e estudo piloto. Serão conduzidas análises estatísticas para se verificar a estrutura fatorial dos instrumentos, estimativas de confiabilidade e evidências de validade relacionadas a variáveis externas.
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
-
+\newpage
 
 ```{r 'Chapter01.Rmd', child="Chapter01.Rmd"}
 ```

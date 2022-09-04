@@ -2,3 +2,19 @@
 # Next steps
 
 ## Timeline
+
+\begin{table}[h]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:timeline_table}Timeline of events}
+\begin{tabular}{cccc}
+\toprule
+Period & \multicolumn{1}{c}{Activities}\\
+\midrule
+09-10 & Do something\\
+11-12 & do something else\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}

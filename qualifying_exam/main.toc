@@ -1,0 +1,34 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{Summary}{7}{section*.3}%
+\contentsline {section}{Introduction}{8}{section*.4}%
+\contentsline {subsection}{Dysfunctional beliefs and attitudes about sleep}{8}{section*.5}%
+\contentsline {subsubsection}{Constructs and Their Relations}{9}{section*.6}%
+\contentsline {subsubsection}{Measurement}{9}{section*.7}%
+\contentsline {subsection}{Acceptance of sleeping problems}{10}{section*.8}%
+\contentsline {subsubsection}{Constructs and Their Relations}{10}{section*.9}%
+\contentsline {subsubsection}{Measurement}{10}{section*.10}%
+\contentsline {subsection}{The cross-cultural adaptation process}{10}{section*.11}%
+\contentsline {subsubsection}{1. Items translation}{10}{section*.12}%
+\contentsline {subsubsection}{2. Synthesis of the translations}{11}{section*.13}%
+\contentsline {subsubsection}{3. Backtranslation}{11}{section*.14}%
+\contentsline {subsubsection}{4. Expert committee}{11}{section*.15}%
+\contentsline {subsubsection}{5. Pilot study}{12}{section*.16}%
+\contentsline {section}{Objectives}{12}{section*.17}%
+\contentsline {section}{Method}{13}{section*.18}%
+\contentsline {subsection}{Participants and Study Design}{13}{section*.19}%
+\contentsline {subsubsection}{Item translation}{14}{section*.20}%
+\contentsline {subsection}{Aditional measures}{15}{section*.21}%
+\contentsline {subsection}{Analytical Plan}{16}{section*.22}%
+\contentsline {subsubsection}{Descriptive statistics}{16}{section*.23}%
+\contentsline {subsubsection}{Examination of item properties with IRT}{16}{section*.24}%
+\contentsline {subsubsection}{Scale structure via factor analysis}{16}{section*.25}%
+\contentsline {subsubsection}{Reliability estimates}{16}{section*.26}%
+\contentsline {subsubsection}{Calculation of global scores}{16}{section*.27}%
+\contentsline {section}{Partial results}{17}{section*.28}%
+\contentsline {subsection}{Cross-cultural adaptation}{17}{section*.29}%
+\contentsline {subsection}{Sample description}{17}{section*.30}%
+\contentsline {section}{Next steps}{19}{section*.32}%
+\contentsline {subsection}{Timeline}{19}{section*.33}%
+\contentsline {section}{References}{20}{section*.36}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~A\\: Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}{28}{appendix.1}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~B\\: Questionário de Aceitação dos Problemas no Sono (QAPS)}{30}{appendix.2}%

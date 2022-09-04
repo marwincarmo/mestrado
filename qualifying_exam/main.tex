@@ -1,6 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
   ,doc,11pt, twoside,floatsintext]{apa6}
@@ -161,6 +162,10 @@
 \linespread{1.5}
 \usepackage{setspace}
 \usepackage{tabu}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true, urlcolor = blue, linkcolor = blue, citecolor = red}
 \shorttitle{}
 \fancyheadoffset[L]{0pt}
 \fancyhf{}
@@ -176,7 +181,11 @@
 \hypersetup{
   pdftitle={This page and the next page should be removed},
   pdflang={en-EN},
-  hidelinks,
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
   pdfcreator={LaTeX via pandoc}}
 
 \title{This page and the next page should be removed}
@@ -208,20 +217,20 @@
 \end{center}
 \end{figure}
 {\setstretch{1.7} 
-Inauguraldissertation\\
-zur\\ 
-Erlangung des Doktorgrades\\
-der Humanwissenschaftlichen Fakultät\\
-der Universität zu Köln  \\
-nach der Prüfungsordnung vom 10.05.2010  \\
-vorgelegt von  \\ 
+Projeto de qualificação\\
+para\\ 
+Obtenção do título de mestre em ciências\\
+da Faculdade de Medicina\\
+da Universidade de São Paulo  \\
+Área de concentração: Psiquiatria  \\
+apresentado por  \\ 
 \smallskip
-\textbf{Tobias Heycke}\\
+\textbf{Marwin M I B Carmo}\\
 \smallskip
-aus  \\
-Bergisch Gladbach  \\
+Orientação:  \\
+Renatha El Rafihi Ferreira  \\
 \smallskip
-Tag der Abgabe: 01.01.1970\\
+São Paulo, Outubro de 2022\\
 }
 \end{center}
 
@@ -256,39 +265,34 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 \hypertarget{summary}{%
 \section{Summary}\label{summary}}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Insomnia disorder is characterized by frequent complaints about the quality and quantity of sleep and may cause physical and psychological damage. Maladaptive beliefs about sleep were identified as reinforcers of insomnia. A insônia se caracteriza por queixas frequentes sobre a qualidade e quantidade de sono e tende a implicar em danos físicos e psicológicos à saúde do indivíduo. Crenças desadaptativas sobre o sono vem sendo identificados como fatores reforçadores da insônia e, com isto, tratamentos com foco nos aspectos cognitivos como a Terapia Cognitivo-Comportamental e a Terapia de Aceitação e Compromisso tem sido adotados por pesquisadores e clínicos, demonstrando efetividade. Como forma de avaliar essas cognições foram desenvolvidas escalas como a Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16), avaliando a força de concordância com crenças desadaptativas a respeito do sono, e o Sleep Problem Acceptance Questionnaire (SPAQ), como alternativa para mensurar a aceitação dos problemas de sono. Embora ambas as escalas apresentem boas evidências de validade e boas propriedades psicométricas, ainda se faz necessário verificar sua validade para o contexto brasileiro a fim de que seja possível alcançar resultados válidos, confiáveis e reprodutíveis com estes instrumentos. O objetivo deste estudo é realizar a adaptação transcultural e verificação das propriedades psicométricas e evidências de validade das escalas DBAS-16 e SPAQ com uma amostra brasileira. Participarão do estudo adultos com idade entre 18 e 59 anos com diagnóstico de insônia e o tamanho amostral mínimo estimado será de 200 participantes. A adaptação transcultural será realizada em um processo de tradução, retrotradução, síntese e estudo piloto. Serão conduzidas análises estatísticas para se verificar a estrutura fatorial dos instrumentos, estimativas de confiabilidade e evidências de validade relacionadas a variáveis externas.
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.\\
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.
+\newpage
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Insomnia is a disorder related to dissatisfaction with duration or quality of sleep. It can be a source of distress and impairment by decreasing productivity on work or school and lowering energy to engage in social activities (Association, 2013). A prolonged exposure is associated with higher risk of harm on mental health (Johnson et al., 2006; Taylor et al., 2005) and cognitive functioning (Fortier-Brochu et al., 2012). Cognitive arousal is crucial to several behavioral models of insomnia as maintainer of the disorder (Espie et al., 2006; Harvey, 2002; Lundh, 2005; Morin et al., 1993; Ong et al., 2012; Perlis et al., 1997).
+Insomnia is a disorder related to dissatisfaction with duration or quality of sleep. It can be a source of distress and impairment by decreasing productivity on work or school and lowering energy to engage in social activities (\protect\hyperlink{ref-americanpsychiatricassociation2013}{Association, 2013}). A prolonged exposure is associated with higher risk of harm on mental health (\protect\hyperlink{ref-johnson2006}{Johnson et al., 2006}; \protect\hyperlink{ref-taylor2005}{Taylor et al., 2005}) and cognitive functioning (\protect\hyperlink{ref-fortier-brochu2012}{Fortier-Brochu et al., 2012}). Cognitive arousal is crucial to several behavioral models of insomnia as maintainer of the disorder (\protect\hyperlink{ref-espie2006}{Espie et al., 2006}; \protect\hyperlink{ref-harvey2002}{Harvey, 2002}; \protect\hyperlink{ref-lundh2005}{Lundh, 2005}; \protect\hyperlink{ref-morin1993}{Morin et al., 1993}; \protect\hyperlink{ref-ong2012}{Ong et al., 2012}; \protect\hyperlink{ref-perlis1997}{Perlis et al., 1997}). Falar resumidamente dos dois topicos e sobre adaptação transcultural.
 
 \hypertarget{dysfunctional-beliefs-and-attitudes-about-sleep}{%
 \subsection{Dysfunctional beliefs and attitudes about sleep}\label{dysfunctional-beliefs-and-attitudes-about-sleep}}
 
-A. G. Harvey's model (2002) is frequently mentioned as theoretical background in investigations about cognitive process in insomnia. It posits that the excess of negatively toned activity about sleep triggers arousal and distress, channeling attention and monitoring to sleep threats. This may create distorted perceptions of sleep and overestimation of the real deficits during the day. To cope, the individual may engage in safety behaviors that paradoxically increase worry and preclude sleep self correction. In Harvey's model, dysfunctional beliefs about sleep exacerbates negatively toned cognitive activity. Such beliefs are also the backbone of the Microanalytic model (Morin, 1993), one of the most popular models for insomnia (Marques et al., 2015).
+A. G. Harvey's model (\protect\hyperlink{ref-harvey2002}{2002}) is frequently mentioned as theoretical background in investigations about cognitive process in insomnia. It posits that the excess of negatively toned activity about sleep triggers arousal and distress, channeling attention and monitoring to sleep threats. This may create distorted perceptions of sleep and overestimation of the real deficits during the day. To cope, the individual may engage in safety behaviors that paradoxically increase worry and preclude sleep self correction. In Harvey's model, dysfunctional beliefs about sleep exacerbates negatively toned cognitive activity. Such beliefs are also the backbone of the Microanalytic model (\protect\hyperlink{ref-morin1993insomnia}{Morin, 1993}), one of the most popular models for insomnia (\protect\hyperlink{ref-marques2015}{Marques et al., 2015}).
 
-Current evidence favors that beliefs and attitudes about sleep mediates insomnia perpetuation (Akram et al., 2020; Chow et al., 2018; Harvey et al., 2017; Lancee et al., 2019), although not all studies have found this association (Norell-Clarke et al., 2021). Morin (1993) suggests that insomnia maintenance feeds from a cyclic process of arousal, dysfunctional cognitions, maladaptive habits and consequences. Arousal refers to excessive activity in emotional, cognitive or physiologic domains, which can create core beliefs that guide information processing (Marques et al., 2015). This may give rise to unrealistic expectations and rigidly held beliefs about requirements for sleep, as well as increased worry about the causes and consequences of sleep disturbances. Subsequent unhealthy sleep practices may include daytime napping, excessive time in bed or indiscriminate use of sleep medication. Consequences, real or perceived, are linked to diminished performance during the day.
+Current evidence favors that beliefs and attitudes about sleep mediates insomnia perpetuation (\protect\hyperlink{ref-akram2020}{Akram et al., 2020}; \protect\hyperlink{ref-chow2018}{Chow et al., 2018}; \protect\hyperlink{ref-harvey2017}{Harvey et al., 2017}; \protect\hyperlink{ref-lancee2019}{Lancee et al., 2019}), although not all studies have found this association (\protect\hyperlink{ref-norell-clarke2021}{Norell-Clarke et al., 2021}). Morin (\protect\hyperlink{ref-morin1993}{1993}) suggests that insomnia maintenance feeds from a cyclic process of arousal, dysfunctional cognitions, maladaptive habits and consequences. Arousal refers to excessive activity in emotional, cognitive or physiologic domains, which can create core beliefs that guide information processing (\protect\hyperlink{ref-marques2015}{Marques et al., 2015}). This may give rise to unrealistic expectations and rigidly held beliefs about requirements for sleep, as well as increased worry about the causes and consequences of sleep disturbances. Subsequent unhealthy sleep practices may include daytime napping, excessive time in bed or indiscriminate use of sleep medication. Consequences, real or perceived, are linked to diminished performance during the day.
 
 \hypertarget{constructs-and-their-relations}{%
 \subsubsection{Constructs and Their Relations}\label{constructs-and-their-relations}}
 
-Individuals with higher insomnia symptoms typically are strong endorsers of dysfunctional beliefs about sleep (Carney \& Edinger, 2006; Crönlein et al., 2014; Eidelman et al., 2016). Challenging those beliefs is at the core of Cognitive Behavioral Therapy for insomnia (CBT-I) (Belanger et al., 2006). A recent meta-analysis observed clinically significant improvements in beliefs and attitudes about sleep favoring CBT-I over controls -- although, as the authors warn, those results should be interpreted with care given the low quality of evidence (Edinger J. D. et al., 2021). Insomnia severity was identified as risk factor for anxiety (Neckelmann et al., 2007) and depression (Blanken et al., 2020; Li et al., 2016), but some suggest this relationship the other way around (Chen et al., 2017; Jansson-Fröjmark \& Lindblom, 2008). A relationship between anxiety and depression with dysfunctional beliefs about sleep is also expected: Beck's classic cognitive mechanism for the cause and maintenance of depression gives a central role to inaccurate beliefs and maladaptive information processing (Beck, 1979). Anxiety can be elicited from displeasing memories created through exposure to adverse experiences (Brewin, 1996). Thus, unrealistic attributions and expectations about sleep (or lack of sleep) may elicit anxiety-provoking thoughts. Associação entre Depressão e DBAS (Sadler et al., 2013).
+Individuals with higher insomnia symptoms typically are strong endorsers of dysfunctional beliefs about sleep (\protect\hyperlink{ref-carney2006}{Carney \& Edinger, 2006}; \protect\hyperlink{ref-cronlein2014}{Crönlein et al., 2014}; \protect\hyperlink{ref-eidelman2016}{Eidelman et al., 2016}). Challenging those beliefs is at the core of Cognitive Behavioral Therapy for insomnia (CBT-I) (\protect\hyperlink{ref-belanger2006}{Belanger et al., 2006}). A recent meta-analysis observed clinically significant improvements in beliefs and attitudes about sleep favoring CBT-I over controls -- although, as the authors warn, those results should be interpreted with care given the low quality of evidence (\protect\hyperlink{ref-edingerjackd.2021}{Edinger J. D. et al., 2021}). Insomnia severity was identified as risk factor for anxiety (\protect\hyperlink{ref-neckelmann2007}{Neckelmann et al., 2007}) and depression (\protect\hyperlink{ref-blanken2020}{Blanken et al., 2020}; \protect\hyperlink{ref-li2016}{Li et al., 2016}), but some suggest this relationship the other way around (\protect\hyperlink{ref-chen2017}{Chen et al., 2017}; \protect\hyperlink{ref-jansson-frojmark2008b}{Jansson-Fröjmark \& Lindblom, 2008}). A relationship between anxiety and depression with dysfunctional beliefs about sleep is also expected: Beck's classic cognitive mechanism for the cause and maintenance of depression gives a central role to inaccurate beliefs and maladaptive information processing (\protect\hyperlink{ref-beck1979cognitive}{Beck, 1979}). Anxiety can be elicited from displeasing memories created through exposure to adverse experiences (\protect\hyperlink{ref-brewin1996theoretical}{Brewin, 1996}). Thus, unrealistic attributions and expectations about sleep (or lack of sleep) may elicit anxiety-provoking thoughts. Associação entre Depressão e DBAS (\protect\hyperlink{ref-sadler2013}{Sadler et al., 2013}).
 
 \hypertarget{measurement}{%
 \subsubsection{Measurement}\label{measurement}}
 
-To assess sleep-disruptive cognitions, Morin et al. (1993) developed the Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS). The DBAS started as a 30-item self-report instrument rated in a 100-mm visual analog scale of agreement/disagreement. Later, Morin and colleagues (2007) shortened it to a 16-item version, and replaced the response format for a 10-point scale ranging from 0 (strongly disagree) to 10 (strongly agree). The items of the brief version were selected from the original scale based on criteria of response distribution, range, item-total correlations and exploratory oblique factor analysis. A 4-factor structure was fitted to the 16 items in a confirmatory factor analysis, labeled (a) consequences of insomnia, (b) worry about sleep, (c) sleep expectations, (d) medication, and a 5th second-order general factor. The DBAS is broadly employed in experimental studies assessing sleep-related cognitions, especially the 16-item version (Thakral et al., 2020). Moreover, the DBAS-16 outperformed the 30 and 10-item versions in reproducibility of factor structure, measures of internal consistency, concurrent validity and sensitivity to change (Chung Ka-Fai et al., 2016). Many researchers have translated and validated the DBAS-16 across various cultures. These studies successfully replicated the original factor structure and presented good validity evidences (Boysan et al., 2010; Dhyani et al., 2013; Lang et al., 2017).
+To assess sleep-disruptive cognitions, Morin et al. (\protect\hyperlink{ref-morin1993insomnia}{1993}) developed the Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS). The DBAS started as a 30-item self-report instrument rated in a 100-mm visual analog scale of agreement/disagreement. Later, Morin and colleagues (\protect\hyperlink{ref-morin2007a}{2007}) shortened it to a 16-item version, and replaced the response format for a 10-point scale ranging from 0 (strongly disagree) to 10 (strongly agree). The items of the brief version were selected from the original scale based on criteria of response distribution, range, item-total correlations and exploratory oblique factor analysis. A 4-factor structure was fitted to the 16 items in a confirmatory factor analysis, labeled (a) consequences of insomnia, (b) worry about sleep, (c) sleep expectations, (d) medication, and a fifth second-order general factor. The DBAS is broadly employed in experimental studies assessing sleep-related cognitions, especially the 16-item version (\protect\hyperlink{ref-thakral2020}{Thakral et al., 2020}). Moreover, the DBAS-16 outperformed the 30 and 10-item versions in reproducibility of factor structure, measures of internal consistency, concurrent validity and sensitivity to change (\protect\hyperlink{ref-chungka-fai2016}{Chung Ka-Fai et al., 2016}). Many researchers have translated and validated the DBAS-16 across various cultures. These studies successfully replicated the original factor structure and presented good validity evidences (\protect\hyperlink{ref-boysan2010}{Boysan et al., 2010}; \protect\hyperlink{ref-dhyani2013}{Dhyani et al., 2013}; \protect\hyperlink{ref-lang2017}{Lang et al., 2017}).
 
-\hypertarget{sleep-problem-acceptance-questionnaire-spaq}{%
-\subsection{Sleep Problem Acceptance Questionnaire (SPAQ)}\label{sleep-problem-acceptance-questionnaire-spaq}}
+\hypertarget{acceptance-of-sleeping-problems}{%
+\subsection{Acceptance of sleeping problems}\label{acceptance-of-sleeping-problems}}
 
 \hypertarget{constructs-and-their-relations-1}{%
 \subsubsection{Constructs and Their Relations}\label{constructs-and-their-relations-1}}
@@ -299,32 +303,32 @@ To assess sleep-disruptive cognitions, Morin et al. (1993) developed the Dysfunc
 \hypertarget{the-cross-cultural-adaptation-process}{%
 \subsection{The cross-cultural adaptation process}\label{the-cross-cultural-adaptation-process}}
 
-Before using existing measures in a distinct cultural context of where it was originally developed it's important to assess the construct existence and similarity in this new context, since it may manifest itself differently (Flake et al., 2017; Herdman et al., 1998). A model proposed by Herdman et al. (1998) devise five types of equivalence to be assessed, namely, (1) Conceptual equivalence; (2) Item equivalence; (3) Semantic equivalence; (4) Operational equivalence; and (5) Measurement equivalence. There are many suggestions for the required steps of a cross-cultural adaptation process (Reichenheim \& Moraes, 2007). Nevertheless, the guidelines by Beaton et al. (2000) are followed closely by much of the published cross-cultural adaptation research (Arafat et al., 2016).
+Before using existing measures in a distinct cultural context of where it was originally developed it's important to assess the construct existence and similarity in this new context, since it may manifest itself differently (\protect\hyperlink{ref-flakeConstructValidationSocial2017}{Flake et al., 2017}; \protect\hyperlink{ref-herdmanModelEquivalenceCultural1998}{Herdman et al., 1998}). A model proposed by Herdman et al. (\protect\hyperlink{ref-herdmanModelEquivalenceCultural1998}{1998}) devise five types of equivalence to be assessed, namely, (1) Conceptual equivalence; (2) Item equivalence; (3) Semantic equivalence; (4) Operational equivalence; and (5) Measurement equivalence. There are many suggestions for the required steps of a cross-cultural adaptation process (\protect\hyperlink{ref-reichenheim2007}{Reichenheim \& Moraes, 2007}). Nevertheless, the guidelines by Beaton et al. (\protect\hyperlink{ref-beaton2000}{2000}) are followed closely by much of the published cross-cultural adaptation research (\protect\hyperlink{ref-arafat2016}{Arafat et al., 2016}).
 
 \hypertarget{items-translation}{%
 \subsubsection{1. Items translation}\label{items-translation}}
 
-A minimum of two translators, fluent in both source and target language and acquainted with both cultural backgrounds, should produce the initial translation of the instrument (Borsa et al., 2012; Epstein et al., 2015; Geisinger, 1994; Reichenheim \& Moraes, 2007). They should work independently and it is preferred that one translator is aware of the concepts underlying the questionnaire while the second should have no expertise in its context and be blind or unfamiliar to it (Beaton et al., 2000). The mixed configuration of the translation team justifies because the informed translators are capable of finding appropriate correspondences to highly domain-specific words or expressions while the naive translators are prone to choose terms closer to those used routinely by the target population (Beaton et al., 2000).
+A minimum of two translators, fluent in both source and target language and acquainted with both cultural backgrounds, should produce the initial translation of the instrument (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}; \protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}; \protect\hyperlink{ref-geisinger1994}{Geisinger, 1994}; \protect\hyperlink{ref-reichenheim2007}{Reichenheim \& Moraes, 2007}). They should work independently and it is preferred that one translator is aware of the concepts underlying the questionnaire while the second should have no expertise in its context and be blind or unfamiliar to it (\protect\hyperlink{ref-beaton2000}{Beaton et al., 2000}). The mixed configuration of the translation team justifies because the informed translators are capable of finding appropriate correspondences to highly domain-specific words or expressions while the naive translators are prone to choose terms closer to those used routinely by the target population (\protect\hyperlink{ref-beaton2000}{Beaton et al., 2000}).
 
 \hypertarget{synthesis-of-the-translations}{%
 \subsubsection{2. Synthesis of the translations}\label{synthesis-of-the-translations}}
 
-Once the initial translations are completed, a committee should consider the original instrument and the translated versions, and reach an agreement for a single version. Most cross-cultural adaptation guidelines suggest that at least three members form the committee: the two initial translators and a third unbiased judge (Koller et al., 2012). There are also suggestions that this committee can be composed of judges expert on the concepts underlying the questionnaire (Epstein et al., 2015; Guillemin et al., 1993). Regardless, judges and authors should work together to assess the equivalence between the original version and the translations regarding semantics, idiomatic equivalence, experiential equivalence, and conceptual equivalence (Borsa et al., 2012).
+Once the initial translations are completed, a committee should consider the original instrument and the translated versions, and reach an agreement for a single version. Most cross-cultural adaptation guidelines suggest that at least three members form the committee: the two initial translators and a third unbiased judge (\protect\hyperlink{ref-koller2012}{Koller et al., 2012}). There are also suggestions that this committee can be composed of judges expert on the concepts underlying the questionnaire (\protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}; \protect\hyperlink{ref-guillemin1993}{Guillemin et al., 1993}). Regardless, judges and authors should work together to assess the equivalence between the original version and the translations regarding semantics, idiomatic equivalence, experiential equivalence, and conceptual equivalence (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}).
 
 \hypertarget{backtranslation}{%
 \subsubsection{3. Backtranslation}\label{backtranslation}}
 
-In the backtranslation phase, the synthesized version should be translated back to the source language in at least two new versions, produced by translators fluent on the source language and with a strong domain of the target language (Gjersing et al., 2010; Guillemin et al., 1993). While Beaton et al.'s (2000) guideline suggest that the backtranslation should proceed the synthesis of the initial translations, authors such as Borsa et al. (2012) argue that this process should be delayed to the last stage of the cross-cultural adaptation process, given that the translation must be thoroughly evaluated before the appreciation by the original authors. There are therefore different views of when this phase must be executed, or even if it is really necessary, given the lack of evidence of its contribution for improving the instrument adaptation (Epstein et al., 2015; Geisinger, 1994; van Widenfelt et al., 2005). Either way, the backtranslation process is a way for the original authors to assess the equivalence of meaning between the original and translated items, as well as a way of identifying inconsistencies or conceptual errors (Beaton et al., 2000; Borsa et al., 2012).
+In the backtranslation phase, the synthesized version should be translated back to the source language in at least two new versions, produced by translators fluent on the source language and with a strong domain of the target language (\protect\hyperlink{ref-gjersing2010}{Gjersing et al., 2010}; \protect\hyperlink{ref-guillemin1993}{Guillemin et al., 1993}). While Beaton et al.'s (\protect\hyperlink{ref-beaton2000}{2000}) guideline suggest that the backtranslation should proceed the synthesis of the initial translations, authors such as Borsa et al. (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{2012}) argue that this process should be delayed to the last stage of the cross-cultural adaptation process, given that the translation must be thoroughly evaluated before the appreciation by the original authors. There are therefore different views of when this phase must be executed, or even if it is really necessary, given the lack of evidence of its contribution for improving the instrument adaptation (\protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}; \protect\hyperlink{ref-geisinger1994}{Geisinger, 1994}; \protect\hyperlink{ref-vanwidenfelt2005}{van Widenfelt et al., 2005}). Either way, the backtranslation process is a way for the original authors to assess the equivalence of meaning between the original and translated items, as well as a way of identifying inconsistencies or conceptual errors (\protect\hyperlink{ref-beaton2000}{Beaton et al., 2000}; \protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}).
 
 \hypertarget{expert-committee}{%
 \subsubsection{4. Expert committee}\label{expert-committee}}
 
-As hinted in previous sections, there are different views on the formation of the expert committee or when it should be called to action. Authors such as Beaton et al. (2000) suggests that the group should be composed of methodologists, health professionals, language professionals, and the translators (forward and back translators) so far involved in the process. They also encourage carefully recording of each decision made by the committee. What underlies this subsequent pahse to the backtranslation is the assessment of aspects not yet considered, such as instrument structure, layout, instructions and adequacy of expressions in the items (Borsa et al., 2012).
+As hinted in previous sections, there are different views on the formation of the expert committee or when it should be called to action. Authors such as Beaton et al. (\protect\hyperlink{ref-beaton2000}{2000}) suggests that the group should be composed of methodologists, health professionals, language professionals, and the translators (forward and back translators) so far involved in the process. They also encourage carefully recording of each decision made by the committee. What underlies this subsequent pahse to the backtranslation is the assessment of aspects not yet considered, such as instrument structure, layout, instructions and adequacy of expressions in the items (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}).
 
 \hypertarget{pilot-study}{%
 \subsubsection{5. Pilot study}\label{pilot-study}}
 
-After all adjustments are completed, the instrument is ready for a pre test with a small sample representative of the target population. To many authors the pilot study is succeeded only by the final semantic adjustments suggested by the pretesting sample (Beaton et al., 2000; Dortas Junior et al., 2016; Gjersing et al., 2010; Reichenheim \& Moraes, 2007; Wild et al., 2005). The pretesting may unveil unanticipated issues the test subjects might encounter, and any divergences regarding the comprehension of item meaning and expressions as the test instructions (Borsa et al., 2012; Epstein et al., 2015; van Widenfelt et al., 2005). In short, the purpose of the pre-test is to assess whether the examinees can comprehend the concept of the questions in a consist way and as intended by the researchers (Collins, 2003). The pretesting can be executed with focus group -- where researchers collect the participants impressions about the writing and content of the instrument --, and/or through individual cognitive interviews, which allow a deeper understanding of the issues raised by the participants (Epstein et al., 2015). Recommendations following the exact sample size for the pilot study also vary. For instance, Beaton et al. (2000) suggests probing 30 to 40 subjects. Other authors suggest more modest numbers, like 6 to 10 (Epstein et al., 2015) or 5 to 8 subjects (Wild et al., 2005). More relevant than an exact sample size for the pilot study is that participants are a representative sample, in the sense that they should reflect the diversity of cultural backgrounds in the target population (Borsa et al., 2012).
+After all adjustments are completed, the instrument is ready for a pre test with a small sample representative of the target population. To many authors the pilot study is succeeded only by the final semantic adjustments suggested by the pretesting sample (\protect\hyperlink{ref-beaton2000}{Beaton et al., 2000}; \protect\hyperlink{ref-dortasjunior2016}{Dortas Junior et al., 2016}; \protect\hyperlink{ref-gjersing2010}{Gjersing et al., 2010}; \protect\hyperlink{ref-reichenheim2007}{Reichenheim \& Moraes, 2007}; \protect\hyperlink{ref-wild2005}{Wild et al., 2005}). The pretesting may unveil unanticipated issues the test subjects might encounter, and any divergences regarding the comprehension of item meaning and expressions as the test instructions (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}; \protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}; \protect\hyperlink{ref-vanwidenfelt2005}{van Widenfelt et al., 2005}). In short, the purpose of the pre-test is to assess whether the examinees can comprehend the concept of the questions in a consist way and as intended by the researchers (\protect\hyperlink{ref-collins2003}{Collins, 2003}). The pretesting can be executed with focus group -- where researchers collect the participants impressions about the writing and content of the instrument --, and/or through individual cognitive interviews, which allow a deeper understanding of the issues raised by the participants (\protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}). Recommendations following the exact sample size for the pilot study also vary. For instance, Beaton et al. (\protect\hyperlink{ref-beaton2000}{2000}) suggests probing 30 to 40 subjects. Other authors suggest more modest numbers, like 6 to 10 (\protect\hyperlink{ref-epstein2015}{Epstein et al., 2015}) or 5 to 8 subjects (\protect\hyperlink{ref-wild2005}{Wild et al., 2005}). More relevant than an exact sample size for the pilot study is that participants are a representative sample, in the sense that they should reflect the diversity of cultural backgrounds in the target population (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}).
 
 \hypertarget{objectives}{%
 \section{Objectives}\label{objectives}}
@@ -339,27 +343,27 @@ The present project therefore aims at (a) developing a Brazilian portuguese tran
 \hypertarget{participants-and-study-design}{%
 \subsection{Participants and Study Design}\label{participants-and-study-design}}
 
-To estimate an adequate sample size for the confirmatory factor analyses (CFAs) we used MacCallum et al.'s (1996) root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R 4.1.3 (R Core Team, 2022) using \texttt{semTools} version 0.5.6 (Jorgensen et al., 2021). Morin (2007) reports a RMSEA of 0.059 in a CFA for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA \textgreater{} 0.08 and the test of close fit of RMSEA \textless{} 0.05 with a power of 0.80 and \(\alpha\) of 0.05. Results show that 216 subjects are necessary to reject the test for not-close fit, and 920 participants are required for rejection of the test of close fit. Therefore, we aimed at a minimum sample size of 920 participants. SPAQ's fit index was not considered in this power analysis due to the large RMSEA (0.081) reported originally (Bothelius et al., 2015).
+To estimate an adequate sample size for the confirmatory factor analyses (CFAs) we used MacCallum et al.'s (\protect\hyperlink{ref-maccallum1996}{1996}) root-mean-square error of approximation (RMSEA) tests of close and not-close fit. All tests were conducted in R 4.1.3 (\protect\hyperlink{ref-R-base}{R Core Team, 2022}) using \texttt{semTools} version 0.5.6 (\protect\hyperlink{ref-semtools}{Jorgensen et al., 2021}). Morin (\protect\hyperlink{ref-morin2007a}{2007}) reports a RMSEA of 0.059 in a CFA for DBAS-16. Taking this value as prior guess for the true RMSEA score, we calculated the sample sizes required to to reject the test for not-close fit of RMSEA \textgreater{} 0.08 and the test of close fit of RMSEA \textless{} 0.05 with a power of 0.80 and \(\alpha\) of 0.05. Results show that 216 subjects are necessary to reject the test for not-close fit, and 920 participants are required for rejection of the test of close fit. Therefore, we aimed at a minimum sample size of 920 participants. SPAQ's fit index was not considered in this power analysis due to the large RMSEA (0.081) reported originally (\protect\hyperlink{ref-bothelius2015}{Bothelius et al., 2015}).
 
 This study was approved by the Ethics Committee of the General Hospital of the University of São Paulo, School of Medicine (HC-FMUSP), São Paulo, Brazil (CAAE: 46284821.1.0000.0068). Inclusion criteria was age between 18 and 59 years and reporting no difficulties in reading or writing in Portuguese.
 
 Participants were recruited mainly from advertisement on the internet, especially on HC-FMUSP's social media platforms (Instagram and Facebook). The data collection took place between May 2021 through July 2022, with brief breaks in between. Because the measures evaluated in this study refer to sleep difficulties, we sought to include participants both with and without insomnia complaints. The first group was composed by people registered for an experimental behavioral treatment for insomnia, which was also organized by the Department of Psychiatry of HC-FMUSP and which this study is a branch of. To recruit participants without insomnia complaints we asked for volunteer participation from people believing not having sleeping problems.
 
-Bad sleepers were classified according to the presence of insomnia complaints: (i) difficulty initiating and/or maintaining sleep, defined as a sleep onset latency and/or wake after sleep onset greater than or equal to 30 minutes, with a corresponding sleep time of less than or equal to six hours per night; (ii) presence of insomnia for more than three nights per week and more than three months; (iii) sleep disturbance (or associated daytime fatigue) causing significant distress or impairment in social, occupational, or other areas of functioning. This definition represents a combination of criteria from the American Academy of Sleep Medicine, the International Classification of Sleep Disorders, and the Diagnostic and Statistical Manual of Mental Disorders, along with quantitative cutoffs typically used in insomnia research \textbf{(American Academy of Sleep Medicine, 2014; American Psychiatric Association, 2013; Edinger, et al., 2004)}. In addition to these criteria, participants total score on the Insomnia Severity Index should not exceed 7 points (Bastien et al., 2001).
+Bad sleepers were classified according to the presence of insomnia complaints: (i) difficulty initiating and/or maintaining sleep, defined as a sleep onset latency and/or wake after sleep onset greater than or equal to 30 minutes, with a corresponding sleep time of less than or equal to six hours per night; (ii) presence of insomnia for more than three nights per week and more than three months; (iii) sleep disturbance (or associated daytime fatigue) causing significant distress or impairment in social, occupational, or other areas of functioning. This definition represents a combination of criteria from the American Academy of Sleep Medicine, the International Classification of Sleep Disorders, and the Diagnostic and Statistical Manual of Mental Disorders, along with quantitative cutoffs typically used in insomnia research \textbf{(American Academy of Sleep Medicine, 2014; American Psychiatric Association, 2013; Edinger, et al., 2004)}. In addition to these criteria, participants total score on the Insomnia Severity Index should not exceed 7 points (\protect\hyperlink{ref-bastien2001}{Bastien et al., 2001}).
 
 Participants were informed about the main objective of the research and signed the informed consent. They were informed that their answers would be kept confidential, and that all procedures
-guaranteeing the privacy of their results would be adopted. Then, they were requested to respond to an online survey using REDCap electronic data capture tools (Harris et al., 2009, 2019), including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
+guaranteeing the privacy of their results would be adopted. Then, they were requested to respond to an online survey using REDCap electronic data capture tools (\protect\hyperlink{ref-harris2009research}{Harris et al., 2009}, \protect\hyperlink{ref-harris2019redcap}{2019}), including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
 
 \hypertarget{item-translation}{%
 \subsubsection{Item translation}\label{item-translation}}
 
-We mainly based our methods on Beaton's (2000) recommendations with the addition of more up to date insights from Borsa et al. (2012). Fig X summarize the steps taken in the process.
+We mainly based our methods on Beaton's (2000) recommendations with the addition of more up to date insights from Borsa et al. (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{2012}). Fig X summarize the steps taken in the process.
 
 The following procedures were applied both to DBAS-16 as well as to SPAQ. Only the expert committee and the first translation team had a different configuration for each instrument.
 
-In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators, of which two were familiar with the instrument constructs and the other English teachers unaware of the instrument concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals experts in insomnia. A form adapted from Koller et al. (2012) was given to each member of the committee to register the rationale for the decisions (see Appendix X). Then, two independent translators native speakers of the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by both first authors of the original questionnaires. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version.
+In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators, of which two were familiar with the instrument constructs and the other English teachers unaware of the instrument concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals experts in insomnia. A form adapted from Koller et al. (\protect\hyperlink{ref-koller2012}{2012}) was given to each member of the committee to register the rationale for the decisions (see Appendix X). Then, two independent translators native speakers of the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by both first authors of the original questionnaires. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version.
 
-At the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). To prevent restricting feedback to specific regional contexts (Borsa et al., 2012), we recruited participants from the five Brazilian regions and with varying educational levels. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant.
+At the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). To prevent restricting feedback to specific regional contexts (\protect\hyperlink{ref-borsaAdaptacaoValidacaoInstrumentos2012}{Borsa et al., 2012}), we recruited participants from the five Brazilian regions and with varying educational levels. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant.
 
 \hypertarget{aditional-measures}{%
 \subsection{Aditional measures}\label{aditional-measures}}
@@ -367,11 +371,11 @@ At the final step, we conducted a pilot study with 15 participants from the targ
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \emph{Insomnia Severity Index (ISI)} (Bastien et al., 2001; Morin et al., 2011) is a 7-item questionnaire to assess insomnia severity and its impact on the patient's life. Raters use a 5-point scale ranging from 0 (no problem) to 4 (very severe problem). We used the Brazilian-Portuguese version (Castro, 2011).
+  \emph{Insomnia Severity Index (ISI)} (\protect\hyperlink{ref-bastien2001}{Bastien et al., 2001}; \protect\hyperlink{ref-morin2011a}{Morin et al., 2011}) is a 7-item questionnaire to assess insomnia severity and its impact on the patient's life. Raters use a 5-point scale ranging from 0 (no problem) to 4 (very severe problem). We used the Brazilian-Portuguese version (\protect\hyperlink{ref-castro}{Castro, 2011}).
 \item
-  \emph{The Hospital Anxiety and Depression Scale (HADS)} (Zigmond \& Snaith, 1983) is a scale used to assess psychological distress in non-psychiatric patients. It is formed by a two-factor structure with seven items assessing Anxiety plus seven other items measuring Depression. A Brazilian-Portuguese version produced by Botega et al. (1995) was used.
+  \emph{The Hospital Anxiety and Depression Scale (HADS)} (\protect\hyperlink{ref-zigmond1983hospital}{Zigmond \& Snaith, 1983}) is a scale used to assess psychological distress in non-psychiatric patients. It is formed by a two-factor structure with seven items assessing Anxiety plus seven other items measuring Depression. A Brazilian-Portuguese version produced by Botega et al. (\protect\hyperlink{ref-botega1995transtornos}{1995}) was used.
 \item
-  \emph{Acceptance and Action Questionnaire-II (AAQ-II)} (Bond et al., 2011; Hayes et al., 2004) is a measure of psychological flexibility composed by seven items rated in a scale from 1 (never true) to 7 (always true). it is scored by adding up scores for each question. Higher scoring indicate less flexibility. The Brazilian-portuguese version used in this study was produced by Barbosa and Murta (2015).
+  \emph{Acceptance and Action Questionnaire-II (AAQ-II)} (\protect\hyperlink{ref-bond2011preliminary}{Bond et al., 2011}; \protect\hyperlink{ref-hayes2004measuring}{Hayes et al., 2004}) is a measure of psychological flexibility composed by seven items rated in a scale from 1 (never true) to 7 (always true). it is scored by adding up scores for each question. Higher scoring indicate less flexibility. The Brazilian-portuguese version used in this study was produced by Barbosa and Murta (\protect\hyperlink{ref-barbosa2015propriedades}{2015}).
 \end{enumerate}
 
 \hypertarget{analytical-plan}{%
@@ -380,7 +384,7 @@ At the final step, we conducted a pilot study with 15 participants from the targ
 \hypertarget{descriptive-statistics}{%
 \subsubsection{Descriptive statistics}\label{descriptive-statistics}}
 
-This phase comprise examination of response frequency and item statistics in order to assess item variation, distribution and data entry quality. Items with insufficient variation might be bad for differentiating respondents and may need to be excluded or merged into fewer categories (Dima, 2018). We'll also diagnose inter-item correlations and scan for multivariate outliers (via Mahalanobis distance) to identify if there are any anomalous response patterns.
+This phase comprise examination of response frequency and item statistics in order to assess item variation, distribution and data entry quality. Items with insufficient variation might be bad for differentiating respondents and may need to be excluded or merged into fewer categories (\protect\hyperlink{ref-dima2018}{Dima, 2018}). We'll also diagnose inter-item correlations and scan for multivariate outliers (via Mahalanobis distance) to identify if there are any anomalous response patterns.
 
 \hypertarget{examination-of-item-properties-with-irt}{%
 \subsubsection{Examination of item properties with IRT}\label{examination-of-item-properties-with-irt}}
@@ -406,7 +410,7 @@ Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a n
 
 The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items was a mix of translations produced by the three (for each instrument) forward translators. To some items a determined translation was taken with minor or no modifications. Others were a merge of two or more versions with additions were it deemed necessary. The instruments versions produced in each stage of the cross-cultural adaptation process, as well as a detailed documentation of criteria for decisions, are available at \url{https://osf.io/av45j/}.
 
-Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. The final version of both SPAQ and DBAS-16 are on Appendix X.
+Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. The final version of both SPAQ and DBAS-16 are on Appendix X. Colocar mudança nas instruções do SPAQ.
 
 \hypertarget{sample-description}{%
 \subsection{Sample description}\label{sample-description}}
@@ -464,6 +468,22 @@ Region (\%) & \\
 
 \hypertarget{timeline}{%
 \subsection{Timeline}\label{timeline}}
+
+\begin{table}[h]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:timeline_table}Timeline of events}
+\begin{tabular}{cccc}
+\toprule
+Period & \multicolumn{1}{c}{Activities}\\
+\midrule
+09-10 & Do something\\
+11-12 & do something else\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}
 
 \newpage
 
@@ -679,80 +699,188 @@ Zigmond, A. S., \& Snaith, R. P. (1983). The hospital anxiety and depression sca
 \clearpage
 
 \begin{appendix}
-\section{Sets of IADS sounds used in Experiment 1: Valence Positive,
-Neutral,
-Negative}\label{sets-of-iads-sounds-used-in-experiment-1-valence-positive-neutral-negative}
+\section{Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}
+\label{cads-16}
+
+Uma série de afirmações refletindo as crenças e atitudes das pessoas em relação ao sono estão listadas abaixo. Por favor, indique o quanto você concorda ou discorda de cada afirmação. Não há respostas certas ou erradas. Para cada afirmação, circule o número que corresponde à sua \underline{crença pessoal}. Por favor, responda todos as afirmações, mesmo que não se apliquem diretamente à sua situação.
+\smallskip
+
+\begin{flushleft}
+
+{\setstretch{1.0}
+\begin{center}
+Discordo \hfill Concordo\\
+Fortemente \hfill Fortemente
+\end{center}
+
+\medskip
+\hrule
+\medskip
+
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 \textcircled{7} 8 9 10 } \par
+
+\bigskip
+1. Preciso de 8 horas de sono para me sentir revigorado(a) e funcionar bem durante o dia.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+
+\bigskip
+2. Quando não durmo o suficiente à noite, preciso recuperar o sono no dia seguinte com um cochilo ou dormindo mais na próxima noite.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+3. Estou preocupado(a) que a insônia crônica possa trazer consequências graves em minha saúde física. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+4. Estou preocupado(a) que eu talvez perca o controle sobre minha habilidade de dormir.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+5. Sei que uma noite de sono ruim vai interferir nas minhas atividades cotidianas no dia seguinte.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+6. Para estar alerta e funcionar bem durante o dia, eu acredito que seria melhor tomar um remédio para dormir do que ter uma noite de sono ruim.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+7. Quando me sinto irritado(a), deprimido(a), ou ansioso(a) durante o dia, provavelmente foi porque não dormi bem na noite anterior. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+8. Quando durmo mal uma noite, sei que irá atrapalhar meu sono pelo resto da semana. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+9.	Sem uma noite de sono adequada, eu mal consigo funcionar no dia seguinte. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+10.	Não consigo prever se vou ter uma noite de sono boa ou ruim. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+11.	Tenho pouco controle sobre as consequências negativas de um sono ruim. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+12.	Quando me sinto cansado(a), sem energia, ou não funciono bem durante o dia, geralmente é porque não dormi bem na noite anterior. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+13.	Acredito que a insônia seja essencialmente o resultado de um desequilíbrio do meu organismo. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+14.	Sinto que a insônia está arruinando minha capacidade de aproveitar a vida e me impede de fazer o que eu quero. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+15.	Medicação é provavelmente a única solução para a minha falta de sono.  
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+
+\bigskip
+16.	Evito ou cancelo compromissos (sociais, familiares) após uma noite de sono ruim.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+}
+
+\end{flushleft}
+
+\section{Questionário de Aceitação dos Problemas no Sono (QAPS)}
+\label{qaps}
+
+Abaixo você irá encontrar uma lista de afirmações. Por favor, avalie o quanto você concorda com cada frase escolhendo uma alternativa. Responda da melhor forma que puder mesmo que você não tenha (mais) problemas de sono, ou que eles sejam pouco frequentes. Poucas pessoas tem um sono perfeito todas as noites. Deste modo, pense em qualquer dificuldade com sono que tenha, ou já tenha tido, por menor que seja, e responda de acordo.
 
 \begin{table}[h]
-\begin{center}
-\begin{threeparttable}
-\caption{\label{tab:appendix_table}Sound-Nr. (Bradley \& Lang, 2007)}
-\begin{tabular}{ccc}
-\toprule
-Positive & \multicolumn{1}{c}{Neutral} & \multicolumn{1}{c}{Negative}\\
-\midrule
-110 & 109 & 278\\
-172 & 171 & 279\\
-725 & 206 & 285\\
-809 & 221 & 296\\
-810 & 270 & 501\\
-811 & 365 & 624\\
-815 & 367 & 625\\
-816 & 368 & 711\\
-817 & 375 & 712\\
-820 & 722 & 719\\
-\bottomrule
+\begin{tabular}{ccccccc}
+0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+Discordo & Concordo & Concordo & Concordo & Concordo & Concordo & Concordo \\
+ & muito & levemente & parcialmente & moderadamente & quase & completamente \\
+ & pouco &  &  &  & completamente & 
 \end{tabular}
-\end{threeparttable}
-\end{center}
 \end{table}
 
-\clearpage
-
-\section{Priors for the Bayesian logistic mixed effects regression
-models of two-alternative forced choice
-responses}\label{priors-for-the-bayesian-logistic-mixed-effects-regression-models-of-two-alternative-forced-choice-responses}
-
-\begin{figure}[!h]
+\begin{table}[h]
 \centering
-\includegraphics{Chapter02_files/figure-latex/appendix-figure-1.pdf}
-\caption{\label{fig:appendix-figure}Priors for the Bayesian logistic mixed
-effects regression models of two-alternative forced choice responses.
-Colored lines represent distribution quantiles; annoted probabilities
-represent the resulting probability of choosing a positively paired CS
-starting from chance level (p = 0.5).}
-\end{figure}
-
-\clearpage
-
-\section{Mean CS visibility (Experiment 2 and Experiment
-3)}\label{mean-cs-visibility-experiment-2-and-experiment-3}
-
-Mean Visibility scores of each CS in Experiment 2 (chance level = .250,
-\(N = 37\)) and pilot of Experiment 3 (chance level = .125, \(N = 7\))
-and the presentation time for each stimulus as used in Experiment 3.
-
-\begin{table}[h]
-\begin{center}
-\begin{threeparttable}
-\caption{\label{tab:appendix_table2}Mean CS visibility}
-\begin{tabular}{cccc}
-\toprule
-CS & \multicolumn{1}{c}{Visibility Study 2} & \multicolumn{1}{c}{Visibility Pilot} & \multicolumn{1}{c}{Set}\\
-\midrule
-03.png & .512 & .400 & 1000 ms\\
-08.png & .540 & .329 & 1000 ms\\
-14.png & .900 & .657 & 1000 ms\\
-22.png & .475 & .400 & 1000 ms\\
-04.png & .438 & .200 & 20 ms\\
-20.png & .400 & .271 & 20 ms\\
-50.png & .356 & .129 & 20 ms\\
-51.png & .423 & .243 & 20 ms\\
-\bottomrule
+\begin{tabular}{lllllllll}
+1. & Embora as coisas tenham mudado,           & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & estou vivendo uma vida normal             &   &   &   &   &   &   &   \\
+   & apesar dos meus problemas de sono.        &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+2. & Eu levo uma vida plena                    & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & apesar de ter problemas de sono.          &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+3. & Minha vida está indo bem                  & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & apesar dos meus problemas de sono         &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+4. & Apesar dos problemas de sono, agora estou & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & seguindo um certo curso na minha vida.    &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+5. & Manter meus problemas de sono sob         & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & controle é minha maior prioridade.        &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+6. & Eu preciso me concentrar em me livrar dos & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & meus problemas de sono.                   &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+7. & É importante eu continuar lutando contra  & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & meus problemas de sono.                   &   &   &   &   &   &   &   \\
+   &                                           &   &   &   &   &   &   &   \\
+8. & Meus pensamentos e sentimentos sobre      & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+   & meus problemas de sono devem mudar        &   &   &   &   &   &   &   \\
+   & antes de eu dar passos importantes na     &   &   &   &   &   &   &   \\
+   & minha vida.                               &   &   &   &   &   &   &  
 \end{tabular}
-\end{threeparttable}
-\end{center}
 \end{table}
+
 \end{appendix}
 
 \end{document}
