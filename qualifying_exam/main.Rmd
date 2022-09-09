@@ -1,5 +1,5 @@
 ---
-title: "This page and the next page should be removed"
+title: "Cross-cultural adaptation and psychometric studies of the Dysfunctional Beliefs and Attitudes about Sleep scale and the Sleep Problem Acceptance Questionnaire"
 shorttitle:  "Subliminal Header"
 
 author: 
@@ -60,7 +60,7 @@ pdftk myDocument.pdf cat 3-end output removedPages.pdf
 \thispagestyle{empty}
 \begin{center}
 \vspace*{10mm}
-\textbf{\Large An example document using RMarkdown and papaja to write your dissertation}\\
+\textbf{\Large Cross-cultural adaptation and psychometric studies of the DBAS-16 and SPAQ}\\
 
 \begin{figure}[h]
 \begin{center}

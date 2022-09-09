@@ -25,13 +25,17 @@ guaranteeing the privacy of their results would be adopted. Then, they were requ
 
 ### Item translation
 
-We mainly based our methods on Beaton's ([-@beaton2000]) recommendations with the addition of more up to date insights from @borsaAdaptacaoValidacaoInstrumentos2012. Fig X summarize the steps taken in the process.
+We mainly based our methods on Beaton's ([-@beaton2000]) recommendations with the addition of more up to date insights from @borsaAdaptacaoValidacaoInstrumentos2012. Figure \@ref(fig:flowcca) summarize the steps taken in the process.
 
 The following procedures were applied both to DBAS-16 as well as to SPAQ. Only the expert committee and the first translation team had a different configuration for each instrument.
 
 In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators, of which two were familiar with the instrument constructs and the other English teachers unaware of the instrument concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals experts in insomnia. A form adapted from @koller2012 was given to each member of the committee to register the rationale for the decisions (see Appendix \ref{appendix:form}). Then, two independent translators native speakers of the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by both first authors of the original questionnaires. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version. 
 
 At the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). To prevent restricting feedback to specific regional contexts [@borsaAdaptacaoValidacaoInstrumentos2012], we recruited participants from the five Brazilian regions and with varying educational levels. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant.
+
+```{r flowcca, echo = FALSE, message=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”, by J. C. Borsa, B. F. Damásio and D. R. Bandeira, 2012, Paidéia, 22(53), 423-432; “Guidelines for the Process of Cross-Cultural Adaptation of Self-Report Measures”, by D. E. Beaton, C. Bombardier, F. Guillemin and M. B. Ferraz, 2000, SPINE, 25(24), 3186-3191.'}
+knitr::include_graphics("cca_diagram.pdf")
+```
 
 ## Aditional measures
 
