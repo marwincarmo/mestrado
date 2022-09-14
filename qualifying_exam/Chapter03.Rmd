@@ -18,24 +18,61 @@ This study was approved by the Ethics Committee of the General Hospital of the U
 
 Participants were recruited mainly from advertisement on the internet, especially on HC-FMUSP's social media platforms (Instagram and Facebook). The data collection took place between May 2021 through July 2022, with brief breaks in between. Because the measures evaluated in this study refer to sleep difficulties, we sought to include participants both with and without insomnia complaints. The first group was composed by people registered for an experimental behavioral treatment for insomnia, which was also organized by the Department of Psychiatry of HC-FMUSP and which this study is a branch of. To recruit participants without insomnia complaints we asked for volunteer participation from people believing not having sleeping problems.
 
-Bad sleepers were classified according to the presence of insomnia complaints: (i) difficulty initiating and/or maintaining sleep, defined as a sleep onset latency and/or wake after sleep onset greater than or equal to 30 minutes, with a corresponding sleep time of less than or equal to six hours per night; (ii) presence of insomnia for more than three nights per week and more than three months; (iii) sleep disturbance (or associated daytime fatigue) causing significant distress or impairment in social, occupational, or other areas of functioning. This definition represents a combination of criteria from the American Academy of Sleep Medicine, the International Classification of Sleep Disorders, and the Diagnostic and Statistical Manual of Mental Disorders, along with quantitative cutoffs typically used in insomnia research **(American Academy of Sleep Medicine, 2014; American Psychiatric Association, 2013; Edinger, et al., 2004)**. In addition to these criteria, participants total score on the Insomnia Severity Index should not exceed 7 points [@bastien2001].
+Bad sleepers were classified according to the presence of insomnia complaints: (i) difficulty initiating and/or maintaining sleep, defined as a sleep onset latency and/or wake after sleep onset greater than or equal to 30 minutes, with a corresponding sleep time of less than or equal to six hours per night; (ii) presence of insomnia for more than three nights per week and more than three months; (iii) sleep disturbance (or associated daytime fatigue) causing significant distress or impairment in social, occupational, or other areas of functioning. This definition represents a combination of criteria from the American Academy of Sleep Medicine, the International Classification of Sleep Disorders, and the Diagnostic and Statistical Manual of Mental Disorders, along with quantitative cutoffs typically used in insomnia research [@icds2014; @americanpsychiatricassociation2013; @edinger2004]. In addition to these criteria, participants total score on the Insomnia Severity Index should not exceed 7 points [@bastien2001].
 
 Participants were informed about the main objective of the research and signed the informed consent. They were informed that their answers would be kept confidential, and that all procedures
 guaranteeing the privacy of their results would be adopted. Then, they were requested to respond to an online survey using REDCap electronic data capture tools [@harris2009research; @harris2019redcap], including the Brazilian-Portuguese versions of DBAS-16 and SPAQ and other auxiliary instruments.
 
 ### Item translation
 
-We mainly based our methods on Beaton's ([-@beaton2000]) recommendations with the addition of more up to date insights from @borsaAdaptacaoValidacaoInstrumentos2012. Figure \@ref(fig:flowcca) summarize the steps taken in the process.
-
-The following procedures were applied both to DBAS-16 as well as to SPAQ. Only the expert committee and the first translation team had a different configuration for each instrument.
+We mainly based our methods on Beaton's [-@beaton2000] recommendations with the addition of more up to date insights from @borsaAdaptacaoValidacaoInstrumentos2012. The following procedures were applied both to DBAS-16 as well as to SPAQ. Only the expert committee and the first translation team had a different configuration for each instrument.
+Figure \@ref(fig:flowcca2) summarize the steps taken in the process.
 
 In the first stage the items of the original versions were translated from English (source language) to Portuguese (target language) by three independent translators, of which two were familiar with the instrument constructs and the other English teachers unaware of the instrument concepts and with no clinical or medical background. The three versions were synthesized by an expert committee of health professionals experts in insomnia. A form adapted from @koller2012 was given to each member of the committee to register the rationale for the decisions (see Appendix \ref{appendix:form}). Then, two independent translators native speakers of the source language back translated the synthesized version to English. We reconciled the back translations into a single version and submitted it to appreciation by both first authors of the original questionnaires. Together with the expert committee we debated over suggestions raised by the original authors and made changes accordingly to the translated version. 
 
 At the final step, we conducted a pilot study with 15 participants from the target population to probe the pre-final version. There were 12 female participants and overall mean age was 43 years (range: 19--57 years). To prevent restricting feedback to specific regional contexts [@borsaAdaptacaoValidacaoInstrumentos2012], we recruited participants from the five Brazilian regions and with varying educational levels. We were able to interview nine participants from the Southwest region, three from South, two from Northeast and one from Middle-west. We conducted individual cognitive interviews with each participant.
 
-```{r flowcca, echo = FALSE, message=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”, by J. C. Borsa, B. F. Damásio and D. R. Bandeira, 2012, Paidéia, 22(53), 423-432; “Guidelines for the Process of Cross-Cultural Adaptation of Self-Report Measures”, by D. E. Beaton, C. Bombardier, F. Guillemin and M. B. Ferraz, 2000, SPINE, 25(24), 3186-3191.'}
+```{r flowcca, eval=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”', message=FALSE, include=FALSE}
 knitr::include_graphics("cca_diagram.pdf")
 ```
+
+```{r flowcca2, echo=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”', message=FALSE,  fig.align = 'center', out.width="100%", fig.width=9}
+DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB]
+  
+  node [shape = rectangle] 
+  init [label = 'Original instrument']
+  ft1 [label = 'Translator 1 \n(informed translator)']
+  ft2 [label = 'Translator 2 \n(informed translator)']
+  ft3 [label = 'Translator 3 \n(uninformed translator)']
+  synth [label = 'Synthesyzed \ntranslation']
+  expcom [label = 'Expert committee \nreview']
+  bkt1 [label = 'Backtranslator 1 \n(uninformed translator)']
+  bkt2 [label = 'Backtranslator 2 \n(uninformed translator)']
+  synthb [label = 'Synthesyzed \nbacktranslation']
+  pog [label = 'Presentation of the new version \nto the original authors']
+  adq [label = 'Adequate?']
+  disc [label = 'Discussion with the \noriginal authors']
+  
+  
+  # edge definitions with the node IDs
+  init -> {ft1 ft2 ft3}
+  {ft1 ft2 ft3} -> synth
+  synth -> expcom -> {bkt1 bkt2}
+  {bkt1 bkt2} -> synthb
+  synthb -> pog
+  {rank=same; pog; adq}
+  pog -> adq 
+  adq -> {Yes No}
+  {rank=same; No; disc}
+  No -> disc -> adq
+  Yes -> 'Pilot Study' -> 'Expert committee \nreview' -> 'Final translated \n version'
+  }",
+  height = 1024, 
+  width = 600
+  )
+```
+
 
 ## Aditional measures
 
@@ -51,11 +88,13 @@ knitr::include_graphics("cca_diagram.pdf")
 
 This phase comprise examination of response frequency and item statistics in order to assess item variation, distribution and data entry quality. Items with insufficient variation might be bad for differentiating respondents and may need to be excluded or merged into fewer categories [@dima2018]. We'll also diagnose inter-item correlations and scan for multivariate outliers (via Mahalanobis distance) to identify if there are any anomalous response patterns.
 
-### Examination of item properties with IRT
+### Non-parametric item response theory (NIRT)
 
-Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a non-parametric Item Response Theory (IRT) thecnique. Explain what MSA is about. 
+Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a non-parametric Item Response Theory (NIRT) technique. NIRT models provide a more flexible alternative to models from the parametric item response theory (PIRT) family, by employing less restrictive assumptions about the data. However pertaining both family of models, assumptions such as Local independence, Monotonicity and Unidimensionality can be weakened in such ways in NIRT, that an ordinal measurement is possible [@junker2001]. The MSA approach requires that the item response function (IRF) meet only ordering requirements, exempting the need to match a particular shape [@wind2017]. MSA allows ordering people on latent variable $\theta$ by their test scores; investigation of unidimensionality by identifying subscales and deviating items using the AISP algorithm; estimation of the item step response functions (ISRFs) and assessment of the non-monotonicities; and differential item functioning (i.e., if the same item have different response probabilities for people having the same $\theta$ level but who are members of two different groups) [@sijtsma2017]. To run the analyses we'll use the `mokken` package available in R [@ark2007; @ark2012]. explicar alguns termos
 
-### Scale structure via factor analysis
+### Factor analysis
+
+### Nomological Net
 
 ### Reliability estimates
 

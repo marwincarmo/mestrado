@@ -1,12 +1,11 @@
 
 # Next steps
 
-## Timeline
 
 \begin{table}[h]
 \begin{center}
 \begin{threeparttable}
-\caption{\label{tab:timeline_table}Timeline of events}
+\caption{\label{tab:timeline_table}Timeline}
 \begin{tabular}{cccc}
 \toprule
 Period & \multicolumn{1}{c}{Activities}\\
