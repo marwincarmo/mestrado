@@ -405,16 +405,20 @@ This phase comprise examination of response frequency and item statistics in ord
 \hypertarget{non-parametric-item-response-theory-nirt}{%
 \subsubsection{Non-parametric item response theory (NIRT)}\label{non-parametric-item-response-theory-nirt}}
 
-Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a non-parametric Item Response Theory (NIRT) technique. NIRT models provide a more flexible alternative to models from the parametric item response theory (PIRT) family, by employing less restrictive assumptions about the data. However pertaining both family of models, assumptions such as Local independence, Monotonicity and Unidimensionality can be weakened in such ways in NIRT, that an ordinal measurement is possible (\protect\hyperlink{ref-junker2001}{Junker \& Sijtsma, 2001}). The MSA approach requires that the item response function (IRF) meet only ordering requirements, exempting the need to match a particular shape (\protect\hyperlink{ref-wind2017}{Wind, 2017}). MSA allows ordering people on latent variable \(\theta\) by their test scores; investigation of unidimensionality by identifying subscales and deviating items using the AISP algorithm; estimation of the ISRFs and assessment of the non-monotonicities; and differential item functioning (i.e., if the same item have different response probabilities for people having the same \(\theta\) level but who are members of two different groups) (\protect\hyperlink{ref-sijtsma2017}{Sijtsma \& van der Ark, 2017}). To run the analyses we'll use the \texttt{mokken} package available in R (\protect\hyperlink{ref-ark2007}{Van der Ark, 2007}, \protect\hyperlink{ref-ark2012}{2012}).
+Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a non-parametric Item Response Theory (NIRT) technique. NIRT models provide a more flexible alternative to models from the parametric item response theory (PIRT) family, by employing less restrictive assumptions about the data. However pertaining both family of models, assumptions such as Local independence, Monotonicity and Unidimensionality can be weakened in such ways in NIRT, that an ordinal measurement is possible (\protect\hyperlink{ref-junker2001}{Junker \& Sijtsma, 2001}). The MSA approach requires that the item response function (IRF) meet only ordering requirements, exempting the need to match a particular shape (\protect\hyperlink{ref-wind2017}{Wind, 2017}). MSA allows ordering people on latent variable \(\theta\) by their test scores; investigation of unidimensionality by identifying subscales and deviating items using the AISP algorithm; estimation of the item step response functions (ISRFs) and assessment of the non-monotonicities; and differential item functioning (i.e., if the same item have different response probabilities for people having the same \(\theta\) level but who are members of two different groups) (\protect\hyperlink{ref-sijtsma2017}{Sijtsma \& van der Ark, 2017}). To run the analyses we'll use the \texttt{mokken} package available in R (\protect\hyperlink{ref-ark2007}{Van der Ark, 2007}, \protect\hyperlink{ref-ark2012}{2012}). explicar alguns termos
 
-\hypertarget{scale-structure-via-factor-analysis}{%
-\subsubsection{Scale structure via factor analysis}\label{scale-structure-via-factor-analysis}}
+\hypertarget{factor-analysis}{%
+\subsubsection{Factor analysis}\label{factor-analysis}}
+
+To assess the factorial structure of both measures, we will conduct Confirmatory Factor Analyses (CFAs) taking as a priori guess the aspects of the original models (i.e, the number of factors present in the data, which indicators are related to which factors, presence of higher-order or bi-factor structure etc.). Given that our data was collected using Likert scales (i.e., in ordered categories) and prior inspection of the data has shown skewed distribution for both DBAS-16 and SPAQ scores, we have opted to use the diagonally weighted least squares (DWLS) estimator based on the polychoric correlation matrix, since it does not rely on normal-theory (\protect\hyperlink{ref-brown2015}{Brown, 2015}). To evaluate model fit we'll use the following fit statistics: chi-squared (\(\chi^2\)); Tucker-Lewis Index (TLI); Comparative Fit Index (CFI); Relative Noncentrality Index (RNI); Root Mean Square Error of Approximation (RMSEA); and Standardized Root Mean Squared Residual (SRMR).
+
+Validation studies have traditionally relied on fixed cutoffs values such as SRMR \(\le\) .08, RMSEA \(\le\) .06, and CFI, TLI and RNI \(\ge\) .96 to assess model misspecification (\protect\hyperlink{ref-hu1999}{Hu \& Bentler, 1999}). Although used virtually largely in CFA studies, the adoption of such criteria does not comes without its problems, as with much of other one-size-fits-all solutions used in applied psychological research (\protect\hyperlink{ref-mcneish2021}{McNeish \& Wolf, 2021}). Additionally, these cutoff values were established for continuous data analyzed using the normal-theory maximum likelihood (ML). Simulation studies have shown that for DWLS, no universal cutoff values are appropriate; the number of categories and the threshold values might suggest different values for the indices (\protect\hyperlink{ref-xia2019}{Xia \& Yang, 2019}). Therefore, following Xia and Yang (\protect\hyperlink{ref-xia2019}{2019}) recommendations, we'll interpret the aforementioned fit indices as diagnostic tools rather than a blind criteria for accepting or rejecting a hypothesized model.
+
+We also plan to investigate measurement invariance across groups of good and bad sleepers (i.e., if psychometric properties of the scales are equivalent across groups).
+\#\#\# Reliability estimates
 
 \hypertarget{nomological-net}{%
 \subsubsection{Nomological Net}\label{nomological-net}}
-
-\hypertarget{reliability-estimates}{%
-\subsubsection{Reliability estimates}\label{reliability-estimates}}
 
 \hypertarget{calculation-of-global-scores}{%
 \subsubsection{Calculation of global scores}\label{calculation-of-global-scores}}
@@ -565,6 +569,9 @@ Boysan, M., Merey, Z., Kalafat, T., \& Kağan, M. (2010). Validation of a brief 
 \leavevmode\vadjust pre{\hypertarget{ref-brewin1996theoretical}{}}%
 Brewin, C. R. (1996). Theoretical foundations of cognitive-behavior therapy for anxiety and depression. \emph{Annual Review of Psychology}, \emph{47}(1), 33--57.
 
+\leavevmode\vadjust pre{\hypertarget{ref-brown2015}{}}%
+Brown, T. A. (2015). \emph{Confirmatory factor analysis for applied research} (2nd ed). {The Guilford Press}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-carney2006}{}}%
 Carney, C. E., \& Edinger, J. D. (2006). Identifying {Critical Beliefs About Sleep} in {Primary Insomnia}. \emph{Sleep}, \emph{29}(3), 342--350. \url{https://doi.org/10.1093/sleep/29.3.342}
 
@@ -658,6 +665,9 @@ Herdman, M., Fox-Rushby, J., \& Badia, X. (1998). A model of equivalence in the 
 \leavevmode\vadjust pre{\hypertarget{ref-hertenstein2014}{}}%
 Hertenstein, E., Thiel, N., Lüking, M., Külz, A. K., Schramm, E., Baglioni, C., Spiegelhalder, K., Riemann, D., \& Nissen, C. (2014). Quality of {Life Improvements} after {Acceptance} and {Commitment Therapy} in {Nonresponders} to {Cognitive Behavioral Therapy} for {Primary Insomnia}. \emph{Psychotherapy and Psychosomatics}, \emph{83}(6), 371--373. \url{https://doi.org/10.1159/000365173}
 
+\leavevmode\vadjust pre{\hypertarget{ref-hu1999}{}}%
+Hu, L., \& Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: {Conventional} criteria versus new alternatives. \emph{Structural Equation Modeling: A Multidisciplinary Journal}, \emph{6}(1), 1--55. \url{https://doi.org/10.1080/10705519909540118}
+
 \leavevmode\vadjust pre{\hypertarget{ref-jansson-frojmark2008b}{}}%
 Jansson-Fröjmark, M., \& Lindblom, K. (2008). A bidirectional relationship between anxiety and depression, and insomnia? {A} prospective study in the general population. \emph{Journal of Psychosomatic Research}, \emph{64}(4), 443--449. \url{https://doi.org/10.1016/j.jpsychores.2007.10.016}
 
@@ -693,6 +703,9 @@ MacCallum, R. C., Browne, M. W., \& Sugawara, H. M. (1996). Power analysis and d
 
 \leavevmode\vadjust pre{\hypertarget{ref-marques2015}{}}%
 Marques, D. R., Allen Gomes, A., Clemente, V., Santos, J. M., \& Castelo-Branco, M. (2015). Hyperarousal and failure to inhibit wakefulness in primary insomnia: "``Birds of a feather"? \emph{Sleep and Biological Rhythms}, \emph{13}(3), 219--228. \url{https://doi.org/10.1111/sbr.12115}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mcneish2021}{}}%
+McNeish, D., \& Wolf, M. G. (2021). Dynamic fit index cutoffs for confirmatory factor analysis models. \emph{Psychological Methods}, No Pagination Specified--No Pagination Specified. \url{https://doi.org/gm79hm}
 
 \leavevmode\vadjust pre{\hypertarget{ref-montserratsanchez-ortuno2010}{}}%
 Montserrat Sánchez-Ortuño, M., \& Edinger, J. D. (2010). A penny for your thoughts: {Patterns} of sleep-related beliefs, insomnia symptoms and treatment outcome. \emph{Behaviour Research and Therapy}, \emph{48}(2), 125--133. \url{https://doi.org/10.1016/j.brat.2009.10.003}
@@ -756,6 +769,9 @@ Wild, D., Grove, A., Martin, M., Eremenco, S., McElroy, S., Verjee-Lorenz, A., \
 
 \leavevmode\vadjust pre{\hypertarget{ref-wind2017}{}}%
 Wind, S. A. (2017). An {Instructional Module} on {Mokken Scale Analysis}. \emph{Educational Measurement: Issues and Practice}, \emph{36}(2), 50--66. \url{https://doi.org/10.1111/emip.12153}
+
+\leavevmode\vadjust pre{\hypertarget{ref-xia2019}{}}%
+Xia, Y., \& Yang, Y. (2019). {RMSEA}, {CFI}, and {TLI} in structural equation modeling with ordered categorical data: {The} story they tell depends on the estimation methods. \emph{Behavior Research Methods}, \emph{51}(1), 409--428. \url{https://doi.org/10.3758/s13428-018-1055-2}
 
 \leavevmode\vadjust pre{\hypertarget{ref-zigmond1983hospital}{}}%
 Zigmond, A. S., \& Snaith, R. P. (1983). The hospital anxiety and depression scale. \emph{Acta Psychiatrica Scandinavica}, \emph{67}(6), 361--370.

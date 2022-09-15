@@ -36,7 +36,7 @@ At the final step, we conducted a pilot study with 15 participants from the targ
 knitr::include_graphics("cca_diagram.pdf")
 ```
 
-```{r flowcca2, echo=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”', message=FALSE,  fig.align = 'center', out.width="100%", fig.width=9}
+```{r flowcca2, echo=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”', message=FALSE,  fig.align = 'center', out.width="100%", fig.width=10, fig.height=8}
 DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
   
@@ -68,8 +68,8 @@ DiagrammeR::grViz("digraph {
   No -> disc -> adq
   Yes -> 'Pilot Study' -> 'Expert committee \nreview' -> 'Final translated \n version'
   }",
-  height = 1024, 
-  width = 600
+  height = 1680, 
+  width = 800
   )
 ```
 
@@ -94,8 +94,13 @@ Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a n
 
 ### Factor analysis
 
-### Nomological Net
+To assess the factorial structure of both measures, we will conduct Confirmatory Factor Analyses (CFAs) taking as a priori guess the aspects of the original models (i.e, the number of factors present in the data, which indicators are related to which factors, presence of higher-order or bi-factor structure etc.). Given that our data was collected using Likert scales (i.e., in ordered categories) and prior inspection of the data has shown skewed distribution for both DBAS-16 and SPAQ scores, we have opted to use the diagonally weighted least squares (DWLS) estimator based on the polychoric correlation matrix, since it does not rely on normal-theory [@brown2015]. To evaluate model fit we'll use the following fit statistics: chi-squared ($\chi^2$); Tucker-Lewis Index (TLI); Comparative Fit Index (CFI);  Relative Noncentrality Index (RNI); Root Mean Square Error of Approximation (RMSEA); and Standardized Root Mean Squared Residual (SRMR). 
 
+Validation studies have traditionally relied on fixed cutoffs values such as SRMR $\le$ .08, RMSEA $\le$ .06, and CFI, TLI and RNI $\ge$ .96 to assess model misspecification [@hu1999]. Although used virtually largely in CFA studies, the adoption of such criteria does not comes without its problems, as with much of other one-size-fits-all solutions used in applied psychological research [@mcneish2021]. Additionally, these cutoff values were established for continuous data analyzed using the normal-theory maximum likelihood (ML). Simulation studies have shown that for DWLS, no universal cutoff values are appropriate; the number of categories and the threshold values might suggest different values for the indices [@xia2019]. Therefore, following @xia2019 recommendations, we'll interpret the aforementioned fit indices as diagnostic tools rather than a blind criteria for accepting or rejecting a hypothesized model.
+
+We also plan to investigate measurement invariance across groups of good and bad sleepers (i.e., if psychometric properties of the scales are equivalent across groups).
 ### Reliability estimates
+
+### Nomological Net
 
 ### Calculation of global scores

@@ -21,19 +21,18 @@
 \contentsline {subsection}{Analytical Plan}{18}{section*.23}%
 \contentsline {subsubsection}{Descriptive statistics}{18}{section*.24}%
 \contentsline {subsubsection}{Non-parametric item response theory (NIRT)}{20}{section*.25}%
-\contentsline {subsubsection}{Scale structure via factor analysis}{20}{section*.26}%
-\contentsline {subsubsection}{Nomological Net}{20}{section*.27}%
-\contentsline {subsubsection}{Reliability estimates}{20}{section*.28}%
-\contentsline {subsubsection}{Calculation of global scores}{20}{section*.29}%
-\contentsline {section}{Partial results}{21}{section*.30}%
-\contentsline {subsection}{Cross-cultural adaptation}{21}{section*.31}%
-\contentsline {subsection}{Sample description}{21}{section*.32}%
-\contentsline {section}{Next steps}{23}{section*.34}%
-\contentsline {section}{References}{24}{section*.37}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~A\\: Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}{34}{appendix.1}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~B\\: Questionário de Aceitação dos Problemas no Sono (QAPS)}{36}{appendix.2}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~C\\: Reconciliation: decisions and documentation form}{37}{appendix.3}%
-\contentsline {subsection}{Parte I: decisões}{37}{section*.40}%
-\contentsline {subsection}{Opções de decisões para a tradução reconciliada}{37}{section*.41}%
-\contentsline {subsection}{Critérios de decisão para escolher qualquer uma das opções acima}{37}{section*.42}%
-\contentsline {subsection}{Parte II: Documentação do processo de reconciliação}{38}{section*.43}%
+\contentsline {subsubsection}{Factor analysis}{20}{section*.26}%
+\contentsline {subsubsection}{Nomological Net}{21}{section*.27}%
+\contentsline {subsubsection}{Calculation of global scores}{21}{section*.28}%
+\contentsline {section}{Partial results}{22}{section*.29}%
+\contentsline {subsection}{Cross-cultural adaptation}{22}{section*.30}%
+\contentsline {subsection}{Sample description}{22}{section*.31}%
+\contentsline {section}{Next steps}{24}{section*.33}%
+\contentsline {section}{References}{25}{section*.36}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~A\\: Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}{35}{appendix.1}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~B\\: Questionário de Aceitação dos Problemas no Sono (QAPS)}{37}{appendix.2}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~C\\: Reconciliation: decisions and documentation form}{38}{appendix.3}%
+\contentsline {subsection}{Parte I: decisões}{38}{section*.39}%
+\contentsline {subsection}{Opções de decisões para a tradução reconciliada}{38}{section*.40}%
+\contentsline {subsection}{Critérios de decisão para escolher qualquer uma das opções acima}{38}{section*.41}%
+\contentsline {subsection}{Parte II: Documentação do processo de reconciliação}{39}{section*.42}%
