@@ -400,7 +400,7 @@ At the final step, we conducted a pilot study with 15 participants from the targ
 \hypertarget{descriptive-statistics}{%
 \subsubsection{Descriptive statistics}\label{descriptive-statistics}}
 
-This phase comprise examination of response frequency and item statistics in order to assess item variation, distribution and data entry quality. Items with insufficient variation might be bad for differentiating respondents and may need to be excluded or merged into fewer categories (\protect\hyperlink{ref-dima2018}{Dima, 2018}). We'll also diagnose inter-item correlations and scan for multivariate outliers (via Mahalanobis distance) to identify if there are any anomalous response patterns.
+This phase comprise examination of response frequency and item statistics in order to assess item variation, distribution and data entry quality. Items with insufficient variation might be bad for differentiating respondents and may need to be excluded or merged into fewer categories (\protect\hyperlink{ref-dima2018}{Dima, 2018}). We'll also diagnose inter-item correlations, scan for multivariate outliers (via Mahalanobis distance) to identify if there are any anomalous response patterns, and verify if the items follow a multivariate normal distribution.
 
 \hypertarget{non-parametric-item-response-theory-nirt}{%
 \subsubsection{Non-parametric item response theory (NIRT)}\label{non-parametric-item-response-theory-nirt}}
@@ -412,13 +412,19 @@ Next, we examine item response patterns using Mokken Scaling Analysis (MSA), a n
 
 To assess the factorial structure of both measures, we will conduct Confirmatory Factor Analyses (CFAs) taking as a priori guess the aspects of the original models (i.e, the number of factors present in the data, which indicators are related to which factors, presence of higher-order or bi-factor structure etc.). Given that our data was collected using Likert scales (i.e., in ordered categories) and prior inspection of the data has shown skewed distribution for both DBAS-16 and SPAQ scores, we have opted to use the diagonally weighted least squares (DWLS) estimator based on the polychoric correlation matrix, since it does not rely on normal-theory (\protect\hyperlink{ref-brown2015}{Brown, 2015}). To evaluate model fit we'll use the following fit statistics: chi-squared (\(\chi^2\)); Tucker-Lewis Index (TLI); Comparative Fit Index (CFI); Relative Noncentrality Index (RNI); Root Mean Square Error of Approximation (RMSEA); and Standardized Root Mean Squared Residual (SRMR).
 
-Validation studies have traditionally relied on fixed cutoffs values such as SRMR \(\le\) .08, RMSEA \(\le\) .06, and CFI, TLI and RNI \(\ge\) .96 to assess model misspecification (\protect\hyperlink{ref-hu1999}{Hu \& Bentler, 1999}). Although used virtually largely in CFA studies, the adoption of such criteria does not comes without its problems, as with much of other one-size-fits-all solutions used in applied psychological research (\protect\hyperlink{ref-mcneish2021}{McNeish \& Wolf, 2021}). Additionally, these cutoff values were established for continuous data analyzed using the normal-theory maximum likelihood (ML). Simulation studies have shown that for DWLS, no universal cutoff values are appropriate; the number of categories and the threshold values might suggest different values for the indices (\protect\hyperlink{ref-xia2019}{Xia \& Yang, 2019}). Therefore, following Xia and Yang (\protect\hyperlink{ref-xia2019}{2019}) recommendations, we'll interpret the aforementioned fit indices as diagnostic tools rather than a blind criteria for accepting or rejecting a hypothesized model.
+Validation studies have traditionally relied on fixed cutoffs values such as SRMR \(\le\) .08, RMSEA \(\le\) .06, and CFI, TLI and RNI \(\ge\) .96 to assess model misspecification (\protect\hyperlink{ref-hu1999}{Hu \& Bentler, 1999}). Although used largely in CFA studies, the adoption of such criteria does not comes without its problems, as with much of other one-size-fits-all solutions used in applied psychological research (\protect\hyperlink{ref-mcneish2021}{McNeish \& Wolf, 2021}). Additionally, these cutoff values were established for continuous data analyzed using the normal-theory maximum likelihood (ML). Simulation studies have shown that for DWLS no universal cutoff values are appropriate; the number of categories and the threshold values might suggest different values for the indices (\protect\hyperlink{ref-xia2019}{Xia \& Yang, 2019}). Therefore, following Xia and Yang (\protect\hyperlink{ref-xia2019}{2019}) recommendations, we'll interpret the aforementioned fit indices as diagnostic tools rather than a blind criteria for accepting or rejecting the hypothesized models.
 
-We also plan to investigate measurement invariance across groups of good and bad sleepers (i.e., if psychometric properties of the scales are equivalent across groups).
-\#\#\# Reliability estimates
+We also plan to investigate measurement invariance across groups of good and bad sleepers (i.e., if psychometric properties of the scales are equivalent across groups). To attain this goal we'll use the multiple-group CFA (MGCFA) approach. The MGCFA approach tests invariance by constraining measurement properties (i.e., factor structure, factor loadings, intercepts, and residual variances) across groups in a series of increasingly restrictive models (\protect\hyperlink{ref-flake2021}{Flake \& Luong, 2021}). In each stage we test differences in fit between the restricted model and the less-restricted model looking at exact fit in terms of \(\chi^2\) and degrees of freedom, CFI and RMSEA as well as the Akaike information criterion (AIC) and the Bayesian information criterion (BIC), where for those two lower values are an indication of better fit (\protect\hyperlink{ref-wicherts2010}{Wicherts \& Dolan, 2010}).
+
+\hypertarget{tests-of-reliability}{%
+\subsubsection{Tests of Reliability}\label{tests-of-reliability}}
+
+In Classical Test Theory (CTT) the reliability of a test is the ratio of true score variance to test score variance (\protect\hyperlink{ref-mcdonald1999}{McDonald, 1999}). The internal consistency of a scale is a test of reliability that measures the degree to which the set of items co-vary, relative to their sum score (\protect\hyperlink{ref-cronbach1951}{Cronbach, 1951}). To indicate it we'll estimate Cronbach's alpha (\(\alpha\)), McDonald's omega total (\(\omega_t\)), and omega hierarchical (\(\omega_h\)). Although \(\alpha\) is the most common measure of internal consistency reliability, \(\omega_t\) (assumes an unidimensional scale) and \(\omega_h\) (best for scales that may contain subfactors) are better alternatives because, contrary to \(\alpha\), it does not assume tau equivalence (i.e., loadings are not assumeded to be equal) (\protect\hyperlink{ref-mcneish2018}{McNeish, 2018}). The internal consistency indices will be calculates using the R package \texttt{MBESS} (\protect\hyperlink{ref-MBESS}{Kelley, 2022}). Common guidelines suggest internal consistency indices \(\ge\) .70 as an acceptable threshold for reliability (\protect\hyperlink{ref-kline1986}{Kline, 1986}).
+
+In addition to internal consistency, we'll estimate the test--retest reliability to assess the consistency of test scores across time. This phase comprise a simple calculation of the Pearson product-moment correlation between baseline test scores and a second administration taken 14 days later. We expect higher correlation coefficients to indicate higher test-retest reliability.
 
 \hypertarget{nomological-net}{%
-\subsubsection{Nomological Net}\label{nomological-net}}
+\subsubsection{Nomological net}\label{nomological-net}}
 
 \hypertarget{calculation-of-global-scores}{%
 \subsubsection{Calculation of global scores}\label{calculation-of-global-scores}}
@@ -590,6 +596,9 @@ Chung Ka-Fai, Ho Fiona Yan-Yee, \& Yeung Wing-Fai. (2016). Psychometric {Compari
 \leavevmode\vadjust pre{\hypertarget{ref-collins2003}{}}%
 Collins, D. (2003). Pretesting survey instruments: {An} overview of cognitive methods. \emph{Quality of Life Research}, \emph{12}(3), 229--238. \url{https://doi.org/10.1023/A:1023254226592}
 
+\leavevmode\vadjust pre{\hypertarget{ref-cronbach1951}{}}%
+Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. \emph{Psychometrika}, \emph{16}(3), 297--334. \url{https://doi.org/10.1007/BF02310555}
+
 \leavevmode\vadjust pre{\hypertarget{ref-cronlein2014}{}}%
 Crönlein, T., Wagner, S., Langguth, B., Geisler, P., Eichhammer, P., \& Wetter, T. C. (2014). Are dysfunctional attitudes and beliefs about sleep unique to primary insomnia? \emph{Sleep Medicine}, \emph{15}(12), 1463--1467. \url{https://doi.org/gn3m9k}
 
@@ -619,6 +628,9 @@ Epstein, J., Santo, R. M., \& Guillemin, F. (2015). A review of guidelines for c
 
 \leavevmode\vadjust pre{\hypertarget{ref-espie2006}{}}%
 Espie, C. A., Broomfield, N. M., MacMahon, K. M. A., Macphee, L. M., \& Taylor, L. M. (2006). The attention-intention-effort pathway in the development of psychophysiologic insomnia: A theoretical review. \emph{Sleep Medicine Reviews}, \emph{10}(4), 215--245. \url{https://doi.org/10.1016/j.smrv.2006.03.002}
+
+\leavevmode\vadjust pre{\hypertarget{ref-flake2021}{}}%
+Flake, J. K., \& Luong, R. (2021). \emph{Measurement {Invariance Testing Using Confirmatory Factor Analysis} and {Alignment Optimization}: {A Tutorial} for {Transparent Analysis Planning} and {Reporting}}. \url{https://doi.org/10.31234/osf.io/qr32u}
 
 \leavevmode\vadjust pre{\hypertarget{ref-flakeConstructValidationSocial2017}{}}%
 Flake, J. K., Pek, J., \& Hehman, E. (2017). Construct {Validation} in {Social} and {Personality Research}: {Current Practice} and {Recommendations}. \emph{Social Psychological and Personality Science}, \emph{8}(4), 370--378. \url{https://doi.org/10.1177/1948550617693063}
@@ -680,6 +692,12 @@ Jorgensen, T. D., Pornprasertmanit, S., Schoemann, A. M., \& Rosseel, Y. (2021).
 \leavevmode\vadjust pre{\hypertarget{ref-junker2001}{}}%
 Junker, B. W., \& Sijtsma, K. (2001). Nonparametric {Item Response Theory} in {Action}: {An Overview} of the {Special Issue}. \emph{Applied Psychological Measurement}, \emph{25}(3), 211--220. \url{https://doi.org/10.1177/01466210122032028}
 
+\leavevmode\vadjust pre{\hypertarget{ref-MBESS}{}}%
+Kelley, K. (2022). \emph{MBESS: The MBESS r package}. \url{https://CRAN.R-project.org/package=MBESS}
+
+\leavevmode\vadjust pre{\hypertarget{ref-kline1986}{}}%
+Kline, P. (1986). \emph{A handbook of test construction: Introduction to psychometric design.} Methuen.
+
 \leavevmode\vadjust pre{\hypertarget{ref-koller2012}{}}%
 Koller, M., Kantzer, V., Mear, I., Zarzar, K., Martin, M., Greimel, E., Bottomley, A., Arnott, M., Kuliś, D., \& The ISOQOL TCA-SIG. (2012). The process of reconciliation: Evaluation of guidelines for translating quality-of-life questionnaires. \emph{Expert Review of Pharmacoeconomics \& Outcomes Research}, \emph{12}(2), 189--197. \url{https://doi.org/10.1586/erp.11.102}
 
@@ -703,6 +721,12 @@ MacCallum, R. C., Browne, M. W., \& Sugawara, H. M. (1996). Power analysis and d
 
 \leavevmode\vadjust pre{\hypertarget{ref-marques2015}{}}%
 Marques, D. R., Allen Gomes, A., Clemente, V., Santos, J. M., \& Castelo-Branco, M. (2015). Hyperarousal and failure to inhibit wakefulness in primary insomnia: "``Birds of a feather"? \emph{Sleep and Biological Rhythms}, \emph{13}(3), 219--228. \url{https://doi.org/10.1111/sbr.12115}
+
+\leavevmode\vadjust pre{\hypertarget{ref-mcdonald1999}{}}%
+McDonald, R. P. (1999). \emph{Test theory: A unified treatment.} Lawrence Erlbaum Associates Publishers.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mcneish2018}{}}%
+McNeish, D. (2018). Thanks coefficient alpha, we'll take it from here. \emph{Psychological Methods}, \emph{23}(3), 412--433. \url{https://doi.org/10.1037/met0000144}
 
 \leavevmode\vadjust pre{\hypertarget{ref-mcneish2021}{}}%
 McNeish, D., \& Wolf, M. G. (2021). Dynamic fit index cutoffs for confirmatory factor analysis models. \emph{Psychological Methods}, No Pagination Specified--No Pagination Specified. \url{https://doi.org/gm79hm}
@@ -763,6 +787,9 @@ Van der Ark, L. A. (2012). New developments in mokken scale analysis in {R}. \em
 
 \leavevmode\vadjust pre{\hypertarget{ref-vanwidenfelt2005}{}}%
 van Widenfelt, B. M., Treffers, P. D. A., de Beurs, E., Siebelink, B. M., \& Koudijs, E. (2005). Translation and {Cross-Cultural Adaptation} of {Assessment Instruments Used} in {Psychological Research With Children} and {Families}. \emph{Clinical Child and Family Psychology Review}, \emph{8}(2), 135--147. \url{https://doi.org/10.1007/s10567-005-4752-1}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wicherts2010}{}}%
+Wicherts, J. M., \& Dolan, C. V. (2010). Measurement {Invariance} in {Confirmatory Factor Analysis}: {An Illustration Using IQ Test Performance} of {Minorities}. \emph{Educational Measurement: Issues and Practice}, \emph{29}(3), 39--47. \url{https://doi.org/10.1111/j.1745-3992.2010.00182.x}
 
 \leavevmode\vadjust pre{\hypertarget{ref-wild2005}{}}%
 Wild, D., Grove, A., Martin, M., Eremenco, S., McElroy, S., Verjee-Lorenz, A., \& Erikson, P. (2005). Principles of {Good Practice} for the {Translation} and {Cultural Adaptation Process} for {Patient-Reported Outcomes} ({PRO}) {Measures}: {Report} of the {ISPOR Task Force} for {Translation} and {Cultural Adaptation}. \emph{Value in Health}, \emph{8}(2), 94--104. \url{https://doi.org/10.1111/j.1524-4733.2005.04054.x}

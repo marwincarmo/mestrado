@@ -1,0 +1,44 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r flowcca2, echo=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation. Adapted from “Cross-Cultural Adaptation and Validation of Psychological Instruments: Some Considerations”', message=FALSE,  fig.align = 'center', out.height="100%"}
+DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB]
+  
+  node [shape = rectangle] 
+  init [label = 'Original instrument']
+  ft1 [label = 'Translator 1 \n(informed translator)']
+  ft2 [label = 'Translator 2 \n(informed translator)']
+  ft3 [label = 'Translator 3 \n(uninformed translator)']
+  synth [label = 'Synthesyzed \ntranslation']
+  expcom [label = 'Expert committee \nreview']
+  bkt1 [label = 'Backtranslator 1 \n(uninformed translator)']
+  bkt2 [label = 'Backtranslator 2 \n(uninformed translator)']
+  synthb [label = 'Synthesyzed \nbacktranslation']
+  pog [label = 'Presentation of the new version \nto the original authors']
+  adq [label = 'Adequate?']
+  disc [label = 'Discussion with the \noriginal authors']
+  
+  
+  # edge definitions with the node IDs
+  init -> {ft1 ft2 ft3}
+  {ft1 ft2 ft3} -> synth
+  synth -> expcom -> {bkt1 bkt2}
+  {bkt1 bkt2} -> synthb
+  synthb -> pog
+  {rank=same; pog; adq}
+  pog -> adq 
+  adq -> {Yes No}
+  {rank=same; No; disc}
+  No -> disc -> adq
+  Yes -> 'Pilot Study' -> 'Expert committee \nreview' -> 'Final translated \n version'
+  }",
+  height = 2048, 
+  width = 1024
+  )
+```
