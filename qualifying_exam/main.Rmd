@@ -1,9 +1,9 @@
 ---
 title: "Cross-cultural adaptation and psychometric studies of the Dysfunctional Beliefs and Attitudes about Sleep scale and the Sleep Problem Acceptance Questionnaire"
-shorttitle:  "Subliminal Header"
+shorttitle:  ""
 
 author: 
-  - name        : ""
+  - name        : "Marwin M I B Carmo"
     affiliation : ""
 
 affiliation:
@@ -53,15 +53,15 @@ pdftk myDocument.pdf cat 3-end output removedPages.pdf
 -->
 
 
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
-
+<!--\clearpage\mbox{}\thispagestyle{empty}\clearpage-->
+\newpage
 \setcounter{page}{1}
 
 \thispagestyle{empty}
 \begin{center}
 \vspace*{10mm}
 \textbf{\Large Cross-cultural adaptation and psychometric studies of the DBAS-16 and SPAQ}\\
-
+\bigskip
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=!,totalheight=!,scale=0.18]{usp-brazao.jpg}
@@ -85,7 +85,7 @@ São Paulo, Outubro de 2022\\
 }
 \end{center}
 
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
+<!--\clearpage\mbox{}\thispagestyle{empty}\clearpage-->
 
 <!--
 \vspace*{\fill}
@@ -99,15 +99,7 @@ Tag der mündlichen Prüfung: XX.XX.2018
 
 \clearpage\mbox{}\thispagestyle{empty}\clearpage
 -->
-
-\textbf{Acknowledgment} 
-
-\bigskip
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor danke frederik invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
-
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
-
+\newpage
 
 \begin{flushleft}
 {\setstretch{1.0}
@@ -117,7 +109,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 \newpage
 
-\clearpage\mbox{}\thispagestyle{empty}\clearpage
+<!--clearpage\mbox{}\thispagestyle{empty}\clearpage-->
 
 \thispagestyle{empty}
 

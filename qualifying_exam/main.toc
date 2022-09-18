@@ -1,39 +1,39 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{Summary}{8}{section*.3}%
-\contentsline {section}{Introduction}{9}{section*.4}%
-\contentsline {subsection}{Dysfunctional beliefs and attitudes about sleep}{10}{section*.5}%
-\contentsline {subsubsection}{Constructs and Their Relations}{10}{section*.6}%
-\contentsline {subsubsection}{Measurement}{11}{section*.7}%
-\contentsline {subsection}{Acceptance of sleeping problems}{11}{section*.8}%
-\contentsline {subsubsection}{Constructs and Their Relations}{12}{section*.9}%
-\contentsline {subsubsection}{Measurement}{12}{section*.10}%
-\contentsline {subsection}{The cross-cultural adaptation process}{12}{section*.11}%
-\contentsline {subsubsection}{1. Items translation}{13}{section*.12}%
-\contentsline {subsubsection}{2. Synthesis of the translations}{13}{section*.13}%
-\contentsline {subsubsection}{3. Backtranslation}{13}{section*.14}%
-\contentsline {subsubsection}{4. Expert committee}{14}{section*.15}%
-\contentsline {subsubsection}{5. Pilot study}{14}{section*.16}%
-\contentsline {section}{Objectives}{15}{section*.17}%
-\contentsline {section}{Method}{16}{section*.18}%
-\contentsline {subsection}{Participants and Study Design}{16}{section*.19}%
-\contentsline {subsubsection}{Item translation}{17}{section*.20}%
-\contentsline {subsection}{Aditional measures}{18}{section*.22}%
-\contentsline {subsection}{Analytical Plan}{18}{section*.23}%
-\contentsline {subsubsection}{Descriptive statistics}{18}{section*.24}%
-\contentsline {subsubsection}{Non-parametric item response theory (NIRT)}{20}{section*.25}%
-\contentsline {subsubsection}{Factor analysis}{20}{section*.26}%
-\contentsline {subsubsection}{Tests of Reliability}{21}{section*.27}%
-\contentsline {subsubsection}{Nomological net}{22}{section*.28}%
-\contentsline {subsubsection}{Calculation of global scores}{22}{section*.29}%
-\contentsline {section}{Partial results}{23}{section*.30}%
-\contentsline {subsection}{Cross-cultural adaptation}{23}{section*.31}%
-\contentsline {subsection}{Sample description}{23}{section*.32}%
-\contentsline {section}{Next steps}{25}{section*.34}%
-\contentsline {section}{References}{26}{section*.37}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~A\\: Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}{37}{appendix.1}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~B\\: Questionário de Aceitação dos Problemas no Sono (QAPS)}{39}{appendix.2}%
-\contentsline {section}{\bbl@ensure@english {Appendix}~C\\: Reconciliation: decisions and documentation form}{40}{appendix.3}%
-\contentsline {subsection}{Parte I: decisões}{40}{section*.40}%
-\contentsline {subsection}{Opções de decisões para a tradução reconciliada}{40}{section*.41}%
-\contentsline {subsection}{Critérios de decisão para escolher qualquer uma das opções acima}{40}{section*.42}%
-\contentsline {subsection}{Parte II: Documentação do processo de reconciliação}{41}{section*.43}%
+\contentsline {section}{Summary}{4}{section*.3}%
+\contentsline {section}{Introduction}{5}{section*.4}%
+\contentsline {subsection}{Dysfunctional beliefs and attitudes about sleep}{6}{section*.5}%
+\contentsline {subsubsection}{Constructs and Their Relations}{6}{section*.6}%
+\contentsline {subsubsection}{Measurement}{7}{section*.7}%
+\contentsline {subsection}{Acceptance of sleeping problems}{7}{section*.8}%
+\contentsline {subsubsection}{Constructs and Their Relations}{8}{section*.9}%
+\contentsline {subsubsection}{Measurement}{8}{section*.10}%
+\contentsline {subsection}{The cross-cultural adaptation process}{8}{section*.11}%
+\contentsline {subsubsection}{1. Items translation}{9}{section*.12}%
+\contentsline {subsubsection}{2. Synthesis of the translations}{9}{section*.13}%
+\contentsline {subsubsection}{3. Backtranslation}{9}{section*.14}%
+\contentsline {subsubsection}{4. Expert committee}{10}{section*.15}%
+\contentsline {subsubsection}{5. Pilot study}{10}{section*.16}%
+\contentsline {section}{Objectives}{11}{section*.17}%
+\contentsline {section}{Method}{12}{section*.18}%
+\contentsline {subsection}{Participants and Study Design}{12}{section*.19}%
+\contentsline {subsubsection}{Item translation}{13}{section*.20}%
+\contentsline {subsection}{Aditional measures}{14}{section*.22}%
+\contentsline {subsection}{Analytical Plan}{14}{section*.23}%
+\contentsline {subsubsection}{Descriptive statistics}{14}{section*.24}%
+\contentsline {subsubsection}{Non-parametric item response theory (NIRT)}{16}{section*.25}%
+\contentsline {subsubsection}{Structural Validity Evidence}{16}{section*.26}%
+\contentsline {subsubsection}{Reliability Estimators}{17}{section*.27}%
+\contentsline {subsubsection}{Convergent validity evidence}{18}{section*.28}%
+\contentsline {subsubsection}{Network psychometrics}{18}{section*.29}%
+\contentsline {section}{Partial results}{20}{section*.30}%
+\contentsline {subsection}{Cross-cultural adaptation}{20}{section*.31}%
+\contentsline {subsection}{Sample description}{20}{section*.32}%
+\contentsline {section}{Next steps}{22}{section*.34}%
+\contentsline {section}{References}{23}{section*.37}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~A\\: Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}{35}{appendix.1}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~B\\: Questionário de Aceitação dos Problemas no Sono (QAPS)}{37}{appendix.2}%
+\contentsline {section}{\bbl@ensure@english {Appendix}~C\\: Reconciliation: decisions and documentation form}{38}{appendix.3}%
+\contentsline {subsection}{Parte I: decisões}{38}{section*.40}%
+\contentsline {subsection}{Opções de decisões para a tradução reconciliada}{38}{section*.41}%
+\contentsline {subsection}{Critérios de decisão para escolher qualquer uma das opções acima}{38}{section*.42}%
+\contentsline {subsection}{Parte II: Documentação do processo de reconciliação}{39}{section*.43}%
