@@ -4,6 +4,7 @@
 ```{r packages, include=FALSE}
 library(dplyr)
 library(kableExtra)
+library(flextable)
 ```
 
 ```{r dataset, include=FALSE}
@@ -54,13 +55,13 @@ dat <- raw.data |>
 
 ## Cross-cultural adaptation
 
-The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items was a mix of translations produced by the three (for each instrument) forward translators. To some items a certain translation was taken with minor or no modifications. Others were a merge of two or more versions with additions were it deemed necessary. The instruments versions produced in each stage of the cross-cultural adaptation process, as well as a detailed documentation of criteria for decisions, are available at [osf.io/av45j](https://osf.io/av45j/).
+The initial translation of SPAQ and DBAS-16 instructions, rating scale, and items were a mix of translations produced by the three (for each instrument) forward translators. To some items, a particular translation was taken with minor or no modifications. Others were a merge of two or more versions with additions where it was deemed necessary. The instruments' versions produced in each stage of the cross-cultural adaptation process and detailed documentation of criteria for decisions are available at [osf.io/av45j](https://osf.io/av45j/).
 
-Once each stage of the translation process was completed, both instruments were submitted to appreciation by a sample of 15 subjects of the target population. Overall, participants had a good comprehension of the test items and instructions and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. We also noted that participants without sleeping problems had trouble relating to some SPAQ items due to the ambiguity added from item wording. For instance, to the first question some participants expressed that they would disagree with the sentence because they do not have sleep problems despite agreeing that they're living a normal life. After debating these issues with the original authors, we added a sentence to the instrument instructions asking people to think about any difficulties with sleep they have, or have had, no matter how small they feel them to be and then answer accordingly. The final version of both DBAS-16 and SPAQ are on Appendices \ref{cads-16} and \ref{qaps}, respectively.
+Once each stage of the translation process was completed,  a sample of 15 subjects from the target population evaluated each instrument. Overall, participants had a good comprehension of the test items and instructions, and only a single term of the DBAS-16 required alteration for a more natural reading in the target language. We also noted that participants without sleeping problems had trouble relating to some SPAQ items due to ambiguity induced by item wording. For instance, in the first question, some participants said they would disagree with the sentence because they do not have sleep problems despite agreeing that they are living a normal life. After debating these issues with the original authors, we added a sentence to the instrument instructions asking people to think about any difficulties with sleep they have, or have had, no matter how small they feel them to be, and then answer accordingly. The final version of both DBAS-16 and SPAQ are on Appendices \ref{cads-16} and \ref{qaps}, respectively.
 
 ## Sample description
 
-After excluding individuals who did not meet the inclusion criteria and those who failed to complete at least the first questionnaire on the survey (DBAS-16), the final sample was comprised of `r nrow(dat)` individuals, of which `r nrow(dat[dat$sexo == 1,])` were female and `r nrow(dat[dat$grupo == 1,])` reported insomnia symptoms. Sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). There were `r nrow(dat[dat$ocupacao == 5,])` participants who reported having a formal job, and `r nrow(dat[dat$escolaridade == 9,])` had a university degree. A detailed description of the sample is found on Table \@ref(tab:tab1).
+After excluding individuals who did not meet the inclusion criteria and those who failed to complete at least the first questionnaire on the survey (DBAS-16), the final sample was comprised of `r nrow(dat)` individuals, of which `r nrow(dat[dat$sexo == 1,])` were female and `r nrow(dat[dat$grupo == 1,])` reported insomnia symptoms. The sample mean age was `r round(mean(dat$age, na.rm=TRUE),2)` years (SD = `r round(sd(dat$age, na.rm=TRUE),2)`, Range: `r round(min(dat$age, na.rm=TRUE),1)`--`r round(max(dat$age, na.rm=TRUE),1)` years). `r nrow(dat[dat$ocupacao == 5,])` participants reported having a formal job, and `r nrow(dat[dat$escolaridade == 9,])` had a university degree. A detailed description of the sample is found on Table \@ref(tab:tab1).
 
 ```{r include=FALSE}
 tab1 <- dat |> 
@@ -110,7 +111,7 @@ tab1 <- dat |>
 
 
 ```{r tab1, echo=FALSE}
-tblheader <- paste0('*n*', " = ", nrow(dat))
+tblheader <- paste0(substitute(paste(italic('n'))), " = ", nrow(dat))[2]
 
 tab1b <- print(tab1, printToggle = FALSE) |> 
   as.data.frame() |> 
