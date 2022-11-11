@@ -1,0 +1,176 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% In English:
+%    This is a list of commands specification for FAPESP reports.
+%
+% In Portuguese:
+%    Esta é uma lista de especificação de comandos para relatórios
+% da Fundação de Amparo à pesquisa do Estado de São Paulo (FAPESP).
+%
+% Author/Autor: André Leon Sampaio Gradvohl, Dr.
+% Email:        andre.gradvohl@gmail.com
+% Lattes CV:    http://lattes.cnpq.br/9343261628675642
+% 
+% Last update/Última versão: 11/Sep/2016
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\titulo}[1]{\def\meuTitulo{#1}}
+\newcommand{\tituloIngles}[1]{\def\meuTituloIngles{#1}}
+\newcommand{\numProjeto}[1]{\def\numFAP{#1}}
+\newcommand{\tipoRelatorio}[1]{\def\tipoRelat{#1 }} %o espaço depois do #1 é importante
+\newcommand{\modalidadeProjeto}[1]{\def\modProjeto{#1}} 
+\newcommand{\agFomento}[2]{\def\agFom{#1} \def\siglaAgFom{#2}} %extenso Sigla
+\newcommand{\autor}[1]{\def\nomeAutor{#1}}
+\newcommand{\cidade}[1]{\def\nomeCidade{#1}}
+\newcommand{\universidade}[1]{\def\nomeUniversidade{#1}}
+\newcommand{\faculdade}[1]{\def\nomeFaculdade{#1}}
+\newcommand{\periodoVigencia}[1]{\def\periodVig{#1}}
+\newcommand{\periodoRelatorio}[1]{\def\periodRelat{#1}}
+
+\author{}
+\date{}
+
+%Definição de membros da equipe de pesquisas
+\newcommand{\membroA}[1]{\def\nomeMembroA{#1}}
+\newcommand{\membroB}[1]{\def\nomeMembroB{#1}}
+\newcommand{\membroC}[1]{\def\nomeMembroC{#1}}
+\newcommand{\membroD}[1]{\def\nomeMembroD{#1}}
+\newcommand{\membroE}[1]{\def\nomeMembroE{#1}}
+\newcommand{\membroF}[1]{\def\nomeMembroF{#1}}
+
+\newcommand{\Figure}[1]{Figura~\ref{fig:#1}}
+\newcommand{\Table}[1] {Tabela~\ref{#1}}
+\newcommand{\Equation}[1] {Equa\c{c}\~ao~\ref{#1}}
+\newcommand{\addFigure}[3] { %Parametros scale, fig_name, caption 
+    \begin{figure}[!hbt]
+      \centering
+      \includegraphics[scale=#1]{figures/}
+      \caption{#3}\label{fig:#2}
+    \end{figure}
+}
+
+\newcommand{\geraTitulo}{
+\clearpage
+\begin{titlepage}
+  \begin{center}
+      \vspace*{-3cm}
+       { \setstretch{.5} 
+         \textsc{\nomeUniversidade} \\
+         \HRule{.2pt}\\
+         \textsc{\nomeFaculdade}
+       }
+
+       \vspace{5.5cm}
+
+       \Large \textbf{\textsc{\meuTitulo}}
+ 	  \HRule{1.5pt} \\ [0.5cm]
+       \linespread{1}
+       \large Relatório Científico 
+       \ifdefined\tipoRelat
+            \tipoRelat
+       \fi
+       do projeto 
+       \ifdefined\modProjeto
+           na modalidade \modProjeto,
+       \fi
+       fomentado pela \agFom. \\ 
+   	   \HRule{1.5pt} \\ [0.5cm]
+
+       \ifdefined\numFAP
+          Projeto \siglaAgFom~\texttt{\#\numFAP}
+          \\ [0.5cm]
+       \fi
+        Pesquisador Responsável: \nomeAutor
+       
+        \vfill
+       
+        {\normalsize  \nomeCidade, \today}
+ \end{center}
+ \end{titlepage}
+}
+
+\usepackage{titlesec}
+\titleformat{\chapter}{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+%----------------------------------------------------------------------
+% Cabeçalho e rodapé
+%----------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{} % Limpa todos os campos de header and footer fields
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\thepage}
+
+\addto\captionsportuguese{\renewcommand{\contentsname}{Sumário}}
+\addto\captionsportuguese{\renewcommand{\bibname}{Referências Bibliográficas}}
+
+%------
+% Resumo e Abstract
+%------
+\newcommand{\Resumo}[1]{
+   \begin{otherlanguage}{portuguese}
+       \addcontentsline{toc}{chapter}{Resumo}
+       \begin{abstract} \thispagestyle{plain} \setcounter{page}{2}
+          #1
+        \end{abstract}
+   \end{otherlanguage} 
+} %end \Resumo
+
+\newcommand{\Abstract}[1]{
+   \begin{otherlanguage}{english}
+      \addcontentsline{toc}{chapter}{Abstract}
+      \begin{abstract} \thispagestyle{plain} \setcounter{page}{3}
+       #1
+      \end{abstract}    
+    \end{otherlanguage} 
+} %end \abstract
+
+%------
+% Folha de rosto
+%------
+\newcommand{\folhaDeRosto}{
+   \chapter*{Informações Gerais do Projeto}
+   \addcontentsline{toc}{chapter}{Informações Gerais do Projeto}
+   \begin{itemize}
+      \item Título do projeto: 
+            \begin{itemize}\item[] \textbf{\meuTitulo} \end{itemize}
+      \item Nome do pesquisador responsável: 
+            \begin{itemize}\item[]\textbf{\nomeAutor}\end{itemize}
+      \item Instituição sede do projeto: 
+            \begin{itemize}
+               \item[]\textbf{\nomeFaculdade \ da \nomeUniversidade} 
+            \end{itemize}
+      \item Equipe de pesquisa:
+            \begin{itemize}
+               \ifdefined\nomeMembroA
+                 \item[]\textbf{\nomeMembroA}
+               \else 
+                 \item[]\textbf{\nomeAutor}
+               \fi
+               \ifx\nomeMembroB\undefined\else \item[]\textbf{\nomeMembroB}\fi
+               \ifx\nomeMembroC\undefined\else \item[]\textbf{\nomeMembroC}\fi
+               \ifx\nomeMembroD\undefined\else \item[]\textbf{\nomeMembroD}\fi
+               \ifx\nomeMembroE\undefined\else \item[]\textbf{\nomeMembroE}\fi
+               \ifx\nomeMembroF\undefined\else \item[]\textbf{\nomeMembroF}\fi
+             \end{itemize}
+       
+          \ifdefined \numFAP
+             \item Número do projeto de pesquisa:
+             \begin{itemize}
+                 \item[]\textbf{\numFAP} 
+             \end{itemize}
+          \fi  
+       \item Período de vigência:
+            \begin{itemize}
+               \item[]\textbf{\periodRelat} 
+            \end{itemize}
+       \item Período coberto por este relatório científico:
+            \begin{itemize}
+               \item[]\textbf{\periodVig} 
+            \end{itemize}
+   \end{itemize}
+   \clearpage
+}

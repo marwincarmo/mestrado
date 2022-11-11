@@ -1,0 +1,153 @@
+---
+title: "Relatório Renatha - FAPESP"
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+#options(OutDec = ",", digits = 2)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+```
+
+```{r pacotes}
+library(flextable)
+library(dplyr)
+library(ggplot2)
+library(modelsummary)
+
+big_border = officer::fp_border(color="black", width = 2)
+small_border = officer::fp_border(color="black", width = 1)
+
+my_theme <- function(x, ...) {
+    x <- colformat_double(x, big.mark = "", decimal.mark = ",", digits = 2)
+    x <- set_table_properties(x, width = 1, layout = "autofit")
+    x <- border_remove(x)
+    x <- hline_top( x, border = small_border, part = "all" )
+    x <- hline_bottom(x, border = small_border, part = "all" )
+    x
+
+}
+```
+
+```{r raw-data}
+raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
+
+act <- readr::read_csv("~/Mestrado/data/grupo_act_021022.csv") |> dplyr::pull(record_id)
+cbt <- readr::read_csv("~/Mestrado/data/grupo_cbt_021022.csv") |> dplyr::pull(record_id)
+le <- readr::read_csv("~/Mestrado/data/grupo_le_021022.csv") |> dplyr::pull(record_id)
+
+renda_corrigida <- readr::read_csv("G:/Documentos/ProjetosR/ASONO/act_insonia/dados/renda_corrigida_2610.csv")
+
+location <- readr::read_csv("../../qualifying_exam/data_analyses/location_db.csv") |> 
+  dplyr::select(record_id, estado, region)
+```
+
+```{r data-prep}
+dat <- raw.data |> 
+  dplyr::filter(record_id %in% c(act, cbt, le)) |> 
+  dplyr::mutate(grupo = dplyr::case_when(
+    record_id %in% act ~ "ACT",
+    record_id %in% cbt ~ "TCC",
+    record_id %in% le ~ "LE",
+  )) |> 
+  tidyr::fill(idade, .direction = "down") |> 
+  tidyr::fill(igi_escore, .direction = "down") |> 
+  tidyr::fill(ehad_ansiedade_escore, .direction = "down") |>
+  tidyr::fill(ehad_depressao_escore, .direction = "down") |>
+  tidyr::fill(aaq_score, .direction = "down") |>
+  tidyr::fill(dbas_score, .direction = "down") |>
+  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x)) %>% 
+  dplyr::mutate(spaq_score = select(., spaq_1:spaq_8) %>% rowSums()) %>% 
+  tidyr::fill(spaq_score, .direction = "down") |>
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::select(c(record_id, grupo, idade, renda, sexo, etnia, estado_civil, filhos, filhos_numero, ocupacao, escolaridade,
+                  igi_escore, ehad_ansiedade_escore, ehad_depressao_escore, aaq_score, dbas_score, spaq_score)) |> 
+  # transformando as variaveis
+  dplyr::mutate(
+    sexo = factor(ifelse(sexo == 1, "Feminino", "Masculino")),
+    
+    etnia = dplyr::case_when(
+      etnia == 1 ~ "Brancos",
+      etnia %in% c(2,3) ~ "Pretos e pardos",
+      etnia == 4 ~ "Asiáticos",
+      !etnia %in% c(1:4) ~ "Outros/não informado"),
+    
+    escolaridade = dplyr::case_when(
+      escolaridade %in% c(1:6) ~ "Ensino médio incompleto",
+      escolaridade %in% c(7:8) ~ "Ensino médio completo",
+      escolaridade == 9 ~ "Superior completo"
+    ),
+    
+    filhos = ifelse(filhos == 0, "Não", "Sim"),
+    
+    estado_civil = dplyr::case_when(
+      estado_civil == 1 ~ "Casado (a)",
+      estado_civil == 2 ~ "União Estável",
+      estado_civil == 3 ~ "Solteiro (a)",
+      estado_civil == 4 ~ "Viúvo (a)",
+      estado_civil == 5 ~ "Separado (a) / Desquitado (a)"
+    ),
+    
+    ocupacao = dplyr::case_when(
+      ocupacao == 1 ~ "Aposentado",
+      ocupacao == 2 ~ "Autônomo",
+      ocupacao == 3 ~ "Desempregado (procurando emprego)",
+      ocupacao == 4 ~ "Do lar",
+      ocupacao == 5 ~ "Emprego formal", 
+      ocupacao == 6 ~ "Emprego informal",
+      ocupacao == 7 ~ "Estudante"
+      )
+    ) |> 
+  dplyr::left_join(renda_corrigida, by = "record_id") |> 
+  dplyr::mutate(renda.x = case_when(
+    !is.na(renda.y) ~ renda.y,
+    # renda.x >= 1000000 ~ NA_real_,
+    # renda.x == 0 ~ NA_real_,
+    TRUE ~ renda.x
+    )
+         ) |> 
+  dplyr::rename(renda = renda.x) |> 
+  dplyr::left_join(location, by = "record_id") |> 
+  dplyr::mutate(regiao = dplyr::case_when(
+    estado == "Distrito Federal/Goiás" ~ "Região Centro-Oeste",
+    TRUE ~ region
+  ), .before = "igi_escore") |> 
+  dplyr::select(-c(renda.y, estado, record_id, region))
+```
+
+```{r}
+#datasummary_balance(~grupo, data=dat, output = 'flextable')
+tab1 <- tableone::CreateTableOne(data=dat, strata="grupo")
+
+tab1b <- print(tab1, printToggle = FALSE) |> 
+  tibble::as_tibble(rownames = "var") |> 
+  slice(-1)
+```
+
+```{r}
+flextable(tab1b) |> my_theme()
+```
+
+# Exclusão MINI
+
+```{r}
+raw.data |> 
+  dplyr::filter(elegibilidade_complete == 2) |> 
+  dplyr::select(eleg_random_motivo) |> 
+  dplyr::filter(!is.na(eleg_random_motivo)) |> 
+  dplyr::mutate(eleg_random_motivo = dplyr::case_when(
+    eleg_random_motivo == 1 ~ "Nao respondeu adequadamente a triagem inicial (survey)",
+    eleg_random_motivo == 2 ~ "Voluntario preencheu criterios MINI",
+    eleg_random_motivo == 7 ~ "Presenca de transtorno mental avaliado pela impressao clinica",
+    eleg_random_motivo == 3 ~ "Falta de disponibilidade",
+    eleg_random_motivo == 4 ~ "Recusa em participar",
+    eleg_random_motivo == 6 ~ "Outros transtornos do sono",
+    eleg_random_motivo == 5 ~ "Outros"
+  )) %>% 
+  tableone::CreateTableOne(data=.)
+```
+

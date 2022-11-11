@@ -1,0 +1,148 @@
+---
+title: "Relatório Barbara - Congresso Brasileiro de Sono 2022"
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+#options(OutDec = ",", digits = 2)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+```
+
+```{r pacotes}
+library(dplyr)
+library(ggplot2)
+library(fmsb)
+library(stringr)
+```
+
+```{r}
+neoffi <- readxl::read_xlsx("~/Mestrado/data/neoffi_geral_1708.xlsx") |> 
+  janitor::clean_names() |> 
+  dplyr::select(-dplyr::starts_with("questao")) |> 
+  dplyr::mutate(dplyr::across(dplyr::ends_with("_t"), as.double))
+
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+
+neo2 <- neoffi |>
+  dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1))
+```
+
+## Graficos
+
+### Por sexo
+
+```{r}
+dados_radar <- neo2 %>% 
+  select(c(grupo, ends_with("_t"))) %>% 
+  rename_with(~str_remove_all(.x, "_escore_t"))
+# maximos <- dados_radar %>% 
+#   summarise(across(where(is.double), max))
+# minimos <- dados_radar %>% 
+#   summarise(across(where(is.double), min))
+
+maximos <- data.frame(
+  "neuroticismo" = 60,
+  "extroversao" = 60,
+  "abertura" = 60,
+  "amabilidade" = 60,
+  "conscienciosidade" = 60
+)
+
+minimos <- data.frame(
+  "neuroticismo" = 40,
+  "extroversao" = 40,
+  "abertura" = 40,
+  "amabilidade" = 40,
+  "conscienciosidade" = 40
+)
+
+dados_radar_2 <-dados_radar %>% 
+  group_by(grupo) %>% 
+  summarise(across(where(is.double), mean)) %>% 
+  select(-grupo)
+
+dados_radar_3 <- as.data.frame(rbind(maximos, minimos, dados_radar_2))
+rownames(dados_radar_3) <- c("maximo", "minimo", "SemInsonia", "Insonia")
+
+dados_radar_3
+```
+
+```{r create radar chart function}
+windowsFonts(A = windowsFont("Arial Narrow"))
+create_beautiful_radarchart <- function(data, color = "#00AFBB", 
+                                        vlabels = colnames(data), vlcex = 0.7,
+                                        caxislabels = NULL, title = NULL,family = "A", ...){
+  radarchart(
+    data, axistype = 1,
+    # Customize the polygon
+    pcol = color, pfcol = scales::alpha(color, 0.5), plwd = 2, plty = 1,
+    # Customize the grid
+    cglcol = "grey", cglty = 1, cglwd = 0.8,
+    # Customize the axis
+    axislabcol = "grey", 
+    # Variable labels
+    vlcex = vlcex, vlabels = vlabels,
+    caxislabels = caxislabels, title = title, ...,
+    family = "A"
+  )
+}
+
+```
+
+```{r radar sexos, dev = "png", dpi = 300, cache = TRUE}
+#tiff("radar_sexos.tiff", width = 7, height = 6, units = 'in', res = 300, compression = 'none')
+png("radar_insoniaPT.png", width = 7.5, height = 6, units = 'in', res = 300)
+# Reduce plot margin using par()
+op <- par(mar = c(1, 2, 2, 2), family = "A", font = 2)
+# Create the radar charts
+create_beautiful_radarchart(
+  data = dados_radar_3, caxislabels = c(40, 45, 50, 55, 60),
+  color = c("#FC4E07", "#00AFBB"),
+  vlabels = toupper(c("Neuroticismo",  "Extroversão", "Abertura", "Amabilidade",
+  "Conscienciosidade")),
+   vlcex = .9,
+  #title = toupper("Escores padronizados do Big Five por sexo")
+)
+# Add an horizontal legend
+legend(
+  x = "bottom", legend = c("Bons dormidores", "Insônes"), horiz = TRUE,
+  bty = "n", pch = 20 , col = c("#FC4E07", "#00AFBB"),
+  text.col = "black", cex = 1, pt.cex = 2, text.font = 2
+  )
+par(op)
+
+
+dev.off()
+```
+
+```{r radar sexos, dev = "png", dpi = 300, cache = TRUE}
+#tiff("radar_sexos.tiff", width = 7, height = 6, units = 'in', res = 300, compression = 'none')
+png("radar_insoniaEN.png", width = 7.5, height = 6, units = 'in', res = 300)
+# Reduce plot margin using par()
+op <- par(mar = c(1, 2, 2, 2), family = "A", font = 2)
+# Create the radar charts
+create_beautiful_radarchart(
+  data = dados_radar_3, caxislabels = c(40, 45, 50, 55, 60),
+  color = c("#FC4E07", "#00AFBB"),
+  vlabels = toupper(c("Neuroticism",  "Extraversion", "Openness to Experience", "Agreeableness",
+  "Conscientiousness")),
+   vlcex = .9,
+  #title = toupper("Escores padronizados do Big Five por sexo")
+)
+# Add an horizontal legend
+legend(
+  x = "bottom", legend = c("Good sleepers", "Insomnia"), horiz = TRUE,
+  bty = "n", pch = 20 , col = c("#FC4E07", "#00AFBB"),
+  text.col = "black", cex = 1, pt.cex = 2, text.font = 2
+  )
+par(op)
+
+
+dev.off()
+```

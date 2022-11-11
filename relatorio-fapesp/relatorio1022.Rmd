@@ -1,0 +1,19 @@
+---
+input: comandos.tex
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+    template: template-fapesp-relatorio.tex
+header-includes:
+  - \documentclass[12pt]{report}
+  - \usepackage[a4paper]{geometry}
+  - \usepackage[utf8]{inputenc}
+  - \usepackage[english,portuguese]{babel}
+  - \usepackage[myheadings]{fullpage}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{fancyhdr}
+  - \usepackage{graphicx, setspace}
+  - \usepackage{sectsty}
+  - \usepackage{url}
+
+---

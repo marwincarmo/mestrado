@@ -80,3 +80,50 @@ webshot::webshot(url = "diag.html",
                  file= "diag.png")
 ```
 
+
+```{r flowcca2-ptbr, echo=FALSE, fig.cap='Stages of cross-cultural adaptation.', out.height="100%", out.width="100%"}
+
+diag_ptbr <- DiagrammeR::grViz("digraph {
+  graph [layout = dot, rankdir = TB]
+  
+  node [shape = rectangle, fontname = Helvetica] 
+  init [label = 'Instrumento original']
+  ft1 [label = 'Tradução 1']
+  ft2 [label = 'Tradução 2']
+  ft3 [label = 'Tradução 3']
+  synth [label = 'Síntese \ndas traduções']
+  expcom [label = 'Revisão do comitê \nde especialistas']
+  bkt1 [label = 'Retrotradução 1']
+  bkt2 [label = 'Retrotradução 2']
+  synthb [label = 'Síntese das \nretrotraduções']
+  pog [label = 'Apresentação da nova versão \naos autores originais']
+  adq [label = 'Adequado?']
+  disc [label = 'Discussão com os \nautores originais']
+  
+  
+  # edge definitions with the node IDs
+  init -> {ft1 ft2 ft3}
+  {ft1 ft2 ft3} -> synth
+  synth -> expcom -> {bkt1 bkt2}
+  {bkt1 bkt2} -> synthb
+  synthb -> pog
+  {rank=same; pog; adq}
+  pog -> adq 
+  adq -> {Sim Não}
+  {rank=same; Não; disc}
+  Não -> disc -> adq
+  Sim -> 'Estudo piloto' -> 'Revisão do comitê \nde especialistas' -> 'Versão final \ntraduzida'
+  }",
+  height = 1420, 
+  width = 1024, 
+  )
+```
+
+```{r diag-ptbr, eval=FALSE, fig.align='center', fig.cap='Stages of cross-cultural adaptation.', fig.height=14, dpi=300, include=FALSE}
+htmlwidgets::saveWidget(diag_ptbr,
+                        file="diag_ptbr.html",
+                        selfcontained = TRUE
+                        )
+webshot::webshot(url = "diag_ptbr.html",
+                 file= "diag_ptbr.png")
+```
