@@ -74,6 +74,10 @@ h1, h2, h3 {
 
 /* Footer */
 
+.remark-slide-number {
+  left: 5%
+}
+
 div.my-footer {
     background-color: #024F84;
     position: absolute;
