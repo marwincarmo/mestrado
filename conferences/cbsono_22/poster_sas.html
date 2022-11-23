@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Development of the Sleep Acceptance Scale (SAS)</title>
+
+
+<script src="poster_sas_files/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="poster_sas_files/viz-1.8.2/viz.js"></script>
+<link href="poster_sas_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="poster_sas_files/grViz-binding-1.0.9/grViz.js"></script>
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 80cm 150cm;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 80cm;
+height: 150cm;
+text-align: justify;
+font-size: 50px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #C00000 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #C0000024;
+color: #C00000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 32px;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #C0000020;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 32px;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 32px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 80cm;
+height: calc(150cm *  (1 - 0.13 - 7.0e-2 - 0.01) );
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(150cm *  0.13 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #C00000;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #C00000;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:#024F84;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 32px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #C00000;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #024F8475 33%,
+      #024F84 50%,
+      #024F8475 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 80cm;
+height: calc(150cm * 0.13);
+position: absolute;
+background-color: #024F84;
+color: #ffffffcf;
+font-family: PT Sans;
+/*background-image: linear-gradient(#024F84 50%,#C00000); */
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffffcf;
+}
+#main-img-left {
+width: 25%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-center {
+width: 10%;
+left: calc(80cm * 0.45);
+bottom: 0.5in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-right {
+width: 15%;
+right: 0.5in;
+bottom: 0.4in;
+position: absolute;
+opacity: 80%;
+}
+.main p {
+font-size: 170px;
+font-family: PT Sans;
+text-align: left;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 0.8em;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 80cm;
+height: 150cm;
+padding: 0cm;
+}
+.main_bottom {
+width: 80cm;
+height: calc(150cm * 7.0e-2);
+margin-top: calc(150cm * (1 - 7.0e-2));
+position: absolute;
+background-color: #024F84;
+/*background-image: linear-gradient(#C00000 10%, #024F84);*/
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Development of the Sleep Acceptance Scale (SAS)</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Marwin M. I. B. Carmo</strong><sup> 1</sup><br>
+<a class="twitter" href="https://mobile.twitter.com/marwincarmo"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@marwincarmo</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
+ Renatha El Rafihi Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+ </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Psychiatry, University of São Paulo, Brazil
+</p>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Insomnia symptoms are associated with higher levels of <b><span style="color: #C00000;">metacognitive control</b></span>. Controlled information processing interferes with a healthy sleep process by preventing cognitive deactivation, which involves diminished verbal regulation and control, and acceptance of spontaneous physiological and mental processes. Because general tools for measuring acceptance do not address sleep-related behaviors, the development of specific instruments is essential for studying acceptance of insomnia.</p>
+<div id="objective" class="section level2">
+<h2>Objective</h2>
+<p>This study aimed to develop a new measure of sleep acceptance, titled Sleep Acceptance Scale (SAS), and examine its factorial structure, internal consistency, and construct validity.</p>
+</div>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>The SAS was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance.</p>
+<p>Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years,with and without insomnia symptoms. Participants completed self-report questionnaires, including:</p>
+<ol style="list-style-type: decimal">
+<li>Hospital Anxiety and Depression Scale (HADS);</li>
+<li>Insomnia Severity Index (ISI);</li>
+<li>Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);</li>
+<li>Acceptance and Action Questionnaire (AAQ-II).</li>
+</ol>
+<p>We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) to estimate the number of facets underlying the instrument items. Then, we ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates. Reliability indices for each of the facets were obtained using Cronbach’s <span class="math inline">\(\alpha\)</span> and McDonald’s <span class="math inline">\(\omega\)</span>. We assessed construct validity by examining the relations with variables known to be linked with insomnia.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>Mean age was 38.6 <span class="math inline">\(\pm\)</span> 9.8 years. Our sample included 1141 women and 1084 participants with insomnia symptoms.</p>
+<p>The parallel analysis procedure indicated two latent factors: Avoidance (two items) and Distress (four items). The 2-factor model showed a good fit [<span class="math inline">\(\chi^2\)</span>(8) = 59.48, RMSEA = 0.067 [0.05, 0.084]; CFI = 0.999; RNI = 0.999; TLI = 0.998] and factor loadings ranging from .55 to .95.</p>
+<p>Internal consistency was suboptimal for Avoidance (<span class="math inline">\(\alpha\)</span> = 0.53 [0.48, 0.58], <span class="math inline">\(\omega\)</span> = 0.55 [0.51, 0.6]) and excellent for Distress (<span class="math inline">\(\alpha\)</span> = 0.93 [0.93, 0.94], <span class="math inline">\(\omega\)</span> = 0.93 [0.93, 0.94]).</p>
+<p>The SAS was positively correlated with ISI (<em>r</em> = 0.8), DBAS-16 (<em>r</em> = 0.76), AAQ-II (<em>r</em> = 0.63), HADS-A (<em>r</em> = 0.64), HADS-D (<em>r</em> = 0.56), and negatively correlated with SPAQ (<em>r</em> = -0.63).</p>
+<div id="htmlwidget-921d4dc7b8c1adeb2676" style="width:100%;height:1500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-921d4dc7b8c1adeb2676">{"x":{"diagram":"\ndigraph {\n\n  rankdir=LR;\n  \n  \"Avd\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"Dis\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"x1\" [shape = \"square\"]\n  \"x2\" [shape = \"square\"]\n  \"x3\" [shape = \"square\"]\n  \"x4\" [shape = \"square\"]\n  \"x5\" [shape = \"square\"]\n  \"x6\" [shape = \"square\"]\n\n  \"Avd\"->\"x1\" [ label = \".55\"]\n  \"Avd\"->\"x2\" [ label = \".72\"]\n  \"Dis\"->\"x3\" [ label = \".93\"]\n  \"Dis\"->\"x4\" [ label = \".95\"]\n  \"Dis\"->\"x5\" [ label = \".85\"]\n  \"Dis\"->\"x6\" [ label = \".89\"]\n\n  \"x1\" -> \"x1\":e [dir=both label = \".70\"]\n  \"x2\" -> \"x2\":e [dir=both label = \".48\"]\n  \"x3\" -> \"x3\":e [dir=both label = \".13\"]\n  \"x4\" -> \"x4\":e [dir=both label = \".10\"]\n  \"x5\" -> \"x5\":e [dir=both label = \".28\"]\n  \"x6\" -> \"x6\":e [dir=both label = \".21\"]\n\n  \"Avd\":w -> \"Dis\":w [dir=both label = .79 constraint=false]\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>Preliminary evidence suggest that the SAS is a valid tool to assess acceptance of sleep problems.</p>
+<div id="remarks" class="section level2">
+<h2>Remarks</h2>
+<p><span style="text-align: left;">
+This poster was created using <code>posterdown</code> package for R <span class="citation">(<a href="#ref-R-posterdown" role="doc-biblioref">Thorne, 2019</a>)</span>. Reproducible code available at <a href="https://bit.ly/postercbs" class="uri">https://bit.ly/postercbs</a>
+</span></p>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-harvey2002" class="csl-entry">
+Harvey, A. G. (2002). A cognitive model of insomnia. <em>Behaviour Research and Therapy</em>, <em>40</em>(8), 869–893. <a href="https://doi.org/fwxq35">https://doi.org/fwxq35</a>
+</div>
+<div id="ref-morin1993" class="csl-entry">
+Morin, C. M., Stone, J., Trinkle, D., Mercer, J., &amp; Remsberg, S. (1993). Dysfunctional beliefs and attitudes about sleep among older adults with and without insomnia complaints. <em>Psychology and Aging</em>, <em>8</em>(3), 463–467. <a href="https://doi.org/frwwvp">https://doi.org/frwwvp</a>
+</div>
+<div id="ref-ong2012" class="csl-entry">
+Ong, J. C., Ulmer, C. S., &amp; Manber, R. (2012). Improving sleep with mindfulness and acceptance: <span>A</span> metacognitive model of insomnia. <em>Behaviour Research and Therapy</em>, <em>50</em>(11), 651–660. <a href="https://doi.org/f4fczt">https://doi.org/f4fczt</a>
+</div>
+<div id="ref-R-posterdown" class="csl-entry">
+Thorne, B. (2019). <em>Posterdown: Generate PDF conference posters using r markdown</em>. <a href="https://github.com/brentthorne/posterdown">https://github.com/brentthorne/posterdown</a>
+</div>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p>Lower <strong>psychological flexibility</strong> can increase the effects of <strong>dysfunctional beliefs</strong> on <strong>insomnia severity</strong>.</p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=img/fapesp-white.png>
+<img id="main-img-center" src=img/qrcode.svg>
+<img id="main-img-right" src=img/ipq-white3.png>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>
