@@ -52,7 +52,7 @@ dat <- raw.data |>
   dplyr::select(-renda.y) |> 
   dplyr::left_join(location, by = "record_id") |> 
   dplyr::mutate(region = dplyr::case_when(
-    estado == "Distrito Federal/Goiás" ~ "Região Centro-Oeste",
+    estado == "Distrito Federal/Goias" ~ "Região Centro-Oeste",
     TRUE ~ region
   ))
 ```

@@ -11,6 +11,8 @@
 <title>Development of the Sleep Acceptance Scale (SAS)</title>
 
 
+<script src="poster_sas_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="poster_sas_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <script src="poster_sas_files/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="poster_sas_files/viz-1.8.2/viz.js"></script>
 <link href="poster_sas_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
@@ -47,7 +49,7 @@ padding: 0px;
 width: 80cm;
 height: 150cm;
 text-align: justify;
-font-size: 50px;
+font-size: 46px;
 line-height: 1.05;
 }
 /* RMarkdown Class Styles */
@@ -288,7 +290,7 @@ position: absolute;
 opacity: 80%;
 }
 .main p {
-font-size: 170px;
+font-size: 160px;
 font-family: PT Sans;
 text-align: left;
 margin: 0;
@@ -396,17 +398,23 @@ span > #tab:mytable {
 <a class="twitter" href="https://mobile.twitter.com/marwincarmo"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@marwincarmo</a><br>
 
 <a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
+ Maria Laura Nogueira Pires<sup> 2</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:laurapires@actigrafia.org" class="email">laurapires@actigrafia.org</a> <br>
+ Leo Paulos-Guarnieri<sup> 3</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:guarnieri.leo@gmail.com" class="email">guarnieri.leo@gmail.com</a> <br>
  Renatha El Rafihi Ferreira<sup> 1</sup><br>
 
 <a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
 </h3>
 
 <h5 id="author_extra", class="author_extra">
- </h5>
+   </h5>
 
 
 <p id="affiliation" class="affiliation">
-<sup>1</sup> Department of Psychiatry, University of São Paulo, Brazil
+<sup>1</sup> Department of Psychiatry, University of São Paulo, Brazil<br> <sup>2</sup> Private practice in sleep psychology<br> <sup>3</sup> Department of Psychology, Pontifícia Universidade Católica de São Paulo, Brazil
 </p>
 </div>
 
@@ -421,59 +429,416 @@ span > #tab:mytable {
 <div id="methods" class="section level1">
 <h1>Methods</h1>
 <p>The SAS was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance.</p>
-<p>Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years,with and without insomnia symptoms. Participants completed self-report questionnaires, including:</p>
+<p>Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:</p>
 <ol style="list-style-type: decimal">
 <li>Hospital Anxiety and Depression Scale (HADS);</li>
 <li>Insomnia Severity Index (ISI);</li>
 <li>Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);</li>
 <li>Acceptance and Action Questionnaire (AAQ-II).</li>
 </ol>
-<p>We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) to estimate the number of facets underlying the instrument items. Then, we ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates. Reliability indices for each of the facets were obtained using Cronbach’s <span class="math inline">\(\alpha\)</span> and McDonald’s <span class="math inline">\(\omega\)</span>. We assessed construct validity by examining the relations with variables known to be linked with insomnia.</p>
+<p>We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) to estimate the number of facets underlying the instrument items.</p>
+<p>We ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the Diagonally Weighted Least Squares (DWLS) estimator, considering items to be ordered.</p>
+<p>Reliability indices for each of the facets were obtained using Cronbach’s <span class="math inline">\(\alpha\)</span> and McDonald’s <span class="math inline">\(\omega\)</span>. We assessed construct validity by examining the relations with variables known to be linked with insomnia.</p>
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
-<p>Mean age was 38.6 <span class="math inline">\(\pm\)</span> 9.8 years. Our sample included 1141 women and 1084 participants with insomnia symptoms.</p>
-<p>The parallel analysis procedure indicated two latent factors: Avoidance (two items) and Distress (four items). The 2-factor model showed a good fit [<span class="math inline">\(\chi^2\)</span>(8) = 59.48, RMSEA = 0.067 [0.05, 0.084]; CFI = 0.999; RNI = 0.999; TLI = 0.998] and factor loadings ranging from .55 to .95.</p>
+<p>The parallel analysis procedure indicated two latent factors: <b><span style="color: #C00000;">Avoidance</b></span> (two items) and <b><span style="color: #C00000;">Distress</b></span> (four items). The 2-factor model showed a good fit [<span class="math inline">\(\chi^2\)</span>(8) = 59.48, RMSEA = 0.067 [0.05, 0.084]; CFI = 0.999; RNI = 0.999; TLI = 0.998].</p>
 <p>Internal consistency was suboptimal for Avoidance (<span class="math inline">\(\alpha\)</span> = 0.53 [0.48, 0.58], <span class="math inline">\(\omega\)</span> = 0.55 [0.51, 0.6]) and excellent for Distress (<span class="math inline">\(\alpha\)</span> = 0.93 [0.93, 0.94], <span class="math inline">\(\omega\)</span> = 0.93 [0.93, 0.94]).</p>
 <p>The SAS was positively correlated with ISI (<em>r</em> = 0.8), DBAS-16 (<em>r</em> = 0.76), AAQ-II (<em>r</em> = 0.63), HADS-A (<em>r</em> = 0.64), HADS-D (<em>r</em> = 0.56), and negatively correlated with SPAQ (<em>r</em> = -0.63).</p>
-<div id="htmlwidget-921d4dc7b8c1adeb2676" style="width:100%;height:1500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-921d4dc7b8c1adeb2676">{"x":{"diagram":"\ndigraph {\n\n  rankdir=LR;\n  \n  \"Avd\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"Dis\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"x1\" [shape = \"square\"]\n  \"x2\" [shape = \"square\"]\n  \"x3\" [shape = \"square\"]\n  \"x4\" [shape = \"square\"]\n  \"x5\" [shape = \"square\"]\n  \"x6\" [shape = \"square\"]\n\n  \"Avd\"->\"x1\" [ label = \".55\"]\n  \"Avd\"->\"x2\" [ label = \".72\"]\n  \"Dis\"->\"x3\" [ label = \".93\"]\n  \"Dis\"->\"x4\" [ label = \".95\"]\n  \"Dis\"->\"x5\" [ label = \".85\"]\n  \"Dis\"->\"x6\" [ label = \".89\"]\n\n  \"x1\" -> \"x1\":e [dir=both label = \".70\"]\n  \"x2\" -> \"x2\":e [dir=both label = \".48\"]\n  \"x3\" -> \"x3\":e [dir=both label = \".13\"]\n  \"x4\" -> \"x4\":e [dir=both label = \".10\"]\n  \"x5\" -> \"x5\":e [dir=both label = \".28\"]\n  \"x6\" -> \"x6\":e [dir=both label = \".21\"]\n\n  \"Avd\":w -> \"Dis\":w [dir=both label = .79 constraint=false]\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<table style="width:100%; font-family: Rasa; margin-left: auto; margin-right: auto;" class=" lightable-minimal">
+<caption>
+<span id="tab:table1">Table 1: </span>Study participants (N = 1419) descriptive statistics.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+N/Mean (%/SD)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 60%; ">
+Age (years)
+</td>
+<td style="text-align:center;width: 100%; ">
+38 (9.79)
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="2" style="border-bottom: 1px solid;">
+<strong>Gender</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Female
+</td>
+<td style="text-align:center;width: 100%; ">
+1130 (80.9)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Male
+</td>
+<td style="text-align:center;width: 100%; ">
+267 (19.1)
+</td>
+</tr>
+<tr grouplength="4">
+<td colspan="2" style="border-bottom: 1px solid;">
+<strong>Race/ethnicity</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Asian
+</td>
+<td style="text-align:center;width: 100%; ">
+48 (3.44)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Black
+</td>
+<td style="text-align:center;width: 100%; ">
+331 (23.7)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Other/Not informed
+</td>
+<td style="text-align:center;width: 100%; ">
+13 (0.931)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+White
+</td>
+<td style="text-align:center;width: 100%; ">
+1005 (71.9)
+</td>
+</tr>
+<tr grouplength="2">
+<td colspan="2" style="border-bottom: 1px solid;">
+<strong>Group</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Good sleeper
+</td>
+<td style="text-align:center;width: 100%; ">
+335 (24)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Insomnia
+</td>
+<td style="text-align:center;width: 100%; ">
+1062 (76)
+</td>
+</tr>
+<tr grouplength="3">
+<td colspan="2" style="border-bottom: 1px solid;">
+<strong>Education</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+College degree or higher
+</td>
+<td style="text-align:center;width: 100%; ">
+1085 (77.7)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Primary School
+</td>
+<td style="text-align:center;width: 100%; ">
+17 (1.22)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Secondary School
+</td>
+<td style="text-align:center;width: 100%; ">
+295 (21.1)
+</td>
+</tr>
+<tr grouplength="6">
+<td colspan="2" style="border-bottom: 1px solid;">
+<strong>Region of origin</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Central-West
+</td>
+<td style="text-align:center;width: 100%; ">
+54 (3.87)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Northeast
+</td>
+<td style="text-align:center;width: 100%; ">
+105 (7.52)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Northern
+</td>
+<td style="text-align:center;width: 100%; ">
+36 (2.58)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Southeast
+</td>
+<td style="text-align:center;width: 100%; ">
+1083 (77.5)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Southern
+</td>
+<td style="text-align:center;width: 100%; ">
+112 (8.02)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 60%; padding-left: 2em;" indentlevel="1">
+Not disclosed
+</td>
+<td style="text-align:center;width: 100%; ">
+7 (0.501)
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<table style="width:100%;">
+<caption>
+<span id="tab:unnamed-chunk-5">Table 2: </span>Descriptive statistics and item inter-correlations of the SAS.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Item
+</th>
+<th style="text-align:center;">
+1
+</th>
+<th style="text-align:center;">
+2
+</th>
+<th style="text-align:center;">
+3
+</th>
+<th style="text-align:center;">
+4
+</th>
+<th style="text-align:center;">
+5
+</th>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.59
+</td>
+<td style="text-align:center;">
+1.86
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+0.37
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.43
+</td>
+<td style="text-align:center;">
+1.8
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.44
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.7
+</td>
+<td style="text-align:center;">
+2.16
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.86
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.86
+</td>
+<td style="text-align:center;">
+2.19
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+0.54
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.6
+</td>
+<td style="text-align:center;">
+1.97
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+4.22
+</td>
+<td style="text-align:center;">
+2.26
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<div id="htmlwidget-f54ccb8c61c10b731901" style="width:80%;height:1500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f54ccb8c61c10b731901">{"x":{"diagram":"\ndigraph {\n\n  rankdir=LR;\n  \n  \"Avd\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"Dis\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"x1\" [shape = \"square\"]\n  \"x2\" [shape = \"square\"]\n  \"x3\" [shape = \"square\"]\n  \"x4\" [shape = \"square\"]\n  \"x5\" [shape = \"square\"]\n  \"x6\" [shape = \"square\"]\n\n  \"e1\" [shape = \"circle\"]\n  \"e2\" [shape = \"circle\"]\n  \"e3\" [shape = \"circle\"]\n  \"e4\" [shape = \"circle\"]\n  \"e5\" [shape = \"circle\"]\n  \"e6\" [shape = \"circle\"]\n\n  \"Avd\"->\"x1\" [ label = \".55\"]\n  \"Avd\"->\"x2\" [ label = \".72\"]\n  \"Dis\"->\"x3\" [ label = \".93\"]\n  \"Dis\"->\"x4\" [ label = \".95\"]\n  \"Dis\"->\"x5\" [ label = \".85\"]\n  \"Dis\"->\"x6\" [ label = \".89\"]\n  \n  \"x1\" -> \"e1\" [dir=back rank=same]\n  \"x2\" -> \"e2\" [dir=back]\n  \"x3\" -> \"e3\" [dir=back]\n  \"x4\" -> \"e4\" [dir=back]\n  \"x5\" -> \"e5\" [dir=back]\n  \"x6\" -> \"e6\" [dir=back]\n\n  \"e1\":e -> \"e1\":e [dir=both label = \".70\"]\n  \"e2\":e -> \"e2\":e [dir=both label = \".48\"]\n  \"e3\":e -> \"e3\":e [dir=both label = \".13\"]\n  \"e4\":e -> \"e4\":e [dir=both label = \".10\"]\n  \"e5\":e -> \"e5\":e [dir=both label = \".28\"]\n  \"e6\":e -> \"e6\":e [dir=both label = \".21\"]\n\n  \"Avd\":w -> \"Dis\":w [dir=both label = .79 constraint=false]\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 1: Structural equation model for the Confirmatory Factor Analysis for the final version of the Sleep Acceptance Scale. Avd = Avoidance, Dis = Distress.
+</p>
+</div>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
-<p>Preliminary evidence suggest that the SAS is a valid tool to assess acceptance of sleep problems.</p>
-<div id="remarks" class="section level2">
-<h2>Remarks</h2>
-<p><span style="text-align: left;">
-This poster was created using <code>posterdown</code> package for R <span class="citation">(<a href="#ref-R-posterdown" role="doc-biblioref">Thorne, 2019</a>)</span>. Reproducible code available at <a href="https://bit.ly/postercbs" class="uri">https://bit.ly/postercbs</a>
-</span></p>
-</div>
-</div>
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
-<div id="ref-harvey2002" class="csl-entry">
-Harvey, A. G. (2002). A cognitive model of insomnia. <em>Behaviour Research and Therapy</em>, <em>40</em>(8), 869–893. <a href="https://doi.org/fwxq35">https://doi.org/fwxq35</a>
-</div>
-<div id="ref-morin1993" class="csl-entry">
-Morin, C. M., Stone, J., Trinkle, D., Mercer, J., &amp; Remsberg, S. (1993). Dysfunctional beliefs and attitudes about sleep among older adults with and without insomnia complaints. <em>Psychology and Aging</em>, <em>8</em>(3), 463–467. <a href="https://doi.org/frwwvp">https://doi.org/frwwvp</a>
-</div>
-<div id="ref-ong2012" class="csl-entry">
-Ong, J. C., Ulmer, C. S., &amp; Manber, R. (2012). Improving sleep with mindfulness and acceptance: <span>A</span> metacognitive model of insomnia. <em>Behaviour Research and Therapy</em>, <em>50</em>(11), 651–660. <a href="https://doi.org/f4fczt">https://doi.org/f4fczt</a>
-</div>
-<div id="ref-R-posterdown" class="csl-entry">
-Thorne, B. (2019). <em>Posterdown: Generate PDF conference posters using r markdown</em>. <a href="https://github.com/brentthorne/posterdown">https://github.com/brentthorne/posterdown</a>
-</div>
+<p>Preliminary evidence suggest that the SAS might be a reliable and valid indicator of acceptance of sleep problems in people with and without sleep problems.</p>
+<div id="items" class="section level2">
+<h2>Items</h2>
+<ol style="list-style-type: decimal">
+<li><p>Tento controlar meu sono forçando que ele aconteça, ou sendo muito rígido(a) em relação aos horários de dormir e acordar.</p></li>
+<li><p>Evito compromissos ou deixo de fazer coisas que gosto ou preciso por causa do meu sono.</p></li>
+<li><p>Sinto-me desconfortável ao pensar no momento de dormir.</p></li>
+<li><p>Tenho sentimentos negativos em relação ao meu sono.</p></li>
+<li><p>Minhas preocupações, pensamentos e sentimentos sobre o meu sono interferem na maneira como eu lido com o meu dia a dia.</p></li>
+<li><p>Tenho medo de não dormir.</p></li>
+</ol>
 </div>
 </div>
 
 </div>
 <div class="main">
-<p>Lower <strong>psychological flexibility</strong> can increase the effects of <strong>dysfunctional beliefs</strong> on <strong>insomnia severity</strong>.</p>
+<p>Preliminary evidence for a new measure
+of <strong>Sleep Acceptance</strong>: a promising tool for clinicians and researchers.</p>
 </div>
 <div class="main_bottom">
 <img id="main-img-left" src=img/fapesp-white.png>
-<img id="main-img-center" src=img/qrcode.svg>
+<img id="main-img-center" src=img/qrcodeSAS.svg>
 <img id="main-img-right" src=img/ipq-white3.png>
 </div>
 </div>

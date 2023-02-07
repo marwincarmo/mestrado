@@ -1,0 +1,198 @@
+---
+main_topsize: 0.13 #percent coverage of the poster
+main_bottomsize: 0.07
+poster_height: "150cm"
+poster_width: "80cm"
+body_textsize: "45px"
+#ESSENTIALS
+title: '**A network approach of Insomnia and Dysfunctional Beliefs and Attitudes About Sleep**'
+author:
+  - name: '**Marwin M. I. B. Carmo**'
+    affil: 1
+    main: true
+    #orcid: '0000-0002-1099-3857'
+    twitter: marwincarmo 
+    email: marwin@usp.br
+  - name: Renatha El Rafihi Ferreira
+    affil: 1
+    main: true
+    email: 'rerafihi@usp.br'
+affiliation:
+  - num: 1
+    address: Department of Psychiatry, University of São Paulo, Brazil
+# Main Colour Scheme
+primary_colour: "#024F84"
+secondary_colour: "#C00000"
+body_bgcol: "#ffffff"
+#---POSTER BODY OPTIONS---#
+reference_textsize: "32px"
+caption_textsize: "32px"
+affiliation_textsize: "32px"
+#Column
+column_numbers: 2
+#Main Section
+main_fontfamily: "PT Sans"
+main_textalign: "left"
+main_textsize: "180px"
+main_textalpha: "cf"
+main_findings:
+  - "**Worry about sleep** may be a priority symptom for insomnia treatment."
+main_textcol: "#ffffff"
+logoleft_name: img/fapesp-white.png
+logoright_name: img/ipq-white3.png
+logocenter_name: img/qrcodeNW.svg
+output: 
+  posterdown::posterdown_betterport:
+    highlight: NULL
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+    template: custom_template.html
+bibliography: references.bib
+link-citations: true
+csl: apa7.csl
+#nocite: '@*'
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+#options(knitr.table.format = "html") 
+#options(kableExtra.html.bsTable = T)
+```
+
+```{r data, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+library(tidyr)
+library("stringr")
+library(ggplot2)
+library(bootnet)
+library(kableExtra)
+library(patchwork)
+```
+
+```{r dataset, include=FALSE}
+raw_data <- readr::read_csv("G:/Documentos/ProjetosR/conferences/vii-clinica-psiquiatrica/dbas_network/data_dbas.csv")
+
+# By item
+base_items <- raw_data |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::select(igi_escore, dbas_1:dbas_16) |> 
+  dplyr::rename(ISI = igi_escore,
+                Q1 =dbas_1, Q2 =dbas_2,
+                Q3 =dbas_3, Q4 =dbas_4,
+                Q5 =dbas_5, Q6 =dbas_6,
+                Q7 =dbas_7, Q8 =dbas_8,
+                Q9 =dbas_9, Q10 =dbas_10, 
+                Q11=dbas_11, Q12 = dbas_12,
+                Q13=dbas_13, Q14 = dbas_14,
+                Q15=dbas_15, Q16 = dbas_16)
+items <- c("Insomnia Severity Index",
+           "I need 8 hours of sleep to feel refreshed and function well during the day",
+           "When I don't get proper amount of sleep on a given night, \n I need to catch up on the next day by napping or on the next night by sleeping longer",
+           "I am concerned that chronic insomnia may have serious consequences on my physical health",
+           "I am worried that I may lose control over my abilities to sleep",
+           "After a poor night’s sleep, I know that it will interfere with \n my daily activities on the next day",
+           "In order to be alert and function well during the day, \n I believe I would be better off taking a sleeping pill rather than having a poor night’s sleep",
+           "When I feel irritable, depressed, or anxious during the day,\n it is mostly because I did not sleep well the night before",
+           "When I sleep poorly on one night, I know it will disturb my sleep schedule for the whole week",
+           "Without an adequate night’s sleep, I can hardly function the next day",
+           "I can’t ever predict whether I’ll have a good or poor night’s sleep",
+           "I have little ability to manage the negative consequences of disturbed sleep",
+           "When I feel tired, have no energy, or just seem not to function well during the day,\n it is generally because I did not sleep well the night before",
+           "I believe insomnia is essentially the result of a chemical imbalance",
+           "I feel insomnia is ruining my ability to enjoy life and prevents me from doing what I want",
+           "Medication is probably the only solution to sleeplessness",
+           "I avoid or cancel obligations (social, family) after a poor night’s sleep")
+           
+
+factors <- c("Insomnia Severity Index", rep("Expectations", 2), rep("Worry", 2), "Consequences",
+             "Medication", "Consequences", "Worry", "Consequences", rep("Worry", 2), "Consequences",
+             "Medication", "Worry", "Medication", "Consequences")
+
+Network_items <- estimateNetwork(base_items, default = "EBICglasso", weighted = TRUE)
+
+# By factors
+
+base_factors <- raw_data |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |> 
+  dplyr::select(igi_escore, dbas_1:dbas_16) |> 
+  dplyr::mutate(cons = c(dbas_5 + dbas_7 + dbas_9 + dbas_12 + dbas_16),
+               worry = c(dbas_3 + dbas_4 + dbas_8 + dbas_10 + dbas_11 + dbas_14),
+               exp = c(dbas_1 + dbas_2),
+               med = (dbas_6 + dbas_13 + dbas_15)
+               ) |> 
+  dplyr::select(-c(dplyr::starts_with("dbas_"))) |> 
+  dplyr::rename(isi = igi_escore)
+
+Network_factors <- estimateNetwork(base_factors, default = "EBICglasso", weighted = TRUE)
+
+```
+
+
+# Introduction
+
+Cognitive processes are crucial to several models of insomnia. Negatively toned cognitive activity triggers arousal and distress, channeling attention and monitoring to sleep and creating distorted perceptions. Challenging unhelpful beliefs about sleep is a crucial element of cognitive-behavioral therapy for insomnia. Understanding how this network of beliefs connects to insomnia severity may provide leads to help targeted interventions. 
+
+
+# Objective
+
+In a sample of Brazilian adults, we used a network analysis of cross-sectional data to investigate the associations of dysfunctional beliefs and attitudes about sleep with overall insomnia severity. 
+
+# Methods
+
+Data were collected from surveys responded to by 1376 adults aged 18 to 59 years, both with and without insomnia symptoms. Participants completed online self-report questionnaires, including Insomnia Severity Index (ISI) and the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16).
+
+Gaussian Graphical Models were estimated using the GLASSO regularization and EBIC model selection with hyperparameter set to 0.5. We first estimated a network describing the associations between overall insomnia severity and the four factors of DBAS-16. Subsequently, we estimated a network describing the associations between insomnia severity and each of the individual items of DBAS-16.
+
+The stability of node strength was estimated using a case dropping bootstrap procedure (1000 iterations). Node centrality was assessed by strength, closeness, and betweenness – these measures indicate how important nodes are in a network. 
+
+# Results
+
+Mean age was 38.3 $\pm$ 9.7 years. Our sample included 927 women and 935 participants with insomnia symptoms.
+
+```{r factors-plot, fig.cap = "Network model of DBAS factors and ISI total score. isi = Insomnia Severity Index, worry = Worry about sleep, exp = Sleep expectations, cons = Consequences of insomnia, med = Medication.", out.width="80%", dpi=300}
+plot(Network_factors, layout = "spring",
+     theme = "colorblind",color="seashell2",
+     nodeNames = colnames(base_factors), 
+     legend.mode="style2", label.cex = 1.2,
+     vsize = 12, esize = 15, details = F,legend = FALSE)
+
+```
+
+```{r centrality-factors-plot,fig.cap = "Centrality measures of DBAS factors", dpi=300}
+source("G:/Documentos/ProjetosR/conferences/vii-clinica-psiquiatrica/dbas_network/centrality_plots.R")
+plot(cntPlot1)
+```
+
+
+```{r network-items, fig.cap = "Network model of DBAS items and ISI total score.", dpi=300, out.width="100%"}
+plot(Network_items, layout = "spring",
+     label.cex=.70, label.scale=F, theme = "colorblind",
+     nodeNames = items, groups = factors,
+     legend.mode="style2", legend.cex=.22,
+     vsize = 6, esize = 15, details = F, 
+     layoutOffset = c(-.2,0),legend = FALSE)
+```
+```{r centrality-items-plot, fig.cap = "Centrality measures of DBAS items", dpi=300}
+
+plot(cntPlot2)
+```
+
+<b><span style="color: #C00000;">Worry about sleep</b></span> was a highly <b><span style="color: #C00000;">central</b></span> symptom, indicating its importance as a possible target for cognitive-behavioral therapy for insomnia. Nodes with high centrality indices are important in the flow of information through the network. 
+
+We found a negative partial correlation between sleep expectations and insomnia severity. The belief that a poor night of sleep would ruin functioning the next day emerged as the item with the highest strength, closeness, and betweenness. Another item with high centrality indices referred to feelings that insomnia is ruining one’s ability to enjoy life. 
+
+# Conclusion
+
+Worry about sleep is a factor that can directly influence other nodes.
+
+*Belief that a poor night of sleep would ruin functioning on the next day* and *feelings that insomnia is ruining ability to enjoy life* are possible targets for improving CBT-I.
+
+These findings may benefit the efficiency of future intervention studies by identifying priority symptoms for treatment.
