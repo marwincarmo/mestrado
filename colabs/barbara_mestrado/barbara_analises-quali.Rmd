@@ -1,0 +1,217 @@
+---
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+options(OutDec = ",", digits = 1)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+```
+
+```{r pacotes}
+library(flextable)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r funcoes}
+refator <- function(x) {
+  factor(x,
+         levels = c("Muito Baixa", "Baixa", "Média", "Alta", "Muito Alta"))
+}
+
+lista_regex <- list(
+  superior_incompleto = c(
+    "Ensino Fundamental Completo",
+    "Ensino Fundamental Incompleto",
+    "Ensino Médio Completo",
+    "Ensino Superior Incompleto",
+    "Técnico/Profissionalizante Completo"
+  )
+) %>%
+  purrr::map(stringr::str_c, collapse = "|") %>%
+  purrr::map(stringr::regex, ignore_case = TRUE)
+
+big_border = officer::fp_border(color="black", width = 2)
+small_border = officer::fp_border(color="black", width = 1)
+
+my_theme <- function(x, ...) {
+    x <- colformat_double(x, big.mark = "", decimal.mark = ",", digits = 2)
+    x <- set_table_properties(x, width = 1, layout = "autofit")
+    x <- border_remove(x)
+    x <- hline_top( x, border = small_border, part = "all" )
+    x <- hline_bottom(x, border = small_border, part = "all" )
+    x
+
+}
+
+```
+
+
+```{r bases}
+## Dados gerais
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+
+raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
+
+neoffi <- readxl::read_xlsx("~/Mestrado/data/neoffi_geral_1708.xlsx") |> 
+  janitor::clean_names() |> 
+  dplyr::select(-dplyr::starts_with("questao")) |> 
+  dplyr::mutate(dplyr::across(dplyr::ends_with("_t"), as.double))
+
+# Poliana aparecida de afonso = 660
+# sabrina almeida = 2043
+# evelyn chagas de azevedo = 1938
+# ivone gomes = 776
+# eduardo  banharoto dutra silva = 463
+# angela c. m, paledzki = 259
+# cristina bueno alves dos santos = 437
+
+# Coletando o id dos participantes que estão nas duas bases de dados
+# e acrescentando aqueles que não entraram por divergências na escrita do nome
+ids <- raw.data |> 
+  dplyr::with_groups(record_id, tidyr::fill, nome, .direction = "down") |> 
+  dplyr::filter(!is.na(igi_escore)) |> 
+  dplyr::filter(tolower(nome) %in% tolower(neoffi$nome)) |> 
+  dplyr::distinct(tolower(nome), .keep_all = TRUE) |> 
+  dplyr::pull(record_id)
+ids_complete <- c(ids, 660, 2043, 1938, 776, 463, 259, 437)
+
+dat <- raw.data |>
+  # fill idade
+  dplyr::group_by(record_id) |>  
+  tidyr::fill(nome, .direction = "down") |>
+  tidyr::fill(idade, .direction = "down") |> 
+  tidyr::fill(cpf, .direction = "down") |> 
+  dplyr::ungroup() |> 
+  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, etnia, estado_civil, filhos_numero, escolaridade, ocupacao, igi_escore, ehad_depressao_escore,
+                ehad_ansiedade_escore) |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+                record_id %in% ids_complete
+  ) |> 
+  # consertando nomes para unificar os dfs
+  dplyr::mutate(nome = dplyr::case_when(
+    nome == "Angela C M PALEDZKI" ~ "angela c. m, paledzki",
+    nome == "Cristina Bueno Alves dos.Santos" ~ "cristina bueno alves dos santos",
+    nome == "ivonegomes01@gmail.com" ~ "ivone gomes",
+    nome == "Sabrina Almeid" ~ "sabrina almeida",
+    nome == "Eduardo Banharoto Dutra Silva" ~ "eduardo  banharoto dutra silva",
+    nome == "POLIANA APARECIDA AFONSO" ~ "poliana aparecida de afonso",
+    nome == "Evelyn Cjhagas de Azevedo" ~ "evelyn chagas de azevedo",
+    TRUE ~ nome
+  ),
+  nome = tolower(nome))
+
+
+neo2 <- neoffi |>
+  dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1)) |>
+  dplyr::mutate(
+    dplyr::across(dplyr::ends_with("classificacao"), refator),
+    superior_completo = dplyr::case_when(
+      stringr::str_detect(escolaridade, lista_regex$superior_incompleto) ~ 'Não',
+      TRUE ~ 'Sim'
+    ),
+    idade = as.double(idade),
+    nome = tolower(nome)
+  ) |> 
+  # retirando um participante duplicado. foi retirada a segunda resposta
+  dplyr::filter(identificador != 244102) |> 
+  dplyr::left_join(dplyr::select(dat, -c(cpf, sexo, escolaridade)), by = "nome") |> 
+  dplyr::mutate(filhos_numero = tidyr::replace_na(filhos_numero, 0),
+                etnia = dplyr::case_when(
+    etnia == 1 ~ "Branca",
+    etnia %in% c(2,3) ~ "Preto ou pardo",
+    etnia == 4 ~ "Asiática",
+    etnia == 5 ~ "Indígena",
+    !etnia %in% c(1:5) ~ "Outros/Não-informado"),
+    ocupacao = dplyr::case_when(
+    ocupacao == 1 ~ "Aposentado",
+    ocupacao == 2 ~ "Autônomo",
+    ocupacao %in% 3:4 ~ "Desempregado",
+    ocupacao == 5 ~ "Emprego formal", 
+    ocupacao == 6 ~ "Emprego informal",
+    ocupacao == 7 ~ "Estudante"),
+    estado_civil = dplyr::case_when(
+    estado_civil == 1 ~ "Casado",
+    estado_civil == 2 ~ "União estável",
+    estado_civil == 3 ~ "Solteiro",
+    estado_civil == 4 ~ "Viúvo",
+    estado_civil == 5 ~ "Separado/Desquitado"
+    ),
+    regiao = dplyr::case_when(
+      onde_ocorreu_a_aplicacao %in% c("SP", "RJ", "MG", "ES") ~ "Sudeste",
+      onde_ocorreu_a_aplicacao %in% c("MA", "PI", "CE", "BA", "SE", "AL", "PE", "PB", "RN") ~ "Nordeste",
+      onde_ocorreu_a_aplicacao %in% c("PR", "SC", "RS") ~ "Sul",
+      onde_ocorreu_a_aplicacao %in% c("MT", "GO", "MS", "DF") ~ "Centro-Oeste",
+      onde_ocorreu_a_aplicacao %in% c("AC", "RO", "AM", "RR", "AP", "PA", "TO") ~ "Norte",
+      TRUE ~ "Estrangeiro"
+    ))
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tolower(neoffi$nome)[!(tolower(neoffi$nome) %in% tolower(dat$nome))]
+
+# Poliana aparecida de afonso = 660
+# sabrina almeida = 2043
+# evelyn chagas de azevedo = 1938
+# ivone gomes = 776
+# eduardo  banharoto dutra silva = 463
+# angela c. m, paledzki = 259
+# cristina bueno alves dos santos = 437
+```
+
+```{r strata}
+tab1 <- neo2 |> 
+  dplyr::select(idade, filhos_numero, sexo, escolaridade, etnia, estado_civil, ocupacao, regiao, grupo) %>%
+  tableone::CreateTableOne(data=., strata="grupo")
+
+tab1b <- print(tab1, printToggle = FALSE) |> 
+  as.data.frame() |> tibble::rownames_to_column("VALUE")
+  #tibble::enframe()
+
+flextable(tab1b) |> my_theme()
+```
+<br>
+
+```{r overall}
+neo2 |> 
+  dplyr::select(idade, filhos_numero, sexo, escolaridade, etnia, estado_civil, ocupacao, regiao, grupo) %>%
+  tableone::CreateTableOne(data=.) |> 
+  print(printToggle = FALSE) |> 
+  as.data.frame() |> 
+  tibble::rownames_to_column("VALUE") |> 
+  flextable() |> 
+  my_theme()
+```
+<br>
+
+```{r}
+neo2 |> 
+  dplyr::select(dplyr::ends_with("_t"), igi_escore, ehad_depressao_escore, ehad_ansiedade_escore, grupo) %>%
+  tableone::CreateTableOne(data=., strata= "grupo", argsNormal = list(var.equal = FALSE)) |> 
+  print(printToggle = FALSE) |> 
+  as.data.frame() |> 
+  tibble::rownames_to_column("val") |> 
+  flextable() |> 
+  my_theme()
+```
+
+<br>
+
+```{r}
+neo2 |> 
+  dplyr::select(dplyr::ends_with("_t"), igi_escore, ehad_depressao_escore, ehad_ansiedade_escore, grupo) %>%
+  tableone::CreateTableOne(data=.) |> 
+  print(printToggle = FALSE) |> 
+  as.data.frame() |> 
+  tibble::rownames_to_column("val") |> 
+  flextable() |> 
+  my_theme()
+```
+

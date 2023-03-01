@@ -9,7 +9,7 @@ lang: pt-BR
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
                       tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
-#options(OutDec = ",", digits = 2)
+options(OutDec = ",", digits = 1)
 flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
 ```
 
@@ -100,8 +100,13 @@ neo2 |>
   dplyr::select(grupo, dplyr::ends_with("classificacao")) |> 
   tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
                       names_to = "traco") |> 
-  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>%
-  datasummary(traco ~ factor(grupo) * (classificacao * (N + Heading("%")* Percent("col"))), data = .,
+  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>% 
+  # dplyr::mutate(classificacao = dplyr::case_when(
+  #   classificacao %in% c("Muito baixa", "Baixa") ~ "Baixa",
+  #   classificacao %in% c("Muito alta", "Alta") ~ "Alta",
+  #   TRUE ~ "Média")
+  #   ) %>%
+  datasummary(traco ~ factor(grupo) * (classificacao) * (N + Heading("%")* Percent("row")), data = .,
               output = 'flextable') |> 
   my_theme()
 ```
