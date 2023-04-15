@@ -73,7 +73,9 @@ neo2 <- neoffi |>
       TRUE ~ 'Sim'
     ),
     idade = as.double(idade)
-  )
+  ) |> 
+  # retirando um participante duplicado. foi retirada a segunda resposta
+  dplyr::filter(identificador != 244102)
 ```
 
 # 1. Análises descritivas
@@ -101,11 +103,45 @@ neo2 |>
   tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
                       names_to = "traco") |> 
   dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>% 
-  # dplyr::mutate(classificacao = dplyr::case_when(
-  #   classificacao %in% c("Muito baixa", "Baixa") ~ "Baixa",
-  #   classificacao %in% c("Muito alta", "Alta") ~ "Alta",
-  #   TRUE ~ "Média")
-  #   ) %>%
+  dplyr::mutate(classificacao = dplyr::case_when(
+    classificacao %in% c("Muito Baixa", "Baixa") ~ "Baixa",
+    classificacao %in% c("Muito Alta", "Alta") ~ "Alta",
+    TRUE ~ "Média")
+    ) %>%
+  datasummary(traco ~ factor(grupo) * (classificacao) * (N + Heading("%")* Percent("row")), data = .,
+              output = 'flextable') |> 
+  my_theme()
+```
+
+```{r categoricos-gs}
+neo2 |> 
+  dplyr::select(grupo, dplyr::ends_with("classificacao")) |> 
+  dplyr::filter(grupo == 0) |> 
+  tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
+                      names_to = "traco") |> 
+  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>% 
+  dplyr::mutate(classificacao = dplyr::case_when(
+    classificacao %in% c("Muito Baixa", "Baixa") ~ "Baixa",
+    classificacao %in% c("Muito Alta", "Alta") ~ "Alta",
+    TRUE ~ "Média") 
+    ) %>%
+  datasummary(traco ~ factor(grupo) * (classificacao) * (N + Heading("%")* Percent("row")), data = .,
+              output = 'flextable') |> 
+  my_theme()
+```
+
+```{r categoricos-bs}
+neo2 |> 
+  dplyr::select(grupo, dplyr::ends_with("classificacao")) |> 
+  dplyr::filter(grupo == 1) |> 
+  tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
+                      names_to = "traco") |> 
+  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>% 
+  dplyr::mutate(classificacao = dplyr::case_when(
+    classificacao %in% c("Muito Baixa", "Baixa") ~ "Baixa",
+    classificacao %in% c("Muito Alta", "Alta") ~ "Alta",
+    TRUE ~ "Média")
+    ) %>% 
   datasummary(traco ~ factor(grupo) * (classificacao) * (N + Heading("%")* Percent("row")), data = .,
               output = 'flextable') |> 
   my_theme()

@@ -215,3 +215,17 @@ neo2 |>
   my_theme()
 ```
 
+```{r eval=FALSE, include=FALSE}
+neo2 |> 
+  dplyr::select(grupo, dplyr::ends_with("classificacao")) |> 
+  tidyr::pivot_longer(cols =  dplyr::ends_with("classificacao"), values_to = "classificacao",
+                      names_to = "traco") |> 
+  dplyr::mutate(traco = stringr::str_remove(traco, "_classificacao")) %>% 
+  dplyr::mutate(classificacao = dplyr::case_when(
+    classificacao %in% c("Muito Baixa", "Baixa") ~ "Baixa",
+    classificacao %in% c("Muito Alta", "Alta") ~ "Alta",
+    TRUE ~ "Média") 
+    ) %>%
+  readr::write_csv("neo_transposed.csv")
+```
+
