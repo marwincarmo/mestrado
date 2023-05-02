@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Development of the Sleep Acceptance Scale (SAS)</title>
+
+
+<script src="poster_dbasBR_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="poster_dbasBR_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 90cm 120cm;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 90cm;
+height: 120cm;
+text-align: justify;
+font-size: 46px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #C00000 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #C0000024;
+color: #C00000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 32px;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #C0000020;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 32px;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 32px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 90cm;
+height: calc(120cm *  (1 - 0 - 9.0e-2 - 0.01) );
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(120cm *  0 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #C00000;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #C00000;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:#024F84;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 32px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #C00000;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #024F8475 33%,
+      #024F84 50%,
+      #024F8475 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 90cm;
+height: calc(120cm * 0);
+position: absolute;
+background-color: #024F84;
+color: #ffffffcf;
+font-family: PT Sans;
+/*background-image: linear-gradient(#024F84 50%,#C00000); */
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffffcf;
+}
+#main-img-left {
+width: 25%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-center {
+width: 10%;
+left: calc(90cm * 0.45);
+bottom: 0.5in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-right {
+width: 15%;
+right: 0.5in;
+bottom: 0.4in;
+position: absolute;
+opacity: 80%;
+}
+.main p {
+font-size: 160px;
+font-family: PT Sans;
+text-align: left;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 0.8em;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 90cm;
+height: 120cm;
+padding: 0cm;
+}
+.main_bottom {
+width: 90cm;
+height: calc(120cm * 9.0e-2);
+margin-top: calc(120cm * (1 - 9.0e-2));
+position: absolute;
+background-color: #024F84;
+/*background-image: linear-gradient(#C00000 10%, #024F84);*/
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Development of the Sleep Acceptance Scale (SAS)</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Marwin M. I. B. Carmo</strong><sup> 1</sup><br>
+<a class="twitter" href="https://mobile.twitter.com/marwincarmo"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@marwincarmo</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
+ Renatha El Rafihi Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+ </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Instituto de Psiquiatria, Faculdade de Medicina da Universidade de São Paulo
+</p>
+</div>
+
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Pensamentos com tom negativo sobre o sono são reforçadores conhecidos a insônia. Por essa razão, tratamentos que se concentram nos componentes cognitivos da insônia, como a Terapia Cognitivo-Comportamental, são recomendados. Uma ferramenta específica para avaliar as cognições relacionadas ao sono é a <em>Dysfunctional Beliefs and Attitudes about Sleep Scale</em> (DBAS-16) - que mede a força de concordância com crenças e comportamentos mal-adaptativos sobre o sono. Embora essa escala tenha sido submetida a análise psicométrica, é necessário testar a validade com uma amostra de falantes de português do Brasil para obter resultados válidos, confiáveis e reprodutíveis com tal população usando essa ferramenta.</p>
+<div id="objetivos" class="section level2">
+<h2>Objetivos</h2>
+<p>Este projeto tem como objetivo (a) desenvolver uma tradução brasileira-portuguesa da Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16), (b) examinar sua estrutura fatorial e (c) examinar sua validade de construto.</p>
+</div>
+</div>
+<div id="método" class="section level1">
+<h1>Método</h1>
+<p>A DBAS-16 foi traduzida para o Português por três tradutores independentes. As traduções foram sintetizadas em uma versão única por um comitê composto por duas psicólogas clínicas especializadas no tratamento da insônia. Um estudo piloto com 15 participantes das cinco regiões do Brasil demonstrou que a população-alvo compreendeu satisfatoriamente o conteúdo da escala.</p>
+<p>Os dados foram coletados a partir de pesquisas respondidas por 1397 adultos com idades entre 18 e 59 anos (<span class="math inline">\(M_{idade}\)</span> = 38.4 <span class="math inline">\(\pm\)</span> 9.7), dos quais 1130 eram mulheres e 1062 relataram sintomas de insônia. Os participantes completaram questionários de auto-relato on-line, incluindo o Índice de Gravidade da Insônia (IGI), a Escala Hospitalar de Ansiedade e Depressão (EHAD) e a Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16).</p>
+<p>O plano de análise inclui avaliações de: (i) estrutura fatorial com Análises Fatoriais Confirmatórias, (ii) invariância de medida entre grupos (bons e maus dormidores) e longitudinal em um período de 14 dias, (iii) estrutura interna (<span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\omega_h\)</span>), e (iv) validade convergente por meio de uma análise de redes entre a CADS-16 e as escalas auxiliares.</p>
+</div>
+<div id="resultados" class="section level1">
+<h1>Resultados</h1>
+<p>A estrutura de quatro fatores foi reproduzida satisfatoriamente na amostra coletada, apresentando índices de ajuste adequados após o acréscimo de correlações entre dois pares de itens: <span class="math inline">\(\chi^2\)</span>(96, <em>N</em> = 1386) = 663.13, RMSEA = .077 90% CI [.072, .083], CFI = .928, SRMR = .059.</p>
+<p>A análise de invariância entre os grupos não indicou suporte para a invariância <em>métrica</em>, sugerindo que os itens a relação entre os itens e a variável latente é diferente entre bons e maus dormidores. Por outro lado, a escala apresentou invariância da estrutura fatorial, das cargas dos itens e das médias, entre a primeira administração e outra realizada após 14 dias.</p>
+<table style="width:100%;">
+<caption>
+<span id="tab:cons-tbl">Table 1: </span>Correlation statistics.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+factor
+</th>
+<th style="text-align:center;">
+2
+</th>
+<th style="text-align:center;">
+3
+</th>
+<th style="text-align:center;">
+4
+</th>
+<th style="text-align:center;">
+omega
+</th>
+<th style="text-align:center;">
+alpha
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;line-height: 0.5">
+<ol style="list-style-type: decimal">
+<li>Consequences
+</td>
+<td style="text-align:center;line-height: 0.5">
+.738
+</td>
+<td style="text-align:center;line-height: 0.5">
+.556
+</td>
+<td style="text-align:center;line-height: 0.5">
+.742
+</td>
+<td style="text-align:center;line-height: 0.5">
+.827 [.811, .843]
+</td>
+<td style="text-align:center;line-height: 0.5">
+.823 [.806, .839]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;line-height: 0.5">
+<ol start="2" style="list-style-type: decimal">
+<li>Worry/Helplessness
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+.112
+</td>
+<td style="text-align:center;line-height: 0.5">
+.999
+</td>
+<td style="text-align:center;line-height: 0.5">
+.882 [.871, .893]
+</td>
+<td style="text-align:center;line-height: 0.5">
+.885 [.874, .894]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;line-height: 0.5">
+<ol start="3" style="list-style-type: decimal">
+<li>Expectations
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+.128
+</td>
+<td style="text-align:center;line-height: 0.5">
+.600 [.557, .644]
+</td>
+<td style="text-align:center;line-height: 0.5">
+.594 [.540, .642]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;line-height: 0.5">
+<ol start="4" style="list-style-type: decimal">
+<li>Medication
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+</td>
+<td style="text-align:center;line-height: 0.5">
+.752 [.730, .771]
+</td>
+<td style="text-align:center;line-height: 0.5">
+.724 [.698, .748]
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+</div>
+
+</div>
+<div class="main">
+<p></p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=img/fapesp-white.png>
+<img id="main-img-center" src=img/qrcodeSAS.svg>
+<img id="main-img-right" src=img/ipq-white3.png>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>

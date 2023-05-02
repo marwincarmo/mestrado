@@ -1,0 +1,173 @@
+---
+main_topsize: 0 #percent coverage of the poster
+main_bottomsize: 0.09
+poster_height: "120cm"
+poster_width: "90cm"
+body_textsize: "46px"
+#ESSENTIALS
+title: '**Development of the Sleep Acceptance Scale (SAS)**'
+author:
+  - name: '**Marwin M. I. B. Carmo**'
+    affil: 1
+    main: true
+    #orcid: '0000-0002-1099-3857'
+    twitter: marwincarmo 
+    email: marwin@usp.br
+  - name: Renatha El Rafihi Ferreira
+    affil: 1
+    main: true
+    email: 'rerafihi@usp.br'
+affiliation:
+  - num: 1
+    address: Instituto de Psiquiatria, Faculdade de Medicina da Universidade de São Paulo
+# Main Colour Scheme
+primary_colour: "#024F84"
+secondary_colour: "#C00000"
+body_bgcol: "#ffffff"
+#---POSTER BODY OPTIONS---#
+reference_textsize: "32px"
+caption_textsize: "32px"
+affiliation_textsize: "32px"
+#Column
+column_numbers: 2
+#Main Section
+main_fontfamily: "PT Sans"
+main_textalign: "left"
+main_textsize: "160px"
+main_textalpha: "cf"
+#main_findings:
+#  - "Preliminary evidence for a new measure \nof **Sleep Acceptance**: a promising tool for clinicians and researchers."
+main_textcol: "#ffffff"
+logoleft_name: img/fapesp-white.png
+logoright_name: img/ipq-white3.png
+logocenter_name: img/qrcodeSAS.svg
+output: 
+  posterdown::posterdown_betterport:
+    highlight: NULL
+    self_contained: false
+    pandoc_args: --mathjax
+    number_sections: false
+    template: custom_template.html
+bibliography: ext/references.bib
+link-citations: true
+csl: ext/apa7.csl
+#nocite: '@*'
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+#options(knitr.table.format = "html") 
+#options(kableExtra.html.bsTable = T)
+```
+
+```{r}
+library(lavaan)
+library(dplyr)
+library(semTools)
+library(weights)
+library(kableExtra)
+library(ggplot2)
+```
+
+
+```{r dataset-cfa, warning=FALSE, message=FALSE, echo=FALSE}
+## read full dataset
+mydata <- read.csv("G:/Documentos/ProjetosR/papers/dbas16_br/data/data.csv")
+
+## select answers from arm 1
+dbas <- mydata |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+                ## exclude previously identified outliers and duplicates
+                !record_id %in% c(1446, 2152, 2611, 1683, 1588, # outliers
+                                  2562, 1766, 2972, 2681, 430, 2559, 3053, 540 , 522 , 3698)) |>  # dupes
+  dplyr::mutate(group = dplyr::case_when(
+    dsm_1 == 0 &
+    dsm_2 == 0 &
+    dsm_3 == 0 &
+    dsm_4 == 0 &
+    dsm_5 == 0 &
+    isi_total < 8 ~ "good_sleepers",
+    TRUE ~ "bad_sleepers")) |> 
+  dplyr::select(record_id, paste0("dbas16_", 1:16), group) |> 
+  dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.))) |> 
+  # median inputation for one participant that left one item unanswered
+  dplyr::mutate(dbas16_10 = tidyr::replace_na(dbas16_10, 7))
+```
+
+```{r cfa-model-2}
+mod_dbas_mi <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+dbas16_3 ~~  dbas16_4
+dbas16_6 ~~ dbas16_15
+'
+
+# Model fit with MLM estimator, assuming data as continuous
+fit_mlm_mi <- lavaan::cfa(model = mod_dbas_mi,
+                           std.lv = TRUE, estimator = 'MLMV', data = dbas[,2:17])
+```
+
+```{r internal-consistency}
+omegas <- readRDS("G:/Documentos/ProjetosR/papers/dbas16_br/output/omegas.rds") |> 
+  tibble::enframe() |> 
+  tidyr::unnest_wider(value) |> 
+  dplyr::transmute(omega = paste0(rd(est, 3), " [", rd(ci.lower, 3), ", ", rd(ci.upper, 3), "]"))
+
+
+alphas <- readRDS("G:/Documentos/ProjetosR/papers/dbas16_br/output/alphas.rds") |> 
+  tibble::enframe() |> 
+  tidyr::unnest_wider(value) |> 
+  dplyr::transmute(alpha = paste0(rd(est, 3), " [", rd(ci.lower, 3), ", ", rd(ci.upper, 3), "]"))
+
+covmat <- cov2cor(lavInspect(fit_mlm_mi, what = "est")$psi)
+covmat[upper.tri(covmat, diag = TRUE)] <- NA
+
+covmat_t <- t(corrr::fashion(covmat, decimals = 3))[,-1]
+rownames(covmat_t) <- c("1. Consequences", "2. Worry/Helplessness", "3. Expectations", "4. Medication")
+colnames(covmat_t) <- c("2", "3", "4")
+
+cor_df <- tibble::as_tibble(covmat_t, rownames="factor") |> 
+  cbind(omegas[-5,], alphas[-5,])
+```
+
+
+# Introdução
+
+Pensamentos com tom negativo sobre o sono são reforçadores conhecidos a insônia. Por essa razão, tratamentos que se concentram nos componentes cognitivos da insônia, como a Terapia Cognitivo-Comportamental, são recomendados. Uma ferramenta específica para avaliar as cognições relacionadas ao sono é a *Dysfunctional Beliefs and Attitudes about Sleep Scale* (DBAS-16) - que mede a força de concordância com crenças e comportamentos mal-adaptativos sobre o sono. Embora essa escala tenha sido submetida a análise psicométrica, é necessário testar a validade com uma amostra de falantes de português do Brasil para obter resultados válidos, confiáveis e reprodutíveis com tal população usando essa ferramenta.
+
+## Objetivos
+
+Este projeto tem como objetivo (a) desenvolver uma tradução brasileira-portuguesa da Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16), (b) examinar sua estrutura fatorial e (c) examinar sua validade de construto.
+
+# Método
+
+A DBAS-16 foi traduzida para o Português por três tradutores independentes. As traduções foram sintetizadas em uma versão única por um comitê composto por duas psicólogas clínicas especializadas no tratamento da insônia. Um estudo piloto com 15 participantes das cinco regiões do Brasil demonstrou que a população-alvo compreendeu satisfatoriamente o conteúdo da escala.
+
+Os dados foram coletados a partir de pesquisas respondidas por 1397 adultos com idades entre 18 e 59 anos ($M_{idade}$  = 38.4 $\pm$ 9.7), dos quais 1130 eram mulheres e 1062 relataram sintomas de insônia. Os participantes completaram questionários de auto-relato on-line, incluindo o Índice de Gravidade da Insônia (IGI), a Escala Hospitalar de Ansiedade e Depressão (EHAD) e a Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16).
+
+O plano de análise inclui avaliações de: (i) estrutura fatorial com Análises Fatoriais Confirmatórias, (ii) invariância de medida entre grupos (bons e maus dormidores) e longitudinal em um período de 14 dias, (iii) estrutura interna ($\alpha$ e $\omega_h$), e (iv) validade convergente por meio de uma análise de redes entre a CADS-16 e as escalas auxiliares.
+
+# Resultados
+
+A estrutura de quatro fatores foi reproduzida satisfatoriamente na amostra coletada, apresentando índices de ajuste adequados após o acréscimo de correlações entre dois pares de itens:  $\chi^2$(96, *N* = 1386) = 663.13, RMSEA = .077 90% CI [.072, .083], CFI = .928, SRMR = .059.
+
+A análise de invariância entre os grupos não indicou suporte para a invariância *métrica*, sugerindo que os itens a relação entre os itens e a variável latente é diferente entre bons e maus dormidores. Por outro lado, a escala apresentou invariância da estrutura fatorial, das cargas dos itens e das médias, entre a primeira administração e outra realizada após 14 dias.
+
+```{r cons-tbl}
+cor_df |> 
+  knitr::kable(
+    caption = "Correlation statistics.", 
+
+    align = "lccccc",
+    table.attr = "style='width:100%;'"
+  ) |> 
+  row_spec(1:nrow(cor_df),
+           extra_css = "line-height: 0.5")
+```
