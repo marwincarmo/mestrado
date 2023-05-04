@@ -5,13 +5,13 @@ poster_height: "120cm"
 poster_width: "90cm"
 body_textsize: "46px"
 #ESSENTIALS
-title: '**Development of the Sleep Acceptance Scale (SAS)**'
+title: '**Adaptação e Validação da Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)**'
 author:
   - name: '**Marwin M. I. B. Carmo**'
     affil: 1
     main: true
     #orcid: '0000-0002-1099-3857'
-    twitter: marwincarmo 
+    #twitter: marwincarmo 
     email: marwin@usp.br
   - name: Renatha El Rafihi Ferreira
     affil: 1
@@ -33,14 +33,14 @@ column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
 main_textalign: "left"
-main_textsize: "160px"
+main_textsize: "180px"
 main_textalpha: "cf"
 #main_findings:
 #  - "Preliminary evidence for a new measure \nof **Sleep Acceptance**: a promising tool for clinicians and researchers."
 main_textcol: "#ffffff"
 logoleft_name: img/fapesp-white.png
 logoright_name: img/ipq-white3.png
-logocenter_name: img/qrcodeSAS.svg
+logocenter_name: img/qrcodeCADS.svg
 output: 
   posterdown::posterdown_betterport:
     highlight: NULL
@@ -69,9 +69,11 @@ knitr::opts_chunk$set(echo = FALSE,
 library(lavaan)
 library(dplyr)
 library(semTools)
+library(semPlot)
 library(weights)
 library(kableExtra)
 library(ggplot2)
+library(bootnet)
 ```
 
 
@@ -93,7 +95,7 @@ dbas <- mydata |>
     dsm_5 == 0 &
     isi_total < 8 ~ "good_sleepers",
     TRUE ~ "bad_sleepers")) |> 
-  dplyr::select(record_id, paste0("dbas16_", 1:16), group) |> 
+  dplyr::select(record_id, paste0("dbas16_", 1:16), group, isi_total, hads_depression, hads_anxiety) |> 
   dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.))) |> 
   # median inputation for one participant that left one item unanswered
   dplyr::mutate(dbas16_10 = tidyr::replace_na(dbas16_10, 7))
@@ -101,10 +103,10 @@ dbas <- mydata |>
 
 ```{r cfa-model-2}
 mod_dbas_mi <- '
-cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
-worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
-exp =~ dbas16_1 + dbas16_2
-med =~ dbas16_6 + dbas16_13 + dbas16_15
+CON =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+PRC =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+EXP =~ dbas16_1 + dbas16_2
+MED =~ dbas16_6 + dbas16_13 + dbas16_15
 dbas16_3 ~~  dbas16_4
 dbas16_6 ~~ dbas16_15
 '
@@ -130,25 +132,38 @@ covmat <- cov2cor(lavInspect(fit_mlm_mi, what = "est")$psi)
 covmat[upper.tri(covmat, diag = TRUE)] <- NA
 
 covmat_t <- t(corrr::fashion(covmat, decimals = 3))[,-1]
-rownames(covmat_t) <- c("1. Consequences", "2. Worry/Helplessness", "3. Expectations", "4. Medication")
+rownames(covmat_t) <- c("1. Consequências", "2. Preocupação/Desesperança", "3. Expectativas", "4. Medicação")
 colnames(covmat_t) <- c("2", "3", "4")
 
 cor_df <- tibble::as_tibble(covmat_t, rownames="factor") |> 
   cbind(omegas[-5,], alphas[-5,])
 ```
 
+```{r network-model}
+
+network_df <- dbas |> 
+  dplyr::mutate(consequences = dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16,
+                worry = dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14,
+                expectations = dbas16_1 + dbas16_2,
+                medication = dbas16_6 + dbas16_13 + dbas16_15) |> 
+  dplyr::select(consequences:medication, hads_depression, hads_anxiety, isi_total)
+
+network_model <- estimateNetwork(network_df, default = "EBICglasso", weighted = TRUE)
+
+```
+
 
 # Introdução
 
-Pensamentos com tom negativo sobre o sono são reforçadores conhecidos a insônia. Por essa razão, tratamentos que se concentram nos componentes cognitivos da insônia, como a Terapia Cognitivo-Comportamental, são recomendados. Uma ferramenta específica para avaliar as cognições relacionadas ao sono é a *Dysfunctional Beliefs and Attitudes about Sleep Scale* (DBAS-16) - que mede a força de concordância com crenças e comportamentos mal-adaptativos sobre o sono. Embora essa escala tenha sido submetida a análise psicométrica, é necessário testar a validade com uma amostra de falantes de português do Brasil para obter resultados válidos, confiáveis e reprodutíveis com tal população usando essa ferramenta.
+Pensamentos com tom negativo sobre o sono são reforçadores conhecidos a insônia. Uma ferramenta específica para avaliar as cognições relacionadas ao sono é a *Dysfunctional Beliefs and Attitudes about Sleep Scale* (DBAS-16) - que mede a força de concordância com crenças e comportamentos mal-adaptativos sobre o sono. Embora essa escala tenha sido submetida a análise psicométrica, é necessário testar a validade com uma amostra de falantes de português do Brasil para obter resultados válidos, confiáveis e reprodutíveis com tal população.
 
 ## Objetivos
 
-Este projeto tem como objetivo (a) desenvolver uma tradução brasileira-portuguesa da Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16), (b) examinar sua estrutura fatorial e (c) examinar sua validade de construto.
+Este projeto tem como objetivo (a) desenvolver uma tradução em português brasileiro da Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16), (b) examinar sua estrutura fatorial e (c) examinar sua validade de construto.
 
 # Método
 
-A DBAS-16 foi traduzida para o Português por três tradutores independentes. As traduções foram sintetizadas em uma versão única por um comitê composto por duas psicólogas clínicas especializadas no tratamento da insônia. Um estudo piloto com 15 participantes das cinco regiões do Brasil demonstrou que a população-alvo compreendeu satisfatoriamente o conteúdo da escala.
+A DBAS-16 foi traduzida para o Português por três tradutores independentes. As traduções foram sintetizadas em uma versão única por um comitê composto por psicólogos profissionais no tratamento da insônia. Um estudo piloto com 15 participantes das cinco regiões do Brasil demonstrou que a população-alvo compreendeu satisfatoriamente o conteúdo da escala.
 
 Os dados foram coletados a partir de pesquisas respondidas por 1397 adultos com idades entre 18 e 59 anos ($M_{idade}$  = 38.4 $\pm$ 9.7), dos quais 1130 eram mulheres e 1062 relataram sintomas de insônia. Os participantes completaram questionários de auto-relato on-line, incluindo o Índice de Gravidade da Insônia (IGI), a Escala Hospitalar de Ansiedade e Depressão (EHAD) e a Escala de Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16).
 
@@ -156,18 +171,52 @@ O plano de análise inclui avaliações de: (i) estrutura fatorial com Análises
 
 # Resultados
 
-A estrutura de quatro fatores foi reproduzida satisfatoriamente na amostra coletada, apresentando índices de ajuste adequados após o acréscimo de correlações entre dois pares de itens:  $\chi^2$(96, *N* = 1386) = 663.13, RMSEA = .077 90% CI [.072, .083], CFI = .928, SRMR = .059.
+A estrutura de quatro fatores foi reproduzida satisfatoriamente na amostra coletada, apresentando índices de ajuste adequados após o acréscimo de correlações entre os resíduos de dois pares de itens:  $\chi^2$(96, *N* = 1386) = 663.13, RMSEA = .077 90% CI [.072, .083], CFI = .928, SRMR = .059.
 
-A análise de invariância entre os grupos não indicou suporte para a invariância *métrica*, sugerindo que os itens a relação entre os itens e a variável latente é diferente entre bons e maus dormidores. Por outro lado, a escala apresentou invariância da estrutura fatorial, das cargas dos itens e das médias, entre a primeira administração e outra realizada após 14 dias.
+A análise de invariância entre os grupos não indicou suporte para a invariância *métrica*, sugerindo que a relação entre os itens e a variável latente é diferente entre bons e maus dormidores. Por outro lado, a escala apresentou invariância da estrutura fatorial, das cargas dos itens e das médias, entre a primeira administração e outra realizada após 14 dias.
 
 ```{r cons-tbl}
 cor_df |> 
   knitr::kable(
-    caption = "Correlation statistics.", 
-
+    caption = "Índices de correlação e confiabilidade dos fatores da CADS-16.", 
+     col.names = c("Fator",
+                   "2", "3", "4",
+                   "$\\alpha$",
+                   "$\\omega_{h}$"),
     align = "lccccc",
     table.attr = "style='width:100%;'"
   ) |> 
-  row_spec(1:nrow(cor_df),
-           extra_css = "line-height: 0.5")
+  row_spec(1:nrow(cor_df), extra_css = "line-height: 0.2") |> 
+  column_spec(1:ncol(cor_df), #extra_css ="column-gap: 0"
+              )
 ```
+
+```{r graph, fig.width=6, fig.height=8, dpi=300, out.width="100%", fig.cap = "Representação gráfica do modelo fatorial da CADS-16. Nota: MED-Medicação, PRC-Preocupação/Desesperança, CON-Consequências, EXP-Expectativas."}
+semPaths(fit_mlm_mi, residuals=FALSE,sizeMan=7, rotation =2, groups = "latents", 
+         color=wesanderson::wes_palette("GrandBudapest2", n=4),
+         posCol=c("skyblue4"),"std", edge.label.cex = 1.2,  curvePivot = TRUE)
+```
+
+```{r network-model-plot, fig.cap = "Representação gráfica do modelo de rede da CADS-16 com medidas de ansiedade, depressão e insônia. Nota: MED-Medicação, PRC-Preocupação/Desesperança, CON-Consequências, EXP-Expectativas, Ins-Insônia, Dep-Depressão, Ans-Ansiedade.", fig.width=6, fig.height=4, dpi=300, out.width="100%"}
+labels <- c("CON", "PRC", "EXP", "MED", "Dep", "Ans", "Ins")
+groups <- c(rep("CADS", 4), rep("HADS", 2), "IGI")
+
+qgraph::qgraph(network_model$graph, layout = "spring",
+     label.cex=1.2, label.scale=F, theme = "colorblind",
+     labels = labels, groups = groups,
+     #nodeNames = items, groups = factors,
+     legend.mode="style2", legend.cex=.22,
+     vsize = 12, esize = 15, details = F, color=wesanderson::wes_palette("Moonrise3", n=3),
+     posCol = "#4169E1", negCol = "#DC143C",
+     #layoutOffset = c(-.2,0),
+     legend = FALSE, edge.labels=TRUE
+     )
+```
+# Conclusão 
+
+Os resultados deste estudo demonstraram que a CADS-16 é um instrumento confiável para avaliação de crenças e atitudes disfuncionais sobre o sono, com propriedades psicométricas aceitáveis com uma amostra brasileira, podendo ser incorporada tanto em contextos clínicos quanto de pesquisa. No entanto, é preciso cautela na interpretação dos resultados, se utilizada para comparar bons e maus dormidores.
+
+<span style="text-align: left;">
+Escala completa disponível em [https://osf.io/e57z4](https://osf.io/e57z4).
+</span>
+
