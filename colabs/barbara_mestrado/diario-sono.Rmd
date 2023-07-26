@@ -1,0 +1,246 @@
+---
+output:
+  word_document:
+    reference_docx: ~/Rprojects/consultorias/report-templates/word-styles-reference-01.docx
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, tab.cap.pre="Tabela ",
+                      tab.cap.sep =". ", tab.layout="autofit", tab.width=0.8)
+#options(OutDec = ",", digits = 1)
+flextable::set_flextable_defaults(font.size = 12, font.family = "Times New Roman")
+```
+
+```{r pacotes}
+library(flextable)
+library(dplyr)
+library(ggplot2)
+library(glmmTMB)
+library(DHARMa)
+```
+
+```{r funcoes}
+refator <- function(x) {
+  factor(x,
+         levels = c("Muito Baixa", "Baixa", "Média", "Alta", "Muito Alta"))
+}
+
+lista_regex <- list(
+  superior_incompleto = c(
+    "Ensino Fundamental Completo",
+    "Ensino Fundamental Incompleto",
+    "Ensino Médio Completo",
+    "Ensino Superior Incompleto",
+    "Técnico/Profissionalizante Completo"
+  )
+) %>%
+  purrr::map(stringr::str_c, collapse = "|") %>%
+  purrr::map(stringr::regex, ignore_case = TRUE)
+
+big_border = officer::fp_border(color="black", width = 2)
+small_border = officer::fp_border(color="black", width = 1)
+
+my_theme <- function(x, ...) {
+    x <- colformat_double(x, big.mark = "", decimal.mark = ".", digits = 2)
+    x <- set_table_properties(x, width = 1, layout = "autofit")
+    x <- border_remove(x)
+    x <- hline_top( x, border = small_border, part = "all" )
+    x <- hline_bottom(x, border = small_border, part = "all" )
+    x
+
+}
+
+```
+
+```{r bases}
+## Dados gerais
+gc <- readr::read_csv("~/Mestrado/data/gc1708.csv")
+
+raw.data <- readr::read_csv("~/Mestrado/data/TerapiaDeAceitaoECom_DATA_2022-08-17_1702.csv")
+
+neoffi <- readxl::read_xlsx("~/Mestrado/data/neoffi_geral_1708.xlsx") |> 
+  janitor::clean_names() |> 
+  dplyr::select(-dplyr::starts_with("questao")) |> 
+  dplyr::mutate(dplyr::across(dplyr::ends_with("_t"), as.double))
+
+# Poliana aparecida de afonso = 660
+# sabrina almeida = 2043
+# evelyn chagas de azevedo = 1938
+# ivone gomes = 776
+# eduardo  banharoto dutra silva = 463
+# angela c. m, paledzki = 259
+# cristina bueno alves dos santos = 437
+
+# Coletando o id dos participantes que estão nas duas bases de dados
+# e acrescentando aqueles que não entraram por divergências na escrita do nome
+ids <- raw.data |> 
+  dplyr::with_groups(record_id, tidyr::fill, nome, .direction = "down") |> 
+  dplyr::filter(!is.na(igi_escore)) |> 
+  dplyr::filter(tolower(nome) %in% tolower(neoffi$nome)) |> 
+  dplyr::distinct(tolower(nome), .keep_all = TRUE) |> 
+  dplyr::pull(record_id)
+ids_complete <- c(ids, 660, 2043, 1938, 776, 463, 259, 437)
+
+dat <- raw.data |>
+  # fill idade
+  dplyr::with_groups(record_id, tidyr::fill, c(nome, idade, cpf, ds_horario_deitar:ds_medicacao), .direction = "downup") |> 
+  dplyr::select(record_id, nome, cpf, redcap_event_name, sexo, etnia, estado_civil, filhos_numero, escolaridade, ocupacao, igi_escore, ehad_depressao_escore, ehad_ansiedade_escore, ds_horario_deitar:ds_medicacao) |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+                record_id %in% ids_complete
+  ) |> 
+  # consertando nomes para unificar os dfs
+  dplyr::mutate(nome = dplyr::case_when(
+    nome == "Angela C M PALEDZKI" ~ "angela c. m, paledzki",
+    nome == "Cristina Bueno Alves dos.Santos" ~ "cristina bueno alves dos santos",
+    nome == "ivonegomes01@gmail.com" ~ "ivone gomes",
+    nome == "Sabrina Almeid" ~ "sabrina almeida",
+    nome == "Eduardo Banharoto Dutra Silva" ~ "eduardo  banharoto dutra silva",
+    nome == "POLIANA APARECIDA AFONSO" ~ "poliana aparecida de afonso",
+    nome == "Evelyn Cjhagas de Azevedo" ~ "evelyn chagas de azevedo",
+    TRUE ~ nome
+  ),
+  nome = tolower(nome))
+
+
+neo2 <- neoffi |>
+  dplyr::mutate(grupo = dplyr::case_when(cpf %in% gc$cpf ~ 0,
+                                         TRUE ~ 1)) |>
+  dplyr::mutate(
+    dplyr::across(dplyr::ends_with("classificacao"), refator),
+    superior_completo = dplyr::case_when(
+      stringr::str_detect(escolaridade, lista_regex$superior_incompleto) ~ 'Não',
+      TRUE ~ 'Sim'
+    ),
+    idade = as.double(idade),
+    nome = tolower(nome)
+  ) |> 
+  # retirando um participante duplicado. foi retirada a segunda resposta
+  dplyr::filter(identificador != 244102) |> 
+  dplyr::left_join(dplyr::select(dat, -c(cpf, sexo, escolaridade)), by = "nome") 
+  
+
+data_ds <- neo2 |> 
+  dplyr::filter(grupo == 1) |> 
+  dplyr::filter(!is.na(ds_waso)) |> 
+  dplyr::mutate(
+    dplyr::across(
+      c(ds_es, ds_satisfacao, ds_medicacao), ~
+        ((.x * (163-1) + 0.5) / 163)/100
+    ))
+
+```
+
+### Sleep efficiency (%)
+
+```{r sleep-efficiency}
+
+mod.se <- glmmTMB::glmmTMB(data = data_ds,
+                      formula = ds_es ~ idade + sexo + superior_completo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                      family  = glmmTMB::beta_family())
+
+```
+
+### Sleep onset latency (min)
+
+```{r sol}
+# zero inflated gamma regression for SOL
+mod.sol <- glmmTMB(ds_lis ~ idade + sexo + superior_completo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                         family = ziGamma(link = "log"),
+                         ziformula = ~ idade + sexo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                         data = data_ds)
+```
+
+
+### Wake time after sleep onset (min)
+
+```{r waso}
+# zero inflated gamma regression for waso
+# https://stats.stackexchange.com/questions/466047/interpreting-output-for-glmmtmb-for-zero-inflated-count-data
+mod.waso <- glmmTMB(ds_waso ~ idade + sexo + superior_completo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                         family = ziGamma(link = "log"),
+                         ziformula = ~ idade + sexo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                         data = data_ds)
+```
+
+### Total sleep time (min)
+
+```{r tst}
+# better results than using gaussian with itentity link
+mod.tst <- glmmTMB(ds_ttsc ~ idade + sexo + superior_completo +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+                     family=gaussian(link="identity"),
+                     data = data_ds)
+# broom.mixed::tidy(mod.tib2, conf.int = TRUE)
+```
+
+
+
+```{r}
+
+models <- list("SE" = mod.se, "SOL" = mod.sol, "WASO" = mod.waso, "TST" = mod.tst)
+
+purrr::map_dfr(models, broomExtra::tidy_parameters, .id = "SD Measure") |> 
+  flextable() |> 
+  my_theme()
+```
+<br>
+
+```{r}
+purrr::map_dfr(models,parameters::model_parameters, .id = "SD Measure") |> 
+  dplyr::mutate(Coefficient = paste0(round(Coefficient, 2), " [", round(CI_low, 2), ", ", round(CI_high, 2), "]")) |> 
+  flextable() |> 
+  my_theme()
+```
+
+## GLM
+
+```{r}
+neoglm <- neo2 |>
+  dplyr::mutate(
+    superior_completo = dplyr::case_when(
+      stringr::str_detect(escolaridade, lista_regex$superior_incompleto) ~ 0,
+      TRUE ~ 1
+    ),
+    dplyr::across(dplyr::ends_with("_t"), as.double),
+    idade = as.double(idade)) |> 
+  dplyr::mutate(
+    neuroticismo_escore_t = neuroticismo_escore_t - mean(neo2$neuroticismo_escore_t),
+    extroversao_escore_t = extroversao_escore_t - mean(neo2$extroversao_escore_t),
+    amabilidade_escore_t = amabilidade_escore_t - mean(neo2$amabilidade_escore_t),
+    conscienciosidade_escore_t = conscienciosidade_escore_t - mean(neo2$conscienciosidade_escore_t),
+    abertura_escore_t = abertura_escore_t - mean(neo2$abertura_escore_t),
+    ehad_ansiedade_escore = ehad_ansiedade_escore - mean(neo2$ehad_ansiedade_escore, na.rm=TRUE),
+    ehad_depressao_escore = ehad_depressao_escore - mean(neo2$ehad_depressao_escore, na.rm=TRUE)
+  )
+```
+
+```{r}
+fit <- glm(
+  grupo ~  superior_completo + idade + sexo + ehad_depressao_escore + ehad_ansiedade_escore +
+    neuroticismo_escore_t + extroversao_escore_t + amabilidade_escore_t +
+    conscienciosidade_escore_t + abertura_escore_t,
+  family = binomial(link = "logit"),
+  data = neoglm
+)
+
+tablogit <- tableone::ShowRegTable(fit, exp=TRUE) |> 
+  print(printToggle = FALSE) |> 
+  as.data.frame() |> 
+  tibble::rownames_to_column("Term") |> 
+  flextable() |> 
+  my_theme()
+tablogit
+```
+

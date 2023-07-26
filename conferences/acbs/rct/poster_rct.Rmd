@@ -1,0 +1,99 @@
+---
+title: Randomized controlled trial of acceptance and commitment therapy and cognitive behavioral therapy for insomnia 
+title_textsize: "85pt"
+body_textsize: "38px"
+author:
+  - name: Renatha El Rafihi-Ferreira
+    affil: 1
+    email: rerafihi@usp.br
+    #orcid: 0000-0002-1099-3857
+    main: true
+  - name: Rosa Hasan, Andrea Toscanini, Ila Linares, Daniel Suzuki, Israel Brasil, José Ribeiro-Jr, Marwin Carmo, Francisco Lotufo Neto, Charles Morin
+    main: true
+affiliation:
+  - num: 1
+    address: Department of Psychology, University of São Paulo, Brazil
+main_textsize: "100px"
+main_findings:
+    - "First study to document such results in a 3-arm RCT comparing ACT with gold standard insomnia treatment (CBT) and no treatment (WL)."
+    - "ACT and CBT improved significantly, with **large effect sizes** for the insomnia severity, with superiority of CBT and a delayed improvement for ACT." 
+    - "**ACT-I** proved to be an effective therapy, especially in the **long term**, even in the absence of behavioral techniques of stimulus control and sleep restriction."
+#  - '![](img/intplot.png){.main_pic}'
+logoleft_name: '![](img/acbs_logo.png){.main-img-left}'
+logoright_name: '![](img/usp-logo-transp.png){.main-img-right}'
+# Main Colour Scheme
+primary_colour: "#024F84"
+secondary_colour: "#ffffff"
+body_bgcol: "#ffffff"
+output: 
+  posterdown::posterdown_betterland:
+    self_contained: false
+    pandoc_args: --mathjax
+    highlight: haddock
+    number_sections: false
+link-citations: true
+bibliography: packages.bib
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(results = 'asis',
+                      echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html") 
+```
+
+```{r myplot, include=FALSE}
+svg('myplot.svg')
+plot(iris$Sepal.Length, iris$Sepal.Width)
+dev.off()
+```
+
+# Introduction
+
+- Not all individuals respond to CBT, and many do not maintain their gains over the long term. ACT has a growing empirical base in the treatment of insomnia complaints among adults, aiming to increase their psychological flexibility, not concentrating exclusively on symptom control. 
+
+- This study evaluated the effectiveness of ACT-based protocol for insomnia in adults compared to CBT for insomnia. 
+
+# Methods
+
+227 adults (173 women; $M_{age}$ = 40.7 years) with insomnia were randomized to 6 weekly group sessions consisting of ACT-I (*n*=76), CBT-I (*n*=76), or Waitlist (WL; *n*=75). To measure the success of the treatment, we used binary variables to show if the participant achieved response (ISI$_{post}$ − ISI$_{pre}$ $\ge$  8), remission at posttreatment (ISI $\lt$ 8), and remission maintenance at 6-month follow-up (ISI $\lt$ 8).
+
+# Results
+
+Both treatments significantly reduced insomnia severity with large effect sizes in the posttreatment phase. These results were maintained in the follow-up period. CBT was superior to ACT in reducing ISI at posttreatment and follow-up, with a small effect size.
+
+
+# Discussion
+
+ACT alone, without stimulus control and sleep restriction techniques, is also effective for insomnia, being a viable option for those who have difficulties adhering to behavioral techniques. ACT targets psychological processes, which may take longer to modify, but once modified, the changes are sustained without further therapist guidance.
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Flow diagram of participants through each stage of the study."}
+knitr::include_graphics("img/fluxograma.png")
+```
+
+```{r, echo=FALSE, out.width="80%", fig.cap="ISI scores in three groups and protocol phases."}
+knitr::include_graphics("img/intplot.png")
+```
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Treatment response rates."}
+knitr::include_graphics("img/barras.png")
+```
+
+```{r eval=FALSE, include=FALSE}
+knitr::kable(
+  iris[1:8,1:5], format = "html",
+  caption = "A table made with the **knitr::kable** function.",
+  align = "c", col.names = c("Sepal <br> Length",
+                             "Sepal <br> Width",
+                             "Petal <br> Length",
+                             "Petal <br> Width",
+                             "Species"),
+  escape = FALSE)
+```
+
+
+

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Sleep Acceptance Scale: development of a new brief tool for clinicians and researchers</title>
+
+
+<script src="poster_sas_files/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="poster_sas_files/viz-1.8.2/viz.js"></script>
+<link href="poster_sas_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="poster_sas_files/grViz-binding-1.0.9/grViz.js"></script>
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 46in 32in;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 46in;
+height: 32in;
+text-align: justify;
+font-size: 38px;
+background-color: #ffffff;
+color: #000000;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #ffffff24;
+color: #024F84;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #024F8420;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 46in;
+height: 32in;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%;
+-webkit-column-rule-style: solid;
+-moz-column-rule-style: solid;
+column-rule-style: solid;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+-webkit-column-gap: 50%;
+background-color: #ffffff;
+font-family: Rasa;
+color: #000000;
+}
+span.citation {
+  color: #ffffff;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #ffffff;
+}
+#title {
+font-size: 85pt;
+text-align: left;
+margin: 0;
+line-height: 90%;
+border-bottom: 0;
+}
+#author {
+color: #024F84;
+margin: 0;
+line-height: 90%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 1em;
+color: #00000060;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #ffffff;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+}
+.outer h1 {
+text-align: center;
+margin-top: 0.5in;
+margin-bottom: 0.5in;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p {
+color: #000000;
+}
+.outer ol {
+text-align: left;
+}
+.main {
+width: calc(46in / 2);
+height: 32in;
+position: absolute;
+margin-left: calc(46in / 4);
+background-color: #024F84;
+color: #FFFFFF90;
+font-family: Special Elite;
+background-image: linear-gradient(#024F84 50%, #ffffff);
+}
+.main strong {
+color: #FFFFFF;
+}
+img.main-img-left {
+width: 20%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+img.main-img-right {
+width: 18%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+padding-top: 20%;
+font-size: 160px;
+text-align: left;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 46in;
+height: 32in;
+padding: 0cm;
+background-color: #ffffff;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+.main p {
+  padding-left: 30mm;
+  padding-right: 30mm;
+}
+.main_pic {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.orcid img {
+  width: 3%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="column outer">
+<br>
+<div class="title section">
+<h1 id="title">Sleep Acceptance Scale: development of a new brief tool for clinicians and researchers</h1>
+<br>
+<h3 id="author" class="author">
+
+Renatha El Rafihi-Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+ Marwin Carmo, Leo Paulos-Guarnieri, Maria Laura Nogueira Pires<sup> </sup><br>
+
+</h3>
+
+<h5 id="author_extra" class="author_extra">
+ </h5>
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Psychology, University of São Paulo, Brazil
+</p>
+
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Insomnia symptoms are associated with higher levels of <b><span style="color: #024F84;">metacognitive control</b></span>. Controlled information processing interferes with a healthy sleep process by preventing cognitive deactivation, which involves diminished verbal regulation and control, and acceptance of spontaneous physiological and mental processes. Because general tools for measuring acceptance do not address sleep-related behaviors, the development of specific instruments is essential for studying acceptance of insomnia.</p>
+<p>This study aimed to develop a new measure of sleep acceptance, titled Sleep Acceptance Scale (SAS), and examine its factorial structure, internal consistency, and construct validity.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>The SAS was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance. Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years, with and without insomnia symptoms. We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) and Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the DWLS estimator.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>The parallel analysis procedure indicated two latent factors: <b><span style="color: #024F84;">Avoidance</b></span> (two items; <span class="math inline">\(\omega\)</span> = .55) and <b><span style="color: #024F84;">Distress</b></span> (four items; <span class="math inline">\(\omega\)</span> = .93). The 2-factor model showed a good fit [<span class="math inline">\(\chi^2\)</span>(8) = 59.48, RMSEA = .067 (0.05, 0.084); CFI = .999; RNI = .999; TLI = .998].</p>
+<p>The SAS was positively correlated with ISI (<em>r</em> = .8), DBAS-16 (<em>r</em> = .76), AAQ-II (<em>r</em> = .63), HADS-A (<em>r</em> = .64), HADS-D (<em>r</em> = .56), and negatively correlated with SPAQ (<em>r</em> = -.63).</p>
+</div>
+<div id="discussion" class="section level1">
+<h1>Discussion</h1>
+<p>Preliminary evidence suggest that the SAS might be a reliable and valid indicator of acceptance of sleep problems in people with and without sleep problems.</p>
+<p><br></p>
+<table style="width:100%;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1: </span>Descriptive statistics and item inter-correlations of the SAS.
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Item
+</th>
+<th style="text-align:center;">
+1
+</th>
+<th style="text-align:center;">
+2
+</th>
+<th style="text-align:center;">
+3
+</th>
+<th style="text-align:center;">
+4
+</th>
+<th style="text-align:center;">
+5
+</th>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.59
+</td>
+<td style="text-align:center;">
+1.86
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+0.37
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.43
+</td>
+<td style="text-align:center;">
+1.8
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.44
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.7
+</td>
+<td style="text-align:center;">
+2.16
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+0.34
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.86
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.86
+</td>
+<td style="text-align:center;">
+2.19
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+0.54
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+0.76
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+3.6
+</td>
+<td style="text-align:center;">
+1.97
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+0.38
+</td>
+<td style="text-align:center;">
+0.46
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+0.79
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+4.22
+</td>
+<td style="text-align:center;">
+2.26
+</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-78c61222cb6303f12b71" style="width:80%;height:1500px;"></div>
+<script type="application/json" data-for="htmlwidget-78c61222cb6303f12b71">{"x":{"diagram":"\ndigraph {\n\n  rankdir=LR;\n  \n  \"Avd\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"Dis\" [shape = \"circle\" height=1.2 fontsize=30]\n  \"x1\" [shape = \"square\"]\n  \"x2\" [shape = \"square\"]\n  \"x3\" [shape = \"square\"]\n  \"x4\" [shape = \"square\"]\n  \"x5\" [shape = \"square\"]\n  \"x6\" [shape = \"square\"]\n\n  \"e1\" [shape = \"circle\"]\n  \"e2\" [shape = \"circle\"]\n  \"e3\" [shape = \"circle\"]\n  \"e4\" [shape = \"circle\"]\n  \"e5\" [shape = \"circle\"]\n  \"e6\" [shape = \"circle\"]\n\n  \"Avd\"->\"x1\" [ label = \".55\"]\n  \"Avd\"->\"x2\" [ label = \".72\"]\n  \"Dis\"->\"x3\" [ label = \".93\"]\n  \"Dis\"->\"x4\" [ label = \".95\"]\n  \"Dis\"->\"x5\" [ label = \".85\"]\n  \"Dis\"->\"x6\" [ label = \".89\"]\n  \n  \"x1\" -> \"e1\" [dir=back rank=same]\n  \"x2\" -> \"e2\" [dir=back]\n  \"x3\" -> \"e3\" [dir=back]\n  \"x4\" -> \"e4\" [dir=back]\n  \"x5\" -> \"e5\" [dir=back]\n  \"x6\" -> \"e6\" [dir=back]\n\n  \"e1\":e -> \"e1\":e [dir=both label = \".70\"]\n  \"e2\":e -> \"e2\":e [dir=both label = \".48\"]\n  \"e3\":e -> \"e3\":e [dir=both label = \".13\"]\n  \"e4\":e -> \"e4\":e [dir=both label = \".10\"]\n  \"e5\":e -> \"e5\":e [dir=both label = \".28\"]\n  \"e6\":e -> \"e6\":e [dir=both label = \".21\"]\n\n  \"Avd\":w -> \"Dis\":w [dir=both label = .79 constraint=false]\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 1: Structural equation model for the Confirmatory Factor Analysis for the final version of the Sleep Acceptance Scale. Avd = Avoidance, Dis = Distress.
+</p>
+</div>
+<div id="items" class="section level2">
+<h2>Items</h2>
+<ol style="list-style-type: decimal">
+<li><p>I try to control my sleep by forcing it to happen or being too rigid about my sleep schedule.</p></li>
+<li><p>I avoid making plans or doing things I enjoy or need to do because of my sleep.</p></li>
+<li><p>The thought of going to sleep makes me uneasy.</p></li>
+<li><p>I have negative feelings towards my sleep.</p></li>
+<li><p>My worries, thoughts, and feelings about my sleep interfere with how I go about my daily life.</p></li>
+<li><p>I am scared of not being able to fall asleep.</p></li>
+</ol>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p>Preliminary evidence shows good psychometric properties for the <strong>Sleep Acceptance Scale</strong>, a new brief measure of Sleep Acceptance.</p>
+<img src="../rct/img/acbs_logo.png" class="main-img-left" />
+<img src="../rct/img/usp-logo-transp.png" class="main-img-right" />
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>

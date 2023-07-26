@@ -40,7 +40,10 @@ neo2 <- neoffi |>
       TRUE ~ 1
     ),
     dplyr::across(dplyr::ends_with("_t"), as.double),
-    idade = as.double(idade),
+    idade = as.double(idade))
+
+neo2 <- neo2 |> 
+  dplyr::mutate(
     neuroticismo_escore_t = neuroticismo_escore_t - mean(neo2$neuroticismo_escore_t),
     extroversao_escore_t = extroversao_escore_t - mean(neo2$extroversao_escore_t),
     amabilidade_escore_t = amabilidade_escore_t - mean(neo2$amabilidade_escore_t),

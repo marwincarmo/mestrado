@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Randomized controlled trial of acceptance and commitment therapy and cognitive behavioral therapy for insomnia</title>
+
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Special Elite' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 46in 32in;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 46in;
+height: 32in;
+text-align: justify;
+font-size: 38px;
+background-color: #ffffff;
+color: #000000;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #ffffff24;
+color: #024F84;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #024F8420;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 46in;
+height: 32in;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%;
+-webkit-column-rule-style: solid;
+-moz-column-rule-style: solid;
+column-rule-style: solid;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+-webkit-column-gap: 50%;
+background-color: #ffffff;
+font-family: Rasa;
+color: #000000;
+}
+span.citation {
+  color: #ffffff;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #ffffff;
+}
+#title {
+font-size: 85pt;
+text-align: left;
+margin: 0;
+line-height: 90%;
+border-bottom: 0;
+}
+#author {
+color: #024F84;
+margin: 0;
+line-height: 90%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 1em;
+color: #00000060;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #ffffff;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+}
+.outer h1 {
+text-align: center;
+margin-top: 0.5in;
+margin-bottom: 0.5in;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p {
+color: #000000;
+}
+.outer ol {
+text-align: left;
+}
+.main {
+width: calc(46in / 2);
+height: 32in;
+position: absolute;
+margin-left: calc(46in / 4);
+background-color: #024F84;
+color: #FFFFFF90;
+font-family: Special Elite;
+background-image: linear-gradient(#024F84 50%, #ffffff);
+}
+.main strong {
+color: #FFFFFF;
+}
+img.main-img-left {
+width: 20%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+img.main-img-right {
+width: 18%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+padding-top: 20%;
+font-size: 100px;
+text-align: left;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 46in;
+height: 32in;
+padding: 0cm;
+background-color: #ffffff;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+.main p {
+  padding-left: 30mm;
+  padding-right: 30mm;
+}
+.main_pic {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.orcid img {
+  width: 3%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="column outer">
+<br>
+<div class="title section">
+<h1 id="title">Randomized controlled trial of acceptance and commitment therapy and cognitive behavioral therapy for insomnia</h1>
+<br>
+<h3 id="author" class="author">
+
+Renatha El Rafihi-Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+ Rosa Hasan, Andrea Toscanini, Ila Linares, Daniel Suzuki, Israel Brasil, José Ribeiro-Jr, Marwin Carmo, Francisco Lotufo Neto, Charles Morin<sup> </sup><br>
+
+</h3>
+
+<h5 id="author_extra" class="author_extra">
+ </h5>
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Psychology, University of São Paulo, Brazil
+</p>
+
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<ul>
+<li><p>Not all individuals respond to CBT, and many do not maintain their gains over the long term. ACT has a growing empirical base in the treatment of insomnia complaints among adults, aiming to increase their psychological flexibility, not concentrating exclusively on symptom control.</p></li>
+<li><p>This study evaluated the effectiveness of ACT-based protocol for insomnia in adults compared to CBT for insomnia.</p></li>
+</ul>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>227 adults (173 women; <span class="math inline">\(M_{age}\)</span> = 40.7 years) with insomnia were randomized to 6 weekly group sessions consisting of ACT-I (<em>n</em>=76), CBT-I (<em>n</em>=76), or Waitlist (WL; <em>n</em>=75). To measure the success of the treatment, we used binary variables to show if the participant achieved response (ISI<span class="math inline">\(_{post}\)</span> − ISI<span class="math inline">\(_{pre}\)</span> <span class="math inline">\(\ge\)</span> 8), remission at posttreatment (ISI <span class="math inline">\(\lt\)</span> 8), and remission maintenance at 6-month follow-up (ISI <span class="math inline">\(\lt\)</span> 8).</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>Both treatments significantly reduced insomnia severity with large effect sizes in the posttreatment phase. These results were maintained in the follow-up period. CBT was superior to ACT in reducing ISI at posttreatment and follow-up, with a small effect size.</p>
+</div>
+<div id="discussion" class="section level1">
+<h1>Discussion</h1>
+<p>ACT alone, without stimulus control and sleep restriction techniques, is also effective for insomnia, being a viable option for those who have difficulties adhering to behavioral techniques. ACT targets psychological processes, which may take longer to modify, but once modified, the changes are sustained without further therapist guidance.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="img/fluxograma.png" alt="Flow diagram of participants through each stage of the study." width="80%" />
+<p class="caption">
+Figure 1: Flow diagram of participants through each stage of the study.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="img/intplot.png" alt="ISI scores in three groups and protocol phases." width="80%" />
+<p class="caption">
+Figure 2: ISI scores in three groups and protocol phases.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="img/barras.png" alt="Treatment response rates." width="80%" />
+<p class="caption">
+Figure 3: Treatment response rates.
+</p>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p>First study to document such results in a 3-arm RCT comparing ACT with gold standard insomnia treatment (CBT) and no treatment (WL).<br><br> ACT and CBT improved significantly, with <strong>large effect sizes</strong> for the insomnia severity, with superiority of CBT and a delayed improvement for ACT.<br><br> <strong>ACT-I</strong> proved to be an effective therapy, especially in the <strong>long term</strong>, even in the absence of behavioral techniques of stimulus control and sleep restriction.</p>
+<img src="img/acbs_logo.png" class="main-img-left" />
+<img src="img/usp-logo-transp.png" class="main-img-right" />
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>

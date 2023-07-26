@@ -1,11 +1,11 @@
 ---
-main_topsize: 0.13 #percent coverage of the poster
+main_topsize: 0.07 #percent coverage of the poster
 main_bottomsize: 0.07
 poster_height: "150cm"
 poster_width: "80cm"
 body_textsize: "46px"
 #ESSENTIALS
-title: '**Development of the Sleep Acceptance Scale (SAS)**'
+title: '**Sleep Acceptance Scale: development of a new brief tool for clinicians and researchers**'
 author:
   - name: '**Marwin M. I. B. Carmo**'
     affil: 1
@@ -45,7 +45,7 @@ column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
 main_textalign: "left"
-main_textsize: "160px"
+main_textsize: "120px"
 main_textalpha: "cf"
 main_findings:
   - "Preliminary evidence for a new measure \nof **Sleep Acceptance**: a promising tool for clinicians and researchers."
@@ -349,14 +349,14 @@ Preliminary evidence suggest that the SAS might be a reliable and valid indicato
 
 ## Items
 
-1. Tento controlar meu sono forçando que ele aconteça, ou sendo muito rígido(a) em relação aos horários de dormir e acordar.
-
-2.	Evito compromissos ou deixo de fazer coisas que gosto ou preciso por causa do meu sono.
-
-3.	Sinto-me desconfortável ao pensar no momento de dormir.
-
-4.	Tenho sentimentos negativos em relação ao meu sono.
-
-5.	Minhas preocupações, pensamentos e sentimentos sobre o meu sono interferem na maneira como eu lido com o meu dia a dia.
-
-6.	Tenho medo de não dormir.
+  1. I try to control my sleep by forcing it to happen or being too rigid about my sleep schedule.
+	 
+  2. I avoid making plans or doing things I enjoy or need to do because of my sleep.
+	 
+  3. The thought of going to sleep makes me uneasy.
+	 
+  4. I have negative feelings towards my sleep.
+	 
+  5. My worries, thoughts, and feelings about my sleep interfere with how I go about my daily life.
+	 
+  6. I am scared of not being able to fall asleep.

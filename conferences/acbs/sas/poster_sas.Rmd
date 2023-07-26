@@ -1,0 +1,166 @@
+---
+title: 'Sleep Acceptance Scale: development of a new brief tool for clinicians and researchers'
+title_textsize: "85pt"
+body_textsize: "38px"
+author:
+  - name: Renatha El Rafihi-Ferreira
+    affil: 1
+    email: rerafihi@usp.br
+    #orcid: 0000-0002-1099-3857
+    main: true
+  - name: Marwin Carmo, Leo Paulos-Guarnieri, Maria Laura Nogueira Pires
+    main: true
+affiliation:
+  - num: 1
+    address: Department of Psychology, University of São Paulo, Brazil
+main_textsize: "160px"
+main_findings:
+    - "Preliminary evidence shows good psychometric properties for the **Sleep Acceptance Scale**, a new brief measure of Sleep Acceptance."
+#  - '![](img/intplot.png){.main_pic}'
+logoleft_name: '![](../rct/img/acbs_logo.png){.main-img-left}'
+logoright_name: '![](../rct/img/usp-logo-transp.png){.main-img-right}'
+# Main Colour Scheme
+primary_colour: "#024F84"
+secondary_colour: "#ffffff"
+body_bgcol: "#ffffff"
+output: 
+  posterdown::posterdown_betterland:
+    self_contained: false
+    pandoc_args: --mathjax
+    highlight: haddock
+    number_sections: false
+link-citations: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(results = 'asis',
+                      echo = FALSE,
+                      warning = FALSE,
+                      tidy = FALSE,
+                      message = FALSE,
+                      fig.align = 'center',
+                      out.width = "100%")
+options(knitr.table.format = "html") 
+```
+
+```{r myplot, include=FALSE}
+library("DiagrammeR")
+library(kableExtra)
+library(dplyr)
+library(tidyr)
+library("corrr")
+```
+
+# Introduction
+
+Insomnia symptoms are associated with higher levels of <b><span style="color: #024F84;">metacognitive control</b></span>. Controlled information processing interferes with a healthy sleep process by preventing cognitive deactivation, which involves diminished verbal regulation and control, and acceptance of spontaneous physiological and mental processes. Because general tools for measuring acceptance do not address sleep-related behaviors, the development of specific instruments is essential for studying acceptance of insomnia.
+
+This study aimed to develop a new measure of sleep acceptance, titled Sleep Acceptance Scale (SAS), and examine its factorial structure, internal consistency, and construct validity.
+
+# Methods
+
+The SAS was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance. Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years, with and without insomnia symptoms. We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) and Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the DWLS estimator.
+
+# Results
+
+The parallel analysis procedure indicated two latent factors: <b><span style="color: #024F84;">Avoidance</b></span> (two items; $\omega$ = .55) and <b><span style="color: #024F84;">Distress</b></span> (four items; $\omega$ = .93). The 2-factor model showed a good fit [$\chi^2$(8) = 59.48, RMSEA = .067 (0.05, 0.084); CFI = .999; RNI = .999; TLI = .998]. 
+
+The SAS was positively correlated with ISI (*r* = .8), DBAS-16 (*r* = .76), AAQ-II (*r* = .63), HADS-A (*r* = .64), HADS-D (*r* = .56), and negatively correlated with SPAQ (*r* = -.63).
+
+# Discussion
+
+Preliminary evidence suggest that the SAS might be a reliable and valid indicator of acceptance of sleep problems in people with and without sleep problems.
+
+<br>
+
+```{r}
+ebas_full <- readr::read_csv("../../cbsono_22/ebas.csv") %>% 
+  dplyr::mutate(ebas_score = dplyr::select(., ebas_1:ebas_6) %>% rowSums())
+ebas <- dplyr::select(ebas_full, ebas_1:ebas_6)
+sas_cor <- ebas %>%
+  correlate(method = "pearson") %>%
+  shave() %>%
+  dplyr::mutate(dplyr::across(ebas_1:ebas_6, ~round(.x,2) |> as.character())) |> 
+  dplyr::mutate(dplyr::across(everything(), ~replace_na(.x, ""))) |> 
+  dplyr::select(-ebas_6) |> 
+  dplyr::mutate(term=stringr::str_remove_all(term, "[^0-9]"))
+
+sas_ms <- ebas |> 
+  tidyr::pivot_longer(cols = everything(), names_to = "item", values_to = "score") |> 
+  dplyr::with_groups(item, summarise, Mean = mean(score), SD = sd(score)) |> 
+  dplyr::mutate(dplyr::across(Mean:SD, ~round(.x,2) |> as.character())) |> 
+  select(-item)
+
+bind_cols(sas_cor, sas_ms) |> 
+  kable(col.names = c("Item", "1", "2", "3", "4", "5", "Mean", "SD"),
+        table.attr = "style='width:100%;'",
+        align = "c",
+        caption="Descriptive statistics and item inter-correlations of the SAS.")
+```
+
+
+```{r out.width="80%", dpi=300, fig.cap="Structural equation model for the Confirmatory Factor Analysis for the final version of the Sleep Acceptance Scale. Avd = Avoidance, Dis = Distress."}
+grViz("
+digraph {
+
+  rankdir=LR;
+  
+  'Avd' [shape = 'circle' height=1.2 fontsize=30]
+  'Dis' [shape = 'circle' height=1.2 fontsize=30]
+  'x1' [shape = 'square']
+  'x2' [shape = 'square']
+  'x3' [shape = 'square']
+  'x4' [shape = 'square']
+  'x5' [shape = 'square']
+  'x6' [shape = 'square']
+
+  'e1' [shape = 'circle']
+  'e2' [shape = 'circle']
+  'e3' [shape = 'circle']
+  'e4' [shape = 'circle']
+  'e5' [shape = 'circle']
+  'e6' [shape = 'circle']
+
+  'Avd'->'x1' [ label = '.55']
+  'Avd'->'x2' [ label = '.72']
+  'Dis'->'x3' [ label = '.93']
+  'Dis'->'x4' [ label = '.95']
+  'Dis'->'x5' [ label = '.85']
+  'Dis'->'x6' [ label = '.89']
+  
+  'x1' -> 'e1' [dir=back rank=same]
+  'x2' -> 'e2' [dir=back]
+  'x3' -> 'e3' [dir=back]
+  'x4' -> 'e4' [dir=back]
+  'x5' -> 'e5' [dir=back]
+  'x6' -> 'e6' [dir=back]
+
+  'e1':e -> 'e1':e [dir=both label = '.70']
+  'e2':e -> 'e2':e [dir=both label = '.48']
+  'e3':e -> 'e3':e [dir=both label = '.13']
+  'e4':e -> 'e4':e [dir=both label = '.10']
+  'e5':e -> 'e5':e [dir=both label = '.28']
+  'e6':e -> 'e6':e [dir=both label = '.21']
+
+  'Avd':w -> 'Dis':w [dir=both label = .79 constraint=false]
+
+}
+")
+```
+
+## Items
+
+  1. I try to control my sleep by forcing it to happen or being too rigid about my sleep schedule.
+	 
+  2. I avoid making plans or doing things I enjoy or need to do because of my sleep.
+	 
+  3. The thought of going to sleep makes me uneasy.
+	 
+  4. I have negative feelings towards my sleep.
+	 
+  5. My worries, thoughts, and feelings about my sleep interfere with how I go about my daily life.
+	 
+  6. I am scared of not being able to fall asleep.
+
+
+
