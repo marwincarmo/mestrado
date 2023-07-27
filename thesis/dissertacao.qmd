@@ -12,26 +12,99 @@ knitr::opts_chunk$set(
 )
 
 # reprodutibilidade
-# set.seed(1)
+set.seed(13061991)
 # 
-# # pacotes
-# pacman::p_load(
-#     kableExtra,
-#     ggplot2,
-#     tsibble,
-#     fable,
-#     fabletools
-# )
-# 
-# # tema ggplot
-# tema = theme_classic() +
-#     theme(
-#         text = element_text(family = "serif")
-#     )
-
+library(ggpubr)
+library(papaja)
+library(semTools)
+library(weights)
+library(kableExtra)
+library(EGAnet)
+library(ggplot2)
+library(wesanderson)
 
 ```
 
-# INTRODUÇÃO
+```{r dataset}
+## read full dataset
+mydata <- read.csv("data/data.csv")
 
-Teste
+## answers from arm 1 (baseline)
+dbas_a1 <- mydata |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1") |>  # dupes
+  dplyr::mutate(group = dplyr::case_when(
+    dsm_1 == 0 &
+    dsm_2 == 0 &
+    dsm_3 == 0 &
+    dsm_4 == 0 &
+    dsm_5 == 0 &
+    isi_total < 8 ~ "good_sleepers",
+    TRUE ~ "bad_sleepers")) |> 
+  dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.)))
+```
+
+```{r analyses, include=FALSE, cache=TRUE}
+source(knitr::purl("scr/02-cfa.Rmd"))
+source(knitr::purl("scr/03-ega.Rmd"))
+source(knitr::purl("scr/04-ega-invariance.Rmd"))
+```
+
+# Introduction
+
+Insomnia is a disorder characterized by dissatisfaction with sleep duration or quality [@americanpsychiatricassociation2013]. Several cognitive and behavioral models of insomnia emphasize the role of sleep-related thoughts in perpetuating the disorder [@espie2006; @harvey2002; @lundh2005; @morin1993; @ong2012; @perlis1997]. The frequently referenced model of A. G. Harvey [-@harvey2002] proposes that negative thoughts and behaviors about sleep can trigger arousal and distress, leading to distorted perceptions of sleep and increased worry. These beliefs may also exacerbate cognitive activity and prevent sleep self-correction. The Microanalytic model [@morin1993] is also based on similar beliefs and is popular among experts studying insomnia processes [@marques2015].
+
+Current evidence suggests that beliefs and attitudes about sleep play a role in perpetuating insomnia [@akram2020; @chow2018; @harvey2017; @lancee2019], although some studies do not support this association [@norell-clarke2021]. The Microanalytic model [@morin1993] proposes that insomnia maintenance involves a cyclic process of arousal, dysfunctional cognitions, maladaptive habits, and consequences. Arousal refers to excessive emotional, cognitive, or physiological activity, which can create core beliefs that guide information processing [@marques2015]. Consequences may include unrealistic expectations, rigid beliefs about sleep requirements, and increased worry about the causes and consequences of sleep disturbances. Subsequent unhealthy sleep practices may include daytime napping, excessive time in bed, or indiscriminate use of sleep medication. Real or perceived consequences are linked to diminished performance during the day [@sullivan2022].
+
+## Constructs and Their Relations
+
+Individuals with higher insomnia symptoms are typically strong endorsers of dysfunctional beliefs about sleep [@carney2006; @cronlein2014; @eidelman2016]. Cognitive-behavioral treatments target modifying such unhelpful beliefs and habits about sleep, leading to objective and subjective sleep quality improvements [@harvey2014; @montserratsanchez-ortuno2010; @belanger2006]. CBT-I has been shown to significantly improve beliefs and attitudes about sleep compared to controls, although the evidence quality is low [@edingerjackd.2021]. 
+
+Insomnia severity is a risk factor for anxiety [@neckelmann2007] and depression [@blanken2020; @li2016], but some suggest the relationship may be reversed [@chen2017; @jansson-frojmark2008b]. A link between anxiety, depression, and dysfunctional beliefs about sleep is also expected. Beck's [-@beck1979cognitive] cognitive model for depression emphasizes inaccurate beliefs and maladaptive information processing. Unpleasant memories from negative experiences can cause anxiety [@brewin1996theoretical]. Thus, unrealistic attributions and expectations about sleep can lead to anxiety-provoking thoughts. There is also evidence that dysfunctional beliefs about sleep are an indirect pathway between insomnia and depression [@sadler2013].
+
+## Measurement of dysfunctional beliefs and attitudes about sleep
+
+The Dysfunctional Beliefs and Attitudes About Sleep Scale [DBAS, @morin1993insomnia] is one of the earliest tools to evaluate sleep-related beliefs and attitudes. It is often used in research studies that examine sleep-related thoughts, particularly the 16-question version [@thakral2020]. Originally a 30-item self-report measure rated on a 100-mm scale of agreement/disagreement, it was shortened to 16 items and rated on an 11-point scale ranging from 0 (strongly disagree) to 10 (strongly agree) [@morin2007a]. The 16 items were selected based on response distribution, item-total correlations, and exploratory oblique factor analysis.
+
+A Confirmatory Factor Analysis was used to fit a 4-factor structure to the 16 items, with factors labeled (a) consequences of insomnia, (b) worry about sleep, (c) sleep expectations, (d) medication, and a fifth second-order general factor. @morin2007a have reported acceptable fit indices for the DBAS-16 but highlighted that items 10 ("sleep is unpredictable") and 13 ("insomnia resulting from chemical imbalance") with very low item-total correlations and factor loadings were kept because of their clinical relevance. Researchers have translated and validated the DBAS-16 across various cultures [e.g., @boysan2010; @dhyani2013; @lang2017], reporting good validity evidence overall.
+
+Before the development of the DBAS-16, alternative versions of the scale were proposed. @espie2000 created a 10-item version based on the item's statistically significant score change after cognitive-behavioral therapy for insomnia. However, Edinger and Wohlgemuth's [-@edinger2001a] replication study did not fully reproduce the 3-factor structure of this version. Moreover, @chungka-fai2016 found that the DBAS-16 outperformed 30- and 10-item versions in reproducibility, internal consistency, concurrent validity, and sensitivity to change.
+
+Recently, @castillo2023 analyzed the DBAS-16 using Item Response Theory (IRT) with university students. They discovered that the "medication" and "expectations" factors had the lowest test information, while the "worry/helplessness" and "consequences" subscales were highly informative in measuring the latent construct. Furthermore, the authors shortened the test by removing items 10, 13, and 16 to improve model fit.
+
+@clemente2023 proposed a 16-item version (DBAS-SF-16) of Morin's DBAS-30 after refining the scale items through sequential psychometric analysis. Exploratory factor analysis revealed two factors: "Consequences and Helplessness" and "Medication and Hopelessness." Four items from Morin's DBAS-16 did not meet the criteria for inclusion in DBAS-SF-16.
+
+## The Present Study
+
+In the study and treatment of insomnia, it is important to consider dysfunctional beliefs about sleep. The Dysfunctional Beliefs About Sleep questionnaire is essential to assess this. Examining the psychometric properties of any measure used to evaluate unobservable constructs is crucial to ensure precision [@mcneish2022a]. There have been discrepancies among studies regarding the DBAS items and factors' accuracy in representing the underlying construct, indicating a need for additional psychometric research on this measurement tool.
+
+The present study has two primary aims: 1) to create a Brazilian-Portuguese adaptation of the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16). Using latent variable modeling, we will analyze its factorial structure, reliability, and construct validity. 2) To conduct an exploratory analysis using a psychometric network perspective. This approach models psychopathology as a network of causal interactions among symptoms rather than originating from a root cause, such as latent variable models, and has gained popularity in psychiatry and psychology [@borsboom2008; @borsboom2013; @bringmann2022].
+
+# Methods
+
+## Study design and setting 
+
+The current study is linked to a randomized controlled trial (RCT) of behavioral treatment for insomnia (Clinical trial: NCT04866914). The study was approved by the research ethics committee of the General Hospital of the University of São Paulo, School of Medicine (HC-FMUSP), São Paulo, Brazil (CAAE: 46284821.1.0000.0068). All participants signed a consent form prior to their inclusion. Participants then completed an online survey using REDCap electronic data capture tools [@harris2019redcap], including the Brazilian-Portuguese version of DBAS-16 and other auxiliary instruments. In order to test temporal stability, the same participants were emailed and asked to complete the same measures again 14 days later. This study was not preregistered. The R code, dataset, and RMarkdown file containing the manuscript text used in this paper can be accessed at [osf.io/qcbwn](https://osf.io/qcbwn/).
+
+## Sample size
+
+```{r power-analysis}
+ss_closefit_dbas <- semTools::findRMSEAsamplesize(rmsea0=.059, rmseaA=.05, df=98, power=.80)
+ss_notclosefit_dbas <- semTools::findRMSEAsamplesize(rmsea0 = .08, rmseaA = .059, df=98, power=.80)
+
+```
+
+To estimate an adequate sample size, we used MacCallum et al.'s [-@maccallum1996] root-mean-square error of approximation (RMSEA) tests of close and not-close fit for the confirmatory factor analysis (CFA). We performed these tests in R 4.3.0 [@R-base] using *semTools* version `r packageVersion("semTools")` [@semtools]. Morin [-@morin2007a] previously reported an RMSEA of 0.059 for DBAS-16 in a CFA. Using this value as a starting point, we calculated the sample sizes needed to reject the test of not-close fit with an RMSEA value greater than 0.08 and the test of close fit with an RMSEA value less than 0.05, both with a power of 0.80 and a significance level of 0.05. Our calculations indicated that a minimum of `r ss_notclosefit_dbas` subjects were necessary to reject the not-close fit test, and `r ss_closefit_dbas` participants were required to reject the close fit test. Based on this information, our target sample size was set at a minimum of `r ss_closefit_dbas` participants.
+
+## Participants
+
+Participants with and without insomnia were recruited from March 2021 to July 2022 through social media. The first group consisted of individuals already enrolled in behavioral treatment for insomnia. To include participants without insomnia, we requested volunteers who believed they had no sleeping issues. Interested individuals accessed the REDCap database platform and responded to an initial screening. The inclusion criteria were age between 18 and 59 years and had no reported difficulties reading or writing in Portuguese.
+
+Bad sleepers were categorized based on their complaints of insomnia. This includes experiencing difficulty falling asleep or staying asleep, as per the Diagnostic and Statistical Manual of Mental Disorders [@americanpsychiatricassociation2013] criteria. Additionally, participants' total score on the Insomnia Severity Index should not exceed 7 points [@bastien2001]. The participants were classified as good sleepers if none of these criteria was met.
+
+After removing those who did not complete a single item of DBAS-16 on the first administration, the final sample consisted of `r nrow(dbas_a1)` participants, of which `r round(sum(dbas_a1$sex==1)/nrow(dbas_a1)*100,2)`% were female, and `r round(sum(dbas_a1$group=="bad_sleepers")/nrow(dbas_a1)*100,2)`% reported insomnia symptoms. The mean age was `r round(mean(dbas_a1$age),2)` years (SD = `r round(sd(dbas_a1$age),2)`, range: `r min(dbas_a1$age)`–`r floor(max(dbas_a1$age))`). Among those who reported race, there were `r round(sum(dbas_a1$race==1, na.rm=TRUE)/nrow(dbas_a1)*100,2)`% Whites, `r round(sum(dbas_a1$race %in% c(2,3))/nrow(dbas_a1)*100,2)`% Blacks, and `r round(sum(dbas_a1$race==4, na.rm=TRUE)/nrow(dbas_a1)*100,2)`% Asians. Most had a university degree (`r round(sum(dbas_a1$education==9)/nrow(dbas_a1)*100,2)`%) and were active workers (`r round(sum(dbas_a1$work_status %in% c(2,5,6))/nrow(dbas_a1)*100,2)`%).
+
+## Material
+
+### Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS-16)
+
+To develop a Brazilian-Portuguese version of the DBAS-16, we mainly based our methods on Beaton's [-@beaton2000] recommendations with additions from @borsaAdaptacaoValidacaoInstrumentos2012. The original English version was translated by three independent translators, two familiar with the instrument constructs and one an English teacher with no medical background. A committee of two clinical psychologists experts in insomnia synthesized the translated versions documenting their decisions in a form. Then, two native speakers of the source language back-translated the synthesized version to English for review by the first author of the original questionnaire. Next, we conducted a cognitive debriefing with 15 participants from different regions and educational levels to test the pre-final version. Of the participants, 12 were female, and the mean age was 43 years (range: 19--57). Overall, the participants understood the test items and instructions well, and only one term required alteration for better readability in the target language. The final translation is available as supplementary material, and all intermediate versions are available at [osf.io/av45j](https://osf.io/av45j/).

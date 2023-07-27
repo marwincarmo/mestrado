@@ -1,0 +1,728 @@
+---
+title: "Exploratory Graph Analysis of the DBAS-16"
+subtitle: "Example Rmd script"
+author: "Author: [name removed for blinded review]"
+date: " `r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    tables: true
+bibliography: ["../ext/bib/references.bib", "../ext/bib/r-references.bib"]
+csl: ../ext/apa7.csl
+---
+
+```{r packages-nwk, echo=TRUE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(psychTools)
+library(EGAnet)
+library(qgraph)
+library(tidymodels)
+library(ggpubr)
+```
+
+```{r dataset-ega, warning=FALSE, message=FALSE, echo=FALSE}
+## read full dataset
+mydata <- read.csv("../data/data.csv")
+
+## select answers from arm 1
+dbas <- mydata |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+                ## exclude previously identified outliers 
+                !record_id %in% c(1651, 2015, 2938, 3793)) |>
+  dplyr::mutate(group = dplyr::case_when(
+    dsm_1 == 0 &
+    dsm_2 == 0 &
+    dsm_3 == 0 &
+    dsm_4 == 0 &
+    dsm_5 == 0 &
+    isi_total < 8 ~ "good_sleepers",
+    TRUE ~ "bad_sleepers")) |> 
+  dplyr::select(record_id, paste0("dbas16_", 1:16), group) |> 
+  dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.))) |> 
+  # median inputation for one participant that left one item unanswered
+  dplyr::mutate(dbas16_10 = tidyr::replace_na(dbas16_10, 7))
+
+items <- dbas[, 2:17]
+
+colnames(items) <- paste0("D", 1:16)
+```
+
+```{r sample-split}
+set.seed(1354789)
+
+dbas_initial_split <- dbas |>  initial_split(1/2, strata=group)
+
+dbas_train <- training(dbas_initial_split)[,2:17]
+dbas_test <- testing(dbas_initial_split)[,2:17]
+
+colnames(dbas_train) <- colnames(dbas_test) <- paste0("D", 1:16)
+```
+
+
+
+```{r labels}
+items_labels <- tibble::tribble(
+  ~items, ~description,
+  "D1" , "I need 8 hours of sleep to feel refreshed and function well during the day.",
+  "D2" , "When I don't get proper amount of sleep on a given night, I need to catch up on the next day by napping or on the next night by sleeping longer.",
+  "D3" ,"I am concerned that chronic insomnia may have serious consequences on my physical health.",
+  "D4" ,"I am worried that I may lose control over my abilities to sleep.",
+  "D5" ,"After a poor night’s sleep, I know that it will interfere with my daily activities on the next day.",
+  "D6" ,"In order to be alert and function well during the day, I believe I would be better off taking a sleeping pill rather than having a poor night’s sleep.",
+  "D7" ,"When I feel irritable, depressed, or anxious during the day, it is mostly because I did not sleep well the night before.",
+  "D8" ,"When I sleep poorly on one night, I know it will disturb my sleep schedule for the whole week.",
+  "D9" ,"Without an adequate night’s sleep, I can hardly function the next day.",
+  "D10" ,"I can’t ever predict whether I’ll have a good or poor night’s sleep.",
+  "D11" ,"I have little ability to manage the negative consequences of disturbed sleep.",
+  "D12" ,"When I feel tired, have no energy, or just seem not to function well during the day, it is generally because I did not sleep well the night before.",
+  "D13" ,"I believe insomnia is essentially the result of a chemical imbalance.",
+  "D14" ,"I feel insomnia is ruining my ability to enjoy life and prevents me from doing what I want.",
+  "D15" ,"Medication is probably the only solution to sleeplessness.",
+  "D16" ,"I avoid or cancel obligations (social, family) after a poor night’s sleep."
+  
+)
+```
+
+
+# Derivation
+
+# Detecting redundancy with Unique Variable Analysis
+
+```{r redund-items}
+redund <- EGAnet::UVA(data=dbas_train, method="wTO", type="threshold",  corr =  "spearman",
+                    reduce=FALSE, adhoc=FALSE, plot.redundancy=TRUE) 
+redund.items <- redund$redundancy$redundant
+```
+
+Redundancies were found between items `r names(redund.items[1])` and `r redund.items[[1]]`, and between items `r names(redund.items[2])` and `r redund.items[[2]]`.
+
+```{r}
+psych::describe(dbas_train[, c("D1", "D2","D3", "D4", "D6", "D15")]) |> 
+  as.data.frame() |> 
+  dplyr::mutate(maxwTO = c(
+    max(redund$redundancy$weights[1,-2]),
+    max(redund$redundancy$weights[2,-1]),
+    max(redund$redundancy$weights[3,-4]),
+    max(redund$redundancy$weights[4,-3]),
+    max(redund$redundancy$weights[6,-15]),
+    max(redund$redundancy$weights[15,-6])
+  ),
+  item_total_cor = psych::alpha(dbas_train)$item.stats[c(1, 2, 3, 4, 6, 15), 4])
+```
+
+
+# Initial Dimensionality Estimation
+
+## Model with redundancies
+
+```{r ega-with-redundancy}
+# EGA (with redundancy) 
+ega.wr.tmfg <- EGA(dbas_train, algorithm = "walktrap", model = "TMFG",  corr =  "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+ega.wr.glasso <- EGA(dbas_train, algorithm = "walktrap", model = "glasso", corr =  "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels, plot.args = list()) 
+
+
+comp.plots.wr <- EGAnet::compare.EGA.plots(
+  ega.wr.glasso, ega.wr.tmfg,
+  base.plot = 1,
+  labels = c("GLASSO", "TMFG"),
+  rows = 1, columns = 2
+)
+
+comp.plots.wr$comparison.plot
+
+```
+
+
+```{r dim-tab-wr}
+dimtab.wr <- ega.wr.tmfg$dim.variables |> 
+  dplyr::left_join(ega.wr.glasso$dim.variables, by = "items", suffix = c("_tmfg", "_glasso"))
+dimtab.wr
+```
+### Total Entropy Fit Index
+
+
+```{r tefi}
+
+dbas.cor <- abs(qgraph::cor_auto(dbas_train))
+
+tefi_tmfg <- tefi(data=dbas.cor, structure=ega.wr.tmfg$wc) 
+
+tefi_glasso <- tefi(data=dbas.cor, structure=ega.wr.glasso$wc) 
+
+cbind("Algorithm" = c("TMFG", "GLASSO"), rbind(tefi_tmfg, tefi_glasso))
+
+```
+
+TEFI for the TFMG model is `r tefi_tmfg$VN.Entropy.Fit`, and for the GLASSO model is `r tefi_glasso$VN.Entropy.Fit`, making the model with 4 dimensions preferable.
+
+### Structural consistency
+
+
+```{r bootEGA-wr}
+# Uncomment to run the functions
+
+# Compute bootstrap
+# boot.tmfg.wr <- bootEGA(dbas_train, iter = 1000, model = "TMFG", type = "parametric", corr =  "spearman", uni.method = "LE", plot.typicalStructure = FALSE)
+# 
+# boot.glasso.wr <- bootEGA(dbas_train, iter = 1000, model = "glasso", type = "parametric", corr =  "spearman", uni.method = "LE", plot.typicalStructure = FALSE)
+# 
+# saveRDS(boot.tmfg.wr, "../output/ega/bootTMFGwr.rds")
+# saveRDS(boot.glasso.wr, "../output/ega/bootGLASSOwr.rds")
+
+boot.tmfg.wr <-readRDS("../output/ega/bootTMFGwr.rds")
+boot.glasso.wr <-readRDS("../output/ega/bootGLASSOwr.rds")
+```
+
+```{r stability-descriptive}
+# Descriptive statistics 
+desc.stab.wr <- rbind(boot.tmfg.wr$summary.table, boot.glasso.wr$summary.table)
+row.names(desc.stab.wr) <- c("TMFG", "GLASSO")
+desc.stab.wr
+```
+
+```{r dimension-frequency}
+# Frequency of dimensions 
+
+dim.freq.wr <- rbind(boot.tmfg.wr$frequency, boot.glasso.wr$frequency)
+row.names(dim.freq.wr) <- c(rep("TMFG", nrow(boot.tmfg.wr$frequency)), 
+                            rep("GLASSO", nrow(boot.glasso.wr$frequency)))
+dim.freq.wr
+```
+
+
+```{r structural-consistency-wr}
+# structural consistency
+dim.stab.wr.tmfg <- dimensionStability(boot.tmfg.wr)
+dim.stab.wr.glasso <- dimensionStability(boot.glasso.wr)
+```
+
+```{r dim-stab-wr}
+dim.stab.wr <- tibble::enframe(list(
+  "tmfg" = dim.stab.wr.tmfg$dimension.stability$structural.consistency,
+"glasso" = dim.stab.wr.glasso$dimension.stability$structural.consistency)) |> 
+  tidyr::unnest(value) |> 
+  dplyr::with_groups(name, mutate, dim = row_number(), .before="value")
+dim.stab.wr
+```
+
+### Standardized node strenght
+
+```{r network-loadings-wr}
+# Compute standardized node strength 
+net.loads(ega.wr.glasso)$std
+```
+
+
+```{r}
+# Item stability across all dimensions
+dim.stab.wr.tmfg$item.stability$item.stability$all.dimensions
+```
+
+## EGA without item D15
+
+```{r ega-d15}
+# EGA without D15
+ega.d15.tmfg <- EGA(dbas_train[,-c(15)], algorithm = "walktrap", model = "TMFG", corr = "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+ega.d15.glasso <- EGA(dbas_train[,-c(15)], algorithm = "walktrap", model = "glasso", corr = "spearman", 
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+comp.plots.d15 <- EGAnet::compare.EGA.plots(
+  ega.d15.glasso, ega.d15.tmfg,
+  base.plot = 1,
+  labels = c("GLASSO", "TMFG"),
+  rows = 1, columns = 2
+)
+
+comp.plots.d15$comparison.plot
+```
+
+
+```{r dim-tab-d15}
+dimtab.d15 <- ega.d15.tmfg$dim.variables |> 
+  dplyr::left_join(ega.d15.glasso$dim.variables, by = "items", suffix = c("_tmfg", "_glasso"))
+dimtab.d15
+```
+
+### Total Entropy Fit Index
+
+
+```{r tefi-d15}
+
+dbas.cor.d15 <- abs(qgraph::cor_auto(dbas_train[,-c(15)]))
+
+tefi_tmfg.d15 <- tefi(data=dbas.cor.d15, structure=ega.d15.tmfg$wc) 
+
+tefi_glasso.d15 <- tefi(data=dbas.cor.d15, structure=ega.d15.glasso$wc) 
+
+cbind("Algorithm" = c("TMFG", "GLASSO"), rbind(tefi_tmfg.d15, tefi_glasso.d15))
+
+```
+### Structural consistency
+
+<!-- un-comment to recompute the bootstrap analyses. results were saved only for rendering the manuscript faster -->
+
+```{r bootEGA-d15}
+# Compute bootstrap 
+# boot.tmfg.d15 <- bootEGA(dbas_train[,-c(15)], iter = 1000, model = "TMFG", type = "parametric", corr = "spearman", plot.typicalStructure = FALSE, uni.method = "LE")
+# 
+# boot.glasso.d15 <- bootEGA(dbas_train[,-c(15)], iter = 1000, model = "glasso", type = "parametric", corr = "spearman", plot.typicalStructure = FALSE, uni.method = "LE")
+# 
+# saveRDS(boot.tmfg.d15, "../output/ega/bootTMFGd15.rds")
+# saveRDS(boot.glasso.d15, "../output/ega/bootGLASSOd15.rds")
+
+boot.tmfg.d15 <-readRDS("../output/ega/bootTMFGd15.rds")
+boot.glasso.d15 <-readRDS("../output/ega/bootGLASSOd15.rds")
+```
+
+```{r stability-descriptive-d15}
+# Descriptive statistics 
+desc.stab.d15 <- rbind(boot.tmfg.d15$summary.table, boot.glasso.d15$summary.table)
+row.names(desc.stab.d15) <- c("TMFG", "GLASSO")
+desc.stab.d15
+```
+
+```{r dimension-frequency-d15}
+# Frequency of dimensions 
+
+dim.freq.d15 <- rbind(boot.tmfg.d15$frequency, boot.glasso.d15$frequency)
+row.names(dim.freq.d15) <- c(rep("TMFG", nrow(boot.tmfg.d15$frequency)), 
+                            rep("GLASSO", nrow(boot.glasso.d15$frequency)))
+dim.freq.d15
+```
+
+
+```{r structural-consistency-d15}
+# structural consistency
+dim.stab.d15.tmfg <- dimensionStability(boot.tmfg.d15)
+dim.stab.d15.glasso <- dimensionStability(boot.glasso.d15)
+```
+
+```{r dim-stab-d15}
+dim.stab.d15 <- tibble::enframe(list(
+  "tmfg" = dim.stab.d15.tmfg$dimension.stability$structural.consistency,
+"glasso" = dim.stab.d15.glasso$dimension.stability$structural.consistency)) |> 
+  tidyr::unnest(value) |> 
+  dplyr::with_groups(name, mutate, dim = row_number(), .before="value")
+
+```
+
+```{r}
+# Item stability across all dimensions
+dim.stab.d15.glasso$item.stability$item.stability$all.dimensions
+```
+
+## EGA with items D15 and D3 removed
+
+```{r ega-d3}
+# EGA without D3
+ega.d3.tmfg <- EGA(dbas_train[,-c(15,3)], algorithm = "walktrap", model = "TMFG", corr = "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+ega.d3.glasso <- EGA(dbas_train[,-c(15,3)], algorithm = "walktrap", model = "glasso", corr = "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+comp.plots.d3 <- EGAnet::compare.EGA.plots(
+  ega.d3.glasso, ega.d3.tmfg,
+  base.plot = 1,
+  labels = c("GLASSO", "TMFG"),
+  rows = 1, columns = 2
+)
+
+comp.plots.d3$comparison.plot
+```
+
+
+```{r dim-tab-d3}
+dimtab.d3 <- ega.d3.tmfg$dim.variables |> 
+  dplyr::left_join(ega.d3.glasso$dim.variables, by = "items", suffix = c("_tmfg", "_glasso"))
+dimtab.d3
+```
+
+### Total Entropy Fit Index
+
+
+```{r tefi-wo-d3}
+
+dbasD3.cor <- abs(qgraph::cor_auto(dbas_train[,-c(15,3)]))
+
+tefi_tmfgD3 <- tefi(data=dbasD3.cor, structure=ega.d3.tmfg$wc) 
+
+tefi_glassoD3 <- tefi(data=dbasD3.cor, structure=ega.d3.glasso$wc) 
+
+cbind("Algorithm" = c("TMFG", "GLASSO"), rbind(tefi_tmfgD3, tefi_glassoD3))
+
+```
+
+
+### Structural consistency
+
+
+```{r bootEGA-d3}
+
+# boot.tmfg.d3 <- bootEGA(dbas_train[,-c(15,3)], iter = 1000, model = "TMFG", type = "parametric", corr = "spearman", uni.method = "LE", plot.typicalStructure = FALSE)
+# 
+# boot.glasso.d3 <- bootEGA(dbas_train[,-c(15,3)], iter = 1000, model = "glasso", type = "parametric", corr = "spearman", uni.method = "LE", plot.typicalStructure = FALSE)
+# 
+# saveRDS(boot.tmfg.d3, "../output/ega/bootTMFGd3.rds")
+# saveRDS(boot.glasso.d3, "../output/ega/bootGLASSOd3.rds")
+
+boot.tmfg.d3 <-readRDS("../output/ega/bootTMFGd3.rds")
+boot.glasso.d3 <-readRDS("../output/ega/bootGLASSOd3.rds")
+```
+
+```{r stability-descriptive-d3}
+# Descriptive statistics 
+desc.stab.d3 <- rbind(boot.tmfg.d3$summary.table, boot.glasso.d3$summary.table)
+row.names(desc.stab.d3) <- c("TMFG", "GLASSO")
+desc.stab.d3
+```
+
+```{r dimension-frequency-d3}
+# Frequency of dimensions 
+
+dim.freq.d3 <- rbind(boot.tmfg.d3$frequency, boot.glasso.d3$frequency)
+row.names(dim.freq.d3) <- c(rep("TMFG", nrow(boot.tmfg.d3$frequency)), 
+                            rep("GLASSO", nrow(boot.glasso.d3$frequency)))
+dim.freq.d3
+```
+
+```{r structural-consistency-d3}
+# structural consistency
+dim.stab.d3.tmfg <- dimensionStability(boot.tmfg.d3)
+dim.stab.d3.glasso <- dimensionStability(boot.glasso.d3)
+```
+
+```{r dim-stab-d3}
+dim.stab.d3 <- tibble::enframe(list(
+  "tmfg" = dim.stab.d3.tmfg$dimension.stability$structural.consistency,
+"glasso" = dim.stab.d3.glasso$dimension.stability$structural.consistency)) |> 
+  tidyr::unnest(value) |> 
+  dplyr::with_groups(name, mutate, dim = row_number(), .before="value")
+dim.stab.d3
+```
+
+## EGA with items D15, D3, and D1 removed
+
+```{r ega-d1-tmfg}
+
+ega.d1.tmfg <- EGA(dbas_train[,-c(15, 3, 1)], algorithm = "walktrap", model = "TMFG", corr = "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+ega.d1.glasso <- EGA(dbas_train[,-c(15, 3, 1)], algorithm = "walktrap", model = "glasso", corr = "spearman",
+              plot.EGA = FALSE, uni.method = "LE", key = items_labels) 
+
+comp.plots.d1 <- EGAnet::compare.EGA.plots(
+  ega.d1.glasso, ega.d1.tmfg,
+  base.plot = 1,
+  labels = c("GLASSO", "TMFG"),
+  rows = 1, columns = 2
+)
+
+comp.plots.d1$comparison.plot
+```
+
+```{r dim-tab-d1}
+dimtab.d1 <- ega.d1.tmfg$dim.variables |> 
+  dplyr::left_join(ega.d1.glasso$dim.variables, by = "items", suffix = c("_tmfg", "_glasso"))
+dimtab.d1
+```
+
+### Total Entropy Fit Index
+
+
+```{r tefi-wo-d1}
+
+dbas.d1.cor <- abs(qgraph::cor_auto(dbas_train[,-c(15, 3, 1)]))
+
+tefi.tmfg.d1 <- tefi(data=dbas.d1.cor, structure=ega.d1.tmfg$wc) 
+
+tefi.glasso.d1 <- tefi(data=dbas.d1.cor, structure=ega.d1.glasso$wc) 
+
+cbind("Algorithm" = c("TMFG", "GLASSO"), rbind(tefi.tmfg.d1, tefi.glasso.d1))
+
+```
+
+
+### Structural consistency
+
+```{r bootEGA-d1}
+
+# boot.tmfg.d1 <- bootEGA(dbas_train[,-c(15, 3, 1)], iter = 1000, model = "TMFG", type = "parametric", corr = "spearman", uni.method = "LE", plot.typicalStructure = FALSE, progress=FALSE)
+# 
+# boot.glasso.d1 <- bootEGA(dbas_train[,-c(15, 3, 1)], iter = 1000, model = "glasso", type = "parametric", corr = "spearman", uni.method = "LE", plot.typicalStructure = FALSE, progress=FALSE)
+# 
+# saveRDS(boot.tmfg.d1, "../output/ega/bootTMFGd1.rds")
+# saveRDS(boot.glasso.d1, "../output/ega/bootGLASSOd1.rds")
+
+boot.tmfg.d1 <-readRDS("../output/ega/bootTMFGd1.rds")
+boot.glasso.d1 <-readRDS("../output/ega/bootGLASSOd1.rds")
+```
+
+```{r stability-descriptive-d1}
+# Descriptive statistics 
+desc.stab.d1 <- rbind(boot.tmfg.d1$summary.table, boot.glasso.d1$summary.table)
+row.names(desc.stab.d1) <- c("TMFG", "GLASSO")
+desc.stab.d1
+```
+
+```{r dimension-frequency-d1}
+# Frequency of dimensions 
+
+dim.freq.d1 <- rbind(boot.tmfg.d1$frequency, boot.glasso.d1$frequency)
+row.names(dim.freq.d1) <- c(rep("TMFG", nrow(boot.tmfg.d1$frequency)), 
+                            rep("GLASSO", nrow(boot.glasso.d1$frequency)))
+dim.freq.d1
+```
+
+```{r structural-consistency-d1}
+# structural consistency
+dim.stab.d1.tmfg <- dimensionStability(boot.tmfg.d1)
+dim.stab.d1.glasso <- dimensionStability(boot.glasso.d1)
+```
+
+```{r dim-stab-d1}
+dim.stab.d1 <- tibble::enframe(list(
+  "tmfg" = dim.stab.d1.tmfg$dimension.stability$structural.consistency,
+"glasso" = dim.stab.d1.glasso$dimension.stability$structural.consistency)) |> 
+  tidyr::unnest(value) |> 
+  dplyr::with_groups(name, mutate, dim = row_number(), .before="value")
+dim.stab.d1
+```
+
+## Model comparison
+
+```{r compare}
+cbind("Algorithm" = c("TMFG D15", "GLASSO D15", "TMFG D15-D3", "GLASSO D15-D3", "TMFG D15-D3-D1", "GLASSO D15-D3-D1","TMFG WR", "GLASSO WR"), rbind(tefi_tmfg.d15, tefi_glasso.d15, tefi_tmfgD3, tefi_glassoD3, tefi.tmfg.d1, tefi.glasso.d1, tefi_tmfg, tefi_glasso))
+```
+
+# Confirmation
+
+## Redundancy
+
+```{r redund-items-confirmation}
+redund_test <- EGAnet::UVA(data=dbas_test, method="wTO", type="threshold",  corr =  "spearman",
+                    reduce=FALSE, adhoc=FALSE, plot.redundancy=TRUE) 
+redund.items.test <- redund_test$redundancy$redundant
+```
+
+
+## EGA with test sample
+
+```{r ega-tmfg-test}
+
+ega.test.tmfg <- EGA(dbas_test[,-c(15, 3, 1)], algorithm = "walktrap", model = "TMFG", corr = "spearman",
+              plot.EGA = FALSE, key = items_labels) 
+
+ega.test.glasso <- EGA(dbas_test[,-c(15, 3, 1)], algorithm = "walktrap", model = "glasso", corr = "spearman",
+              plot.EGA = FALSE, key = items_labels) 
+
+comp.plots.test <- EGAnet::compare.EGA.plots(
+  ega.test.glasso, ega.test.tmfg,
+  base.plot = 1,
+  labels = c("GLASSO", "TMFG"),
+  rows = 1, columns = 2
+)
+
+comp.plots.test$comparison.plot
+```
+
+```{r dim-tab-test}
+dimtab.test <- ega.test.tmfg$dim.variables |> 
+  dplyr::left_join(ega.test.glasso$dim.variables, by = "items", suffix = c("_tmfg", "_glasso"))
+dimtab.test
+```
+
+### Total Entropy Fit Index
+
+
+```{r tefi-test}
+
+dbas.test.cor <- abs(qgraph::cor_auto(dbas_test[,-c(15, 3, 1)]))
+
+tefi.tmfg.test <- tefi(data=dbas.test.cor, structure=ega.test.tmfg$wc) 
+
+tefi.glasso.test <- tefi(data=dbas.test.cor, structure=ega.test.glasso$wc) 
+
+cbind("Algorithm" = c("TMFG", "GLASSO"), rbind(tefi.tmfg.test, tefi.glasso.test))
+
+```
+
+
+### Structural consistency
+
+```{r bootEGA-test}
+
+# boot.tmfg.test <- bootEGA(dbas_test[,-c(15, 3, 1)], iter = 1000, model = "TMFG", type = "parametric", corr = "spearman", plot.typicalStructure = FALSE, progress=FALSE)
+# 
+# boot.glasso.test <- bootEGA(dbas_test[,-c(15, 3, 1)], iter = 1000, model = "glasso", type = "parametric", corr = "spearman", plot.typicalStructure = FALSE, progress=FALSE)
+# 
+# saveRDS(boot.tmfg.test, "../output/ega/bootTMFGtest.rds")
+# saveRDS(boot.glasso.test, "../output/ega/bootGLASSOtest.rds")
+
+boot.tmfg.test <-readRDS("../output/ega/bootTMFGtest.rds")
+boot.glasso.test <-readRDS("../output/ega/bootGLASSOtest.rds")
+
+```
+
+```{r stability-descriptive-test}
+# Descriptive statistics 
+desc.stab.test <- rbind(boot.tmfg.test$summary.table, boot.glasso.test$summary.table)
+row.names(desc.stab.test) <- c("TMFG", "GLASSO")
+desc.stab.test
+```
+
+```{r dimension-frequency-test}
+# Frequency of dimensions 
+
+dim.freq.test <- rbind(boot.tmfg.test$frequency, boot.glasso.test$frequency)
+row.names(dim.freq.test) <- c(rep("TMFG", nrow(boot.tmfg.test$frequency)), 
+                            rep("GLASSO", nrow(boot.glasso.test$frequency)))
+dim.freq.test
+```
+
+```{r structural-consistency-test}
+# structural consistency
+dim.stab.test.tmfg <- dimensionStability(boot.tmfg.test)
+dim.stab.test.glasso <- dimensionStability(boot.glasso.test)
+```
+
+```{r dim-stab-test}
+dim.stab.test <- tibble::enframe(list(
+  "tmfg" = dim.stab.test.tmfg$dimension.stability$structural.consistency,
+"glasso" = dim.stab.test.glasso$dimension.stability$structural.consistency)) |> 
+  tidyr::unnest(value) |> 
+  dplyr::with_groups(name, mutate, dim = row_number(), .before="value")
+dim.stab.test
+```
+# EGA x CFA
+
+```{r }
+
+cfa.ega <- CFA(ega.obj = ega.d1.glasso, data = dbas_test, estimator="MLR", plot.CFA = FALSE)
+
+ega.theory <- ega.wr.glasso
+
+ega.theory$dim.variables[,1] <- colnames(items)
+
+ega.theory$dim.variables[c(5, 7, 9, 12, 16),2] <- rep(1, 5)
+ega.theory$dim.variables[c(3, 4, 8, 10, 11, 14),2] <- rep(2, 6)
+ega.theory$dim.variables[c(1, 2),2] <- rep(3, 2)
+ega.theory$dim.variables[c(6, 13, 15),2] <- rep(4, 3)
+
+cfa.theory <- CFA(ega.obj = ega.theory, data = dbas_test, estimator="MLR", plot.CFA = FALSE)
+```
+
+```{r fit-comparison}
+rbind("Theory model" = cfa.theory$fit.measures, 
+      "EGA model" = cfa.ega$fit.measures
+      )
+```
+
+```{r cfa-models}
+mod_theory <- '
+cons =~ D5 + D7 + D9 + D12 + D16
+worry =~ D3 + D4 + D8 + D10 + D11 + D14
+exp =~ D1 + D2
+med =~ D6 + D13 + D15
+'
+mod_mi <- '
+cons =~ D5 + D7 + D9 + D12 + D16
+worry =~ D3 + D4 + D8 + D10 + D11 + D14
+exp =~ D1 + D2
+med =~ D6 + D13 + D15
+D3 ~~  D4
+D6 ~~ D15
+'
+
+mod_glasso <- '
+F1 =~ D2 + D5 + D7 + D8 + D9 + D12 + D16
+F2 =~ D4 + D6 + D10 + D11 + D13 + D14
+'
+
+  
+fit_theory <- lavaan::cfa(model = mod_theory,
+                        std.lv = TRUE, estimator = 'MLMV', data = dbas_test)
+
+fit_mi <- lavaan::cfa(model = mod_mi,
+                        std.lv = TRUE, estimator = 'MLMV', data = dbas_test)
+
+fit_glasso <- lavaan::cfa(model = mod_glasso,
+                        std.lv = TRUE, estimator = 'MLMV', data = dbas_test)
+
+```
+
+```{r LRT-models}
+theory_glasso_comparison <- lavaan::lavTestLRT(fit_glasso, fit_theory, method="satorra.bentler.2010")
+mi_glasso_comparison <- lavaan::lavTestLRT(fit_glasso, fit_mi, method="satorra.bentler.2010")
+theory_glasso_comparison
+```
+
+```{r fit-measures-comparison}
+fm_theory <- semTools::fitmeasures(fit_theory, 
+                         fit.measures = c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "cfi",
+                                          "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "tli.robust",
+                                          "cfi.robust", "srmr_bentler"))
+
+fm_mi <- semTools::fitmeasures(fit_mi, 
+                         fit.measures = c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "cfi",
+                                          "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "tli.robust",
+                                          "cfi.robust", "srmr_bentler"))
+
+fm_glasso <- semTools::fitmeasures(fit_glasso, 
+                         fit.measures = c("rmsea", "rmsea.ci.lower", "rmsea.ci.upper", "cfi",
+                                          "rmsea.robust", "rmsea.ci.lower.robust", "rmsea.ci.upper.robust", "tli.robust",
+                                          "cfi.robust", "srmr_bentler"))
+
+
+purrr::map_dfr(list("Theory" = fm_theory, "Theory w/ cor errors" = fm_mi, "EGA GLASSO" = fm_glasso), enframe, .id = "Model") |> 
+  tidyr::pivot_wider(names_from = "Model", values_from = value)
+
+```
+```{r fit-differences}
+theory_glasso <- fm_theory - fm_glasso
+theory_glasso_diffs <- t(data.frame(theory_glasso))[, c("rmsea", "cfi", "rmsea.robust", "cfi.robust", "srmr_bentler")]
+theory_glasso_diffs
+```
+
+## Internal consistency EGA model
+
+```{r ega-lv-factors}
+ega_factors <- list(
+  dim1 = items[, c(2,5,7,8,9,12,16)],
+  dim2 = items[, c(4,6,10,11,13,14)]
+)
+```
+
+```{r ega-lv-reliability}
+# library(furrr)
+# future::plan(future::multisession)
+# alpha_ega <- progressr::with_progress({
+#   factors <- 1:10
+#   p <- progressr::progressor(length(factors))
+#   furrr::future_map(
+#     ega_factors,
+#     ~MBESS::ci.reliability(.x, type = "alpha", interval.type = "bca"),
+#     prog = p,
+#     .options = furrr_options(seed = 123)
+#   )
+# })
+# 
+# omega_ega <- purrr::map(ega_factors,
+#          ~MBESS::ci.reliability(.x, type="hierarchical", interval.type = "perc", B = 1000))
+# 
+# saveRDS(alpha_ega, "../output/ega/alpha_ega.rds")
+# saveRDS(omega_ega, "../output/ega/omega_ega.rds")
+
+alpha_ega <- readRDS("../output/ega/alpha_ega.rds")
+omega_ega <- readRDS("../output/ega/omega_ega.rds")
+```
+
+
+

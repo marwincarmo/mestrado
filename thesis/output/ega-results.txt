@@ -1,0 +1,23 @@
+dbas16_1   	dbas16_1    1		EXP
+dbas16_2	dbas16_2	1		EXP
+dbas16_5	dbas16_5	1		CONS
+dbas16_7	dbas16_7	1		CONS
+dbas16_8	dbas16_8	1		WORRY
+dbas16_9	dbas16_9	1		CONS
+dbas16_12	dbas16_12	1		CONS
+dbas16_16	dbas16_16	1		CONS
+
+dbas16_3	dbas16_3	2		WORRY
+dbas16_4	dbas16_4	2		WORRY
+dbas16_6	dbas16_6	2		MED
+dbas16_10	dbas16_10	2		WORRY
+dbas16_11	dbas16_11	2		WORRY
+dbas16_13	dbas16_13	2		MED
+dbas16_14	dbas16_14	2		WORRY
+dbas16_15	dbas16_15	2		MED
+
+
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15

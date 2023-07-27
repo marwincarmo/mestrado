@@ -1,0 +1,641 @@
+
+knitr::opts_chunk$set(echo = TRUE)
+
+
+
+library(lavaan)
+library(dplyr)
+library(semTools)
+library(MVN)
+library(tidySEM)
+library(semPlot)
+library(weights)
+library(bootnet)
+library(ggplot2)
+library(furrr)
+library(kableExtra)
+
+
+
+## read full dataset
+mydata <- read.csv("../data/data.csv")
+
+## select answers from arm 1
+arm1 <- mydata |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+                ## exclude previously identified outliers
+                !record_id %in% c(1651, 2015, 2938, 3793)
+                ) |> 
+  dplyr::mutate(group = dplyr::case_when(
+    dsm_1 == 0 &
+    dsm_2 == 0 &
+    dsm_3 == 0 &
+    dsm_4 == 0 &
+    dsm_5 == 0 &
+    isi_total < 8 ~ "good_sleepers",
+    TRUE ~ "bad_sleepers")) 
+
+dbas <- arm1 |> 
+  dplyr::select(record_id, paste0("dbas16_", 1:16), group) |> 
+  dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.))) |> 
+  # median inputation for one participant that left one item unanswered
+  dplyr::mutate(dbas16_10 = tidyr::replace_na(dbas16_10, 7))
+
+
+
+mvn_res <- MVN::mvn(dbas[,2:17],
+    multivariatePlot = "qq",
+    showOutliers = TRUE)
+
+
+
+kbl(mvn_res$univariateNormality) |> 
+  kable_paper()
+
+
+
+mod_dbas_ho <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+gen =~ cons + worry + exp + med
+'
+
+
+fit_mlm_ho <- lavaan::cfa(model = mod_dbas_ho,
+                        std.lv = TRUE, estimator = 'MLMV', data = dbas[,2:17])
+
+
+
+
+mod_dbas <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+'
+
+
+fit_mlm <- lavaan::cfa(model = mod_dbas,
+                        std.lv = TRUE, estimator = 'MLMV', data = dbas[,2:17])
+s_mlm <- summary(fit_mlm, fit.measures = TRUE,standardized=TRUE)
+
+
+
+fit_comparison <- anova(fit_mlm_ho, fit_mlm)
+
+
+
+# RMSEA and CFI from the Mean-And-Variance Corrected Test Statistic (Salvalei, 2018)
+# Savalei, V. (2018). On the Computation of the RMSEA and CFI from the Mean-And-Variance Corrected Test Statistic with Nonnormal Data in SEM, Multivariate Behavioral Research, 53(3), 419-429. https://doi.org/10.1080/00273171.2018.1455142
+
+a <- fitmeasures(fit_mlm)["chisq.scaling.factor"]
+rmsea.old<-fitmeasures(fit_mlm)["rmsea.scaled"]
+ci.old.l<-fitmeasures(fit_mlm)["rmsea.ci.lower.scaled"]
+ci.old.u<-fitmeasures(fit_mlm)["rmsea.ci.upper.scaled"]
+
+rmsea.new<-sqrt(a)*rmsea.old
+ci.new.l<-sqrt(a)*ci.old.l
+ci.new.u<-sqrt(a)*ci.old.u
+
+cfi.old<-fitmeasures(fit_mlm)["cfi.scaled"]
+a.baseline<-fitmeasures(fit_mlm)["baseline.chisq.scaling.factor"]
+cfi.new<-1-(a/a.baseline*(1-cfi.old))
+
+
+
+tidySEM::table_results(fit_mlm) |> 
+  kbl() |> 
+  kable_paper() |> 
+  scroll_box(width = "100%", height = "400px")
+
+
+table_fit(fit_mlm) |> 
+  dplyr::select(-Name) |> 
+  tidyr::pivot_longer(cols = dplyr::everything(), names_to = "output", values_to = "value") |> 
+  kbl() |> 
+  kable_paper() |> 
+  scroll_box(width = "100%", height = "400px")
+
+
+
+lavaan::modindices(fit_mlm) |> 
+  dplyr::arrange(-mi) |> 
+  head(10) |> 
+  kbl() |> 
+  kable_paper()
+
+
+
+mod_dbas_mi <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+dbas16_3 ~~  dbas16_4
+dbas16_6 ~~ dbas16_15
+'
+
+# Model fit with MLM estimator, assuming data as continuous
+fit_mlm_mi <- lavaan::cfa(model = mod_dbas_mi,
+                           std.lv = TRUE, estimator = 'MLMV', data = dbas[,2:17])
+
+
+
+# RMSEA and CFI from the Mean-And-Variance Corrected Test Statistic (Salvalei, 2018)
+# Savalei, V. (2018). On the Computation of the RMSEA and CFI from the Mean-And-Variance Corrected Test Statistic with Nonnormal Data in SEM, Multivariate Behavioral Research, 53(3), 419-429. https://doi.org/10.1080/00273171.2018.1455142
+
+a_mi <- fitmeasures(fit_mlm_mi)["chisq.scaling.factor"]
+rmsea.old_mi<-fitmeasures(fit_mlm_mi)["rmsea.scaled"]
+ci.old.l_mi<-fitmeasures(fit_mlm_mi)["rmsea.ci.lower.scaled"]
+ci.old.u_mi<-fitmeasures(fit_mlm_mi)["rmsea.ci.upper.scaled"]
+
+rmsea.new_mi<-sqrt(a_mi)*rmsea.old_mi
+ci.new.l_mi<-sqrt(a_mi)*ci.old.l_mi
+ci.new.u_mi<-sqrt(a_mi)*ci.old.u_mi
+
+cfi.old_mi<-fitmeasures(fit_mlm_mi)["cfi.scaled"]
+a.baseline_mi<-fitmeasures(fit_mlm_mi)["baseline.chisq.scaling.factor"]
+cfi.new_mi<-1-(a_mi/a.baseline_mi*(1-cfi.old_mi))
+
+
+
+tidySEM::table_results(fit_mlm_mi) |> 
+  kbl() |> 
+  kable_paper() |> 
+  scroll_box(width = "100%", height = "400px")
+
+
+
+table_fit(fit_mlm_mi) |> 
+  dplyr::select(-Name) |> 
+  tidyr::pivot_longer(cols = dplyr::everything(), names_to = "output", values_to = "value") |> 
+  kbl() |> 
+  kable_paper() |> 
+  scroll_box(width = "100%", height = "400px")
+
+
+
+semPaths(fit_mlm, "std", edge.label.cex = 1.0, rotation = 2, curvePivot = TRUE)
+
+
+
+data_longitudinal <- mydata |> 
+  dplyr::filter(!record_id %in% c(1651, 2015, 2938, 3793)) |>  # dupes
+  dplyr::select(record_id, paste0("dbas16_", 1:16), redcap_event_name) |> 
+  dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.))) |> 
+  # median inputation for one participant that left one item unanswered
+  dplyr::mutate(dbas16_10 = tidyr::replace_na(dbas16_10, 7)) |> 
+  tidyr::pivot_longer(cols = dbas16_1:dbas16_16, names_to = "item", values_to = "score") |> 
+  dplyr::mutate(item = ifelse(redcap_event_name == "elegibilidade_arm_1", paste0(item, ".1"), paste0(item, ".2"))) |> 
+  dplyr::select(-redcap_event_name) |> 
+  tidyr::pivot_wider(names_from = item, values_from = score)
+
+
+
+
+configural_model <- '
+
+cons.1 =~ dbas16_5.1 + dbas16_7.1 + dbas16_9.1 + dbas16_12.1 + dbas16_16.1
+worry.1 =~ dbas16_3.1 + dbas16_4.1 + dbas16_8.1 + dbas16_10.1 + dbas16_11.1 + dbas16_14.1
+exp.1 =~ dbas16_1.1 + dbas16_2.1
+med.1 =~ dbas16_6.1 + dbas16_13.1 + dbas16_15.1
+dbas16_3.1 ~~  dbas16_4.1
+dbas16_6.1 ~~ dbas16_15.1
+
+cons.2 =~ dbas16_5.2 + dbas16_7.2 + dbas16_9.2 + dbas16_12.2 + dbas16_16.2
+worry.2 =~ dbas16_3.2 + dbas16_4.2 + dbas16_8.2 + dbas16_10.2 + dbas16_11.2 + dbas16_14.2
+exp.2 =~ dbas16_1.2 + dbas16_2.2
+med.2 =~ dbas16_6.2 + dbas16_13.2 + dbas16_15.2
+dbas16_3.2 ~~  dbas16_4.2
+dbas16_6.2 ~~ dbas16_15.2
+
+'
+
+longFacNames <- list (CONS = c("cons.1", "cons.2"),
+                      WORRY = c("worry.1", "worry.2"),
+                      EXP = c("exp.1", "exp.2"),
+                      MED = c("med.1", "med.2"))
+
+syntax.config <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames)
+mod.config <- as.character(syntax.config)
+
+configural.fit <- cfa(mod.config, 
+                      data = data_longitudinal, 
+                      estimator = "MLMV", 
+                      std.lv = TRUE)
+
+tidySEM::table_results(configural.fit) |> 
+  kbl() |> 
+  kable_paper() |> 
+  scroll_box(width = "100%", height = "400px")
+
+
+
+
+syntax.metric <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings"))
+
+mod.metric <- as.character(syntax.metric)
+
+fit.metric <- cfa(mod.metric, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+conf.met <- compareFit(configural.fit, fit.metric)
+summary(conf.met)
+
+lavTestLRT(configural.fit, fit.metric, method="satorra.bentler.2010")
+
+
+
+syntax.scalar <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings",
+                                               "intercepts"))
+mod.scalar <- as.character(syntax.scalar)
+fit.scalar <- cfa(mod.scalar, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+anova(configural.fit, fit.metric, fit.scalar, method = "satorra.bentler.2010")
+
+
+
+syntax.strict <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings",
+                                               "intercepts", "residuals"))
+mod.strict <- as.character(syntax.strict)
+fit.strict <- cfa(mod.strict, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+anova(configural.fit, fit.metric, fit.scalar, fit.strict, method = "satorra.bentler.2010")
+
+
+
+inv_long <- anova(configural.fit, fit.metric, fit.scalar, fit.strict, 
+                  method = "satorra.bentler.2010") |> 
+  tibble::as.tibble()
+
+fit_stats_strict <- fitmeasures(fit.strict, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_scalar <- fitmeasures(fit.scalar, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_metric <- fitmeasures(fit.metric, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_configural <- fitmeasures(configural.fit, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+long_fit_diffs <- tibble::enframe(c(
+        fit_stats_configural - fit_stats_metric,
+        fit_stats_metric - fit_stats_scalar,
+        fit_stats_scalar - fit_stats_strict)) |> 
+  dplyr::mutate(model = rep(c("metric", "scalar", "strict"), each=4),
+                .before = name) |> 
+  tidyr::pivot_wider(names_from = "name", values_from = "value")
+
+
+
+mod_dbas_mi <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+dbas16_3 ~~  dbas16_4
+dbas16_6 ~~ dbas16_15
+'
+
+
+
+syntax.config.group <- measEq.syntax(configural.model = mod_dbas_mi,
+                               data = dbas[,2:18],
+                               group = "group",
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016")
+mod.config.group <- as.character(syntax.config.group)
+
+configural.fit.group <- cfa(mod.config.group, 
+                           group = "group",
+                           data = dbas[,2:18],
+                           estimator = "MLMV",
+                           std.lv = TRUE)
+
+
+
+syntax.metric.group <- measEq.syntax(configural.model = mod_dbas_mi,
+                               data = dbas[,2:18],
+                               group = "group",
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               group.equal  = c("loadings"))
+
+mod.metric.group <- as.character(syntax.metric.group)
+
+fit.metric.group <- cfa(mod.metric.group, group = "group",
+                           data = dbas[,2:18],
+                           estimator = "MLMV",
+                           std.lv = TRUE)
+
+conf.met <- compareFit(configural.fit.group, fit.metric.group, argsLRT = list(method = "satorra.bentler.2010"))
+
+summary(conf.met)
+
+lavTestLRT(configural.fit.group, fit.metric.group, method="satorra.bentler.2010")
+
+
+
+
+lavaan::modindices(fit.metric.group) |> 
+  dplyr::arrange(-mi) |> 
+  dplyr::filter(op == "=~") |> 
+  head(10)
+
+
+
+part.inv.syntax <- measEq.syntax(configural.model = mod_dbas_mi,
+                               data = dbas[,2:18],
+                               group = "group",
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               group.equal  = c("loadings"),
+                               group.partial = "cons =~ dbas16_14")
+
+part.inv.model <- as.character(part.inv.syntax)
+
+part.inv.fit<- cfa(part.inv.model, group = "group",
+                           data = dbas[,2:18],
+                           estimator = "MLMV",
+                           std.lv = TRUE)
+
+lavTestLRT(configural.fit.group, part.inv.fit, method="satorra.bentler.2010")
+
+
+
+inv_group <- anova(
+  configural.fit.group, fit.metric.group, method="satorra.bentler.2010") |> 
+  tibble::as.tibble()
+
+fit_stats_metric_group <- fitmeasures(fit.metric.group, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_configural_group <- fitmeasures(configural.fit.group, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+group_fitdiffs <- tibble::enframe(c(
+        fit_stats_configural_group - fit_stats_metric_group)) |> 
+  dplyr::mutate(model = c("metric"),
+                .before = name) |> 
+  tidyr::pivot_wider(names_from = "name", values_from = "value")
+
+
+
+fitdiffs_df <- inv_long[, 5:7] |> 
+  dplyr::mutate(
+    model = c("configural", "metric", "scalar", "strict"),
+    .before = dplyr::everything()) |> 
+  dplyr::left_join(long_fit_diffs, by = "model") |> 
+  rbind(inv_group[, 5:7] |> 
+          dplyr::mutate(
+    model = c("configural", "metric"),
+    .before = dplyr::everything()) |> 
+          dplyr::left_join(group_fitdiffs, by = "model"))
+
+fitdiffs_df[1, -1] <- t(as.data.frame(
+  fitmeasures(
+    configural.fit, fit.measures = c(
+      "chisq.scaled", "df.scaled", "pvalue.scaled",
+      "rmsea.robust", "cfi.robust", "aic", "bic"))
+))
+
+fitdiffs_df[5, -1] <- t(as.data.frame(
+  fitmeasures(
+    configural.fit.group, fit.measures = c(
+      "chisq.scaled", "df.scaled", "pvalue.scaled",
+      "rmsea.robust", "cfi.robust", "aic", "bic"))
+))
+
+fitdiffs_df |> 
+  dplyr::mutate(
+    `Pr(>Chisq)` = ifelse(`Pr(>Chisq)` < .001, "<.001", 
+                          weights::rd(`Pr(>Chisq)`, 2)),
+    dplyr::across(c(aic, bic), ~round(.x, 0)),
+    dplyr::across(c(rmsea.robust, cfi.robust),
+                  ~weights::rd(.x, 4)),
+    `Chisq diff` = round(`Chisq diff`, 2),
+    model = stringr::str_to_title(model)
+    ) |> 
+  `colnames<-`(c("Model", "$\\Delta\\chi^2$", 
+                 "$\\Delta$df", "$\\it{p}$-value", 
+                 "$\\Delta$RMSEA", "$\\Delta$CFI",
+                 "$\\Delta$AIC", "$\\Delta$BIC")) |> 
+  kbl(booktabs = TRUE, 
+      caption = " Model fit differences for CFA measurement invariance tests.", 
+      escape = FALSE) |> 
+  pack_rows("Longitudinal invariance", 1, 4) |>
+  pack_rows("Group invariance", 5, 6) |> 
+  footnote(general = "Differences to each preceding constraint level.",
+           footnote_as_chunk = TRUE,
+           general_title = "Note. ") |> 
+  kable_paper()
+
+
+
+dbas_factors <- list(
+  cons = dplyr::select(dbas, c(dbas16_5, dbas16_7, dbas16_9, dbas16_12, dbas16_16)),
+  worry = dplyr::select(dbas, c(dbas16_3, dbas16_4, dbas16_8, dbas16_10, dbas16_11, dbas16_14)),
+  exp = dplyr::select(dbas, c(dbas16_1, dbas16_2)),
+  med = dplyr::select(dbas, c(dbas16_6, dbas16_13, dbas16_15)),
+  total = dbas[,2:17]
+)
+
+
+
+future::plan(future::multisession)
+alphas <- progressr::with_progress({
+  factors <- 1:5
+  p <- progressr::progressor(length(factors))
+  furrr::future_map(
+    dbas_factors,
+    ~MBESS::ci.reliability(.x, type = "alpha", interval.type = "bca"),
+    prog = p,
+    .options = furrr_options(seed = 123)
+  )
+})
+
+saveRDS(alphas, "../output/alphas.rds")
+
+
+
+library(parallel)
+cl <- parallel::makeCluster(detectCores())
+# Activate cluster for foreach library
+doParallel::registerDoParallel(cl)
+omegas <- purrr::map(dbas_factors, 
+         ~MBESS::ci.reliability(.x, type="hierarchical", interval.type = "perc", B = 1000))
+# Stop cluster to free up resources
+parallel::stopCluster(cl)
+saveRDS(omegas, "../output/omegas.rds")
+
+
+
+omega_igi <- MBESS::ci.reliability(arm1[,16:22], type="hierarchical", interval.type = "perc", B = 500)
+
+omega_anx <- MBESS::ci.reliability(arm1[,c(24,26,28,30,32,34,36)], type="hierarchical", interval.type = "perc", B = 500)
+
+omega_dep <- MBESS::ci.reliability(arm1[,c(25,27,29,31,33,35,37)], type="hierarchical", interval.type = "perc", B = 500)
+
+saveRDS(omega_igi, "../output/omega_igi.rds")
+saveRDS(omega_anx, "../output/omega_anx.rds")
+saveRDS(omega_dep, "../output/omega_dep.rds")
+
+
+
+omegas <- readRDS("../output/omegas.rds") |> 
+  tibble::enframe() |> 
+  tidyr::unnest_wider(value) |> 
+  dplyr::transmute(omega = paste0(rd(est, 3), " [", rd(ci.lower, 3), ", ", rd(ci.upper, 3), "]"))
+
+omega_igi <- readRDS("../output/omega_igi.rds")
+omega_anx <- readRDS("../output/omega_anx.rds")
+omega_dep <- readRDS("../output/omega_dep.rds")
+
+omegas[6,1] <- paste0(rd(omega_igi$est, 3), " [", rd(omega_igi$ci.lower, 3), ", ", rd(omega_igi$ci.upper, 3), "]")
+
+omegas[7,1] <- paste0(rd(omega_dep$est, 3), " [", rd(omega_dep$ci.lower, 3), ", ", rd(omega_dep$ci.upper, 3), "]")
+
+omegas[8,1] <- paste0(rd(omega_anx$est, 3), " [", rd(omega_anx$ci.lower, 3), ", ", rd(omega_anx$ci.upper, 3), "]")
+  
+  
+alphas <- readRDS("../output/alphas.rds") |> 
+  tibble::enframe() |> 
+  tidyr::unnest_wider(value) |> 
+  dplyr::transmute(alpha = paste0(rd(est, 3), " [", rd(ci.lower, 3), ", ", rd(ci.upper, 3), "]"))
+
+
+
+
+
+
+modconv <- '
+cons =~ dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 
+worry =~ dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14
+exp =~ dbas16_1 + dbas16_2
+med =~ dbas16_6 + dbas16_13 + dbas16_15
+dbas16_3 ~~  dbas16_4
+dbas16_6 ~~ dbas16_15
+
+isi =~ isi_1a + isi_1b + isi_1c + isi_2 + isi_3 + isi_4 + isi_5
+
+dep =~ hads_2 + hads_4 + hads_6 + hads_8 + hads_10 + hads_12 + hads_14
+
+anx =~ hads_1 + hads_3 + hads_5 + hads_7 + hads_9 + hads_11 + hads_13
+
+'
+
+fitconv <- lavaan::sem(model = modconv,
+                        std.lv = TRUE, estimator = 'MLMV', data = arm1)
+
+
+
+covmat <- cov2cor(lavInspect(fitconv, "cov.lv"))
+covmat[upper.tri(covmat, diag = FALSE)] <- NA
+covmat_t <- corrr::fashion(covmat, decimals = 3)
+
+covmat_t2 <- covmat_t[,-c(5:7)]
+
+rownames(covmat_t2) <- c("1. Consequences", "2. Worry", "3. Expectations", "4. Medication", "5. ISI", "6. Depression", "7. Anxiety")
+colnames(covmat_t2) <- c("1", "2", "3", "4")
+
+cor_df <- tibble::as_tibble(covmat_t2, rownames="Variable") |> 
+  cbind(omegas[-5,])
+
+cor_df |> 
+  `colnames<-`(c("Variable", "1", "2", "3", "4", "$\\omega_h$")) |> 
+  kbl(booktabs = TRUE, escape = FALSE,
+      caption = "Latent correlations and internal consistency levels.", 
+      align = "lllllc") |> 
+  kable_paper()
+
+
+
+net.data <- arm1 |> 
+  dplyr::mutate(
+                consequences = dbas16_5 + dbas16_7 + dbas16_9 + dbas16_12 + dbas16_16,
+                worry = dbas16_3 + dbas16_4 + dbas16_8 + dbas16_10 + dbas16_11 + dbas16_14,
+                expectations = dbas16_1 + dbas16_2,
+                medication = dbas16_6 + dbas16_13 + dbas16_15) |> 
+  dplyr::select(consequences:medication, hads_depression, hads_anxiety, isi_total)
+
+
+
+network_model <- estimateNetwork(net.data, default = "EBICglasso",
+                                 weighted = TRUE)
+
+
+
+
+
+labels <- c("CON", "WRY", "EXP", "MED", "Dep", "Anx", "ISI")
+groups <- c(rep("DBAS", 4), rep("HADS", 2), "ISI")
+
+qgraph::qgraph(network_model$graph, layout = "spring",
+     label.cex=1.2, label.scale=F, theme = "colorblind",
+     labels = labels, groups = groups,
+     #nodeNames = items, groups = factors,
+     legend.mode="style2", legend.cex=.22,
+     vsize = 12, esize = 15, details = F, color=wesanderson::wes_palette("Moonrise3", n=3),
+     posCol = "#4169E1", negCol = "#DC143C",
+     #layoutOffset = c(-.2,0),
+     legend = FALSE, edge.labels=TRUE
+     )
+
+
+
+library("qgraph")
+centralityPlot(network_model, scale = c("z-scores"), 
+               include = c("Strength","Closeness","Betweenness"), 
+               theme_bw = TRUE, print = TRUE,
+               verbose = TRUE, weighted = TRUE, 
+               decreasing = T)
+
+
+
+mod.isi <- '
+isi =~ isi_1a + isi_1b + isi_1c + isi_2 + isi_3 + isi_4 + isi_5
+'
+mod.hads <- '
+dep =~ hads_2 + hads_4 + hads_6 + hads_8 + hads_10 + hads_12 + hads_14
+
+anx =~ hads_1 + hads_3 + hads_5 + hads_7 + hads_9 + hads_11 + hads_13
+'
+
+fitISI <- cfa(mod.isi, data=arm1, std.lv = TRUE, estimator = 'DWLS', ordered=TRUE)
+fmISI <- fitmeasures(fitISI)
+
+fitHADS <- cfa(mod.hads, data=arm1, std.lv = TRUE, estimator = 'DWLS', ordered=TRUE)
+fmHADS <- fitmeasures(fitHADS)
+
+
