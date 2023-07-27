@@ -1,0 +1,37 @@
+---
+author: Marwin Machay Indio do Brasil do Carmo
+---
+
+```{r config}
+#| include = FALSE
+
+# opções
+knitr::opts_chunk$set(
+    out.width = "90%",
+    echo = FALSE
+)
+
+# reprodutibilidade
+# set.seed(1)
+# 
+# # pacotes
+# pacman::p_load(
+#     kableExtra,
+#     ggplot2,
+#     tsibble,
+#     fable,
+#     fabletools
+# )
+# 
+# # tema ggplot
+# tema = theme_classic() +
+#     theme(
+#         text = element_text(family = "serif")
+#     )
+
+
+```
+
+# INTRODUÇÃO
+
+Teste
