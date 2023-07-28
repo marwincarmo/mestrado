@@ -15,17 +15,19 @@ knitr::opts_chunk$set(
 set.seed(13061991)
 # 
 library(ggpubr)
-library(papaja)
 library(semTools)
 library(weights)
 library(kableExtra)
 library(EGAnet)
 library(ggplot2)
 library(wesanderson)
-
+library(lavaan)
+library(qgraph)
+library(officer)
 ```
 
 ```{r dataset}
+#| include = FALSE
 ## read full dataset
 mydata <- read.csv("data/data.csv")
 
@@ -41,15 +43,16 @@ dbas_a1 <- mydata |>
     isi_total < 8 ~ "good_sleepers",
     TRUE ~ "bad_sleepers")) |> 
   dplyr::filter(!dplyr::if_all(dplyr::starts_with("dbas16_"), ~ is.na(.)))
+
 ```
 
-```{r analyses, include=FALSE, cache=TRUE}
-source(knitr::purl("scr/02-cfa.Rmd"))
-source(knitr::purl("scr/03-ega.Rmd"))
-source(knitr::purl("scr/04-ega-invariance.Rmd"))
+```{r echo = FALSE, message=FALSE, warning=FALSE, include=FALSE}
+source("src/02-cfa.R")
+source("src/03-ega.R")
+source("src/04-ega-invariance.R")
 ```
 
-# Introduction
+# INTRODUCTION
 
 Insomnia is a disorder characterized by dissatisfaction with sleep duration or quality [@americanpsychiatricassociation2013]. Several cognitive and behavioral models of insomnia emphasize the role of sleep-related thoughts in perpetuating the disorder [@espie2006; @harvey2002; @lundh2005; @morin1993; @ong2012; @perlis1997]. The frequently referenced model of A. G. Harvey [-@harvey2002] proposes that negative thoughts and behaviors about sleep can trigger arousal and distress, leading to distorted perceptions of sleep and increased worry. These beliefs may also exacerbate cognitive activity and prevent sleep self-correction. The Microanalytic model [@morin1993] is also based on similar beliefs and is popular among experts studying insomnia processes [@marques2015].
 
@@ -79,7 +82,7 @@ In the study and treatment of insomnia, it is important to consider dysfunctiona
 
 The present study has two primary aims: 1) to create a Brazilian-Portuguese adaptation of the Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16). Using latent variable modeling, we will analyze its factorial structure, reliability, and construct validity. 2) To conduct an exploratory analysis using a psychometric network perspective. This approach models psychopathology as a network of causal interactions among symptoms rather than originating from a root cause, such as latent variable models, and has gained popularity in psychiatry and psychology [@borsboom2008; @borsboom2013; @bringmann2022].
 
-# Methods
+# METHODS
 
 ## Study design and setting 
 
@@ -87,7 +90,7 @@ The current study is linked to a randomized controlled trial (RCT) of behavioral
 
 ## Sample size
 
-```{r power-analysis}
+```{r power-analysis, echo=FALSE}
 ss_closefit_dbas <- semTools::findRMSEAsamplesize(rmsea0=.059, rmseaA=.05, df=98, power=.80)
 ss_notclosefit_dbas <- semTools::findRMSEAsamplesize(rmsea0 = .08, rmseaA = .059, df=98, power=.80)
 
@@ -108,3 +111,225 @@ After removing those who did not complete a single item of DBAS-16 on the first 
 ### Dysfunctional Beliefs and Attitudes About Sleep Scale (DBAS-16)
 
 To develop a Brazilian-Portuguese version of the DBAS-16, we mainly based our methods on Beaton's [-@beaton2000] recommendations with additions from @borsaAdaptacaoValidacaoInstrumentos2012. The original English version was translated by three independent translators, two familiar with the instrument constructs and one an English teacher with no medical background. A committee of two clinical psychologists experts in insomnia synthesized the translated versions documenting their decisions in a form. Then, two native speakers of the source language back-translated the synthesized version to English for review by the first author of the original questionnaire. Next, we conducted a cognitive debriefing with 15 participants from different regions and educational levels to test the pre-final version. Of the participants, 12 were female, and the mean age was 43 years (range: 19--57). Overall, the participants understood the test items and instructions well, and only one term required alteration for better readability in the target language. The final translation is available as supplementary material, and all intermediate versions are available at [osf.io/av45j](https://osf.io/av45j/).
+
+### Additional measures
+
+1. *Insomnia Severity Index* [ISI, @bastien2001; @morin2011a] is a seven-item questionnaire that assesses the severity of insomnia and its impact on a person's life. The scale ranges from 0 (no problems) to 4 (very severe problem) and categorizes respondents as having no insomnia (0–7), mild insomnia (8–14), moderate insomnia (15–21), or severe insomnia (22–28). For our study, we used the Brazilian-Portuguese version [@castro]. A Confirmatory Factor Analysis (CFA) of the single-factor model produced an acceptable fit: $\chi^2$ (`r fmISI["df"]`) = `r weights::rd(fmISI["chisq"], 2)`, *p* < .001 RMSEA = `r weights::rd(fmISI["rmsea"], 3)` 90% CI [`r weights::rd(fmISI["rmsea.ci.lower"], 3)`, `r weights::rd(fmISI["rmsea.ci.upper"], 3)`], CFI = `r weights::rd(fmISI["cfi"], 3)`, SRMR = `r weights::rd(fmISI["srmr"], 3)`, and good internal consistency reliability: $\omega_h$ = `r omegas[6,1]`.
+
+2. *The Hospital Anxiety and Depression Scale* [HADS, @zigmond1983hospital] assesses psychological distress in non-psychiatric patients through two factors: Anxiety and Depression. Each factor has seven items that only measure emotions, not somatic symptoms. The score ranges from 0 to 21 for each factor. Scores of 0 to 8 indicate no anxiety/depression, while nine and above indicate their presence. The Brazilian-Portuguese version created by @botega1995transtornos was used. A two-factor model produced excellent CFA fit indices: $\chi^2$ (`r fmHADS["df"]`) = `r weights::rd(fmHADS["chisq"], 2)`, RMSEA = `r weights::rd(fmHADS["rmsea"], 3)` 90% CI [`r weights::rd(fmHADS["rmsea.ci.lower"], 3)`, `r weights::rd(fmHADS["rmsea.ci.upper"], 3)`], CFI = `r weights::rd(fmHADS["cfi"], 3)`, SRMR = `r weights::rd(fmHADS["srmr"], 3)`, and good internal consistency reliability for both factors: $\omega_{h-depression}$ = `r omegas[7,1]`, $\omega_{h-anxiety}$ = `r omegas[8,1]`.
+
+## Data analysis
+
+### Data screening and item evaluation
+
+First, we examined response frequency and item statistics to assess item variation, distribution, and data entry. We also investigated inter-item correlations and searched for unusual response patterns by identifying multivariate outliers using Mahalanobis distance. Additionally, we used the generalized Cook's distance (gCD) with the R package *faoutlier* version 0.7.6 [@faoutlier] to identify any points of influence.
+
+### Assessing the factor structure
+
+We fitted the original model of the DBAS-16 [@morin2007a] to our full sample using Confirmatory Factor Analyses (CFA) as a first test for structural validity. This model is a four-factor structure and a higher-order general factor. But because the DBAS-16 is often modeled with disregard for the higher-order factor [@lang2017; @castillo2023; @boysan2010; @clemente2023], we also tested a four-factor model allowing factors to covary and compared the fit of both. We used normal theory maximum likelihood (ML) to estimate the structural model parameters [@rhemtulla2012]. To account for the severe non-normality in our data, we applied maximum likelihood estimation with robust standard errors and a mean and variance-adjusted test statistic (MLMV) [@maydeu-olivares2017]. Our model fit evaluation relied on fit statistics including, chi-squared ($\chi^2$), Comparative Fit Index (CFI), Root Mean Square Error of Approximation (RMSEA), and Standardized Root Mean Squared Residual (SRMR). Obtaining confidence intervals (CI) for robust RMSEA and CFI involved computing the second-order corrected RMSEA CI based on the MLMV test statistic [@savalei2018]. All the CFA analyses were conducted with the R packages *lavaan* version 0.6.12 [@R-lavaan] and *semTools* version 0.5-6 [@R-semTools]. 
+
+Traditionally, CFA studies use cutoff values of SRMR $\le$ .08, RMSEA $\le$ .06, and CFI, TLI, and RNI $\ge$ .96 to evaluate model misspecification [@hu1999]. These values have limitations because they were derived from particular conditions, making generalizations to other models limited and unwarranted [@marsh2004]. Therefore, another advantage of using a ML estimation method is using dynamic fit index (DFI) cutoffs [@mcneish2021]. In essence, DFI provides cutoff values that would have been derived had our model been used in simulations similar to the one conducted by Hu and Bentler [-@hu1999]. DFI is calculated based on the number of factors in the model and assesses misspecification severity at sequential levels. We used the Dynamic Model Fit R Shiny application version 1.1.0 [@wolf2020] to obtain DFI for our models.
+
+### Measurement invariance
+
+We examined whether our scale's psychometric properties were equal across groups with and without insomnia symptoms and across time points, comparing baseline test scores to a second administration taken 14 days later. To do this, we tested invariance by restricting the measurement properties across groups/time in increasing levels of stringency. We tested in a sequence of factor structure (configural invariance), factor loadings (metric invariance), items' intercepts (scalar invariance), and items' residual variances (strict invariance) [@flake2021]. If a level of non-invariance was detected, no further tests were conducted. The criteria used to evaluate model fit were the chi-squared difference test for goodness of fit and alternative fit indices like $\Delta$CFI, $\Delta$RMSEA, and $\Delta$SRMR [@putnick2016]. While there are suggested cutoffs for alternative fit indices that indicate a lack of invariance [e.g., @cheung2002; @meade2008; @chen2007], these are still limited because researchers can only test a narrow set of conditions [@putnick2016]. Thus, we used a global approach that tested differences in fit between the restricted and less-constrained models in each stage, also looking at comparative fit measures of Akaike information criterion (AIC) and the Bayesian information criterion (BIC) [@mackinnon2022]. We gave greater weight to BIC results because it performs better in different simulation scenarios [@lin2017].  
+
+
+### Reliability and validity
+
+We used McDonald's omega hierarchical ($\omega_h$) to estimate internal consistency. This measure has advantages over Cronbach's $\alpha$, as it does not assume tau equivalence (i.e., loadings are not assumed equal) or a perfect fit in CFA [@kelley2016]. We calculated the point estimate and the bias-corrected and accelerated bootstrap confidence interval (1000 bootstrap samples) for the internal consistency indices using the R package *MBESS* version 4.9.2 [@MBESS]. We followed the traditional guideline of internal consistency indices $\ge$ .70 to evaluate reliability as acceptable [@kline1986]. 
+
+To assess convergent validity, we estimated a structural equation model where the DBAS-16 factors, insomnia severity, and the HADS subscales of depression and anxiety were allowed to correlate.  We expect these associations to be positive and strong. These associations were also explored in a network model, where variables are represented as nodes, and their connections by weighted edges, representing their conditional associations [@borsboom2021]. We used *bootnet* version 1.5 [@R-bootnet] to estimate the network and *qgraph* version 1.9.4 [@R-qgraph] to create the plot.
+
+### Network psychometrics
+
+We divided our sample into two equal parts and conducted this phase in stages of derivation and confirmation. In the derivation step, we aimed to obtain an optimal network structure using a redundancy analysis, dimension analysis, and internal structure analysis based on the methods outlined by @christensen2020b to test validity from the network perspective. We were also inspired by @flores-kanter2021 analysis of the Positive and Negative Affective Schedule (PNAS). In the confirmation phase, we tested if our obtained solution was replicated and tested its plausibility against the theoretical model using CFA. We also tested measurement invariance across good and bad sleepers within the Exploratory Graph Analysis (EGA) framework. To perform these analyses, we used the *EGAnet* [@EGAnet] package for R and visualized the associated results using the *GGally* version 2.1.2 [@R-GGally], *ggplot2* version 3.4.2 [@R-ggplot2], and *qgraph* version 1.9.4 [@R-qgraph] packages in R.
+
+When modeling psychological data, redundant items can lead to unintended effects, make it difficult to interpret centrality measures in network models, and violate the principle of local independence in latent variable models [@christensen2023]. Unique Variable Analysis [UVA, @christensen2023] can identify redundant items using network modeling and a graph theory measure called weighted topological overlap (wTO). UVA identifies locally dependent pairs of variables and uses the false discovery rate (FDR) to assess the expected count of false positives. This algorithm first computes the association structure of the observed data, then uses a threshold or significance test to determine redundancy between pairs of variables. The redundant variables can be removed, leaving only one non-redundant indicator, or aggregated as latent variables. Redundant pair of items were identified as those in which the weighted topological overlap exceeded the cutoff value of .25. Following Christensen's (personal communication, June 26, 2023) recommendations, when dealing with three or more redundant items, we kept the one with the highest average wTO to all other redundant items in the group. For two redundant items, we kept the one with the lowest maximum wTO to all other items. When inconclusive, we also considered factors such as item-test correlation, variance, and representation of the attribute [@christensen2020a].
+
+To estimate the number of dimensions, we used Exploratory Graph Analysis [EGA, @golino2017; @golino2020], a recently developed method of dimensionality assessment from network psychometrics. This method employs undirected network models to determine the number of dimensions in multivariate data. Firstly, the EGA algorithm estimates the network using either the Graphical Least Absolute Shrinkage and Selection Operator [GLASSO, @R-glasso; @friedman2008] or the Triangulated Maximally Filtered Graph [TMFG, @massara2016]. Then, it applies a community detection algorithm to identify the number and content of communities in the network. These communities are statistically equivalent to factors of latent variable models [@golino2017]. As recommended by @golino2020, we used both GLASSO and TMFG methods to estimate the psychometric networks. One advantage of the TMFG method is that it is appropriate for skewed distributions, which is the case with our data [@christensen2018; @christensen2023a]. We employed the Walktrap algorithm for community detection in both methods. This algorithm is popular in the psychometric network literature and effectively retrieves the correct number of dimensions [@golino2020; @christensen2023a]. To select the best solution in case of differences, we employed the *total entropy fit index with Von Neumman entropy* [TEFI.vn, @golino2021a]. Structures with lower entropy better reflect the underlying latent factors [@golino2021a]. Spearman’s rho correlation was used to compute the correlation matrix for the network estimation methods. EGA has shown more promising results in estimating the number of dimensions than traditional factor analytic methods, such as Parallel Analysis, especially in structures with four or more factors [@golino2020].
+
+To determine if our data was unidimensional, we used the Leading Eigenvalue algorithm [@newman2006]. This algorithm was applied to the correlation matrix, and if a single dimension was identified, this indicated unidimensionality. Conversely, the standard EGA procedure was followed if multiple dimensions were identified. Based on simulations conducted by @christensen2023a, this algorithm proved more effective in achieving a balanced recovery of one and two factors. 
+
+We also investigated configural and metric invariance across groups of good and bad sleepers using EGA. Configural invariance in EGA indicates that the same nodes are partitioned into the same communities for all groups, and metric invariance employs permutation testing to verify whether network loadings are equivalent across groups [@jamison2022]. Network loadings represent the unique contribution of each node to the emergence of a dimension in a network [@christensen2021].
+
+Computing internal consistency measures from a network perspective is not feasible due to the common covariance between items being removed in network models [@christensen2020b]. However, to address this issue, @christensen2020b suggest examining "the extent to which items in a dimension are homogeneous and interrelated given the multidimensional structure of the questionnaire" (p. 8), which they refer to as *structural consistency*. This measure was estimated using Bootstrap Exploratory Graph Analysis [bootEGA, @christensen2021a]. BootEGA generates a sampling distribution of EGA results from replicate data. It informs how often dimensions are exactly recovered (structural consistency) and how often each item is allocated in its respective empirical dimension (item stability). Structural consistency and item stability are between 0 and 1, and values above 0.75 are acceptable for both. The bootstrap results are summarized in median, standard error, 95% confidence intervals, and frequency of which a certain number of dimensions replicates. Additionally, bootEGA provides a measure of the typical network structure of the sampling distribution. A single network is estimated by computing the median value of each edge across the replicate networks and applying the community detection algorithm.
+
+# RESULTS
+
+## Data screening
+
+```{r mahal-dist, include=FALSE}
+
+d2mydata <- psych::outlier(dbas_a1[,paste0("dbas16_", 1:16)], cex=.6, bad=3, ylim=c(0,130), plot=FALSE)
+```
+
+We used Mahalanobis distance (MD) to scan for multivariate outliers and found `r sum((1-pchisq(d2mydata, ncol(dbas_a1[,paste0("dbas16_", 1:16)])))<.001)` respondents with D^2^ values with probability values <.001 (df = `r ncol(dbas_a1[,paste0("dbas16_", 1:16)])`). After examining the item statistics, we determined that all observations fell within the possible range of scores, eliminating the possibility of outliers resulting from data collection or entry errors. Therefore, no observations were excluded.
+
+In factor analysis, outliers may not influence model fit or parameter estimates [@pek2011]. To identify leverage points in our sample, we used the generalized Cook's distance (gCD) statistic, which measures the amount of change in a group of parameter estimates when an observation is excluded [@pek2011]. We calculated a gCD value for each observation in our sample and identified five highly influential observations through a box-plot of gCD values [@flora2012]. These observations were excluded from the sample to ensure the accuracy of our analysis.
+
+## Confirmatory Factor Analysis
+
+After comparing the fit of a higher-order structure with a four-factor structure, we determined that the latter was a better fit for our data: $\Delta\chi^2$(`r fit_comparison[["Df diff"]][2]`) = `r round(fit_comparison[["Chisq diff"]][2], 2)`, *p* < .001, $\Delta$AIC = `r round(fit_comparison$AIC[1] - fit_comparison$AIC[2], 2)`, $\Delta$BIC = `r round(fit_comparison$BIC[1] - fit_comparison$BIC[2], 2)`. We interpreted the four-factor structure, despite some fit problems indicated by traditional cutoffs: $\chi^2$ (`r s_mlm$test$scaled.shifted$df`, N = `r s_mlm$data$nobs`) = `r weights::rd(semTools::fitmeasures(fit_mlm)["chisq.scaled"], 2)`, RMSEA = `r weights::rd(rmsea.new, 3)` 90% CI [`r weights::rd(ci.new.l, 3)`, `r weights::rd(ci.new.u, 3)`], CFI = `r weights::rd(cfi.new, 3)`, SRMR = `r weights::rd(semTools::fitmeasures(fit_mlm)["srmr_bentler"], 3)`. The model fit indices were slightly worse than a Level-3 misspecification by DFI standaweights::rds (SRMR = .051, RMSEA = .10, CFI = .922), indicating inconsistency even with large misspecification, representing an omission of standardized cross-loadings with magnitudes of .456, .443, and .464. Further examination of the modification indices revealed that the model could be improved by freeing correlations between residual variances of items 3 and 4 and between items 6 and 15. After making these changes, the model fit indices improved and were more consistent with a Level-3 misspecification (SRMR = .051, RMSEA = .094, CFI = .936): $\chi^2$ (`r semTools::fitmeasures(fit_mlm_mi)["df"]`, N = `r s_mlm$data$nobs`) = `r weights::rd(semTools::fitmeasures(fit_mlm_mi)["chisq.scaled"], 3)`, RMSEA = `r weights::rd(rmsea.new_mi, 3)` 90% CI [`r weights::rd(ci.new.l_mi, 3)`, `r weights::rd(ci.new.u_mi, 3)`], CFI = `r weights::rd(cfi.new_mi, 3)`, SRMR = `r weights::rd(semTools::fitmeasures(fit_mlm_mi)["srmr_bentler"], 3)`.
+
+## Measurement Invariance
+
+
+```{r fit-differences, echo=FALSE}
+#label: tbl-fit-differences
+
+
+fitdiffs_df |> 
+  dplyr::mutate(
+    `Pr(>Chisq)` = ifelse(`Pr(>Chisq)` < .001, "<.001", 
+                          weights::rd(`Pr(>Chisq)`, 2)),
+    dplyr::across(c(aic, bic), ~round(.x, 0)),
+    dplyr::across(c(rmsea.robust, cfi.robust),
+                  ~weights::rd(.x, 4)),
+    `Chisq diff` = round(`Chisq diff`, 2),
+    model = stringr::str_to_title(model)
+    ) |> 
+  `colnames<-`(c("Model", "$\\Delta\\chi^2$", 
+                 "$\\Delta$df", "p-value", 
+                 "$\\Delta$RMSEA", "$\\Delta$CFI",
+                 "$\\Delta$AIC", "$\\Delta$BIC")) |> 
+  kbl(booktabs = TRUE, 
+      escape = FALSE,
+      caption = "Model fit differences for CFA measurement invariance tests.") |> 
+  pack_rows("Longitudinal invariance", 1, 4) |>
+  pack_rows("Group invariance", 5, 6) |> 
+  footnote(general = "Differences to each preceding constraint level.",
+           footnote_as_chunk = TRUE,
+           general_title = "Note. ")
+
+```
+
+To analyze measurement invariance across insomnia severity status (good and bad sleepers), we first tested the configural invariance model to attest to the similarity of groups regarding the number of latent constructs and the items loaded onto them. We found that the fit of this model was acceptable, supporting configural invariance: $\chi^2$ (`r semTools::fitmeasures(configural.fit.group)["df"]`, N = `r s_mlm$data$nobs`) = `r weights::rd(semTools::fitmeasures(configural.fit.group)["chisq.scaled"], 3)`, RMSEA = `r weights::rd(semTools::fitmeasures(configural.fit.group)["rmsea.robust"], 3)` 90% CI [`r weights::rd(semTools::fitmeasures(configural.fit.group)["rmsea.ci.lower.robust"], 3)`, `r weights::rd(semTools::fitmeasures(configural.fit.group)["rmsea.ci.upper.robust"], 3)`], CFI = `r weights::rd(semTools::fitmeasures(configural.fit.group)["cfi.robust"], 3)`, SRMR = `r weights::rd(semTools::fitmeasures(configural.fit.group)["srmr_bentler"], 3)`. We proceeded then to test metric invariance (i.e., factor loadings constrained to be equal across groups) but did not find any evidence to support it. This is due to the significant difference in chi-square between the configural and metric invariant models and the AIC and BIC indices favoring the less restricted model (see @fit-differences). Since metric invariance was not achieved, we did not test for stricter invariant models. These results show that the indicators do not have the same relationship to the latent variables in both groups.
+
+Longitudinal measurement invariance of the DBAS-16 was tested similarly. The configural invariant model showed adequate fit, allowing us to continue with further testing. The metric invariant model showed no significant differences in scaled chi-squared difference test, indicating metric invariance across time. We then moved on to the scalar invariance model, which assessed the equality of item responses constraining the intercepts. There was a slight worsening in comparative fit measures ($\Delta$CFI = `r weights::rd(dplyr::pull(long_fit_diffs[2,3]), 3)`, $\Delta$RMSEA = `r weights::rd(dplyr::pull(long_fit_diffs[2,2]), 5)`); however, the change was considered  negligible [@chen2007; @meade2008]. The change in BIC was lower than 6, a value deemed evidence of model difference [@raftery1995]. Despite a significant increase in chi-square, we believe that scalar non-invariance is minimal, if not ignorable. However, we chose not to proceed with further testing to be cautious.
+
+## Reliability and Validity
+
+### Internal consistency
+
+The internal consistencies of each of the four dimensions were good, with omega values ranging from .60 to .88. The DBAS-16 total score had an $\omega_h$ of `r omegas[5, ]`, indicating good internal consistency. It is important to note that the scale is not unidimensional, and it is inappropriate to interpret it as such. However, many studies interpret the total sum score to examine the level of dysfunctional beliefs and behaviors about sleep, so we report the internal consistency of the full scale. See (@internal-consistency) for full results of internal consistency coefficients.
+
+```{r internal-consistency, echo = FALSE}
+
+cor_df |> 
+  `colnames<-`(c("Variable", "1", "2", "3", "4", "$\\omega_h$")) |> 
+  kbl(booktabs = TRUE, escape = FALSE,
+      caption = "Latent correlations and internal consistency levels.",
+      align = "lllllc") |> 
+  kable_styling(latex_options = c("hold_position"),
+                full_width = F)
+```
+
+### Convergent validity
+
+DBAS-16 factors showed significant associations with depression, anxiety, and insomnia severity with moderate to strong strength (except "expectation" scores), as shown in (@tbl-internal-consistency). The network in Figure @fig-network-conv represents a joint partial correlation structure of the DBAS-16 factors and these psychological variables. Each weighted edge on this network is a conditional pairwise correlation between two nodes controlling for all the other variables. The absence of edges between nodes reflects weak partial correlations reduced to zero due to the penalization for model complexity. Notably, there were negligible relationships between depression and anxiety and any of the four DBAS-16 factors after accounting for insomnia severity and either of the two variables. The relations with insomnia severity were also low, except for the Worry factor, which had the highest centrality measures (see @fig-network-conv). The network also showed a negative correlation between Expectations and insomnia severity.
+
+![Network of DBAS-16 factors, Insomnia severity, Anxiety, and Depression. MED=Medication, WRY=Worry, CON=Consequences, EXP=Expectations, ISI=Insomnia severity index, Dep=Depression, Anx=Anxiety](img/network-conv-plot.png){#fig-network-conv}
+
+## Network Psychometrics
+
+### Derivation of the factor structure in the training sample
+
+First, we investigated potential redundancies between item pairs using UVA. Based on weighted topological overlap (wTO) we found redundancies between items 1 (*Need 8 hours of sleep*) and 2 (*Need to catch up on sleep loss*) (wTO = `r redund$redundancy$descriptives$centralTendency["D1--D2", 1]`), 3 (*Consequences of insomnia on health*) and 4 (*Worried about losing control of sleep*) (wTO = `r redund$redundancy$descriptives$centralTendency["D3--D4", 1]`) and between items 6 (*Better taking sleeping pills*) and 15 (*Medication as a solution*) (wTO = `r redund$redundancy$descriptives$centralTendency["D6--D15", 1]`).
+
+Before dealing with redundant items, we estimated the full DBAS-16's dimensionality using EGA. To do this, we utilized GLASSO and TMFG methods, with the Walktrap algorithm and Spearman correlation matrix, due to our data's violation of multivariate normality. GLASSO produced three dimensions, with a TEFI.vn index of `r round(tefi_glasso[[1]], 2)`, and TMFG produced three with a TEFI.vn index of `r round(tefi_tmfg[[1]], 2)`.  We then assessed structural consistency using the `bootEGA` function of *EGAnet* with parametric bootstrapping and 1000 replicates. The GLASSO model's two-dimensional structure was replicated with a `r boot.glasso.wr$frequency[1, 2]*100`% frequency across bootstrap samples. The TMFG solution returned three dimensions in `r boot.tmfg.wr$frequency[2,2]*100`% of the replicates. 
+
+We then repeated these steps, considering redundancies identified prior to the EGA. We first dealt with the redundancy between items 6 and 15, keeping item 6 based on quantitative criteria and better generalization. Item 15 had a larger maximum wTO to all other items (`r weights::rd(max(redund$redundancy$weights[15,-6]),3)` vs. `r weights::rd(max(redund$redundancy$weights[6,-15]),3)`), lower item-total correlation corrected for item overlap and scale reliability, and lower variance. The GLASSO model suggested three dimensions with a TEFI.vn index of `r round(tefi_glasso.d15[[1]], 2)`, while TMFG also suggested three dimensions with a lower TEFI.vn of `r round(tefi_tmfg.d15[[1]], 2)`.  Dimensionality replication was still unsatisfactory for both models (TMFG: `r boot.tmfg.d15$frequency[2,2]*100`%; GLASSO: `r boot.glasso.d15$frequency[2,2]*100`%). We then dropped item 3 due to its higher maximum wTO, lower item-total correlation, and variance. GLASSO produced three dimensions again, and TMFG produced two dimensions. Dimensionality replication slightly improved (TMFG: `r boot.tmfg.d3$frequency[1,2]*100`%; GLASSO: `r boot.glasso.d3$frequency[2,2]*100`%), but structural consistency for one dimension remained low in both models (see Table `r officer::run_reference(id = "dim-stab-table")`). Lastly, we maintained item 2 over item 1 due to its lower maximum wTO to all other items (respectively, `r weights::rd(max(redund$redundancy$weights[2,-1]),3)` and `r weights::rd(max(redund$redundancy$weights[1,-2]),3)`) and higher variance. Both TMFG and GLASSO produced two communities with identical item assignments. @fig-glasso-plots and @fig-tmfg-plots show the network plots obtained in each step of the analyses with the derivation sample. The resulting network with two communities, without nodes 1, 3, and 15, had the lowest TEFI.vn (`r round(tefi.glasso.d1[[1]], 2)`) and higher replication rates (TMFG: `r boot.tmfg.d1$frequency[1,2]*100`%; GLASSO: `r boot.glasso.d1$frequency[1,2]*100`%), more satisfying structural consistency, and better item stability into empirical dimensions, as shown in Table \@ref(tab:dim-stab-table). With no further redundancies to address, we evaluated these results with the confirmation sample.
+
+![EGA GLASSO network plots for the derivation sample.](img/glasso-plots-1.png){#fig-glasso-plots}
+
+![TMFG GLASSO network plots for the derivation sample.](img/tmfg-plots-1.png){#fig-tmfg-plots}
+
+
+### Confirmation of the factor structure in the test sample
+
+To determine if our results from the derivation sample were consistent, we repeated the same procedures with the second half of our split sample. UVA identified the same three redundancy pairs. We then ran the EGA with GLASSO and TMFG, dropping items 1, 3, and 15 simultaneously. Both methods returned two dimensions and replicated the item assignment. Compared to GLASSO, TMFG had similar dimensionality replication rates (TMFG: `r boot.tmfg.test$frequency[1,2]*100`%; GLASSO: `r boot.glasso.test$frequency[1,2]*100`%) but significantly lower structural consistency (Dimension 1: `r dim.stab.test.tmfg$dimension.stability$structural.consistency[1]*100`% vs. `r dim.stab.test.glasso$dimension.stability$structural.consistency[1]*100`%; Dimension 2: `r dim.stab.test.tmfg$dimension.stability$structural.consistency[2]*100`% vs. `r dim.stab.test.glasso$dimension.stability$structural.consistency[2]*100`%). Overall, these results support the accuracy of the structure obtained with GLASSO with the derivation sample.
+
+Modeling the GLASSO model structure in a confirmatory factor analysis yielded fit indices worse than a Level-3 misspecification obtained through DFI (SRMR = .051, RMSEA = .093, CFI = .938): $\chi^2$ (`r semTools::fitmeasures(fit_glasso)["df"]`, N = `r lavaan::summary(fit_glasso)$data$nobs`) = `r weights::rd(semTools::fitmeasures(fit_glasso)["chisq.scaled"], 3)`, RMSEA = `r weights::rd(semTools::fitmeasures(fit_glasso)["rmsea.robust"], 3)` 90% CI [`r weights::rd(semTools::fitmeasures(fit_glasso)["rmsea.ci.lower.robust"], 3)`, `r weights::rd(semTools::fitmeasures(fit_glasso)["rmsea.ci.upper.robust"], 3)`], CFI = `r weights::rd(semTools::fitmeasures(fit_glasso)["cfi.robust"], 3)`, SRMR = `r weights::rd(semTools::fitmeasures(fit_glasso)["srmr_bentler"], 3)`. Despite this, the GLASSO structure provided a better fit to our data than the theory model with four factors: $\Delta\chi^2$ (`r theory_glasso_comparison[["Df diff"]][2]`) = `r round(theory_glasso_comparison[["Chisq diff"]][2], 2)`, *p* < .001, $\Delta$AIC = `r round(theory_glasso_comparison$AIC[1] - theory_glasso_comparison$AIC[2], 2)`, $\Delta$BIC = `r round(theory_glasso_comparison$BIC[1] - theory_glasso_comparison$BIC[2], 2)`, $\Delta$RMSEA = `r weights::rd(theory_glasso_diffs["rmsea.robust"], 3)`, $\Delta$CFI = `r weights::rd(theory_glasso_diffs["cfi.robust"], 3)`, $\Delta$SRMR = `r weights::rd(theory_glasso_diffs["srmr_bentler"], 3)`. Additionally, both dimensions had satisfactory levels of internal consistency ($\omega_{h1}$ = `r weights::rd(omega_ega$dim1$est, 2)`, $\omega_{h2}$ = `r weights::rd(omega_ega$dim2$est, 2)`).
+
+Finally, we analyzed the full sample to test for invariance across groups of good and bad sleepers in the EGA framework. First, we used GLASSO to confirm the two-dimensional structure and item assignments obtained from the derivation and confirmation sample. This structure was successfully replicated in `r boot.fs$frequency[1,2]*100`% of 1000 bootstrap samples (Median[SE] = `r boot.fs$summary.table$median.dim`[`r weights::rd(boot.fs$summary.table$SE.dim, 2)`]).  We also found excellent dimension stability for Dimension 1 (`r fs.stability$dimension.stability$structural.consistency[1]*100`%) and Dimension 2 (`r fs.stability$dimension.stability$structural.consistency[2]*100`%), with item stability ranging from `r weights::rd(min(fs.stability$item.stability$item.stability$empirical.dimensions), 3)` to `r weights::rd(max(fs.stability$item.stability$item.stability$empirical.dimensions), 3)`.
+
+Next, we examined whether the same nodes would form the same communities for both groups (i.e., configural invariance). However, our initial results indicated non-equivalent community structures for good and bad sleepers, despite both samples conforming to a three-dimensional structure, as shown in @fs-plots. These results were somewhat inconsistent when we ran the bootEGA, with the median number of dimensions generated being `r boot.bs$summary.table$median.dim` (SE$_{gs}$ = `r weights::rd(boot.gs$summary.table$SE.dim, 2)`, SE$_{bs}$ = `r weights::rd(boot.bs$summary.table$SE.dim, 2)`), recovered across `r boot.gs$frequency[1,2]*100`% of the bootstrap samples for good sleepers' sample and `r boot.bs$frequency[2,2]*100`% for bad sleepers' sample. Additionally, at least one community of both typical structures had consistency levels below the acceptable cutoff of .75, with some items having poor stability.
+
+While configural invariance was not met, we investigated metric invariance as if it was the case. Considering the two-dimensional structure of the full sample, we found that only item 10 ("Sleep is unpredictable") had a statistically significant different network loading performance after controlling the false discovery rate with the Benjamini-Hochberg procedure.
+
+![EGA GLASSO network plots for the full sample.](img/fs-plots-1.png){#fig-fs-plots}
+
+```{r dim-stab-table, echo=FALSE}
+stab_list <- list("wr" = dim.stab.wr,
+                  "d15" = dim.stab.d15,
+                  "d3" = dim.stab.d3,
+                  "d1" = dim.stab.d1,
+                  "test" = dim.stab.test,
+                  "fs" = dim.stab.fs)
+
+stab_df <- purrr::map_dfr(stab_list, 
+               ~tidyr::pivot_wider(.x, 
+                                   names_from = "dim", 
+                                   values_from = "value"), 
+               .id = "model")
+
+stab_df |> 
+  dplyr::mutate(
+    dplyr::across(dplyr::everything(), ~tidyr::replace_na(.x, 0)),
+    dplyr::across(
+      dplyr::where(is.double),
+       ~ifelse(.x == 0 , ".", weights::rd(.x, 3))
+      ),
+    name = toupper(name)
+    ) |> 
+  dplyr::select(-model) |> 
+  kbl(booktabs = TRUE,
+      col.names = c("Model", "1", "2", "3"),
+      align = "lccc",
+      caption = "Stability of the EGA dimensionality 
+      estimates across bootstrap samples") |> 
+  kable_styling(latex_options = c("hold_position"),
+                full_width = T) |> 
+  add_header_above(c(" " = 1, 
+                     "Dimensions " = 3)) |> 
+  pack_rows("Derivation sample (n = 693)", 1, 8,
+            bold=FALSE, italic=TRUE) |> 
+  pack_rows("Confirmation sample (n = 692)", 9, 10,
+            bold=FALSE, italic=TRUE) |>
+  pack_rows("Full sample (n = 1385)", 11, 11,
+            bold=FALSE, italic=TRUE) |>
+  pack_rows("No redundancies", 1, 2) |> 
+  pack_rows("One redundancy (15)", 3, 4) |> 
+  pack_rows("Two redundancies (15, 3)", 5, 6) |> 
+  pack_rows("Three redundancies (15, 3, 1)", 7, 8) |> 
+  pack_rows("Three redundancies (15, 3, 1)", 9, 10) |> 
+  pack_rows("Three redundancies (15, 3, 1)", 11, 11) 
+```
+
+# DISCUSSION
+
+Dysfunctional beliefs and attitudes about sleep feature in many popular models of insomnia and are investigated widely using the DBAS-16 [@tang2023]. With this study, we produced a Brazilian-Portuguese version of the questionnaire. We demonstrated its semantic and psychometric equivalence to the original version, making its use suitable for the Brazilian population. Additionally, this study was the first to show that the DBAS-16's structure was noninvariant  across good and bad sleepers and to attest temporal stability using the measurement invariance framework. Despite acceptable model fit indices in the confirmatory analysis, they were only obtained by correlating residuals. On top of that, modification indices also suggested that the model could be improved with the addition of cross-loadings. Using network psychometrics, we found that (1) items 1, 3, and 15 could be deleted without losing information, (2) two dimensionalities better represent the underlying structure of the DBAS scores, and (3) the item referring to the belief that sleep is unpredictable was noninvariant across good and bad sleepers.
+
+Our analysis of DBAS-16's structure confirms much of previous research [@morin2007a; @castillo2023; @boysan2010]. The four-factor structure had acceptable indices by traditional and dynamic fit indices. The "worry about sleep" and "consequences" subscales had strong internal consistency, while the "expectations" and "medication" subscales had modest values. These results suggest that the idea that these 16 items assessing dysfunctional beliefs and attitudes about sleep conform to a four-factor structure is questionable. Reliability of "expectations" and "medication" subscales could be affected by the scarce number of items composing them and low factor loadings (ranging from `r weights::rd(min(ifelse(lavaan::lavInspect(fit_mlm_mi,what="std")$lambda[,3:4]==0, NA, lavaan::lavInspect(fit_mlm_mi,what="std")$lambda[,3:4]), na.rm=TRUE), 2)` to `r weights::rd(max(lavaan::lavInspect(fit_mlm_mi,what="std")$lambda[,3:4]), 2)`). Modifying a model based on modification indices can be risky as it might not generalize to other samples [@maccallum1992], but items 3 and 4 have been found to have correlated residual variance in previous research [@morin2007a; @boysan2010; @castillo2023]. We can at least infer that these items share something in common that is not accounted for by the latent factor, such as similar wording or content overlap. Our results are congruent with past confirmatory analyses of DBAS-16's four-factor structure and contribute as the first analysis with a large (>1000) clinical sample.
+
+Our study found that model structure and factor loadings remained consistent over 14 days. However, we did not find conclusive evidence of item intercept equivalence during this period. There were no significant differences in model fit between good and bad sleepers. Nevertheless, the items' loadings on the factors varied across groups. These findings have critical implications for studies assessing dysfunctional beliefs before and after an intervention. Although the DBAS-16 remained stable over time, participants did not change in insomnia severity status. Improvement in insomnia symptoms can likely change how DBAS-16 items are interpreted. Hence, researchers should not take measurement invariance for granted but test it because a possible decrease in dysfunctional beliefs about sleep cannot be interpreted straightforwardly.
+
+Regarding convergent validity, except for "expectations," DBAS-16 factors had positive moderate-to-strong correlations with insomnia severity, anxiety and depression. These findings are not unexpected, as @morin2007a observed a similar pattern but retained the "expectations" items for their clinical relevance. A statistical network revealed the centrality of the "worry" node and the negative partial correlation between sleep expectations and insomnia severity. The first development highlights the "worry about sleep" importance in the flow of information through the network. It also agrees with @clemente2023 IRT analysis showing that the "worry about sleep" subscale provided the most information and the highest level of precision. @clemente2023 found that items measuring expectations provided more information about individuals with lower unhelpful beliefs about sleep. Their results help us understand the negative partial correlation between expectations about sleep and insomnia severity since these beliefs might also be common to good sleepers and are not good indicators of sleep problems. Our results also answer their call to evaluate their findings with a clinical sample.
+
+The second objective of this research was to explore the structure of DBAS-16. UVA identified three pairs of items that were locally dependent with a wTO score greater than .25. These pairs were item 1 ("Need 8 hours of sleep") and item 2 ("Need to catch up on sleep loss"), item 3 ("Consequences of insomnia on health") and item 4 ("Worried about losing control of sleep"), and item 6 ("Better taking sleeping pills") and item 15 ("Medication as a solution"). We removed items 1, 3, and 15 based on quantitative and qualitative criteria. Some may question why we considered items 1 and 2 redundant, as their wTO score slightly exceeded the cutoff and originally formed a latent factor. We believe that the emergence of a minor factor comprising only these two items was caused by not considering local dependence. Our decision to drop item 15 disagrees with @clemente2023 option for keeping it due to the highest discriminatory value among the items in the "medication" subscale and deleting item 6 due to its flat item characteristic curve. This example illustrates that our study is not advocating for a shorter "DBAS-13" as there may be more aspects to consider when deciding on a specific item removal criterion. Nonetheless, we achieved a two-dimensional structure with excellent item and structure stability levels by removing those items.
+
+Our research using EGA revealed that two dimensions accurately reflect our sample's underlying structure of dysfunctional beliefs and attitudes toward sleep. Dimension 1 is composed of nodes from the original "consequences of insomnia" factor (items 5, 7, 9, 12, and 16), along with item 2 ("When I don't get a proper amount of sleep on a given night, I need to catch up on the next day by napping or sleeping longer") from "medication," and item 8 ("When I sleep poorly on one night, I know it will disturb my sleep schedule for the whole week") from "worry about sleep." Since items 2 and 8 share a semantic value related to the consequences of poor sleep, we may keep the original terminology and label Dimension 1 as "Consequences of insomnia." Dimension 2 is composed of the remaining items from the "worry about sleep" subscale (items 4, 10, 11, and 14) and item 6 ("In order to be alert and function well during the day, I believe I would be better off taking a sleeping pill rather than having a poor night's sleep") and 13 ("I believe insomnia is essentially the result of a chemical imbalance") from "medication." Assuming that worry about sleep leads to medication use, we can label Dimension 2 as "Worry about sleep."
+
+Using a new technique in the EGA framework to test measurement invariance, we discovered that the network structure was noninvariant for both good and bad sleepers, just like the theory model. However, we couldn't determine the best structure for either group due to low structure stability. We found that item 10 ("I can't ever predict whether I'll have a good or poor night's sleep") was the only noninvariant regarding network loadings. This result supports Clemente et al.'s [-@clemente2023] discovery that item 10 effectively distinguishes between good and bad sleepers. Regardless, we must be cautious when interpreting this finding since we cannot assume that the network structure is identical for both groups.
+
+
+## Limitations
+
+Our research was the first to explore the potential insights that network psychometrics can provide on the DBAS-16. However, it is important to acknowledge certain limitations in our findings. The EGA methods we used were selected based on simulation studies, which may not entirely reflect the nature of our data. EGA is a relatively new technique, so further research is needed to address unanswered questions [@golino2022]. For example, our preliminary analysis showed that TMFG and GLASSO produced different structures. Additionally, selecting Louvain over Leading Eigenvalue to test for unidimensionality could lead to the assumption of a unidimensional structure for poor sleepers. While we based our choices on the best available evidence, these results are preliminary and suggest a direction for further investigation.
+
+In both our confirmatory and exploratory analyses, we found that certain biases could have influenced our data. First, the participants who had sleep problems were seeking treatment for insomnia, which meant that they were likely to be more severely affected by the disorder. Additionally, our data was unbalanced towards bad sleepers, which could have also contributed to our heavily skewed data and low statistical power to test measurement invariance across groups. Secondly, we administered the questionnaires online, and participants could not leave blank fields. This may have introduced bias, as participants may have provided an answer even if it did not apply to their situation. Third, we did not include elderly people; therefore, the outcomes cannot be generalized to all adults with insomnia. Fourth, most of our sample comprised white women with a university degree. Future studies should focus on collecting more representative samples, including those with lower educational levels. Fifth, it is important to note that our study used the Brazilian-Portuguese adaptation of the DBAS-16. Although we ensured that it was equivalent to the English version, specific terms or cultural characteristics may have influenced the results. These findings should be replicated in samples from different countries. Finally, we used the same total sample for derivation and confirmation. We tried to mitigate this issue by splitting the sample into two halves, but we recognize that it cannot eliminate sampling bias. Therefore, it is highly recommended that our findings be replicated using a larger, more diverse, and older sample, ensuring a greater balance between good and poor sleepers. Additionally, further research should test longitudinal invariance over at least eight weeks to reflect typical cognitive-behavioral treatment protocols for insomnia [@harvey2014]. 
+
+# CONCLUSION
+
+Our research shows that the DBAS-16 is suitable for a Brazilian-Portuguese-speaking population. It also provides initial insights into the network structure of dysfunctional beliefs and attitudes about sleep. Our findings support a two-factor structure, as @clemente2023 suggested. We achieved greater stability in the structure by removing locally dependent items. Although our results require further confirmation and refinement, they can assist clinicians and researchers in gaining a better understanding of how dysfunctional beliefs and attitudes about sleep are organized. This can provide valuable insights into beliefs that may be more or less significant in understanding this concept.

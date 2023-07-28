@@ -15,9 +15,9 @@
 \imprimirfolhaderosto*
 
 % ficha catalográfica 
-%\begin{fichacatalografica}
-%    \includepdf{ficha_ufes.pdf}
-%\end{fichacatalografica}
+% \begin{fichacatalografica}
+%    \includepdf[pages={1}]{ficha-catalog.pdf}
+% \end{fichacatalografica}
 
 
 % substituir pela ficha em pdf fornecida pela UFES após defesa 
@@ -28,18 +28,18 @@
 	\fbox{\begin{minipage}[c][8cm]{15cm}		% Largura
 	\small
 	\imprimirautor
-	
+
 	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
 	\imprimirlocal, \imprimirdata-
-	
+
 	\hspace{0.5cm} \thelastpage p. : il. (algumas color.) ; 30 cm.\\
-	
+
 	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-	
+
 	\hspace{0.5cm}
 	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
 	\imprimirdata.}\\
-	
+
 	\hspace{0.5cm}
 		1. Palavra-chave1.
 		2. Palavra-chave2.
@@ -47,7 +47,7 @@
 		I. Orientador.
 		II. Universidade xxx.
 		III. Faculdade de xxx.
-		IV. Título 			
+		IV. Título
 	\end{minipage}}
 	\end{center}
 \end{fichacatalografica}
@@ -115,7 +115,7 @@
 % resumo 
 
 \setlength{\absparsep}{18pt}
-\begin{resumo}
+\begin{resumo}[Resumo]
   
   A insônia é um problema comum que afeta uma parcela significativa da população. Crenças e atitudes disfuncionais sobre o sono contribuem para o desenvolvimento e a manutenção da insônia. Este estudo desenvolveu uma versão em português brasileiro da escala Dysfunctional Beliefs and Attitudes about Sleep (DBAS-16) e realizou uma avaliação psicométrica abrangente usando técnicas de modelagem de variáveis latentes e redes psicométricas. Os participantes (N = 1.386) tinham entre 18 e 59 anos, com e sem queixas de insônia. Usando Análise Fatorial Confirmatória (AFC) com índices de ajuste dinâmico, a estrutura original do DBAS-16 foi replicada nesta amostra com qualidade de ajuste moderada. Houve também suporte para invariância longitudinal (14 dias) configural, métrica e escalar, mas não para invariância métrica entre grupos de bons e maus dormidores. A Unique Variable Analysis aplicada a metade dos dados da amostra (\emph{n} = 693) identificou três itens redundantes adequados para exclusão (1. \emph{Necessidade de 8 horas} de sono, 3. \emph{Consequências da insônia para a saúde} e 15. \emph{Medicação como solução}). Além disso, a Análise Exploratória de Grafos (EGA) identificou duas dimensões com excelente estabilidade estrutural, replicada quando a EGA foi aplicada à outra metade da amostra. Usando AFC, foi encontrado que o modelo obtido por EGA se ajustava significativamente melhor do que o modelo teórico proposto, endossando uma dimensionalidade alternativa da DBAS. Esses achados apoiam o uso do DBAS-16 com uma população de língua portuguesa brasileira. Além disso, após a exclusão de variáveis localmente dependentes, duas dimensões representaram melhor as crenças e atitudes disfuncionais sobre o sono.
 
@@ -141,9 +141,9 @@
 \cleardoublepage
 
 % lista de quadros 
-\pdfbookmark[0]{\listofquadrosname}{loq}
-\listofquadros*
-\cleardoublepage
+% \pdfbookmark[0]{\listofquadrosname}{loq}
+% \listofquadros*
+% \cleardoublepage
 
 % lista de tabelas 
 \pdfbookmark[0]{\listtablename}{lot}
@@ -185,7 +185,6 @@
 % sumário 
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
-\cleardoublepage
 
 % elementos textuais 
 \textual

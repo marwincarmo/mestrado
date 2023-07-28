@@ -6,132 +6,143 @@
 \partapendices
 
 % Apêndice A
-\chapter{DEMONSTRAÇÕES} \label{apendice_a}
+% \chapter{DEMONSTRAÇÕES} \label{apendice_a}
 
-% proposição 1
-\begin{proposition}[condição de ausência de viés em $\mathbfit{\tilde{y}}$]
-  \label{proposicao1}
+\section{Crenças e Atitudes Disfuncionais sobre o Sono (CADS-16)}
+\label{cads-16}
 
-  Se as previsões reconciliadas são não viesadas, então $\mathbfit{SGS=S}$, ou seja, $\mathbfit{G}$ é inversa generalizada de $\mathbfit{S}$.
+Uma série de afirmações refletindo as crenças e atitudes das pessoas em relação ao sono estão listadas abaixo. Por favor, indique o quanto você concorda ou discorda de cada afirmação. Não há respostas certas ou erradas. Para cada afirmação, circule o número que corresponde à sua \underline{crença pessoal}. Por favor, responda todos as afirmações, mesmo que não se apliquem diretamente à sua situação.
+\smallskip
 
-\end{proposition}
+\begin{flushleft}
 
-\begin{proof}
-  \begin{equation} \label{eq:ap1}
-    \mathbfit{\tilde{y}}_{t+h|t} = \mathbfit{SG\hat{y}}_{t+h|t} 
-  \end{equation}
+{\setstretch{1.0}
+\begin{center}
+Discordo \hfill Concordo\\
+Fortemente \hfill Fortemente
+\end{center}
 
-  Se $\mathbfit{\hat{y}}_{t+h|t}$ é não viesado, então 
+\medskip
+\hrule
+\medskip
 
-  \begin{equation} \label{eq:ap2}
-      \mathbb{E}[\mathbfit{\hat{y}}_{t+h|t}] = \mathbb{E}[\mathbfit{y}_{t+h|t}] = \mathbfit{Sb}_t
-  \end{equation}
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 \textcircled{7} 8 9 10 } \par
 
-  Da mesma forma, se espera-se que as previsões reconciliadas não sejam viesadas,
-  \begin{equation} \label{eq:ap3}
-      \mathbb{E}[\mathbfit{\tilde{y}}_{t+h|t}] = \mathbb{E}[\mathbfit{y}_{t+h|t}] = \mathbfit{Sb}_t
-  \end{equation}
+\bigskip
+1. Preciso de 8 horas de sono para me sentir revigorado(a) e funcionar bem durante o dia.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Substituindo \eqref{eq:ap2} em \eqref{eq:ap1}, temos
 
-  \begin{equation} \label{eq:ap4}
-      \mathbfit{\tilde{y}}_{t+h|t} = \mathbfit{SGSb}_t 
-  \end{equation}
+\bigskip
+2. Quando não durmo o suficiente à noite, preciso recuperar o sono no dia seguinte com um cochilo ou dormindo mais na próxima noite.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Logo, para manter a igualdade entre \eqref{eq:ap1} e \eqref{eq:ap4}, $\mathbfit{SGS=S}$
+\bigskip
+3. Estou preocupado(a) que a insônia crônica possa trazer consequências graves em minha saúde física. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-\end{proof}
+\bigskip
+4. Estou preocupado(a) que eu talvez perca o controle sobre minha habilidade de dormir.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-% proposição 2
-\begin{proposition}
-  \label{proposicao2}
+\bigskip
+5. Sei que uma noite de sono ruim vai interferir nas minhas atividades cotidianas no dia seguinte.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  $\mathbfit{\tilde{e}}_t = \mathbfit{SG\hat{e}}_t$.
+\bigskip
+6. Para estar alerta e funcionar bem durante o dia, eu acredito que seria melhor tomar um remédio para dormir do que ter uma noite de sono ruim.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-\end{proposition}
+\bigskip
+7. Quando me sinto irritado(a), deprimido(a), ou ansioso(a) durante o dia, provavelmente foi porque não dormi bem na noite anterior. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-\begin{proof}
-  \begin{equation} \label{eq:apa22}
-    \mathbfit{\tilde{e}}_{t+h|t} = \mathbfit{y}_{t+h} - \mathbfit{\tilde{y}}_{t +h|t}
-  \end{equation}
+\bigskip
+8. Quando durmo mal uma noite, sei que irá atrapalhar meu sono pelo resto da semana. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Substituindo \eqref{eq:ap1} em \eqref{eq:apa22},
+\bigskip
+9.	Sem uma noite de sono adequada, eu mal consigo funcionar no dia seguinte. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  \begin{align} \label{eq:apa23}
-    \mathbfit{\tilde{e}}_{t+h|t} &= \mathbfit{y}_{t+h} - \mathbfit{SG\hat{y}}_{t+h|t}
-  \end{align}
+\bigskip
+10.	Não consigo prever se vou ter uma noite de sono boa ou ruim. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Lembrando que, por definição, $\mathbfit{y}_{t+h} = \mathbfit{\hat{y}}_{t+h|t} + \mathbfit{\hat{e}}_{t+h|t}$, então
+\bigskip
+11.	Tenho pouco controle sobre as consequências negativas de um sono ruim. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  \begin{align} \label{eq:apa24}
-    \mathbfit{\tilde{e}}_{t+h|t} &= \mathbfit{\hat{y}}_{t+h|t} + \mathbfit{\hat {e}}_{t+h|t} - \mathbfit{SG\hat{y}}_{t+h|t} \\
-    &= \mathbfit{\hat{e}}_{t+h|t} + \mathbfit{\hat{y}}_{t+h|t}(\mathbfit{I-SG)}
-  \end{align}
+\bigskip
+12.	Quando me sinto cansado(a), sem energia, ou não funciono bem durante o dia, geralmente é porque não dormi bem na noite anterior. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Usando a definição novamente, temos que
+\bigskip
+13.	Acredito que a insônia seja essencialmente o resultado de um desequilíbrio do meu organismo. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  \begin{align}
-    \mathbfit{\tilde{e}}_{t+h|t} &= \mathbfit{\hat{e}}_{t+h|t} + (\mathbfit{y}_ {t+h} - \mathbfit{\hat{e}}_{t+h|t})(\mathbfit{I-SG)} \\
-    &= \mathbfit{y}_{t+h} - \mathbfit{SGy}_{t+h|t} + \mathbfit{SG\hat{e}}_{t+h| t} \\
-    &=  \mathbfit{y}_{t+h}(\mathbfit{I-SG}) + \mathbfit{SG\hat{e}}_{t+h|t}  \label{eq:apa25}
-  \end{align}
+\bigskip
+14.	Sinto que a insônia está arruinando minha capacidade de aproveitar a vida e me impede de fazer o que eu quero. 
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  Substituindo \eqref{eq-vetor_b} em \eqref{eq:apa25}, temos
+\bigskip
+15.	Medicação é provavelmente a única solução para a minha falta de sono.  
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
 
-  \begin{align}
-    \mathbfit{\tilde{e}}_{t+h|t} &=  \mathbfit{Sb}_{t+h}(\mathbfit{I-SG}) +  \mathbfit{SG\hat{e}}_{t+h|t} \\
-    &=  \mathbfit{Sb}_{t+h} - \mathbfit{Sb}_{t+h}\mathbfit{SG} + \mathbfit {SG\hat{e}}_{t+h|t}  \\
-    &=  \mathbfit{Sb}_{t+h} - \mathbfit{(G'S')(b'}_{t+h}\mathbfit{S')} +   \mathbfit{SG\hat{e}}_{t+h|t}  \\
-    &=  \mathbfit{Sb}_{t+h} - \mathbfit{SG}\mathbfit{Sb}_{t+h} + \mathbfit {SG\hat{e}}_{t+h|t}
-  \end{align}
+\bigskip
+16.	Evito ou cancelo compromissos (sociais, familiares) após uma noite de sono ruim.
+\medskip
+\hrule
+\medskip
+\hspace*{6mm}\makebox[\linewidth][s]{0 1 2 3 4 5 6 7 8 9 10 } \par
+}
 
-  Finalmente, pela \nameref{proposicao1}, temos que
-
-  \begin{align}
-    \mathbfit{\tilde{e}}_{t+h|t} &=  \mathbfit{Sb}_{t+h} - \mathbfit{Sb}_{t+h}  + \mathbfit{SG\hat{e}}_{t+h|t}  \\
-    &= \mathbfit{SG\hat{e}}_{t+h|t}
-  \end{align}
-\end{proof}
-
-% proposição 3
-\begin{proposition}
-  \label{proposicao3}
-
-  $\text{Var}[\mathbfit{\tilde{e}}_t] = \mathbfit{SG\hat{W}G'S'}$.
-
-\end{proposition}
-
-\begin{proof}
-  Por \ref{proposicao2}, temos que
-
-  \begin{align}
-    \text{Var}[\mathbfit{\tilde{e}}] &= \mathbb{E}[\mathbfit{(SG\hat{e})(SG\hat {e})'}] \\
-    &= \mathbb{E}[\mathbfit{SG\hat{e}\hat{e}'G'S'}] \\
-    &= \mathbfit{SG\hat{W}G'S'}
-  \end{align}
-
-  Em que $\mathbfit{\hat{W}}$ é a matriz de variância-covariância dos erros de  previsão base.
-\end{proof}
-
-% proposição 4
-\begin{proposition}
-  \label{proposicao4}
-
-  $\mathbfit{\hat{W}}$ é posto incompleto.
-
-\end{proposition}
-
-\begin{proof}
-  Pela propriedade do vínculo do posto do produto de matrizes, ou seja, $pos(\mathbfit{AB}) \leq min(pos(\mathbfit{A}), pos(\mathbfit{B}))$, temos que
-  
-  \begin{equation}
-    pos(\mathbfit{SG\hat{e}}_{t+h|t}) \leq min(pos(\mathbfit{S}), pos(\mathbfit{G}), pos(\mathbfit{\hat{e}}_{t+h|t})) \label{eq:ap_a_4_1}
-  \end{equation}
-
-  Como $\mathbfit{S}$ é a representação matricial de uma estrutura hierárquica, em que os nós pais totalizam os nós filhos, $\mathbfit{S}$ apresenta, por hipótese, dependência linear e, consequentemente, posto incompleto.
-
-  Pela equação \eqref{eq:ap_a_4_1}, segue que $\mathbfit{\tilde{e}}$ é posto incompleto. Da mesma forma, $pos(\mathbfit{\tilde{e}\tilde{e}'}) \leq min(pos(\mathbfit{\tilde{e}}), pos(\mathbfit{\tilde{e}'}))$. Portanto, $\mathbfit{\hat{W}}$ é posto incompleto.
-\end{proof}
+\end{flushleft}
 
 \end{apendicesenv}
 

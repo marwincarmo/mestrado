@@ -1,5 +1,8 @@
 project:
   title: "dissertacao"
+  
+# execute:
+#   cache: true
 
 date: last-modified
 date-format: "YYYY"
@@ -9,9 +12,9 @@ cite-method: biblatex
 biblio-title: REFERÊNCIAS
 link-citations: true
 crossref:
-  fig-prefix: Figura
-  tbl-prefix: Tabela
-  eq-prefix: Equação
+  # fig-prefix: Figure
+  # tbl-prefix: Tabela
+  # eq-prefix: Equação
   lof-title: LISTA DE FIGURAS
   lot-title: LISTA DE TABELAS
 
