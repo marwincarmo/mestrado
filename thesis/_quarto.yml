@@ -25,6 +25,6 @@ format:
     #include-after-body: config/elementos/pos_textuais.tex
     documentclass: abntex2
     classoption: [12pt, twoside, openright, a4paper, chapter=TITLE, section=TITLE, brazil]
-    keep-tex: false
+    keep-tex: true
     latex-max-runs: 4
     output-file: dissertacao.pdf

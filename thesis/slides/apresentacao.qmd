@@ -1,0 +1,103 @@
+---
+title: "A rede de crenças disfuncionais<br>sobre o sono:<br>uma reanálise estrutural<br>da DBAS-16"
+subtitle: "Orientação: Profa. Dra. Renatha El Rafihi Ferreira"
+institute: "Faculdade de Medicina da Universidade de São Paulo"
+author: "Marwin M I B Carmo"
+date: today
+format: 
+  revealjs:
+    chalkboard: true
+    transition: fade
+    background-transition: fade
+    self-contained: false
+    slide-number: c/t
+    width: 1600
+    height: 900
+    logo: "img/logo.png"
+    footer: "[thomasmock.quarto.pub/reports-presentations](https://thomasmock.quarto.pub/reports-presentations/)"
+    theme: ["styles.scss"]
+    echo: true
+    multiplex: true
+    code-link: true
+    title-slide-attributes:
+      data-background-image: "img/bg.png"
+
+editor: source
+---
+
+# Introdução {background-image="img/bg.png"}
+
+## O papel das crenças
+
+![Modelo cognitivo-comportamental de Morin. Fonte: Ong (2012)](img/morin_model.png){fig-align="center" width=40%}
+
+## Construtos e suas relações
+
+Pessoas com insônia grave tendem a endossar mais fortemente crenças disfuncionais sobre o sono.
+
+A gravidade da insônia, por sua vez, está associada à ansiedade e depressão.
+
+Atribuições e expectativas irreais sobre o sono originam pensamentos geradores de **ansiedade**.
+
+Individuos com altos níves de crenças disfuncionais estão mais vulneráveis à **depressão** em função do estilo de pensamento negativo.
+
+Indivíduos com sintomas graves de insônia tendem a endossar mais fortemente as crenças disfuncionais sobre o sono.
+
+## Mensuração
+
+A *Dysfunctional Beliefs and Attitudes About Sleep Scale* (DBAS) é uma das medidas mais antigas para avaliar crenças e atitudes relacionadas ao sono.
+
+Originalmente desenvolvida em 30 itens, foi reduzida para uma versão de 16 itens que é a mais utilizada em pesquisas atuais.
+
+Os itens são respondidos em uma escala Likert de 11 pontos, de 0 (discordo fortemente) a 10 (concordo fortemente).
+
+Apresenta uma estrutura de 4 fatores: (a) Consequências da insônia, (b) Preocupação com o sono. (c) Expectativas sobre o sono, e (d) Medicação.
+
+Novos estudos psicométricos sugerem diferentes configurações da escala (e.g., Castillo et al, 2023 e Clemente et al., 2023).
+
+## O presente estudo
+
+### Objetivos:
+
+1. criar uma adaptação brasileira da DBAS-16, analisando sua estrutura fatorial, confiabilidade e validade de construto usando modelagem de variáveis latentes
+2. realizar uma análise exploratória usando a perspectiva da psicometria de redes
+
+# Método {background-image="img/bg.png"}
+
+## Delineamento e configuração do estudo
+
+O estudo foi aprovado pelo comitê de ética em pesquisa do Hospital das Clínicas da Faculdade de Medicina da Universidade
+de São Paulo (HC-FMUSP), São Paulo, Brasil (CAAE: 46284821.1.0000.0068).
+
+Os participantes incluídos assinaram um termo de consentimento.
+
+Coleta e armazenamento de dados feitos com o REDCap.
+
+Para testar a estabilidade temporal, os participantes foram solicitados a completar as mesmas medidas 14 dias depois.
+
+O teste de *not-close-fit* (RMSEA < 0.05) indicou 924 participantes.
+
+## Participantes
+
+Os critérios de inclusão foram idade entre 18 e 59 anos e não possuir dificuldades de leitura ou escrita em português.
+
+Os maus dormidores foram categorizados com base nas dificuldades para adormecer ou permanecer dormindo (DSM-V) e pontuação total no Índice de Gravidade da Insônia maior do que 7 pontos.
+
+A amostra final foi composta por 1389 participantes.
+
+::: columns
+::: {.column width="45%"}
+- 80,8% mulheres
+- 73,5% com sintomas de insônia
+- $M_{idade}$ = 38,4 anos (dp = 9,8) 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+- 71,8% brancos
+- 77,7% com diploma universitário
+- 78,0% empregados
+:::
+:::
