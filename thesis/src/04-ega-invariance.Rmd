@@ -60,9 +60,9 @@ ega.fs <- EGA(items[ ,1:13],
 
 # bootEGA 
 #  
-# boot.fs <- bootEGA(items[,1:13], iter = 1000,
-#                    model = "glasso", type = "parametric", corr = "spearman",
-#                    plot.typicalStructure = FALSE, uni.method =  "LE", progress=FALSE)
+boot.fs <- bootEGA(items[,1:13], iter = 1000,
+                   model = "glasso", type = "parametric", corr = "spearman",
+                   plot.typicalStructure = FALSE, uni.method =  "LE", seed = 1002)
 # # 
 # saveRDS(boot.fs, "../output/ega/boot.fs.rds")
 boot.fs <-readRDS("../output/ega/boot.fs.rds")
@@ -71,6 +71,11 @@ boot.fs <-readRDS("../output/ega/boot.fs.rds")
 fs.stability <- dimensionStability(boot.fs)
 
 ```
+
+```{r}
+plot(ega.fs, node.size = colSums(ega.fs$network)^2 * 16)
+```
+
 
 ```{r dim-stab-fs}
 dim.stab.fs <- tibble::enframe(list(
@@ -96,9 +101,9 @@ ega.bs <- EGA(items[which(items$group=="bad_sleepers"),1:13],
               plot.EGA = FALSE, uni.method =  "LE") 
 
 
-# boot.bs <- bootEGA(items[which(items$group=="bad_sleepers"),1:13], iter = 1000,
-#                    model = "glasso", type = "parametric", corr = "spearman",
-#                    plot.typicalStructure = FALSE, uni.method =  "LE", progress=FALSE)
+boot.bs <- bootEGA(items[which(items$group=="bad_sleepers"),1:13], iter = 1000,
+                   model = "glasso", type = "parametric", corr = "spearman",
+                   plot.typicalStructure = FALSE, uni.method =  "LE", seed = 1002)
 # 
 # saveRDS(boot.bs, "../output/ega/boot.bs.rds")
 boot.bs <-readRDS("../output/ega/boot.bs.rds")
@@ -180,5 +185,11 @@ invariant.items
 
 invariant.items$results |> 
   dplyr::filter(p.adj < .05)
+```
+
+```{r plot-invariance}
+plot(invariant.items, p_type = "p_BH", p_value = 0.05,
+     labels = c("Bad Sleepers", "Good Sleepers"))
+
 ```
 
