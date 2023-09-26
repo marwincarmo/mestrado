@@ -11,7 +11,6 @@ author:
     affil: 3
     main: true
     #orcid: '0000-0002-1099-3857'
-    twitter: marwincarmo 
     email: mmcarmo@ucdavis.edu
   - name: Leo Paulos-Guarnieri
     affil: 1
