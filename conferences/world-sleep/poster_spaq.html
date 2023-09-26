@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Translation and validation of the Sleep Problem Acceptance Questionnaire (SPAQ) with a Brazilian sample</title>
+
+
+<script src="poster_spaq_files/kePrint-0.0.1/kePrint.js"></script>
+<link href="poster_spaq_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 100cm 200cm;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 100cm;
+height: 200cm;
+text-align: justify;
+font-size: 52px;
+line-height: 1.05;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #C00000 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #C0000024;
+color: #C00000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 38px;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #C0000020;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 38px;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 38px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 100cm;
+height: calc(200cm *  (1 - 0.1 - 7.0e-2 - 0.01) );
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+column-gap: 0;
+padding-left: 0cm;
+padding-right: 0cm;
+/* -webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%; */
+-webkit-column-rule-style: none;
+-moz-column-rule-style: none;
+column-rule-style: none;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+background-color: #ffffff;
+font-family: Rasa;
+margin-top: calc(200cm *  0.1 );
+padding-top: 1em;
+padding-bottom: 1em;
+}
+span.citation {
+  color: #C00000;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #C00000;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 98%;
+border-bottom: 0;
+font-weight: normal;
+background: 0;
+}
+#author {
+color:#024F84;
+margin: 0;
+line-height: 85%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 0.1em;
+color: ;
+font-style: italic;
+font-size: 38px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author {
+text-align: left;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #C00000;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+text-align: left;
+}
+.outer h1, h2, h3, h4, h5, h6 {
+text-align: center;
+margin: 0;
+font-weight: bold;
+}
+.section h1 {
+  text-align:center;
+  padding-bottom:5px;
+  background:
+    linear-gradient(
+      to left,
+      #ffffff 1%,
+      #ffffff 20%,
+      #024F8475 33%,
+      #024F84 50%,
+      #024F8475 66%,
+      #ffffff 80%,
+      #ffffff 99%
+    )
+    left
+    bottom
+    #ffffff
+    no-repeat;
+  background-size:100% 5px ;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p, .level2 {
+color: #000000;
+}
+.outer ol {
+padding-left: 8%;
+padding-right: 8%;
+text-align: left;
+}
+.main {
+width: 100cm;
+height: calc(200cm * 0.1);
+position: absolute;
+background-color: #024F84;
+color: #ffffffcf;
+font-family: PT Sans;
+/*background-image: linear-gradient(#024F84 50%,#C00000); */
+}
+.main strong {
+color: #ffffff;
+}
+.main strong > sup {
+color: #ffffff;
+}
+.main sup {
+color: #ffffffcf;
+}
+#main-img-left {
+width: 25%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-center {
+width: 10%;
+left: calc(100cm * 0.45);
+bottom: 0.5in;
+position: absolute;
+opacity: 80%;
+}
+#main-img-right {
+width: 15%;
+right: 0.5in;
+bottom: 0.4in;
+position: absolute;
+opacity: 80%;
+}
+.main p {
+font-size: 160px;
+font-family: PT Sans;
+text-align: left;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+margin-left: 0.8em;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globe {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.globetext {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 100cm;
+height: 200cm;
+padding: 0cm;
+}
+.main_bottom {
+width: 100cm;
+height: calc(200cm * 7.0e-2);
+margin-top: calc(200cm * (1 - 7.0e-2));
+position: absolute;
+background-color: #024F84;
+/*background-image: linear-gradient(#C00000 10%, #024F84);*/
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.orcid img {
+  width: 3%;
+}
+.emphasis {
+  background-color: #008080;
+  color: #ffffff;
+  border: solid #0b2045 3mm;
+  margin: 1em;
+  padding-left: 0;
+  padding-right: 0;
+}
+.emphasis h1 {
+  font-weight: bold;
+  background: none;
+  background-color: #0b2045;
+  padding-bottom: 5mm;
+  padding-top: 1mm;
+  margin-top: -1mm;
+  margin-right: -1mm;
+  margin-left: -1mm;
+}
+.emphasis blockquote {
+  border: 0;
+}
+.emphasis ol {
+  padding: 0;
+  padding-left: 8%;
+  font-size: 100%;
+  font-weight: bold;
+}
+.emphasis p {
+  color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+
+<div class="column outer">
+<div class="section">
+<h1 id="title"><strong>Translation and validation of the Sleep Problem Acceptance Questionnaire (SPAQ) with a Brazilian sample</strong></h1><br>
+<h3 id="author" class="author">
+
+<strong>Marwin M. I. B. Carmo</strong><sup> 3</sup><br>
+<a class="twitter" href="https://mobile.twitter.com/marwincarmo"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@marwincarmo</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:marwin@usp.br" class="email">marwin@usp.br</a> <br>
+ Leo Paulos-Guarnieri<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:guarnieri.leo@gmail.com" class="email">guarnieri.leo@gmail.com</a> <br>
+ Dr. Maria Laura Nogueira Pires<sup> 2</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:laurapires@actigrafia.org" class="email">laurapires@actigrafia.org</a> <br>
+ Dr. Renatha El Rafihi Ferreira<sup> 1</sup><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:rerafihi@usp.br" class="email">rerafihi@usp.br</a> <br>
+</h3>
+
+<h5 id="author_extra", class="author_extra">
+   </h5>
+
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Department of Psychiatry, University of São Paulo, Brazil<br> <sup>2</sup> Private practice in sleep psychology<br> <sup>3</sup> Department of Psychology, University of California, Davis
+</p>
+</div>
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Acceptance is essential as a therapeutic process for dealing with sleep problems. The Sleep Problem Acceptance Questionnaire (SPAQ) is an 8-itens psychometric instrument that measures the acceptance of sleep difficulties. The SPAQ contains the subscales “Activity Engagement” and “Willingness,” with four items composing each factor; respondents rate them on a 7-point scale, where 0 means “Disagree,” and six indicates “Completely
+agree.”</p>
+<div id="objective" class="section level2">
+<h2>Objective</h2>
+<p>This study developed a Brazilian-Portuguese of the Sleep Problem Acceptance Questionnaire, examined its factor structure, reliability, and construct validity</p>
+</div>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>Data were collected from online surveys responded by 1352 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:</p>
+<ol style="list-style-type: decimal">
+<li>Hospital Anxiety and Depression Scale (HADS);</li>
+<li>Insomnia Severity Index (ISI);</li>
+<li>Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);</li>
+<li>Acceptance and Action Questionnaire (AAQ-II).</li>
+</ol>
+<p>The SPAQ was translated into Portuguese by three independent translators. The translations were synthesized into a single version by a committee composed of insomnia experts. A pilot study with 15 participants demonstrated that the target population understood the content of the scale.</p>
+<p>We ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the Diagonally Weighted Least Squares (DWLS) estimator, considering items to be ordered.</p>
+<p>Reliability indices for each of the facets were obtained using Cronbach’s <span class="math inline">\(\alpha\)</span> and McDonald’s <span class="math inline">\(\omega\)</span>. We assessed construct validity by examining the latent correlations with variables known to be linked with insomnia.</p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>The 2-factor model showed a good fit [<span class="math inline">\(\chi^2\)</span>(19) = 252.65, RMSEA = 0.095 [0.09, 0.106]; CFI = 0.973; RNI = 0.973; TLI = 0.96].</p>
+<p>Internal consistency was good for Activity Engagement (<span class="math inline">\(\alpha\)</span> = 0.94 [0.93, 0.94], <span class="math inline">\(\omega\)</span> = 0.94 [0.93, 0.94]) and Willingness (<span class="math inline">\(\alpha\)</span> = 0.9 [0.89, 0.91], <span class="math inline">\(\omega\)</span> = 0.9 [0.9, 0.91]). The two subscales were weakly and negatively correlated (-0.098).</p>
+<p><br></p>
+<table style='width:100%;'>
+<caption>
+<span id="tab:unnamed-chunk-3">Table 1: </span>Latent correlations and internal consistency levels.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+1
+</th>
+<th style="text-align:left;">
+2
+</th>
+<th style="text-align:left;">
+3
+</th>
+<th style="text-align:left;">
+4
+</th>
+<th style="text-align:left;">
+5
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>AE
+</td>
+<td style="text-align:left;">
+1.000
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="2" style="list-style-type: decimal">
+<li>WILL
+</td>
+<td style="text-align:left;">
+-.098
+</td>
+<td style="text-align:left;">
+1.000
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="3" style="list-style-type: decimal">
+<li>ISI
+</td>
+<td style="text-align:left;">
+-.160
+</td>
+<td style="text-align:left;">
+-.752
+</td>
+<td style="text-align:left;">
+1.000
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="4" style="list-style-type: decimal">
+<li>Depression
+</td>
+<td style="text-align:left;">
+-.452
+</td>
+<td style="text-align:left;">
+-.428
+</td>
+<td style="text-align:left;">
+.639
+</td>
+<td style="text-align:left;">
+1.000
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="5" style="list-style-type: decimal">
+<li>Anxiety
+</td>
+<td style="text-align:left;">
+-.324
+</td>
+<td style="text-align:left;">
+-.510
+</td>
+<td style="text-align:left;">
+.717
+</td>
+<td style="text-align:left;">
+.803
+</td>
+<td style="text-align:left;">
+1.000
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<p><img src="poster_spaq_files/figure-html/graph-1.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep with a Brazilian-Portuguese speaking population.</p>
+<div id="items" class="section level2">
+<h2>Items</h2>
+<ol style="list-style-type: decimal">
+<li><p>I try to control my sleep by forcing it to happen or being too rigid about my sleep schedule.</p></li>
+<li><p>I avoid making plans or doing things I enjoy or need to do because of my sleep.</p></li>
+<li><p>The thought of going to sleep makes me uneasy.</p></li>
+<li><p>I have negative feelings towards my sleep.</p></li>
+<li><p>My worries, thoughts, and feelings about my sleep interfere with how I go about my daily life.</p></li>
+<li><p>I am scared of not being able to fall asleep.</p></li>
+</ol>
+</div>
+</div>
+
+</div>
+<div class="main">
+<p>Preliminary evidence for a new measure
+of <strong>Sleep Acceptance</strong>: a promising tool for clinicians and researchers.</p>
+</div>
+<div class="main_bottom">
+<img id="main-img-left" src=img/fapesp-white.png>
+<img id="main-img-center" src=img/qrcodeSAS.svg>
+<img id="main-img-right" src=img/ipq-white3.png>
+</div>
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+var script = document.createElement("script");
+script.type = "text/javascript";
+var src = "true";
+if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+if (location.protocol !== "file:" && /^https?:/.test(src))
+src = src.replace(/^https?:/, '');
+script.src = src;
+document.getElementsByTagName("head")[0].appendChild(script);
+})();
+</script>
+
+
+</body>
+</html>

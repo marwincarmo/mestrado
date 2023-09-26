@@ -1,26 +1,26 @@
 ---
-main_topsize: 0.07 #percent coverage of the poster
+main_topsize: 0.1 #percent coverage of the poster
 main_bottomsize: 0.07
-poster_height: "150cm"
-poster_width: "80cm"
-body_textsize: "46px"
+poster_height: "200cm"
+poster_width: "100cm"
+body_textsize: "52px"
 #ESSENTIALS
-title: '**Sleep Acceptance Scale: development of a new brief tool for clinicians and researchers**'
+title: '**Translation and validation of the Sleep Problem Acceptance Questionnaire (SPAQ) with a Brazilian sample**'
 author:
   - name: '**Marwin M. I. B. Carmo**'
     affil: 3
     main: true
     #orcid: '0000-0002-1099-3857'
     twitter: marwincarmo 
-    email: marwin@usp.br
+    email: mmcarmo@ucdavis.edu
+  - name: Leo Paulos-Guarnieri
+    affil: 1
+    main: true
+    email: 'guarnieri.leo@usp.br'
   - name: Dr. Maria Laura Nogueira Pires
     affil: 2
     main: true
     email: 'laurapires@actigrafia.org'
-  - name: Leo Paulos-Guarnieri
-    affil: 1
-    main: true
-    email: 'guarnieri.leo@gmail.com'
   - name: Dr. Renatha El Rafihi Ferreira
     affil: 1
     main: true
@@ -37,15 +37,15 @@ primary_colour: "#024F84"
 secondary_colour: "#C00000"
 body_bgcol: "#ffffff"
 #---POSTER BODY OPTIONS---#
-reference_textsize: "32px"
-caption_textsize: "32px"
-affiliation_textsize: "32px"
+reference_textsize: "38px"
+caption_textsize: "38px"
+affiliation_textsize: "38px"
 #Column
 column_numbers: 2
 #Main Section
 main_fontfamily: "PT Sans"
 main_textalign: "left"
-main_textsize: "120px"
+main_textsize: "160px"
 main_textalpha: "cf"
 main_findings:
   - "Preliminary evidence for a new measure \nof **Sleep Acceptance**: a promising tool for clinicians and researchers."
@@ -60,9 +60,9 @@ output:
     pandoc_args: --mathjax
     number_sections: false
     template: custom_template.html
-bibliography: references.bib
+#bibliography: references.bib
 link-citations: true
-csl: apa7.csl
+#csl: apa7.csl
 #nocite: '@*'
 ---
 
@@ -94,102 +94,99 @@ library("corrr")
 ```
 
 ```{r dataset, include=FALSE}
-ebas_full <- readr::read_csv("ebas.csv") %>% 
-  dplyr::mutate(ebas_score = dplyr::select(., ebas_1:ebas_6) %>% rowSums())
-ebas <- dplyr::select(ebas_full, ebas_1:ebas_6)
-table1 <- readr::read_csv("table1.csv")
+## read full dataset
+mydata <- read.csv("data.csv")
+
+convdata <- mydata |> 
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+    !dplyr::if_all(dplyr::starts_with("spaq_"), ~ is.na(.))) |> 
+  dplyr::select(record_id, paste0("spaq_", 1:8), dplyr::starts_with("isi_"),
+                dplyr::starts_with("aaq_"), dplyr::starts_with("dbas16_"),
+                dplyr::starts_with("hads_")) |> 
+  dplyr::mutate(across(spaq_5:spaq_8, ~ 6 - .x))
+
+## select answers from arm 1
+arm1 <- convdata |> 
+  dplyr::select(record_id, paste0("spaq_", 1:8))
+
+  
 ```
 
-```{r efa, eval=FALSE, include=FALSE}
-ebas.pa <- fa.parallel(ebas , cor="poly")
-```
 
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
 # CFA ####
 
-# specify the model
-CFA.ebas2 <- '
-# factor structure
-Avoidance =~ ebas_1 + ebas_2
-Distress =~ ebas_3 + ebas_4 + ebas_5 + ebas_6
+mod.spaq <- '
+AE =~ spaq_1 + spaq_2 + spaq_3 + spaq_4 
+WILL =~ spaq_5 + spaq_6 + spaq_7 + spaq_8 
+
 '
-
-
-# fit the model
-
-# to use an estimator better suited to ordinal or binary items (WLSMV), use "ordered" specification as here: http://lavaan.ugent.be/tutorial/cat.html)
-# alternatively, consider using estimator = "MLR" (robust maximum likelihood) for ordinal items with e.g. 7-point response scales
-
-
-#fitCFA.ebas <- lavaan::cfa(CFA.ebas1, data=ebas, std.lv = TRUE, estimator = 'MLR')
-fitCFA.ebas2 <- lavaan::cfa(CFA.ebas2, data=ebas, std.lv = TRUE, estimator = 'DWLS', ordered = TRUE)
-# model summary
-#summary(fitCFA.ebas, standardized=TRUE, fit.measures = TRUE)
-# coefficients only
-# coef(fitCFA.mydata)
-# CFA diagram from psych package
-# lavaan.diagram(fitCFA.mydata, errors=TRUE)
-#delta.ebas <- anova(fitCFA.ebas, fitCFA.ebas2)
+fit.spaq <- lavaan::cfa(model = mod.spaq, std.lv = TRUE, estimator = 'MLMV', data = arm1)
 
 ## Reliability
 
-Calphamysubscale1 <- psych::alpha(ebas[,1:2]) 
-omegamysubscale1 <- ci.reliability(data=ebas[,1:2], type="omega", conf.level = 0.95,
-               interval.type="perc", B=100)
+Calphamysubscale1 <- psych::alpha(arm1[,2:5])
+omegamysubscale1 <- ci.reliability(data=arm1[,2:5], type="omega", conf.level = 0.95,
+               interval.type="perc", B=5)
 
-Calphamysubscale2 <- psych::alpha(ebas[,3:6]) 
-omegamysubscale2 <- ci.reliability(data=ebas[,3:6], type="omega", conf.level = 0.95,
-               interval.type="perc", B=100)
+Calphamysubscale2 <- psych::alpha(arm1[,6:9])
+omegamysubscale2 <- ci.reliability(data=arm1[,6:9], type="omega", conf.level = 0.95,
+               interval.type="perc", B=5)
 ```
 
-```{r, include=FALSE}
-sas.igi <- cor.test(ebas_full$ebas_score, ebas_full$igi_escore)
-sas.dbas <- cor.test(ebas_full$ebas_score, ebas_full$dbas_score )
-sas.aaq <- cor.test(ebas_full$ebas_score, ebas_full$aaq_score )
-sas.hadsa <- cor.test(ebas_full$ebas_score, ebas_full$ehad_ansiedade_escore )
-sas.hadsd <- cor.test(ebas_full$ebas_score, ebas_full$ehad_depressao_escore )
-sas.spaq <- cor.test(ebas_full$ebas_score, ebas_full$spaq_score )
+```{r mod-conv-validity}
+modconv <- '
+
+AE =~ spaq_1 + spaq_2 + spaq_3 + spaq_4 
+WILL =~ spaq_5 + spaq_6 + spaq_7 + spaq_8 
+
+isi =~ isi_1a + isi_1b + isi_1c + isi_2 + isi_3 + isi_4 + isi_5
+
+dep =~ hads_2 + hads_4 + hads_6 + hads_8 + hads_10 + hads_12 + hads_14
+
+anx =~ hads_1 + hads_3 + hads_5 + hads_7 + hads_9 + hads_11 + hads_13
+
+'
+
+fitconv <- lavaan::sem(model = modconv,
+                        std.lv = TRUE, estimator = 'MLMV', data = convdata)
+
+cormat <- cov2cor(lavInspect(fitconv, "cov.lv"))
 ```
 
 # Introduction
 
-Insomnia symptoms are associated with higher levels of <b><span style="color: #C00000;">metacognitive control</b></span>. Controlled information processing interferes with a healthy sleep process by preventing cognitive deactivation, which involves diminished verbal regulation and control, and acceptance of spontaneous physiological and mental processes. Because general tools for measuring acceptance do not address sleep-related behaviors, the development of specific instruments is essential for studying acceptance of insomnia. 
-
-```{r, include=FALSE}
-knitr::write_bib(c('posterdown', 'rmarkdown','pagedown'), 'packages.bib')
-```
+Acceptance is essential as a therapeutic process for dealing with sleep problems. The Sleep Problem Acceptance Questionnaire (SPAQ) is an 8-itens psychometric instrument that measures the acceptance of sleep difficulties. The SPAQ contains the subscales "Activity Engagement" and "Willingness," with four items composing each factor; respondents rate them on a 7-point scale, where 0 means “Disagree,” and six indicates "Completely
+agree." 
 
 ## Objective
 
-This study aimed to develop a new measure of sleep acceptance, titled Sleep Acceptance Scale (SAS), and examine its factorial structure, internal consistency, and construct validity.
+This study developed a Brazilian-Portuguese of the Sleep Problem Acceptance Questionnaire, examined its factor structure, reliability, and construct validity
 
 # Methods
 
-The SAS was developed as a 6-item self-report questionnaire rated using a scale ranging from 1 (never) to 7 (always), such that high scores indicate lower sleep acceptance.
-
-Data were collected from online surveys responded by 1419 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:
+Data were collected from online surveys responded by 1352 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:
 
 1. Hospital Anxiety and Depression Scale (HADS);
 2. Insomnia Severity Index (ISI);
 3. Dysfunctional Beliefs and Attitudes about Sleep Scale (DBAS-16);
 4. Acceptance and Action Questionnaire (AAQ-II). 
 
-We conducted a parallel analysis and exploratory factor analysis (with oblimin rotation) to estimate the number of facets underlying the instrument items. 
+The SPAQ was translated into Portuguese by three independent translators. The translations were synthesized into a single version by a committee composed of insomnia experts. A pilot study with 15 participants demonstrated that the target population understood the content of the scale.
 
 We ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the Diagonally Weighted Least Squares (DWLS) estimator, considering items to be ordered. 
 
-Reliability indices for each of the facets were obtained using Cronbach’s $\alpha$ and McDonald’s $\omega$. We assessed construct validity by examining the relations with variables known to be linked with insomnia.
+Reliability indices for each of the facets were obtained using Cronbach’s $\alpha$ and McDonald’s $\omega$. We assessed construct validity by examining the latent correlations with variables known to be linked with insomnia.
 
 # Results
 
-The parallel analysis procedure indicated two latent factors: <b><span style="color: #C00000;">Avoidance</b></span> (two items) and <b><span style="color: #C00000;">Distress</b></span> (four items). The 2-factor model showed a good fit [$\chi^2$(`r fitMeasures(fitCFA.ebas2, "df")`) = `r round(fitMeasures(fitCFA.ebas2, "chisq"),2)`, RMSEA = `r round(fitMeasures(fitCFA.ebas2, "rmsea"),3)` [`r round(fitMeasures(fitCFA.ebas2, "rmsea.ci.lower"),2)`, `r round(fitMeasures(fitCFA.ebas2, "rmsea.ci.upper"),3)`]; CFI = `r round(fitMeasures(fitCFA.ebas2, "cfi"),3)`; RNI = `r round(fitMeasures(fitCFA.ebas2, "rni"),3)`; TLI = `r round(fitMeasures(fitCFA.ebas2, "tli"),3)`]. 
+The 2-factor model showed a good fit [$\chi^2$(`r fitMeasures(fit.spaq, "df")`) = `r round(fitMeasures(fit.spaq, "chisq"),2)`, RMSEA = `r round(fitMeasures(fit.spaq, "rmsea"),3)` [`r round(fitMeasures(fit.spaq, "rmsea.ci.lower"),2)`, `r round(fitMeasures(fit.spaq, "rmsea.ci.upper"),3)`]; CFI = `r round(fitMeasures(fit.spaq, "cfi"),3)`; RNI = `r round(fitMeasures(fit.spaq, "rni"),3)`; TLI = `r round(fitMeasures(fit.spaq, "tli"),3)`]. 
 
-Internal consistency was suboptimal for Avoidance ($\alpha$ = `r pull(round(Calphamysubscale1$total[1],2))` [`r pull(round(Calphamysubscale1$feldt[[1]],2))`, `r pull(round(Calphamysubscale1$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale1$est,2)` [`r round(omegamysubscale1$ci.lower,2)`, `r round(omegamysubscale1$ci.upper,2)`]) and excellent for Distress ($\alpha$ = `r pull(round(Calphamysubscale2$total[1],2))` [`r pull(round(Calphamysubscale2$feldt[[1]],2))`, `r pull(round(Calphamysubscale2$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale2$est,2)` [`r round(omegamysubscale2$ci.lower,2)`, `r round(omegamysubscale2$ci.upper,2)`]). 
-
-The SAS was positively correlated with ISI (*r* = `r round(sas.igi$estimate,2)`), DBAS-16 (*r* = `r round(sas.dbas$estimate,2)`), AAQ-II (*r* = `r round(sas.aaq$estimate,2)`), HADS-A (*r* = `r round(sas.hadsa$estimate,2)`), HADS-D (*r* = `r round(sas.hadsd$estimate,2)`), and negatively correlated with SPAQ (*r* = `r round(sas.spaq$estimate,2)`).
+Internal consistency was good for Activity Engagement ($\alpha$ = `r pull(round(Calphamysubscale1$total[1],2))` [`r pull(round(Calphamysubscale1$feldt[[1]],2))`, `r pull(round(Calphamysubscale1$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale1$est,2)` [`r round(omegamysubscale1$ci.lower,2)`, `r round(omegamysubscale1$ci.upper,2)`]) and Willingness ($\alpha$ = `r pull(round(Calphamysubscale2$total[1],2))` [`r pull(round(Calphamysubscale2$feldt[[1]],2))`, `r pull(round(Calphamysubscale2$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale2$est,2)` [`r round(omegamysubscale2$ci.lower,2)`, `r round(omegamysubscale2$ci.upper,2)`]). The two subscales were weakly and negatively correlated (`r round(cormat[2,1], 3)`).
 
 
-```{r table1}
+
+```{r table1, eval=FALSE, include=FALSE}
 table1 %>% 
   knitr::kable(
     caption = "Study participants (N = 1419) descriptive statistics.", 
@@ -213,139 +210,43 @@ table1 %>%
 <br>
 
 ```{r}
-sas_cor <- ebas %>%
-  correlate(method = "pearson") %>%
-  shave() %>%
-  dplyr::mutate(dplyr::across(ebas_1:ebas_6, ~round(.x,2) |> as.character())) |> 
-  dplyr::mutate(dplyr::across(everything(), ~replace_na(.x, ""))) |> 
-  dplyr::select(-ebas_6) |> 
-  dplyr::mutate(term=stringr::str_remove_all(term, "[^0-9]"))
+covmat <- cov2cor(lavInspect(fitconv, "cov.lv"))
+covmat[upper.tri(covmat, diag = FALSE)] <- NA
+covmat_t <- corrr::fashion(covmat, decimals = 3)
 
-sas_ms <- ebas |> 
-  tidyr::pivot_longer(cols = everything(), names_to = "item", values_to = "score") |> 
-  dplyr::with_groups(item, summarise, Mean = mean(score), SD = sd(score)) |> 
-  dplyr::mutate(dplyr::across(Mean:SD, ~round(.x,2) |> as.character())) |> 
-  select(-item)
+covmat_t2 <- covmat_t[,-c(5:7)]
 
-bind_cols(sas_cor, sas_ms) |> 
-  kable(col.names = c("Item", "1", "2", "3", "4", "5", "Mean", "SD"),
-        table.attr = "style='width:100%;'",
-        align = "c",
-        caption="Descriptive statistics and item inter-correlations of the SAS.")
+rownames(covmat_t) <- c("1. AE", "2. WILL", "3. ISI", "4. Depression", "5. Anxiety")
+colnames(covmat_t) <- c("1", "2", "3", "4", "5")
+
+cor_df <- tibble::as_tibble(covmat_t, rownames="Variable")
+
+cor_df |> 
+  `colnames<-`(c("Variable", "1", "2", "3", "4", "5")) |> 
+  kbl(#booktabs = TRUE, escape = FALSE,
+      caption = "Latent correlations and internal consistency levels.", 
+      table.attr = "style='width:100%;'",
+      align = "llllll")
 ```
 
 
 
-```{r include=FALSE}
-# To describe edges, we need the origin, path-type, endpoint, and label.
-paths <- fitCFA.ebas2 %>%
-  parameterestimates %>%
-  select(lhs, op, rhs, est)
-
-# Latent variables are left-hand side of "=~" lines
-latent <- paths %>%
-  filter(op == "=~") %>%
-  select(id = lhs) %>%
-  distinct %>%
-  mutate(shape = "circle")
-
-# Manifest variables are not latent variables
-`%not_in%` <- Negate(`%in%`)
-manifest <- paths %>%
-  filter(op != "~1", lhs %not_in% latent$nodes) %>%
-  select(id = lhs) %>%
-  distinct %>%
-  mutate(shape = "square")
-
-# Nodes are prepared
-node_set <- bind_rows(latent, manifest)
-
-# Edges will be labeled by the parameter estimates
-all_paths <- paths %>%
-  filter(op != "~1") %>%
-  mutate(label = round(est, 2)) %>%
-  select(-est)
-
-# Factor loadings are the paths in the "=~" lines
-loadings <- all_paths %>%
-  filter(op == "=~") %>%
-  mutate(from = lhs, to = rhs, style = "solid") %>%
-  select(from, to, style, label)
-
-# This is now an edge dataframe
-loadings
+```{r graph, fig.width=8, fig.height=12, dpi=300}
+cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = "latents", 
+         color=wesanderson::wes_palette("GrandBudapest2", n=2), layout = "tree",
+         posCol=c("skyblue4"),"std", edge.label.cex = 1,  curvePivot = TRUE,
+         nodeLabels = c("S1", "S2", "S3", "S4",
+                        "S5", "S6", "S7", "S8",
+                        "AE", "WIL")
+         )
 ```
 
 
-```{r include=FALSE}
-# Regressions are the paths in the "~" lines
-regressions <- all_paths %>%
-  filter(op == "~~") %>%
-  rename(to = lhs, from = rhs) %>%
-  mutate(style = "dashed") %>%
-  select(from, to, style, label)
-
-edge_set <- bind_rows(loadings, regressions)
-edge_set
-```
-
-
-
-
-
-```{r out.width="80%", dpi=300, fig.cap="Structural equation model for the Confirmatory Factor Analysis for the final version of the Sleep Acceptance Scale. Avd = Avoidance, Dis = Distress."}
-grViz("
-digraph {
-
-  rankdir=LR;
-  
-  'Avd' [shape = 'circle' height=1.2 fontsize=30]
-  'Dis' [shape = 'circle' height=1.2 fontsize=30]
-  'x1' [shape = 'square']
-  'x2' [shape = 'square']
-  'x3' [shape = 'square']
-  'x4' [shape = 'square']
-  'x5' [shape = 'square']
-  'x6' [shape = 'square']
-
-  'e1' [shape = 'circle']
-  'e2' [shape = 'circle']
-  'e3' [shape = 'circle']
-  'e4' [shape = 'circle']
-  'e5' [shape = 'circle']
-  'e6' [shape = 'circle']
-
-  'Avd'->'x1' [ label = '.55']
-  'Avd'->'x2' [ label = '.72']
-  'Dis'->'x3' [ label = '.93']
-  'Dis'->'x4' [ label = '.95']
-  'Dis'->'x5' [ label = '.85']
-  'Dis'->'x6' [ label = '.89']
-  
-  'x1' -> 'e1' [dir=back rank=same]
-  'x2' -> 'e2' [dir=back]
-  'x3' -> 'e3' [dir=back]
-  'x4' -> 'e4' [dir=back]
-  'x5' -> 'e5' [dir=back]
-  'x6' -> 'e6' [dir=back]
-
-  'e1':e -> 'e1':e [dir=both label = '.70']
-  'e2':e -> 'e2':e [dir=both label = '.48']
-  'e3':e -> 'e3':e [dir=both label = '.13']
-  'e4':e -> 'e4':e [dir=both label = '.10']
-  'e5':e -> 'e5':e [dir=both label = '.28']
-  'e6':e -> 'e6':e [dir=both label = '.21']
-
-  'Avd':w -> 'Dis':w [dir=both label = .79 constraint=false]
-
-}
-")
-```
 
 
 # Conclusion
 
-Preliminary evidence suggest that the SAS might be a reliable and valid indicator of acceptance of sleep problems in people with and without sleep problems.
+These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep with a Brazilian-Portuguese speaking population.
 
 ## Items
 
