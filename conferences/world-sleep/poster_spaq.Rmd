@@ -80,7 +80,6 @@ knitr::opts_chunk$set(echo = FALSE,
 library(dplyr)
 library(ggplot2)
 library(modelsummary)
-library(huxtable)
 library(kableExtra)
 library(psych)
 library(lavaan)
@@ -88,14 +87,14 @@ library(MBESS)
 library(tidyr)
 library(semTools)
 library("stringr")
-library("DiagrammeR")
 library("semPlot")
 library("corrr")
 ```
 
 ```{r dataset, include=FALSE}
 ## read full dataset
-mydata <- read.csv("data.csv")
+mydata <- read.csv("data.csv") |> 
+  
 
 convdata <- mydata |> 
   dplyr::filter(!record_id %in% c(1651, 2015, 2938, 3793)) |>  # dupes
@@ -192,8 +191,95 @@ configural.fit <- cfa(mod.config,
                       data = data_longitudinal, 
                       estimator = "MLMV", 
                       std.lv = TRUE)
+
+syntax.metric <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings"))
+
+mod.metric <- as.character(syntax.metric)
+
+fit.metric <- cfa(mod.metric, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+conf.met <- compareFit(configural.fit, fit.metric)
+summary(conf.met)
+
+lavTestLRT(configural.fit, fit.metric, method="satorra.bentler.2010")
+
+syntax.scalar <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings",
+                                               "intercepts"))
+mod.scalar <- as.character(syntax.scalar)
+fit.scalar <- cfa(mod.scalar, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+syntax.strict <- measEq.syntax(configural.model = configural_model,
+                               data = data_longitudinal,
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016",
+                               longFacNames = longFacNames,
+                               long.equal  = c("thresholds","loadings",
+                                               "intercepts", "residuals"))
+mod.strict <- as.character(syntax.strict)
+fit.strict <- cfa(mod.strict, data = data_longitudinal, estimator = "MLMV",
+                  parameterization = "theta", std.lv = TRUE)
+
+lavTestLRT(configural.fit, fit.metric, fit.scalar, fit.strict, method = "satorra.bentler.2010")
 ```
 
+```{r longitudinal-fit-differences}
+inv_long <- anova(configural.fit, fit.metric, fit.scalar, fit.strict, 
+                  method = "satorra.bentler.2010") |> 
+  tibble::as.tibble()
+
+fit_stats_strict <- fitmeasures(fit.strict, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_scalar <- fitmeasures(fit.scalar, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_metric <- fitmeasures(fit.metric, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+fit_stats_configural <- fitmeasures(configural.fit, 
+                                fit.measures = c("rmsea.robust", "cfi.robust", 
+                                                 "aic", "bic"))
+
+long_fit_diffs <- tibble::enframe(c(
+        fit_stats_configural - fit_stats_metric,
+        fit_stats_metric - fit_stats_scalar,
+        fit_stats_scalar - fit_stats_strict)) |> 
+  dplyr::mutate(model = rep(c("metric", "scalar", "strict"), each=4),
+                .before = name) |> 
+  tidyr::pivot_wider(names_from = "name", values_from = "value")
+```
+
+```{r group invariance}
+
+syntax.config.group <- measEq.syntax(configural.model = mod.spaq,
+                               data = arm1[,2:9],
+                               group = "group",
+                               parameterization = "theta",
+                               ID.fac = "std.lv", ID.cat = "Wu.Estabrook.2016")
+mod.config.group <- as.character(syntax.config.group)
+
+configural.fit.group <- cfa(mod.config.group, 
+                           group = "group",
+                           data = dbas[,2:18],
+                           estimator = "MLMV",
+                           std.lv = TRUE)
+
+```
 
 # Introduction
 
