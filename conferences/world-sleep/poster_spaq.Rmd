@@ -361,7 +361,33 @@ cor_df |>
       align = "llllll")
 ```
 
+<br>
 
+```{r fit-differences-invariance}
+fitdiffs_df |> 
+  dplyr::mutate(
+    `Pr(>Chisq)` = ifelse(`Pr(>Chisq)` < .001, "<.001", 
+                          weights::rd(`Pr(>Chisq)`, 2)),
+    dplyr::across(c(aic, bic), ~round(.x, 0)),
+    dplyr::across(c(rmsea.robust, cfi.robust),
+                  ~weights::rd(.x, 4)),
+    `Chisq diff` = round(`Chisq diff`, 2),
+    model = stringr::str_to_title(model)
+    ) |> 
+  `colnames<-`(c("Model", "$\\Delta\\chi^2$", 
+                 "$\\Delta$df", "$\\it{p}$-value", 
+                 "$\\Delta$RMSEA", "$\\Delta$CFI",
+                 "$\\Delta$AIC", "$\\Delta$BIC")) |> 
+  kbl(booktabs = TRUE, 
+      caption = " Model fit differences for CFA measurement invariance tests.", 
+      escape = FALSE) |> 
+  pack_rows("Longitudinal invariance", 1, 4) |>
+  pack_rows("Group invariance", 5, 6) |> 
+  footnote(general = "Differences to each preceding constraint level.",
+           footnote_as_chunk = TRUE,
+           general_title = "Note. ")
+
+```
 
 ```{r graph, fig.width=8, fig.height=12, dpi=300}
 cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = "latents", 
