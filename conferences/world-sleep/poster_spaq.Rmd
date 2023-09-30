@@ -93,7 +93,7 @@ library("corrr")
 
 ```{r dataset, include=FALSE}
 ## read full dataset
-mydata <- read.csv("data.csv") |> 
+mydata <- read.csv("data.csv")
   
 
 convdata <- mydata |> 
@@ -304,6 +304,8 @@ The SPAQ was translated into Portuguese by three independent translators. The tr
 We ran a Confirmatory Factor Analysis to obtain fit statistics and parameter estimates, using the Diagonally Weighted Least Squares (DWLS) estimator, considering items to be ordered. 
 
 Reliability indices for each of the facets were obtained using Cronbach’s $\alpha$ and McDonald’s $\omega$. We assessed construct validity by examining the latent correlations with variables known to be linked with insomnia.
+
+We also examined whether our scale’s psychometric properties were equal across time points, comparing baseline test scores to a second administration taken 14 days later.
 
 # Results
 
