@@ -1,13 +1,13 @@
 ---
 main_topsize: 0.1 #percent coverage of the poster
 main_bottomsize: 0.07
-poster_height: "200cm"
-poster_width: "100cm"
+poster_height: "150cm"
+poster_width: "80cm"
 body_textsize: "52px"
 #ESSENTIALS
 title: '**Translation and validation of the Sleep Problem Acceptance Questionnaire (SPAQ) with a Brazilian sample**'
 author:
-  - name: '**Marwin M. I. B. Carmo**'
+  - name: '**Marwin M. I. B. Carmo, MSc**'
     affil: 3
     main: true
     #orcid: '0000-0002-1099-3857'
@@ -16,11 +16,11 @@ author:
     affil: 1
     main: true
     email: 'guarnieri.leo@usp.br'
-  - name: Dr. Maria Laura Nogueira Pires
+  - name: Maria Laura Nogueira Pires, PhD
     affil: 2
     main: true
     email: 'laurapires@actigrafia.org'
-  - name: Dr. Renatha El Rafihi Ferreira
+  - name: Renatha El Rafihi Ferreira, PhD
     affil: 1
     main: true
     email: 'rerafihi@usp.br'
@@ -154,7 +154,7 @@ fitconv <- lavaan::sem(model = modconv,
 cormat <- cov2cor(lavInspect(fitconv, "cov.lv"))
 ```
 
-```{r longitudinal invariance}
+```{r longitudinal invariance, include=FALSE}
 
 data_longitudinal <- mydata |> 
   dplyr::filter(!record_id %in% c(1651, 2015, 2938, 3793)) |>  # dupes
@@ -264,7 +264,7 @@ long_fit_diffs <- tibble::enframe(c(
   tidyr::pivot_wider(names_from = "name", values_from = "value")
 ```
 
-```{r group invariance}
+```{r group invariance, eval=FALSE, include=FALSE}
 
 syntax.config.group <- measEq.syntax(configural.model = mod.spaq,
                                data = arm1[,2:9],
@@ -364,6 +364,22 @@ cor_df |>
 <br>
 
 ```{r fit-differences-invariance}
+
+
+fitdiffs_df <- inv_long[, 5:7] |> 
+  dplyr::mutate(
+    model = c("configural", "metric", "scalar", "strict"),
+    .before = dplyr::everything()) |> 
+  dplyr::left_join(long_fit_diffs, by = "model") 
+
+fitdiffs_df[1, -1] <- t(as.data.frame(
+  fitmeasures(
+    configural.fit, fit.measures = c(
+      "chisq.scaled", "df.scaled", "pvalue.scaled",
+      "rmsea.robust", "cfi.robust", "aic", "bic"))
+))
+
+
 fitdiffs_df |> 
   dplyr::mutate(
     `Pr(>Chisq)` = ifelse(`Pr(>Chisq)` < .001, "<.001", 
@@ -378,14 +394,13 @@ fitdiffs_df |>
                  "$\\Delta$df", "$\\it{p}$-value", 
                  "$\\Delta$RMSEA", "$\\Delta$CFI",
                  "$\\Delta$AIC", "$\\Delta$BIC")) |> 
-  kbl(booktabs = TRUE, 
-      caption = " Model fit differences for CFA measurement invariance tests.", 
-      escape = FALSE) |> 
-  pack_rows("Longitudinal invariance", 1, 4) |>
-  pack_rows("Group invariance", 5, 6) |> 
+  kbl(#booktabs = TRUE, escape = FALSE,
+      caption = " Model fit differences for CFA longitudinal measurement invariance tests."
+      ) |> 
   footnote(general = "Differences to each preceding constraint level.",
            footnote_as_chunk = TRUE,
            general_title = "Note. ")
+
 
 ```
 
@@ -404,7 +419,7 @@ cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = 
 
 # Conclusion
 
-These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep with a Brazilian-Portuguese speaking population.
+These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep with a Brazilian-Portuguese speaking population. However, due to the low correlation between the two subscales, researchers should refrain from interpreting a total sum score and consider these as individual factors.
 
 ## Items
 
