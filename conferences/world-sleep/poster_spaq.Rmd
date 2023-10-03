@@ -1,9 +1,9 @@
 ---
 main_topsize: 0.1 #percent coverage of the poster
 main_bottomsize: 0.07
-poster_height: "150cm"
-poster_width: "80cm"
-body_textsize: "52px"
+poster_height: "200cm"
+poster_width: "100cm"
+body_textsize: "50px"
 #ESSENTIALS
 title: '**Translation and validation of the Sleep Problem Acceptance Questionnaire (SPAQ) with a Brazilian sample**'
 author:
@@ -37,8 +37,8 @@ secondary_colour: "#C00000"
 body_bgcol: "#ffffff"
 #---POSTER BODY OPTIONS---#
 reference_textsize: "38px"
-caption_textsize: "38px"
-affiliation_textsize: "38px"
+caption_textsize: "50px"
+affiliation_textsize: "46px"
 #Column
 column_numbers: 2
 #Main Section
@@ -309,34 +309,94 @@ We also examined whether our scale’s psychometric properties were equal across
 
 # Results
 
-The 2-factor model showed a good fit [$\chi^2$(`r fitMeasures(fit.spaq, "df")`) = `r round(fitMeasures(fit.spaq, "chisq"),2)`, RMSEA = `r round(fitMeasures(fit.spaq, "rmsea"),3)` [`r round(fitMeasures(fit.spaq, "rmsea.ci.lower"),2)`, `r round(fitMeasures(fit.spaq, "rmsea.ci.upper"),3)`]; CFI = `r round(fitMeasures(fit.spaq, "cfi"),3)`; RNI = `r round(fitMeasures(fit.spaq, "rni"),3)`; TLI = `r round(fitMeasures(fit.spaq, "tli"),3)`]. 
+The 2-factor model showed a good fit to our sample [$\chi^2$(`r fitMeasures(fit.spaq, "df")`) = `r round(fitMeasures(fit.spaq, "chisq"),2)`, *p* < .001 RMSEA = `r round(fitMeasures(fit.spaq, "rmsea"),3)` [`r round(fitMeasures(fit.spaq, "rmsea.ci.lower"),2)`, `r round(fitMeasures(fit.spaq, "rmsea.ci.upper"),3)`]; CFI = `r round(fitMeasures(fit.spaq, "cfi"),3)`; RNI = `r round(fitMeasures(fit.spaq, "rni"),3)`; TLI = `r round(fitMeasures(fit.spaq, "tli"),3)`]. 
 
 Internal consistency was good for Activity Engagement ($\alpha$ = `r pull(round(Calphamysubscale1$total[1],2))` [`r pull(round(Calphamysubscale1$feldt[[1]],2))`, `r pull(round(Calphamysubscale1$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale1$est,2)` [`r round(omegamysubscale1$ci.lower,2)`, `r round(omegamysubscale1$ci.upper,2)`]) and Willingness ($\alpha$ = `r pull(round(Calphamysubscale2$total[1],2))` [`r pull(round(Calphamysubscale2$feldt[[1]],2))`, `r pull(round(Calphamysubscale2$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale2$est,2)` [`r round(omegamysubscale2$ci.lower,2)`, `r round(omegamysubscale2$ci.upper,2)`]). 
 
 The two subscales were weakly and negatively correlated (*r* = `r round(cormat[2,1], 3)`). Both factors also showed negative moderate to strong correlations with measures of insomnia severity, anxiety and depression.
 
+Tests of longitudinal invariance shows that the scale measurement properties were maintained across 14 days.
 
 
+```{r table1}
 
-```{r table1, eval=FALSE, include=FALSE}
-table1 %>% 
-  knitr::kable(
-    caption = "Study participants (N = 1419) descriptive statistics.", 
-    #align = 'c',
-    col.names = c("", "N/Mean (%/SD)"),
-    align = "lc",
-    table.attr = "style='width:100%;'"
-  ) %>% 
-  column_spec(1, width = "60%") %>%
-  column_spec(2, width = "100%") %>%
-  #row_spec(0, background = "#CCCCCC") %>%
-  #row_spec(1:nrow(table1), background = "FFFFFF") %>% 
-  kableExtra::pack_rows("Gender", 2,3) %>% 
-  kableExtra::pack_rows("Race/ethnicity", 4,7) %>% 
-  kableExtra::pack_rows("Group", 8,9) %>% 
-  kableExtra::pack_rows("Education", 10,12) %>% 
-  kableExtra::pack_rows("Region of origin", 13,18) %>% 
-  kable_minimal(html_font = "Rasa")
+
+descriptive <- mydata %>% 
+  dplyr::filter(!record_id %in% c(1651, 2015, 2938, 3793)) |>  # dupes
+  dplyr::filter(redcap_event_name == "elegibilidade_arm_1",
+    !dplyr::if_all(dplyr::starts_with("spaq_"), ~ is.na(.))) |> 
+  dplyr::select(sex, age, race, education, work_status, region
+                ) %>% 
+  dplyr::mutate(
+    sex = dplyr::case_when(
+      sex == 1 ~ "Female",
+      sex == 2 ~ "Male"
+      ),
+    race = dplyr::case_when(
+      race ==  1 ~ "White",
+      race %in% c(2,3) ~ "Black",
+      race == 4 ~ "Asian",
+      !(race %in% c(1:4)) ~ "Other/Not informed",
+    ),
+    education = dplyr::case_when(
+      education %in% c(1:6) ~ "Primary School",
+      education %in% 7:8 ~ "Secondary School",
+      education == 9 ~ "College degree or higher",
+    ),
+    region = dplyr::case_when(
+      region == "Região Centro-Oeste" ~ "Central-West",
+      region == "Região Nordeste" ~ "Northeast",
+      region == "Região Norte" ~ "North",
+      region == "Região Sudeste" ~ "Southeast",
+      region == "Região Sul" ~ "South",
+    ),
+    work_status = dplyr::case_when(
+    work_status == 1 ~ "Retired",
+    work_status %in% c(2,5,6) ~ "Employed",
+    work_status %in% 3:4 ~ "Unemployed",
+    work_status == 7 ~ "Student"
+  )
+  ) %>%
+  tableone::CreateTableOne(data=.) 
+
+tbl1 <- print(descriptive, printToggle = FALSE) |> 
+  as.data.frame() |> 
+  slice(-1)
+
+rnames <- rownames(tbl1)
+rnames[1] <- "Sex Male (%)"
+rnames[2] <- "Age [mean (SD)]"
+rnames[3] <- "Race (%)"
+rnames[8] <- "Educational Level (%)"
+rnames[12] <- "Occupation (%)"
+rnames[17] <- "Region (%)"
+row.names(tbl1) <- rnames
+
+kbl(tbl1, #booktabs = TRUE, escape = FALSE, 
+    caption = "Study participants (N = 1352) descriptive statistics.", 
+    table.attr = "style='width:100%;'",
+    col.names = c("", "N (%)"),
+    ) |> 
+  add_indent(c(4:7, 9:11, 13:16, 18:22))
+
+# %>% 
+#   knitr::kable(
+#     caption = "Study participants (N = 1352) descriptive statistics.", 
+#     #align = 'c',
+#     col.names = c("", "N (%)"),
+#     align = "lc",
+#     table.attr = "style='width:100%;'"
+#   ) %>% 
+#   column_spec(1, width = "60%") %>%
+#   column_spec(2, width = "100%") %>%
+#   #row_spec(0, background = "#CCCCCC") %>%
+#   #row_spec(1:nrow(table1), background = "FFFFFF") %>% 
+#   kableExtra::pack_rows("Gender", 2,3) %>% 
+#   kableExtra::pack_rows("Race/ethnicity", 4,7) %>% 
+#   kableExtra::pack_rows("Group", 8,9) %>% 
+#   kableExtra::pack_rows("Education", 10,12) %>% 
+#   kableExtra::pack_rows("Region of origin", 13,18) %>% 
+#   kable_minimal(html_font = "Rasa")
 ```
 
 <br>
@@ -395,7 +455,8 @@ fitdiffs_df |>
                  "$\\Delta$RMSEA", "$\\Delta$CFI",
                  "$\\Delta$AIC", "$\\Delta$BIC")) |> 
   kbl(#booktabs = TRUE, escape = FALSE,
-      caption = " Model fit differences for CFA longitudinal measurement invariance tests."
+      caption = " Model fit differences for CFA longitudinal measurement invariance tests.",
+      table.attr = "style='width:100%;'"
       ) |> 
   footnote(general = "Differences to each preceding constraint level.",
            footnote_as_chunk = TRUE,
@@ -423,14 +484,21 @@ These findings suggest that the SPAQ is a valid tool for assessing the acceptanc
 
 ## Items
 
-  1. I try to control my sleep by forcing it to happen or being too rigid about my sleep schedule.
+  1. Embora as coisas tenham mudado, estou vivendo uma vida normal apesar dos meus problemas de sono.
 	 
-  2. I avoid making plans or doing things I enjoy or need to do because of my sleep.
+  2. Eu levo uma vida plena apesar de ter problemas de sono.
 	 
-  3. The thought of going to sleep makes me uneasy.
+  3. Minha vida está indo bem apesar dos meus problemas de sono.
 	 
-  4. I have negative feelings towards my sleep.
+  4. Apesar dos problemas de sono, agora estou seguindo um certo curso na minha vida.
 	 
-  5. My worries, thoughts, and feelings about my sleep interfere with how I go about my daily life.
+  5. Manter meus problemas de sono sob controle é minha maior prioridade.
 	 
-  6. I am scared of not being able to fall asleep.
+  6. Eu preciso me concentrar em me livrar dos meus problemas de sono.
+  
+  7. É importante eu continuar lutando contra meus problemas de sono.
+  
+  8. Meus pensamentos e sentimentos sobre meus problemas de sono devem mudar antes de eu dar passos importantes na 
+minha vida.
+
+
