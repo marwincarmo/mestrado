@@ -47,7 +47,7 @@ main_textalign: "left"
 main_textsize: "160px"
 main_textalpha: "cf"
 main_findings:
-  - "Preliminary evidence for a new measure \nof **Sleep Acceptance**: a promising tool for clinicians and researchers."
+  - "New psychometric study of the **Sleep Problem Acceptance Questionnaire** indicates good validity evidences."
 main_textcol: "#ffffff"
 logoleft_name: img/fapesp-white.png
 logoright_name: img/ipq-white3.png
@@ -283,16 +283,16 @@ configural.fit.group <- cfa(mod.config.group,
 
 # Introduction
 
-Acceptance is essential as a therapeutic process for dealing with sleep problems. The Sleep Problem Acceptance Questionnaire (SPAQ) is an 8-itens psychometric instrument that measures the acceptance of sleep difficulties. The SPAQ contains the subscales "Activity Engagement" and "Willingness," with four items composing each factor; respondents rate them on a 7-point scale, where 0 means “Disagree,” and six indicates "Completely
+Acceptance is essential as a therapeutic process for dealing with sleep problems. The Sleep Problem Acceptance Questionnaire (SPAQ) is an 8-itens psychometric instrument that measures the acceptance of sleep difficulties. The SPAQ contains the subscales "Activity Engagement" and "Willingness," with four items composing each factor; respondents rate them on a 7-point scale, where 0 means “Disagree,” and 6 indicates "Completely
 agree." 
 
 ## Objective
 
-This study developed a Brazilian-Portuguese of the Sleep Problem Acceptance Questionnaire, examined its factor structure, reliability, and construct validity
+This study developed a Brazilian-Portuguese of the Sleep Problem Acceptance Questionnaire and examined its factor structure, reliability, and construct validity.
 
 # Methods
 
-Data were collected from online surveys responded by 1352 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:
+Data were collected from online surveys by 1352 participants, aged 18 to 59 years, with and without insomnia symptoms. Participants completed self-report questionnaires, including:
 
 1. Hospital Anxiety and Depression Scale (HADS);
 2. Insomnia Severity Index (ISI);
@@ -313,9 +313,9 @@ The 2-factor model showed a good fit to our sample [$\chi^2$(`r fitMeasures(fit.
 
 Internal consistency was good for Activity Engagement ($\alpha$ = `r pull(round(Calphamysubscale1$total[1],2))` [`r pull(round(Calphamysubscale1$feldt[[1]],2))`, `r pull(round(Calphamysubscale1$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale1$est,2)` [`r round(omegamysubscale1$ci.lower,2)`, `r round(omegamysubscale1$ci.upper,2)`]) and Willingness ($\alpha$ = `r pull(round(Calphamysubscale2$total[1],2))` [`r pull(round(Calphamysubscale2$feldt[[1]],2))`, `r pull(round(Calphamysubscale2$feldt[[3]],2))`], $\omega$ = `r round(omegamysubscale2$est,2)` [`r round(omegamysubscale2$ci.lower,2)`, `r round(omegamysubscale2$ci.upper,2)`]). 
 
-The two subscales were weakly and negatively correlated (*r* = `r round(cormat[2,1], 3)`). Both factors also showed negative moderate to strong correlations with measures of insomnia severity, anxiety and depression.
+The two subscales were weakly and negatively correlated (*r* = `r round(cormat[2,1], 3)`). Both factors also showed negative moderate to strong correlations with measures of insomnia severity, anxiety, and depression.
 
-Tests of longitudinal invariance shows that the scale measurement properties were maintained across 14 days.
+Tests of longitudinal invariance show that the scale measurement properties were maintained across 14 days.
 
 
 ```{r table1}
@@ -400,6 +400,7 @@ kbl(tbl1, #booktabs = TRUE, escape = FALSE,
 ```
 
 <br>
+<br>
 
 ```{r}
 covmat <- cov2cor(lavInspect(fitconv, "cov.lv"))
@@ -480,7 +481,7 @@ cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = 
 
 # Conclusion
 
-These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep with a Brazilian-Portuguese speaking population. However, due to the low correlation between the two subscales, researchers should refrain from interpreting a total sum score and consider these as individual factors.
+These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep in a Brazilian-Portuguese-speaking population. However, due to the low correlation between the two subscales, researchers should refrain from interpreting a total sum score and consider these as individual factors.
 
 ## Items
 
