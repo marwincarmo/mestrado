@@ -1,6 +1,6 @@
 ---
 main_topsize: 0.1 #percent coverage of the poster
-main_bottomsize: 0.07
+main_bottomsize: 0.08
 poster_height: "200cm"
 poster_width: "100cm"
 body_textsize: "50px"
@@ -51,7 +51,7 @@ main_findings:
 main_textcol: "#ffffff"
 logoleft_name: img/fapesp-white.png
 logoright_name: img/ipq-white3.png
-logocenter_name: img/qrcodeSAS.svg
+logocenter_name: img/qrcodeSPAQ.svg
 output: 
   posterdown::posterdown_betterport:
     highlight: NULL
