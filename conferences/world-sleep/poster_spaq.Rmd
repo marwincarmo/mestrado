@@ -466,7 +466,7 @@ fitdiffs_df |>
 
 ```
 
-```{r graph, fig.width=8, fig.height=12, dpi=300}
+```{r graph, fig.width=8, fig.height=10, dpi=300}
 cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = "latents", 
          color=wesanderson::wes_palette("GrandBudapest2", n=2), layout = "tree",
          posCol=c("skyblue4"),"std", edge.label.cex = 1,  curvePivot = TRUE,
@@ -484,22 +484,21 @@ cfa_plot <- semPaths(fit.spaq, residuals=FALSE,sizeMan=6, rotation =2, groups = 
 These findings suggest that the SPAQ is a valid tool for assessing the acceptance of sleep in a Brazilian-Portuguese-speaking population. However, due to the low correlation between the two subscales, researchers should refrain from interpreting a total sum score and consider these as individual factors.
 
 ## Items
-
-  1. Embora as coisas tenham mudado, estou vivendo uma vida normal apesar dos meus problemas de sono.
-	 
-  2. Eu levo uma vida plena apesar de ter problemas de sono.
-	 
-  3. Minha vida está indo bem apesar dos meus problemas de sono.
-	 
-  4. Apesar dos problemas de sono, agora estou seguindo um certo curso na minha vida.
-	 
-  5. Manter meus problemas de sono sob controle é minha maior prioridade.
-	 
-  6. Eu preciso me concentrar em me livrar dos meus problemas de sono.
   
-  7. É importante eu continuar lutando contra meus problemas de sono.
+  1. Although things have changed, I am living a normal life despite my sleeping problems. (*Embora as coisas tenham mudado, estou vivendo uma vida normal apesar dos meus problemas de sono.*)
+	 
+  2. I lead a full life even though I have sleeping problems. (*Eu levo uma vida plena apesar de ter problemas de sono.*)
+	 
+  3. My life is going well, even though I have sleeping problems. (*Minha vida está indo bem apesar dos meus problemas de sono.*)
+	 
+  4. Despite the sleeping problems, I am now sticking to a certain course in my life. (*Apesar dos problemas de sono, agora estou seguindo um certo curso na minha vida.*)
+	 
+  5. Keeping my sleeping problems under control takes first priority. (*Manter meus problemas de sono sob controle é minha maior prioridade.*)
+	 
+  6. I need to concentrate on getting rid of my sleeping problems. (*Eu preciso me concentrar em me livrar dos meus problemas de sono.*)
   
-  8. Meus pensamentos e sentimentos sobre meus problemas de sono devem mudar antes de eu dar passos importantes na 
-minha vida.
+  7. It's important to keep on fighting these sleeping problems. (*É importante eu continuar lutando contra meus problemas de sono.*)
+  
+  8. My thoughts and feelings about my sleeping problems must change before I can take important steps in my life. (*Meus pensamentos e sentimentos sobre meus problemas de sono devem mudar antes de eu dar passos importantes na minha vida.*)
 
 
