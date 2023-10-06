@@ -78,14 +78,18 @@ summary(fitHADS, fit.measures = TRUE)
 
 model <- '
 
-HADS =~ ehad_1 + ehad_2 + ehad_3 + ehad_ 4 + ehad_5 + ehad_6 + ehad_7 +
+ehad =~ ehad_1 + ehad_2 + ehad_3 + ehad_ 4 + ehad_5 + ehad_6 + ehad_7 +
     ehad_8 + ehad_9 + ehad_10 + ehad_11 + ehad_12 + ehad_13 + ehad_14
 
-Anx =~ ehad_1 + ehad_3 + ehad_5 + ehad_7 + ehad_9 + ehad_11 + ehad_13
+igi =~ igi_1a + igi_1b + igi_1c + igi_2 + igi_3 + igi_4 + igi_5
+igi_1b ~~ igi_1c
 
-Dep =~ ehad_2 + ehad_4 + ehad_6 + ehad_8 + ehad_10 + ehad_12 + ehad_14
+ehad ~ neuroticismo_escore_t
 
-
-
+igi ~ sexo + idade + superior_completo + ocupacao + etnia + abertura_escore_t +
+ehad + neuroticismo_escore_t
 
 '
+
+fit <- sem(model, data = neo, estimator = "MLMV")
+summary(fit, standardized = TRUE, fit.measures=TRUE)
